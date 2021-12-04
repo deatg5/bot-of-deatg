@@ -31,6 +31,7 @@ class Loops(commands.Cog):
         #change nick
         if random.randint(1, 500) < 10:
             await self.client.user.edit(nick=Common.random_message())
+            print("changed?")
 
     @theultimatespam.before_loop
     async def before_theultimatespam(self):
