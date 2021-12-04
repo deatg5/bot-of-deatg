@@ -19,10 +19,10 @@ class Listeners(commands.Cog):
         print('BOT ACTIVATED')
 
     
-    @commands.Cog.listener()
-    async def on_command_error(self, ctx, error):
-        await ctx.send(f'Oops, my system crashed. I lost my data! And I have an antivirus!\nError: {error}')
-        await Common.log(self, f'Oops, my system crashed. I lost my data! And I have an antivirus!\nError: {error}', ctx)
+    #@commands.Cog.listener()
+    #async def on_command_error(self, ctx, error):
+    #    await ctx.send(f'Oops, my system crashed. I lost my data! And I have an antivirus!\nError: {error}')
+    #    await Common.log(self, f'Oops, my system crashed. I lost my data! And I have an antivirus!\nError: {error}', ctx)
 
     @commands.Cog.listener()
     async def on_guild_join(self, guild):
