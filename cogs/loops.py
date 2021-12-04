@@ -23,10 +23,15 @@ class Loops(commands.Cog):
 
     @tasks.loop(seconds=0.1)
     async def theultimatespam(self):
+        #spam, but disabled bc spam_channel_ids is empty
         if Common.spam_channel_ids:
             for channel_id in Common.spam_channel_ids:
                 spam_channel = self.client.get_channel(channel_id)
                 await spam_channel.send(f"{random.choice(Lists.messages)}")
+        #change nick
+        if random.randint(1, 500) < 10:
+            await self.client.user.edit(nick=Common.random_message())
+
     @theultimatespam.before_loop
     async def before_theultimatespam(self):
         await self.client.wait_until_ready()
