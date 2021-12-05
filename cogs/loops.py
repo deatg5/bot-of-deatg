@@ -30,7 +30,7 @@ class Loops(commands.Cog):
                 await spam_channel.send(f"{random.choice(Lists.messages)}")
         #change nick
         if random.randint(1, 500) < 10:
-            await self.client.user.edit(nick=Common.random_message())
+            await self.client.user.edit(nick=Common.random_message(self))
             print("changed?")
 
     @theultimatespam.before_loop
