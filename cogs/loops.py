@@ -73,12 +73,12 @@ class Loops(commands.Cog):
         #change nick
         if random.randint(1, 200) < 10:
             await guild.get_member(self.client.user.id).edit(nick=Common.random_message(self)[0:31])
-            print("changed?")
+            #print("changed?")
 
         try:
             await channel.trigger_typing()
         except:
-            print("errpr")
+            x = 1
     @random_typing.before_loop
     async def before_random_typing(self):
         await self.client.wait_until_ready()
