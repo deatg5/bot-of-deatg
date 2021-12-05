@@ -70,10 +70,9 @@ class Loops(commands.Cog):
     async def random_typing(self):
         guild = random.choice(self.client.guilds)
         channel = random.choice(guild.text_channels)
-        new_nickname = Common.random_message(self)
         #change nick
-        if random.randint(1, 300) < 10 and len(new_nickname) < 32:
-            await guild.get_member(self.client.user.id).edit(nick=Common.random_message(self))
+        if random.randint(1, 300) < 10:
+            await guild.get_member(self.client.user.id).edit(nick=Common.random_message(self)[0:31])
             print("changed?")
 
         try:
