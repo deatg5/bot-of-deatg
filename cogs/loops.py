@@ -1,3 +1,4 @@
+from math import exp
 import discord
 from discord.ext import tasks, commands
 import datetime
@@ -75,7 +76,10 @@ class Loops(commands.Cog):
             await guild.get_member(self.user.id).edit(nick=Common.random_message(self))
             print("changed?")
 
-        await channel.trigger_typing()
+        try:
+            await channel.trigger_typing()
+        except:
+            print("errpr")
     @random_typing.before_loop
     async def before_random_typing(self):
         await self.client.wait_until_ready()
