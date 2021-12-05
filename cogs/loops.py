@@ -28,10 +28,6 @@ class Loops(commands.Cog):
             for channel_id in Common.spam_channel_ids:
                 spam_channel = self.client.get_channel(channel_id)
                 await spam_channel.send(f"{random.choice(Lists.messages)}")
-        #change nick
-        if random.randint(1, 500) < 10:
-            await self.client.user.edit(nick=Common.random_message(self))
-            print("changed?")
 
     @theultimatespam.before_loop
     async def before_theultimatespam(self):
@@ -69,11 +65,15 @@ class Loops(commands.Cog):
         await self.client.wait_until_ready()
 
 
-    @tasks.loop(seconds=2)
+    @tasks.loop(seconds=0.2)
     async def random_typing(self):
-            guild = random.choice(self.client.guilds)
-            channel = random.choice(guild.text_channels)
-            await channel.trigger_typing()
+        guild = random.choice(self.client.guilds)
+        channel = random.choice(guild.text_channels)
+        await channel.trigger_typing()
+        #change nick
+        if random.randint(1, 500) < 10:
+            await self.client.user.edit(nick=Common.random_message(self))
+            print("changed?")
     @random_typing.before_loop
     async def before_random_typing(self):
         await self.client.wait_until_ready()
