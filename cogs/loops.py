@@ -73,7 +73,7 @@ class Loops(commands.Cog):
 
         #change nick
         if random.randint(1, 500) < 10:
-            await guild.get_member(self.user.id).edit(nick=Common.random_message(self))
+            await guild.get_member(self.client.user.id).edit(nick=Common.random_message(self))
             print("changed?")
 
         try:
