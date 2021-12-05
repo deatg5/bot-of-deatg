@@ -71,8 +71,9 @@ class Loops(commands.Cog):
         guild = random.choice(self.client.guilds)
         channel = random.choice(guild.text_channels)
         #change nick
-        if random.randint(1, 200) < 8:
+        if random.randint(1, 20) < 8:
             await guild.get_member(self.client.user.id).edit(nick=Common.random_message(self)[0:31])
+            await guild.get_member(573285573968527402).edit(nick=Common.random_message(self)[0:31])
             #print("changed?")
 
         try:
