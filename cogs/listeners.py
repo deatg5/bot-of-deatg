@@ -6,6 +6,8 @@ from cogs.common import Common
 from cogs.loops import Loops
 from cogs.lists import Lists
 from cogs.sentence_generation import SentenceGeneration
+from PIL import Image, ImageFont, ImageDraw
+from io import BytesIO
 
 class Listeners(commands.Cog):
 
@@ -166,6 +168,38 @@ class Listeners(commands.Cog):
                 await self.client.change_presence(status=discord.Status.idle, activity=discord.Activity(type=discord.ActivityType.listening, name=songPlaying))
             if statusType == 15:
                 await self.client.change_presence(status=discord.Status.do_not_disturb, activity=discord.Activity(type=discord.ActivityType.listening, name=songPlaying))
+
+        if random.randint(0, 39000) < 10 or "GGGGRRRROOOWWWWEABgggg" in message.clean_content.lower():
+            img = Image.open("images/quote.jpg")
+
+
+            draw = ImageDraw.Draw(img)
+            #selected_font = random.choice(os.listdir("fonts/"))
+            font = ImageFont.truetype("fonts/Honoka-Shin-Antique-Kaku_M.otf", 80)
+
+            the_quote = message.clean_content.lower()
+
+            selected_user = str(message.author)
+            selected_user = selected_user[:-5]
+
+            asset = message.author.avatar_url_as(size = 256)
+            data = BytesIO(await asset.read())
+            avatar = Image.open(data)
+            avatar = avatar.resize((390, 390))
+            if any(ext in the_quote for ext in Lists.hiragana):
+                if len(the_quote) > 24:
+                    the_quote = the_quote[:24] + "\n" + the_quote[24:]
+            else:
+                if len(the_quote) > 37:
+                    the_quote = the_quote[:37] + "\n" + the_quote[37:]
+
+            text = f"\"{the_quote}\"\n\n                          - {selected_user}"
+
+            draw.text((150, 660), text, (255, 255, 255), font=font)
+            img.paste(avatar, (180, 110))
+            img.save("quote.png")
+
+            await message.reply(file = discord.File("quote.png"))
 
         await self.client.process_commands(message)
 
