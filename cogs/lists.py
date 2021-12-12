@@ -199,7 +199,7 @@ class Lists(commands.Cog):
                 "remeber when i keeped asking you about garfield balls?","I'm using tilt controls!", "*licks the bone*","Ｔｈｅ　ＭｃＲｉｂ　Ｉｓ　𝓑𝓐𝓒𝓚","ZAMN😍",
                 "NERD","THIS SERVER SUCKS","THIS SERVER IS SO GOOD",":dizzy_face::gun:","im a people named makstore","PRE-ORDER NOW","Flash is the wave of the future!",
                 "TAKE A GOD DAMN VACATION STRAIGHT TO HELL","Mojang is my egg","YOU'VE BEEN [Friend Request Denied.]","Something happened to the image servers before I could receive the image. Try running your command again",
-                "A milk bag is a plastic bag that contains milk."]
+                "A milk bag is a plastic bag that contains milk.","(This page is intentionally left blank.)","The only way to stop the Nazi-controlled UFOs from poisoning your macaroni and cheese is to inject yourself with animal blood and eat human brains."]
 
 
 def setup(client):
