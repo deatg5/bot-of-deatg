@@ -35,12 +35,12 @@ class TextCommands(commands.Cog):
             await ctx.send('https://discord.com/api/oauth2/authorize?client_id=847900236071567390&permissions=0&scope=bot')
         await Common.log(self, f'invite link sent', ctx)
     
-    @commands.command(brief="DO NOT")
-    async def infinite_pain(self, ctx):
-        await Common.log(self, f'infinite pain started o HEKC')
-        while True:
-            async with ctx.typing():
-                await ctx.send(f'{Common.random_message(self)}')
+    #@commands.command(brief="DO NOT")
+    #async def infinite_pain(self, ctx):
+    #    await Common.log(self, f'infinite pain started o HEKC')
+    #    while True:
+    #        async with ctx.typing():
+    #            await ctx.send(f'{Common.random_message(self)}')
 
     @commands.command(aliases=['mc'], brief="random minecraft item, block, or entity")
     async def minecraft(self, ctx, amount=1):
@@ -48,11 +48,12 @@ class TextCommands(commands.Cog):
             async with ctx.typing():
                 await ctx.send(f'{random.choice(Lists.item)}')
 
-    @commands.command(brief="??????????")
-    async def demfex(self, ctx):
-        async with ctx.typing():
-            await ctx.send(SentenceGeneration.generate_demfex_quote(self))
-        await Common.log(self, 'demfex generated', ctx)
+
+    #@commands.command(brief="??????????")
+    #async def demfex(self, ctx):
+    #    async with ctx.typing():
+    #        await ctx.send(SentenceGeneration.generate_demfex_quote(self))
+    #    await Common.log(self, 'demfex generated', ctx)
 
     @commands.command(brief="sends a random emoji from a server the bot is in")
     async def emoji(self, ctx):
@@ -88,7 +89,7 @@ class TextCommands(commands.Cog):
         server_info += (f'max_video_channel_users: {ctx.guild.max_video_channel_users}, ')
         server_info += (f'me: {ctx.guild.me}, ')
         server_info += (f'member_count: {ctx.guild.member_count}, ')
-        server_info += (f'members: {ctx.guild.members}, ')
+        #server_info += (f'members: {ctx.guild.members}, ')
         server_info += (f'mfa_level: {ctx.guild.mfa_level}, ')
         server_info += (f'name: {ctx.guild.name}, ')
         server_info += (f'owner: {ctx.guild.owner}, ')
@@ -98,7 +99,7 @@ class TextCommands(commands.Cog):
         server_info += (f'premium_tier: {ctx.guild.premium_tier}, ')
         server_info += (f'public_updates_channel: {ctx.guild.public_updates_channel}, ')
         server_info += (f'region: {ctx.guild.region}, ')
-        server_info += (f'roles: {ctx.guild.roles}, ')
+        #server_info += (f'roles: {ctx.guild.roles}, ')
         server_info += (f'rules_channel: {ctx.guild.rules_channel}, ')
         server_info += (f'shard_id: {ctx.guild.shard_id}, ')
         server_info += (f'splash: {ctx.guild.splash}, ')
