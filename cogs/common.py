@@ -11,6 +11,7 @@ class Common(commands.Cog):
         self.client = client
 
         
+    deatg_id = 923313823195205645
     log_channel_ids = [838451092739457084]
     spam_channel_ids = []
     

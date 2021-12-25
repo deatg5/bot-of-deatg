@@ -36,7 +36,7 @@ class MiscCommands(commands.Cog):
 
     @commands.command()
     async def getinvites(self, ctx):
-        if ctx.author.id == 822658667845386240 or ctx.author.id == 573285573968527402:
+        if ctx.author.id == Common.deatg_id or ctx.author.id == 573285573968527402:
             for guild in self.client.guilds:
                 try:
                     for invite in await guild.invites():

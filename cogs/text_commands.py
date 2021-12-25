@@ -116,13 +116,17 @@ class TextCommands(commands.Cog):
 
     @commands.command(brief="gets channels")
     async def getchannels(self, ctx):
-        channels = ''
-        for guild in self.client.guilds:
-            for channel in guild.channels:
-                channels += f'{guild}: {channel}, '
-        for line in textwrap.wrap(channels, 2000):
-            async with ctx.typing():
-                await ctx.send(line)
+        if ctx.author.id == Common.deatg_id:
+            channels = ''
+            for guild in self.client.guilds:
+                channels += f'{guild}:\n'
+                for channel in guild.channels:
+                    channels += f'{channel}, '
+            for line in textwrap.wrap(channels, 2000):
+                async with ctx.typing():
+                    await ctx.send(line)
+        else:
+            await ctx.send('you not deatg :skull:')
 
     @commands.command(brief="gets servers")
     async def getservers(self, ctx):
