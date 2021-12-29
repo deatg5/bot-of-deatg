@@ -119,7 +119,7 @@ class Common(commands.Cog):
 
     def random_word_edit(self, message_content):
         word_to_replace = random.choice(message_content.split())
-        word_to_add = random.choice(['[[Hyperlink Blocked]]', '[REDACTED]', '[REMOVED TO CONFORM WITH LOCAL AND INTERNATIONAL CENSORSHIP LAWS]', f'||{word_to_replace}||', f'*{word_to_replace}*', f'**{word_to_replace}**', f'~~{word_to_replace}~~', f'[{word_to_replace.capitalize()}]', f'{Common.fancy_letters(word_to_replace)}'])
+        word_to_add = random.choice(['[[Hyperlink Blocked]]', '[REDACTED]', '[REMOVED TO CONFORM WITH LOCAL AND INTERNATIONAL CENSORSHIP LAWS]', f'||{word_to_replace}||', f'*{word_to_replace}*', f'**{word_to_replace}**', f'~~{word_to_replace}~~', f'[{word_to_replace.capitalize()}]', f'{Common.fancy_letters(self, word_to_replace)}'])
         return message_content.replace(word_to_replace, word_to_add)
 
     def random_insert(self, message_content):
