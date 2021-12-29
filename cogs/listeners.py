@@ -164,9 +164,15 @@ class Listeners(commands.Cog):
                 emoji_count = 18
             elif emoji_count_rng == 100: 
                 emoji_count = 20
+
             for i in range(emoji_count):
                 try:
                     await message.add_reaction(emoji)
+                    emoji_type = random.randint(1, 3)
+                    if emoji_type == 1:
+                        emoji = random.choice(self.client.emojis)
+                    else:
+                        emoji = random.choice(Lists.all_emoji)
                 except:
                     print('error reacting')
 
