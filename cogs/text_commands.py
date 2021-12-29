@@ -15,7 +15,7 @@ class TextCommands(commands.Cog):
     def __init__(self, client):
         self.client = client
 
-    @commands.command(brief=";repeat [word] [number of times to send word]")
+    @commands.command(brief=";spam [word] [number of times to send word]")
     async def spam(self, ctx, message = 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', count = 20):
         for i in range(count):
             async with ctx.typing():
@@ -143,7 +143,6 @@ class TextCommands(commands.Cog):
         await ctx.send(f'server count: {len(self.client.guilds)}')
         ch_list = []
         u_list = []
-        m_list = []
         for guild in self.client.guilds:
             for channel in guild.channels:
                 ch_list.append(channel)

@@ -1,6 +1,7 @@
 import discord
 from discord.ext import commands
 import random
+import os
 
 from cogs.common import Common
 from cogs.loops import Loops
@@ -45,11 +46,38 @@ class Listeners(commands.Cog):
     #            break
 
 
+    def decide_message(self, message):
+        message_type = random.randint(0, 200)
+
+        if 0 <= message_type <= 170:
+            message_to_send = Common.random_message(self)
+        elif 171 < message_type <= 180:
+            message_to_send = SentenceGeneration.generate_sentence(self)
+        elif 180 < message_type <= 185:
+            message_to_send = SentenceGeneration.generate_demfex_quote(self)
+        elif 185 < message_type <= 190:
+            message_to_send = Common.generate_fake_japanese_sentence(self)
+        elif 190 < message_type <= 195:
+            message_to_send = Common.dynamic_message(self, message)
+        elif 195 < message_type <= 200:
+            message_to_send = Common.minecraft_message(self, message)
+            
+        if random.randint(0, 1000) < 70:
+            message_to_send = Common.random_style(self, message_to_send)
+        elif random.randint(0, 1000) < 70:
+            message_to_send = Common.random_word_edit(self, message_to_send)
+        elif random.randint(0, 1000) < 20:
+            message_to_send = Common.random_insert(self, message_to_send)
+        elif random.randint(0, 1000) < 20:
+            message_to_send = Common.cutoff(self, message_to_send)
+
+
+        return message_to_send
+
     @commands.Cog.listener()
     async def on_message(self, message):
 
-        author_id = str(message.author.id)
-
+        #author_id = str(message.author.id)
 
         if 'sans' in message.clean_content.lower() and not message.channel.id in Common.spam_channel_ids:
             try:
@@ -58,63 +86,102 @@ class Listeners(commands.Cog):
             except:
                 await Common.log(self, 'OMG SANMS UNDERTAL failed this is so sad')
 
-        if random.randint(0, 1000) < 6 or self.client.user.mentioned_in(message):
-            message_type = random.randint(0, 100)
-            message_to_send = Common.random_message(self)
-            if 0 <= message_type <= 85:
-                message_to_send = Common.random_message(self)
-            elif 85 < message_type <= 89:
-                message_to_send = SentenceGeneration.generate_demfex_quote(self)
-            elif 89 < message_type <= 98:
-                message_to_send = SentenceGeneration.generate_sentence(self)
-            elif 98 <= message_type <= 100:
-                message_to_send = Common.generate_fake_japanese_sentence(self)
+        #random msg send chance
+        if random.randint(0, 1000) < 8 or self.client.user.mentioned_in(message):
+            #random message has been triggered
+            kind_of_message = random.randint(0, 1000)
 
-            if message.channel.id == 910657526062784603: 
-                await message.channel.send(f'"{message_to_send}"')
-                return
-            else:
-                if random.randint(0, 1000) < 70:
-                    await message.channel.send(Common.random_style(self, message_to_send))
-                elif random.randint(0, 1000) < 70:
-                    await message.channel.send(Common.random_word_edit(self, message_to_send))
-                elif random.randint(0, 1000) < 70:
-                    await message.channel.send(Common.random_insert(self, message_to_send))
-                elif random.randint(0, 1000) < 70:
-                    await message.channel.send(Common.cutoff(self, message_to_send))
+            #regular message
+            if kind_of_message >= 850:
+                message_to_send = self.decide_message(self, message)
+
+                if "quoting" in message.channel.name:
+                    await message.channel.send(f'"{message_to_send}"')
+                    return
                 else:
                     await message.channel.send(message_to_send)
+            
+            elif 850 < kind_of_message <= 960:
+                emoji = ""
+                emoji_type = random.randint(1, 3)
+                if emoji_type == 1:
+                    emoji = random.choice(self.client.emojis)
+                else:
+                    emoji = random.choice(Lists.all_emoji)
 
-        #random reply to old msg
+                await message.channel.send(emoji)
+
+            #file upload
+            elif 960 < kind_of_message <= 1000:
+                the_file = os.listdir('uploadable_files/')
+                filename = random.choice(the_file)
+                path = "uploadable_files/" + filename
+                await message.channel.send(file=discord.File(path))
+
+        #message reaction
+        if random.randint(0, 70) == 69:
+
+            #choose emoji type
+            emoji = ""
+            emoji_type = random.randint(1, 3)
+            if emoji_type == 1:
+                emoji = random.choice(self.client.emojis)
+            else:
+                emoji = random.choice(Lists.all_emoji)
+
+            #deciding how many emojis 
+            emoji_count = 0
+            emoji_count_rng = random.randint(0, 200)
+            if emoji_count_rng < 50 or emoji_count_rng > 100:
+                emoji_count = 1
+            elif 50 < emoji_count_rng <= 70: 
+                emoji_count = 2
+            elif 70 < emoji_count_rng <= 80: 
+                emoji_count = 3
+            elif 80 < emoji_count_rng <= 85: 
+                emoji_count = 4
+            elif 85 < emoji_count_rng <= 88: 
+                emoji_count = 5
+            elif 88 < emoji_count_rng <= 90: 
+                emoji_count = 6
+            elif emoji_count_rng == 91: 
+                emoji_count = 7
+            elif emoji_count_rng == 92: 
+                emoji_count = 9
+            elif emoji_count_rng == 93: 
+                emoji_count = 11
+            elif emoji_count_rng == 94: 
+                emoji_count = 13
+            elif emoji_count_rng == 95: 
+                emoji_count = 14
+            elif emoji_count_rng == 96: 
+                emoji_count = 15
+            elif emoji_count_rng == 97: 
+                emoji_count = 16
+            elif emoji_count_rng == 98: 
+                emoji_count = 17
+            elif emoji_count_rng == 99: 
+                emoji_count = 18
+            elif emoji_count_rng == 100: 
+                emoji_count = 20
+            for i in range(emoji_count):
+                await message.add_reaction(emoji)
+
+        
+
+
+        #random reply to old msg --this doesn't really work
         if random.randint(0, 7600) < 6:
             async for msg in message.channel.history(limit=10000):
                 if random.randint(0, 9000) < 5:
                     if msg.channel.id != 838451092739457084 and msg.channel.id != 471178465375158273:
-                        message_type = random.randint(0, 100)
-                        message_to_send = Common.random_message(self)
-                        if 0 <= message_type <= 70:
-                            message_to_send = Common.random_message(self)
-                        elif 80 < message_type <= 89:
-                            message_to_send = SentenceGeneration.generate_demfex_quote(self)
-                        elif 89 < message_type <= 98:
-                            message_to_send = SentenceGeneration.generate_sentence(self)
-                        elif 98 <= message_type <= 100:
-                            message_to_send = Common.generate_fake_japanese_sentence(self)
+                        message_to_send = self.decide_message(self, message)
 
-                        if message.channel.id == 782748684194545674: 
+                        if "quoting" in message.channel.name:
                             await message.channel.send(f'"{message_to_send}"')
                             return
                         else:
-                            if random.randint(0, 1000) < 70:
-                                await message.channel.send(Common.random_style(self, message_to_send))
-                            elif random.randint(0, 1000) < 70:
-                                await message.channel.send(Common.random_word_edit(self, message_to_send))
-                            elif random.randint(0, 1000) < 70:
-                                await message.channel.send(Common.random_insert(self, message_to_send))
-                            elif random.randint(0, 1000) < 70:
-                                await message.channel.send(Common.cutoff(self, message_to_send))
-                            else:
-                                await message.channel.send(message_to_send)
+                            await message.channel.send(message_to_send)
                 break
 
             #make function to check if in spam channels
@@ -196,7 +263,7 @@ class Listeners(commands.Cog):
             text = f"\"{the_quote}\"\n\n                          - {selected_user}"
 
             draw.text((150, 660), text, (255, 255, 255), font=font)
-            img.paste(avatar, (180, 110))
+            img.paste(avatar, (180, 110), avatar)
             img.save("quote.png")
 
             await message.reply(file = discord.File("quote.png"))

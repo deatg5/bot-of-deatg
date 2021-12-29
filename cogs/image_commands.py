@@ -92,8 +92,8 @@ class ImageCommands(commands.Cog):
             emoji = emoji.resize((random.randint(1, 450),random.randint(1, 450)))   
 
             draw.text((random.randint(0, math.floor(img.width / 20)), random.randint(0, img.height)), text, (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)), font=font)
-            img.paste(avatar, (random.randint(0, img.width), random.randint(0, img.height)))
-            img.paste(emoji, (random.randint(0, img.width), random.randint(0, img.height)))
+            img.paste(avatar, (random.randint(0, img.width), random.randint(0, img.height)), avatar)
+            img.paste(emoji, (random.randint(0, img.width), random.randint(0, img.height)), emoji)
         img.save("generated_image.png")
 
         await ctx.send(file = discord.File("generated_image.png"))
