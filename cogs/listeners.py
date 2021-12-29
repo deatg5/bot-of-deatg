@@ -55,9 +55,9 @@ class Listeners(commands.Cog):
             message_to_send = SentenceGeneration.generate_sentence(self)
         elif 180 < message_type <= 185:
             message_to_send = SentenceGeneration.generate_demfex_quote(self)
-        elif 185 < message_type <= 190:
+        elif 185 < message_type <= 187:
             message_to_send = Common.generate_fake_japanese_sentence(self)
-        elif 190 < message_type <= 195:
+        elif 187 < message_type <= 195:
             message_to_send = Common.dynamic_message(self, message)
         elif 195 < message_type <= 200:
             message_to_send = Common.minecraft_message(self, message)
@@ -101,7 +101,7 @@ class Listeners(commands.Cog):
                 else:
                     await message.channel.send(message_to_send)
             
-            elif 850 < kind_of_message <= 960:
+            elif 850 < kind_of_message <= 1000:
                 emoji = ""
                 for i in range(random.randint(1, 5)):
                     emoji_type = random.randint(1, 3)
@@ -112,12 +112,12 @@ class Listeners(commands.Cog):
 
                 await message.channel.send(emoji)
 
-            #file upload
-            elif 960 < kind_of_message <= 1000:
-                the_file = os.listdir('uploadable_files/')
-                filename = random.choice(the_file)
-                path = "uploadable_files/" + filename
-                await message.channel.send(file=discord.File(path))
+            #file upload - DISCONTINUED
+            #elif 960 < kind_of_message <= 1000:
+            #    the_file = os.listdir('uploadable_files/')
+            #    filename = random.choice(the_file)
+            #    path = "uploadable_files/" + filename
+            #    await message.channel.send(file=discord.File(path))
 
         #message reaction
         if random.randint(0, 70) < 69:
@@ -166,7 +166,10 @@ class Listeners(commands.Cog):
             elif emoji_count_rng == 100: 
                 emoji_count = 20
             for i in range(emoji_count):
-                await message.add_reaction(emoji)
+                try:
+                    await message.add_reaction(emoji)
+                except:
+                    print('error reacting')
 
         
 
