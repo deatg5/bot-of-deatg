@@ -120,7 +120,7 @@ class Listeners(commands.Cog):
                 await message.channel.send(file=discord.File(path))
 
         #message reaction
-        if random.randint(0, 70) == 69:
+        if random.randint(0, 70) < 69:
 
             #choose emoji type
             emoji = ""
