@@ -92,7 +92,7 @@ class Listeners(commands.Cog):
             kind_of_message = random.randint(0, 1000)
 
             #regular message
-            if kind_of_message >= 850:
+            if kind_of_message <= 850:
                 message_to_send = self.decide_message(message)
 
                 if "quoting" in message.channel.name:
