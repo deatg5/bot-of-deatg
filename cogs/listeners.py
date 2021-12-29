@@ -71,6 +71,8 @@ class Listeners(commands.Cog):
         elif random.randint(0, 1000) < 20:
             message_to_send = Common.cutoff(self, message_to_send)
 
+        message_to_send = Common.fancy_letters(self, message_to_send)
+
 
         return message_to_send
 

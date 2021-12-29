@@ -141,6 +141,18 @@ class Common(commands.Cog):
                 the_sentence += random.choice(Lists.kanji)
         return the_sentence
 
+    def fancy_letters(self, input_sentence):
+        ret = ""
+        selected_dict = random.choice(random.choice(Lists.fancy_text_1, Lists.fancy_text_2, Lists.fancy_text_3, Lists.fancy_text_4))
+        for letter in input_sentence:
+            try:
+                ret += selected_dict[letter]
+            except:
+                ret += letter
+        return ret
+
+
+
 
 
 def setup(client):
