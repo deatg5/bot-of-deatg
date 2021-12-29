@@ -119,7 +119,7 @@ class Common(commands.Cog):
 
     def random_word_edit(self, message_content):
         word_to_replace = random.choice(message_content.split())
-        word_to_add = random.choice(['[[Hyperlink Blocked]]', '[REDACTED]', '[REMOVED TO CONFORM WITH LOCAL AND INTERNATIONAL CENSORSHIP LAWS]', f'||{word_to_replace}||', f'*{word_to_replace}*', f'**{word_to_replace}**', f'~~{word_to_replace}~~', f'[{word_to_replace.capitalize()}]'])
+        word_to_add = random.choice(['[[Hyperlink Blocked]]', '[REDACTED]', '[REMOVED TO CONFORM WITH LOCAL AND INTERNATIONAL CENSORSHIP LAWS]', f'||{word_to_replace}||', f'*{word_to_replace}*', f'**{word_to_replace}**', f'~~{word_to_replace}~~', f'[{word_to_replace.capitalize()}]', f'{self.fancy_letters(word_to_replace())}'])
         return message_content.replace(word_to_replace, word_to_add)
 
     def random_insert(self, message_content):
@@ -143,8 +143,16 @@ class Common(commands.Cog):
 
     def fancy_letters(self, input_sentence):
         ret = ""
-        selected_dict = Lists.fancy_text_4
-        for letter in input_sentence.lower():
+        selected_dict = None
+        dict_type = random.randint(1, 4)
+        if dict_type == 1 or dict_type == 2:
+            selected_dict = Lists.fancy_text_spaced
+        elif dict_type == 2:
+            selected_dict = Lists.fancy_text_emo
+        elif dict_type == 3:
+            selected_dict = Lists.fancy_text_cursive
+
+        for letter in input_sentence:
             try:
                 ret += selected_dict[letter]
             except:
