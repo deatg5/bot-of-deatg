@@ -11,28 +11,28 @@ class Loops(commands.Cog):
 
     def __init__(self, client):
         self.client = client
-        self.theultimatespam.start()
+        #self.theultimatespam.start()
         self.random_channel_send.start()
         self.random_dm.start()
         self.random_typing.start()
 
     def cog_unload(self):
-        self.theultimatespam.cancel()
+        #self.theultimatespam.cancel()
         self.random_channel_send.cancel()
         self.random_dm.cancel()
         self.random_typing.cancel()
 
-    @tasks.loop(seconds=0.1)
-    async def theultimatespam(self):
-        #spam, but disabled bc spam_channel_ids is empty
-        if Common.spam_channel_ids:
-            for channel_id in Common.spam_channel_ids:
-                spam_channel = self.client.get_channel(channel_id)
-                await spam_channel.send(f"{random.choice(Lists.messages)}")
-
-    @theultimatespam.before_loop
-    async def before_theultimatespam(self):
-        await self.client.wait_until_ready()
+    #@tasks.loop(seconds=0.1)
+    #async def theultimatespam(self):
+    #    #spam, but disabled bc spam_channel_ids is empty
+    #    if Common.spam_channel_ids:
+    #        for channel_id in Common.spam_channel_ids:
+    #            spam_channel = self.client.get_channel(channel_id)
+    #            await spam_channel.send(f"{random.choice(Lists.messages)}")
+    #
+    #@theultimatespam.before_loop
+    #async def before_theultimatespam(self):
+    #    await self.client.wait_until_ready()
 
 
     @tasks.loop(seconds=3200)
