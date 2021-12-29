@@ -17,7 +17,10 @@ class Common(commands.Cog):
     
 
     async def log(self, message, ctx = None):
-        print(f"{str(datetime.datetime.now())} {ctx.guild}, {ctx.channel},  {ctx.message.author}, {str(message)}")
+        if ctx != None:
+            print(f"{str(datetime.datetime.now())} {ctx.guild}, {ctx.channel},  {ctx.message.author}, {str(message)}")
+        else:
+            print(f"{str(datetime.datetime.now())}")
         #for channel_id in Common.log_channel_ids:
         #    log_channel = self.client.get_channel(channel_id)
         #    if ctx != None:
