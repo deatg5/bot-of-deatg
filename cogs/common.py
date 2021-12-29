@@ -117,9 +117,9 @@ class Common(commands.Cog):
         selected_style = random.choice(styles)
         return f'{selected_style}{message_content}{selected_style}'
 
-    def random_word_edit(self, message_content):
+    async def random_word_edit(self, message_content):
         word_to_replace = random.choice(message_content.split())
-        word_to_add = random.choice(['[[Hyperlink Blocked]]', '[REDACTED]', '[REMOVED TO CONFORM WITH LOCAL AND INTERNATIONAL CENSORSHIP LAWS]', f'||{word_to_replace}||', f'*{word_to_replace}*', f'**{word_to_replace}**', f'~~{word_to_replace}~~', f'[{word_to_replace.capitalize()}]', f'{Common.fancy_letters(self, word_to_replace)}'])
+        word_to_add = random.choice(['[[Hyperlink Blocked]]', '[REDACTED]', '[REMOVED TO CONFORM WITH LOCAL AND INTERNATIONAL CENSORSHIP LAWS]', f'||{word_to_replace}||', f'*{word_to_replace}*', f'**{word_to_replace}**', f'~~{word_to_replace}~~', f'[{word_to_replace.capitalize()}]', f'{await Common.fancy_letters(self, word_to_replace)}'])
         return message_content.replace(word_to_replace, word_to_add)
 
     def random_insert(self, message_content):
@@ -141,7 +141,7 @@ class Common(commands.Cog):
                 the_sentence += random.choice(Lists.kanji)
         return the_sentence
 
-    def fancy_letters(self, input_sentence):
+    async def fancy_letters(self, input_sentence):
         ret = ""
         selected_dict = None
         dict_type = random.randint(1, 4)
@@ -152,7 +152,7 @@ class Common(commands.Cog):
         elif dict_type == 3:
             selected_dict = Lists.fancy_text_cursive
 
-        for letter in input_sentence:
+        async for letter in input_sentence:
             try:
                 ret += selected_dict[letter]
             except:

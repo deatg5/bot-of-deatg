@@ -46,7 +46,7 @@ class Listeners(commands.Cog):
     #            break
 
 
-    def decide_message(self, message):
+    async def decide_message(self, message):
         message_type = random.randint(0, 200)
 
         if 0 <= message_type <= 170:
@@ -65,13 +65,13 @@ class Listeners(commands.Cog):
         if random.randint(0, 1000) < 70:
             message_to_send = Common.random_style(self, message_to_send)
         elif random.randint(0, 1000) < 70:
-            message_to_send = Common.random_word_edit(self, message_to_send)
+            message_to_send = await Common.random_word_edit(self, message_to_send)
         elif random.randint(0, 1000) < 20:
             message_to_send = Common.random_insert(self, message_to_send)
         elif random.randint(0, 1000) < 20:
             message_to_send = Common.cutoff(self, message_to_send)
 
-        message_to_send = Common.fancy_letters(self, message_to_send)
+        message_to_send = await Common.fancy_letters(self, message_to_send)
 
 
         return message_to_send
@@ -95,7 +95,7 @@ class Listeners(commands.Cog):
 
             #regular message
             if kind_of_message <= 850:
-                message_to_send = self.decide_message(message)
+                message_to_send = await Listeners.decide_message(message)
 
                 if "quoting" in message.channel.name:
                     await message.channel.send(f'"{message_to_send}"')
@@ -184,7 +184,7 @@ class Listeners(commands.Cog):
             async for msg in message.channel.history(limit=10000):
                 if random.randint(0, 9000) < 5:
                     if msg.channel.id != 838451092739457084 and msg.channel.id != 471178465375158273:
-                        message_to_send = self.decide_message(message)
+                        message_to_send = await Listeners.decide_message(message)
 
                         if "quoting" in message.channel.name:
                             await message.channel.send(f'"{message_to_send}"')
