@@ -32,7 +32,7 @@ class TextCommands(commands.Cog):
     @commands.command(brief="sends invite link")
     async def invite(self, ctx):
         async with ctx.typing():
-            await ctx.send('https://discord.com/api/oauth2/authorize?client_id=847900236071567390&permissions=0&scope=bot')
+            await ctx.send('https://discord.com/api/oauth2/authorize?client_id=925854592154095667&permissions=137643809857&scope=bot')
         await Common.log(self, f'invite link sent', ctx)
     
     #@commands.command(brief="DO NOT")

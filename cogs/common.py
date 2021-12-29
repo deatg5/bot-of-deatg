@@ -17,12 +17,13 @@ class Common(commands.Cog):
     
 
     async def log(self, message, ctx = None):
-        for channel_id in Common.log_channel_ids:
-            log_channel = self.client.get_channel(channel_id)
-            if ctx != None:
-                await log_channel.send(f"{str(datetime.datetime.now())} {ctx.guild}, {ctx.channel},  {ctx.message.author}, {str(message)}")
-            else:
-                await log_channel.send(f"{str(datetime.datetime.now())} {str(message)}")
+        print(f"{str(datetime.datetime.now())} {ctx.guild}, {ctx.channel},  {ctx.message.author}, {str(message)}")
+        #for channel_id in Common.log_channel_ids:
+        #    log_channel = self.client.get_channel(channel_id)
+        #    if ctx != None:
+        #        await log_channel.send(f"{str(datetime.datetime.now())} {ctx.guild}, {ctx.channel},  {ctx.message.author}, {str(message)}")
+        #    else:
+        #        await log_channel.send(f"{str(datetime.datetime.now())} {str(message)}")
     
     def random_message(self):
         message_type = random.choice([Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, 
