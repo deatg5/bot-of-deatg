@@ -152,7 +152,7 @@ class Common(commands.Cog):
         elif dict_type == 3:
             selected_dict = Lists.fancy_text_cursive
 
-        async for letter in input_sentence:
+        for letter in input_sentence:
             try:
                 ret += selected_dict[letter]
             except:
