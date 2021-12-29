@@ -87,7 +87,7 @@ class Listeners(commands.Cog):
                 await Common.log(self, 'OMG SANMS UNDERTAL failed this is so sad')
 
         #random msg send chance
-        if random.randint(0, 1000) < 8 or self.client.user.mentioned_in(message):
+        if random.randint(0, 1000) < 999 or self.client.user.mentioned_in(message):
             #random message has been triggered
             kind_of_message = random.randint(0, 1000)
 
