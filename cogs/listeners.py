@@ -93,7 +93,7 @@ class Listeners(commands.Cog):
 
             #regular message
             if kind_of_message >= 850:
-                message_to_send = self.decide_message(self, message)
+                message_to_send = self.decide_message(message)
 
                 if "quoting" in message.channel.name:
                     await message.channel.send(f'"{message_to_send}"')
@@ -176,7 +176,7 @@ class Listeners(commands.Cog):
             async for msg in message.channel.history(limit=10000):
                 if random.randint(0, 9000) < 5:
                     if msg.channel.id != 838451092739457084 and msg.channel.id != 471178465375158273:
-                        message_to_send = self.decide_message(self, message)
+                        message_to_send = self.decide_message(message)
 
                         if "quoting" in message.channel.name:
                             await message.channel.send(f'"{message_to_send}"')
