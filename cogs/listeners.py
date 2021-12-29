@@ -103,11 +103,12 @@ class Listeners(commands.Cog):
             
             elif 850 < kind_of_message <= 960:
                 emoji = ""
-                emoji_type = random.randint(1, 3)
-                if emoji_type == 1:
-                    emoji = random.choice(self.client.emojis)
-                else:
-                    emoji = random.choice(Lists.all_emoji)
+                for i in range(random.randint(1, 5)):
+                    emoji_type = random.randint(1, 3)
+                    if emoji_type == 1:
+                        emoji += random.choice(self.client.emojis)
+                    else:
+                        emoji += random.choice(Lists.all_emoji)
 
                 await message.channel.send(emoji)
 

@@ -218,7 +218,7 @@ class Lists(commands.Cog):
                 "<@920485628792160299> ily", "<@920485628792160299> marry me", "<@920485628792160299> :heart_eyes:", "<@920485628792160299> hi sexy <:__:912606513124741211>", 
                 "<@920485628792160299> <:__:912606513124741211>", "i only simp for <@920485628792160299>", "im in my cell, im not with any messages right now","☀𝙃𝙚𝙡𝙡𝙤☀", "i have severe autism",
                 "I'm Chuck E and we're going to sing a song. I'm Chuck E. I'm Chuck E. I'm Chuck E. I'm Chuck E. I'm Chuck E. I'm Chuck E. I'm Chuck E. I'm Chuck E. I'm Chuck E. I'm Chuck E. I'm Chuck E. I'm Chuck E. I'm Chuck E. I'm Chuck E. I'm Chuck E. I'm Chuck E. I'm Chuck E. I'm Chuck E. I'm Chuck E. I'm Chuck E. I'm Chuck E. I'm Chuck E. I'm Chuck E. I'm Chuck E. I'm Chuck E. I'm Chuck E. I'm Chuck E. I'm Chuck E. I'm Chuck E. I'm Chuck E. I'm Chuck E. I'm Chuck E. I'm Chuck E. I'm Chuck E."
-                ]
+                f"Sick rhymes bro! {random.choice(all_emoji)} Keep it up! {random.choice(all_emoji)}"]
 
 
 def setup(client):
