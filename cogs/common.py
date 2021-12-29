@@ -144,14 +144,11 @@ class Common(commands.Cog):
     def fancy_letters(self, input_sentence):
         ret = ""
         selected_dict = Lists.fancy_text_4
-        for letter in input_sentence:
-            print(selected_dict)
-            print(letter)
+        for letter in input_sentence.lower():
             try:
                 ret += selected_dict[letter]
             except:
                 ret += letter
-            print(ret)
         return ret
 
 
