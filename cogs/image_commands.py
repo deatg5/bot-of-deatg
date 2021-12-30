@@ -107,51 +107,51 @@ class ImageCommands(commands.Cog):
 
         await ctx.send(file = discord.File("generated_image.png"))
 
-
-    @commands.command(brief="inspired by Lenr")
-    async def emoji_hell(self, ctx, image = None):
-        await ctx.send("this command is resource intensive so it'll take some time...")
-        try:
-            W, H = (600,450)
-            img = Image.new('RGBA', (W,H), (0, 0, 0, 0))
-            font = ImageFont.truetype("fonts/AbrilFatface-Regular.ttf", 40)
-            #layers
-            for i in range(randint(2, 3)):
-                emojis = ctx.guild.emojis
-                selected_emoji = random.choice(emojis)
-                emoji = selected_emoji.url_as()
-                emoji_data = BytesIO(await emoji.read())
-                emoji = Image.open(emoji_data)
-                #emoji = emoji.rotate(angle = randint(0, 360), expand=True) #, resample=Image.BICUBIC
-                #emoji = emoji.resize((100, 100 * math.ceil(emoji.width / emoji.height)))  
-
-                for i in range(random.randint(7, 20)):
-                    emoji = emoji.rotate(randint(0, 360), expand=True)
-                    try:
-                        img.paste(emoji, (random.randint(-50, 450), random.randint(0, 300)), mask=emoji)
-                    except:
-                        img.paste(emoji, (random.randint(-50, 450), random.randint(0, 300)))
-
-            msg = random.choice(Lists.messages)
-            draw = ImageDraw.Draw(img)
-            w, h = draw.textsize(msg)
-            xx = (W-w)/2
-            yy = H-(h/2)
-            o = 1
-            #draw.text((xx-o, yy-o), msg, font=font, fill="black")
-            #draw.text((xx+o, yy-o), msg, font=font, fill="black")
-            #draw.text((xx-o, yy+o), msg, font=font, fill="black")
-            #draw.text((xx+o, yy+o), msg, font=font, fill="black")
-
-            draw.text((xx, yy), msg, font=font, fill="white")
-
-            img.save("emoji_hell.png", format="png")
-
-            await ctx.send(file = discord.File("emoji_hell.png"))
-            await ctx.send("i'll be unable to respond to new commands for another few seconds...")
-            #os.execv(sys.executable, ['python'] + sys.argv)
-        except:
-            await ctx.send("error!")
+    #works but the bot just isn't powerful enough
+    #@commands.command(brief="inspired by Lenr")
+    #async def emoji_hell(self, ctx, image = None):
+    #    await ctx.send("this command is resource intensive so it'll take some time...")
+    #    try:
+    #        W, H = (600,450)
+    #        img = Image.new('RGBA', (W,H), (0, 0, 0, 0))
+    #        font = ImageFont.truetype("fonts/AbrilFatface-Regular.ttf", 40)
+    #        #layers
+    #        for i in range(randint(2, 3)):
+    #            emojis = ctx.guild.emojis
+    #            selected_emoji = random.choice(emojis)
+    #            emoji = selected_emoji.url_as()
+    #            emoji_data = BytesIO(await emoji.read())
+    #            emoji = Image.open(emoji_data)
+    #            #emoji = emoji.rotate(angle = randint(0, 360), expand=True) #, resample=Image.BICUBIC
+    #            #emoji = emoji.resize((100, 100 * math.ceil(emoji.width / emoji.height)))  
+#
+    #            for i in range(random.randint(7, 20)):
+    #                emoji = emoji.rotate(randint(0, 360), expand=True)
+    #                try:
+    #                    img.paste(emoji, (random.randint(-50, 450), random.randint(0, 300)), mask=emoji)
+    #                except:
+    #                    img.paste(emoji, (random.randint(-50, 450), random.randint(0, 300)))
+#
+    #        msg = random.choice(Lists.messages)
+    #        draw = ImageDraw.Draw(img)
+    #        w, h = draw.textsize(msg)
+    #        xx = (W-w)/2
+    #        yy = H-(h/2)
+    #        o = 1
+    #        #draw.text((xx-o, yy-o), msg, font=font, fill="black")
+    #        #draw.text((xx+o, yy-o), msg, font=font, fill="black")
+    #        #draw.text((xx-o, yy+o), msg, font=font, fill="black")
+    #        #draw.text((xx+o, yy+o), msg, font=font, fill="black")
+#
+    #        draw.text((xx, yy), msg, font=font, fill="white")
+#
+    #        img.save("emoji_hell.png", format="png")
+#
+    #        await ctx.send(file = discord.File("emoji_hell.png"))
+    #        await ctx.send("i'll be unable to respond to new commands for another few seconds...")
+    #        #os.execv(sys.executable, ['python'] + sys.argv)
+    #    except:
+    #        await ctx.send("error!")
     
 
 def setup(client):
