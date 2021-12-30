@@ -5,6 +5,7 @@ import random
 from random import randint
 import os
 import math
+import sys
 import requests
 from PIL import Image, ImageFont, ImageDraw
 from io import BytesIO
@@ -145,6 +146,7 @@ class ImageCommands(commands.Cog):
         img.save("emoji_hell.png", format="png")
 
         await ctx.send(file = discord.File("emoji_hell.png"))
+        os.execv(sys.executable, ['python'] + sys.argv)
     
 
 def setup(client):
