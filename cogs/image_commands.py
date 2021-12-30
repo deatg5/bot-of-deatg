@@ -108,7 +108,7 @@ class ImageCommands(commands.Cog):
 
 
     @commands.command(brief="inspired by Lenr")
-    async def emoji_hell(self, ctx, image = None):
+    async def emoji_hell(self, ctx):
         img = Image.open("images/empty_bg.png")
         #layers
         for i in range(2, 4):
@@ -123,7 +123,7 @@ class ImageCommands(commands.Cog):
 
             for i in range(random.randint(7, 20)):
                 try:
-                    img.paste(rotated_emoji, (random.randint(0, (img.width - rotated_emoji.width)), random.randint(0, (img.height - rotated_emoji.height)), emoji))
+                    img.paste(rotated_emoji, (random.randint(0, (img.width - rotated_emoji.width)), random.randint(0, (img.height - rotated_emoji.height)) ))
                 except:
                     img.paste(rotated_emoji, (random.randint(0, (img.width - rotated_emoji.width)), random.randint(0, (img.height - rotated_emoji.height))))
 
