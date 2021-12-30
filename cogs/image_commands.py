@@ -109,7 +109,7 @@ class ImageCommands(commands.Cog):
 
     @commands.command(brief="inspired by Lenr")
     async def emoji_hell(self, ctx):
-        img = Image.open("images/empty_bg.png")
+        img = Image.open("images/quote.jpg")
         loop_times = random.randint(1, 16)
         for i in range(loop_times):
             members = ctx.guild.members
