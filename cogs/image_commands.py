@@ -117,15 +117,15 @@ class ImageCommands(commands.Cog):
             emoji = selected_emoji.url_as()
             emoji_data = BytesIO(await emoji.read())
             emoji = Image.open(emoji_data)
-            rotated_emoji = emoji.resize((100, 100))  
+            #rotated_emoji = emoji.resize((100, 100))  
             #rotated_emoji = emoji.rotate(angle=randint(0, 360))
 
 
             for i in range(random.randint(7, 20)):
                 try:
-                    img.paste(rotated_emoji, (random.randint(0, (img.width - rotated_emoji.width)), random.randint(0, (img.height - rotated_emoji.height))), mask=rotated_emoji)
+                    img.paste(emoji, (random.randint(0, (img.width - emoji.width)), random.randint(0, (img.height - emoji.height))), mask=emoji)
                 except:
-                    img.paste(rotated_emoji, (random.randint(0, (img.width - rotated_emoji.width)), random.randint(0, (img.height - rotated_emoji.height))))
+                    img.paste(emoji, (random.randint(0, (img.width - emoji.width)), random.randint(0, (img.height - emoji.height))))
 
         img.save("emoji_hell.png", format="png")
 
