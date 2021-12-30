@@ -75,6 +75,8 @@ class Listeners(commands.Cog):
             message_to_send = Common.cutoff(self, message_to_send)
         if random.randint(0, 1000) < 70:
             message_to_send = await Common.fancy_letters(self, message_to_send)
+        if random.randint(0, 1000) < 800:
+            message_to_send = await Common.random_emoji_insert(self, message_to_send)
 
 
         return message_to_send

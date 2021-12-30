@@ -232,7 +232,8 @@ class Lists(commands.Cog):
                 "I lose teeth every day but they just keep growing back","I have a love/hate relationship with yogurt","Can you dislocate my hydrangeas?",
                 "Hair is made out of the same thing skin is","How many times have you walked the dog today?","Has anyone seen my innards, I know I left them here somewhere",
                 "MY MEATBALLS ARE TOO **SPICE E** I NEED TO SIPP SOME COLd SYRUP","this isnt the ugg store","THERE ARE MANY BENEFITS TO BEING AN ORNITHOLOGIST",
-                "You spend your whole life gathering guests for your funeral.","OH MAMA","hubba bubba!",":flushed:"]
+                "You spend your whole life gathering guests for your funeral.","OH MAMA","hubba bubba!",":flushed:",
+                "<li>Send <strong>$999.99 + 100% Tax</strong> worth of <strong>Vbucks</strong><li>We now accept <strong>Cheques</strong>!"]
 
 
 def setup(client):

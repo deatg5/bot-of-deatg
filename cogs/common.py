@@ -1,3 +1,4 @@
+from typing import List
 import discord
 from discord.ext import commands
 import random
@@ -126,6 +127,17 @@ class Common(commands.Cog):
         index = random.randint(0, len(message_content))
         add_string = random.choice(['TAB'])
         return message_content[:index] + add_string + message_content[index:]
+
+    def random_emoji_insert(self, message_content):
+        ret = ""
+        new_emoji = random.choice(Lists.all_emoji)
+        for char in str(message_content):
+            if char == ' ':
+                new_emoji = random.choice(Lists.all_emoji)
+                ret += f" {new_emoji} "
+            else:
+                ret += char
+        return ret
 
     def cutoff(self, message_content):
         index = random.randint(5, len(message_content))
