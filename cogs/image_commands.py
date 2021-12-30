@@ -129,7 +129,7 @@ class ImageCommands(commands.Cog):
                 except:
                     img.paste(emoji, (random.randint(0, 600), random.randint(0, 450)))
 
-        msg = Common.random_message
+        msg = Common.random_message()
         draw = ImageDraw.Draw(img)
         w, h = draw.textsize(msg)
         xx = (W-w)/2
