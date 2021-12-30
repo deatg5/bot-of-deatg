@@ -110,22 +110,30 @@ class ImageCommands(commands.Cog):
     @commands.command(brief="inspired by Lenr")
     async def emoji_hell(self, ctx):
         img = Image.open("images/empty_bg.png")
-        #layers
-        for i in range(2, 4):
+        loop_times = random.randint(1, 16)
+        for i in range(loop_times):
+            members = ctx.guild.members
             emojis = ctx.guild.emojis
+            user = random.choice(members)
             selected_emoji = random.choice(emojis)
             emoji = selected_emoji.url_as()
+
+            selected_font = random.choice(os.listdir("fonts/")) 
+
+
+            asset = user.avatar_url_as(size = 128)
+            data = BytesIO(await asset.read())
+            avatar = Image.open(data)
+            avatar = avatar.resize((random.randint(1, 450), random.randint(1, 450)))    
+
             emoji_data = BytesIO(await emoji.read())
             emoji = Image.open(emoji_data)
-            rotated_emoji = emoji.resize((100, 100))  
-            #rotated_emoji = emoji.rotate(angle=randint(0, 360))
+            emoji = emoji.resize((random.randint(1, 450),random.randint(1, 450)))   
 
-
-            for i in range(random.randint(7, 20)):
-                try:
-                    img.paste(rotated_emoji, (random.randint(0, (img.width - rotated_emoji.width)), random.randint(0, (img.height - rotated_emoji.height)) ))
-                except:
-                    img.paste(rotated_emoji, (random.randint(0, (img.width - rotated_emoji.width)), random.randint(0, (img.height - rotated_emoji.height))))
+            try:
+                img.paste(emoji, (random.randint(0, img.width), random.randint(0, img.height)), emoji)
+            except:
+                img.paste(emoji, (random.randint(0, img.width), random.randint(0, img.height)))
 
         img.save("emoji_hell.png")
 
