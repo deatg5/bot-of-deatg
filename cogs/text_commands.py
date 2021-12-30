@@ -62,7 +62,7 @@ class TextCommands(commands.Cog):
             text = ""
             for i in range(count):
                 emoji = random.choice(self.client.emojis)
-                if emoji.is_usable():
+                if emoji.is_usable() and emoji.available:
                     text += "<:" + str(emoji.name) + ":" + str(emoji.id) + ">"
             async with ctx.typing():
                 await ctx.send(text)
