@@ -120,6 +120,7 @@ class ImageCommands(commands.Cog):
             #emoji = emoji.resize((random.randint(1, 450),random.randint(1, 450)))  
             rotated_emoji = emoji.rotate(angle=randint(0, 360))
 
+
             for i in range(random.randint(7, 20)):
                 try:
                     img.paste(rotated_emoji, (random.randint(0, (img.width - rotated_emoji.width)), random.randint(0, (img.height - rotated_emoji.height)), emoji))
