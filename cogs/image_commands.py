@@ -120,7 +120,7 @@ class ImageCommands(commands.Cog):
             emoji_data = BytesIO(await emoji.read())
             emoji = Image.open(emoji_data)
             emoji = emoji.rotate(randint(0, 360), expand=True, resample=Image.BICUBIC)
-            emoji = emoji.resize((100, 100 * (emoji.width / emoji.height)))  
+            emoji = emoji.resize((100, 100 * math.ceil(emoji.width / emoji.height)))  
 
             for i in range(random.randint(7, 20)):
                 emoji = emoji.rotate(randint(0, 360), expand=True, resample=Image.BICUBIC)
