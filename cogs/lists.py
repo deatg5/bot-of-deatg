@@ -231,7 +231,8 @@ class Lists(commands.Cog):
                 "I'm pretty sure I thought I could have sworn I was on your 🔫🔫🔫M-Fing DO NOT CALL LIST🗡🔪🍴","❌Wrong","✔Corrong",
                 "I lose teeth every day but they just keep growing back","I have a love/hate relationship with yogurt","Can you dislocate my hydrangeas?",
                 "Hair is made out of the same thing skin is","How many times have you walked the dog today?","Has anyone seen my innards, I know I left them here somewhere",
-                "MY MEATBALLS ARE TOO **SPICE E** I NEED TO SIPP SOME COLd SYRUP","this isnt the ugg store","THERE ARE MANY BENEFITS TO BEING AN ORNITHOLOGIST"]
+                "MY MEATBALLS ARE TOO **SPICE E** I NEED TO SIPP SOME COLd SYRUP","this isnt the ugg store","THERE ARE MANY BENEFITS TO BEING AN ORNITHOLOGIST",
+                "You spend your whole life gathering guests for your funeral.","OH MAMA","hubba bubba!",":flushed:"]
 
 
 def setup(client):
