@@ -17,6 +17,7 @@ class TextCommands(commands.Cog):
 
     @commands.command(brief=";spam [message]")
     async def spam(self, ctx, *message):
+        message = " ".join(message[:])
         for i in range(20):
             async with ctx.typing():
                 await ctx.send(message)

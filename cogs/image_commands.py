@@ -107,12 +107,22 @@ class ImageCommands(commands.Cog):
         await ctx.send(file = discord.File("generated_image.png"))
 
 
-    #@commands.command(brief="inspired by Lenr")
-    #async def emoji_hell(self, ctx, image = None):
-    #    for i in range(2, 4):
-    #        emojis = ctx.guild.emojis
-    #        selected_emoji = random.choice(emojis)
-    #        emoji = selected_emoji.url_as()
+    @commands.command(brief="inspired by Lenr")
+    async def emoji_hell(self, ctx, image = None):
+        img = Image.open("images/empty_bg.png")
+        #layers
+        for i in range(2, 4):
+            emojis = ctx.guild.emojis
+            selected_emoji = random.choice(emojis)
+            emoji = selected_emoji.url_as()
+            #emoji = emoji.resize((random.randint(1, 450),random.randint(1, 450)))  
+            rotated_emoji = emoji.rotate(randint(0, 360))
+
+            for i in range(random.randint(7, 20)):
+                try:
+                    img.paste(rotated_emoji, (random.randint(0, (img.width - rotated_emoji.width), random.randint(0, (img.height - rotated_emoji.height)), emoji)))
+                except:
+                    img.paste(rotated_emoji, (random.randint(0, (img.width - rotated_emoji.width), random.randint(0, (img.height - rotated_emoji.height)))))
     
 
 def setup(client):
