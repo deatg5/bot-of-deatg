@@ -125,6 +125,10 @@ class ImageCommands(commands.Cog):
                     img.paste(rotated_emoji, (random.randint(0, (img.width - rotated_emoji.width), random.randint(0, (img.height - rotated_emoji.height)), emoji)))
                 except:
                     img.paste(rotated_emoji, (random.randint(0, (img.width - rotated_emoji.width), random.randint(0, (img.height - rotated_emoji.height)))))
+
+        img.save("emoji_hell.png")
+
+        await ctx.send(file = discord.File("emoji_hell.png"))
     
 
 def setup(client):
