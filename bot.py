@@ -14,15 +14,15 @@ intents = discord.Intents.default()
 intents.members = True
 client = commands.Bot(command_prefix=commands.when_mentioned_or(';'), intents=intents)
 
-@client.command()
-async def load(ctx, extension):
-    client.load_extension(f'cogs.{extension}')
+#@client.command()
+#async def load(ctx, extension):
+#    client.load_extension(f'cogs.{extension}')
 
-@client.command()
-async def unload(ctx, extension):
-    client.unload_extension(f'cogs.{extension}')
+#@client.command()
+#async def unload(ctx, extension):
+#    client.unload_extension(f'cogs.{extension}')
 
-@client.command()
+@client.command(brief="quickly restart the bot (effectively stopping spam)")
 async def stop(self):
     os.execv(sys.executable, ['python'] + sys.argv)
 
@@ -39,7 +39,7 @@ async def create_db_pool():
         pg_con = await asyncpg.create_pool(host = "ec2-52-44-31-100.compute-1.amazonaws.com", database ="d9sog7i18caten", user ="bkpsbvehfzmaip", password = DATABASE_PASSWORD)
 
 
-@client.command()
+@client.command(brief="the global bot of deatg leaderboard (1 xp = 1 message sent)")
 async def leaderboard(ctx, amount=30):
     board = ""
     db_user = await pg_con.fetch(f"SELECT * FROM users ORDER BY xp DESC LIMIT {amount}")
@@ -59,7 +59,7 @@ async def leaderboard(ctx, amount=30):
     else:
         await ctx.send(board)
 
-@client.command()
+@client.command(brief="check the level of you or another user")
 async def level(ctx, member: discord.Member = None):
     if member == None:
         member = ctx.author

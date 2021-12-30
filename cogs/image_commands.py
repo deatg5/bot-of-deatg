@@ -33,7 +33,7 @@ class ImageCommands(commands.Cog):
     
         await ctx.send(file = discord.File("generated_sign.png"))
 
-    @commands.command()
+    @commands.command(brief="create a nice image with your quote")
     async def quote_image(self, ctx, *input_text):
         img = Image.open("images/quote.jpg")
 
