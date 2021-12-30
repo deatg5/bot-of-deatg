@@ -61,7 +61,26 @@ class TextCommands(commands.Cog):
         selected_emoji = random.choice(self.client.emojis)
         async with ctx.typing():
             await ctx.send(selected_emoji)
-        await Common.log(self, f'{selected_emoji}', ctx)
+        await Common.log(self, f'sent {selected_emoji}', ctx)
+
+    @commands.command(brief="sends some random regular emojis (default is 3)")
+    async def emoji(self, ctx, count = 3):
+        emoji = ""
+        for i in range(count):
+            emoji += random.choice(Lists.all_emoji)
+        async with ctx.typing():
+            await ctx.send(emoji)
+        await Common.log(self, f'sent {emoji}', ctx)
+
+    
+    @commands.command(brief="adds an emoji between each of your words")
+    async def spam(self, ctx, *message):
+        message = " ".join(message[:])
+        async with ctx.typing():
+            await ctx.send(Common.random_emoji_insert(self, message))
+        await Common.log(self, f'sent {message}', ctx)
+
+
 
     @commands.command(brief="send info about the current server")
     async def server_information(self, ctx):
