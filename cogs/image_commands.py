@@ -111,16 +111,16 @@ class ImageCommands(commands.Cog):
     async def emoji_hell(self, ctx, image = None):
         W, H = (600,450)
         img = Image.new('RGBA', (W,H), (0, 0, 0, 0))
-        font = ImageFont.truetype("fonts/AbrilFatface-Regular.ttf", 20)
+        font = ImageFont.truetype("fonts/AbrilFatface-Regular.ttf", 40)
         #layers
-        for i in range(2, 4):
+        for i in range(randint(2, 3)):
             emojis = ctx.guild.emojis
             selected_emoji = random.choice(emojis)
             emoji = selected_emoji.url_as()
             emoji_data = BytesIO(await emoji.read())
             emoji = Image.open(emoji_data)
-            emoji = emoji.rotate(randint(0, 360), expand=True, resample=Image.BICUBIC)
-            emoji = emoji.resize((100, 100 * math.ceil(emoji.width / emoji.height)))  
+            emoji = emoji.rotate(angle = randint(0, 360), expand=True) #, resample=Image.BICUBIC
+            #emoji = emoji.resize((100, 100 * math.ceil(emoji.width / emoji.height)))  
 
             for i in range(random.randint(7, 20)):
                 emoji = emoji.rotate(randint(0, 360), expand=True, resample=Image.BICUBIC)
