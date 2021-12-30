@@ -92,12 +92,12 @@ class Listeners(commands.Cog):
                 await Common.log(self, 'OMG SANMS UNDERTAL failed this is so sad')
 
         #random msg send chance
-        if random.randint(0, 1000) < 999 or self.client.user.mentioned_in(message):
+        if random.randint(0, 1000) < 50 or self.client.user.mentioned_in(message):
             #random message has been triggered
             kind_of_message = random.randint(0, 1000)
 
             #regular message
-            if kind_of_message <= 850:
+            if kind_of_message <= 800:
                 message_to_send = await Listeners.decide_message(self, message)
 
                 if "quoting" in message.channel.name:
@@ -107,7 +107,7 @@ class Listeners(commands.Cog):
                     await message.channel.send(message_to_send)
             
             #send emojis
-            elif 850 < kind_of_message <= 1000:
+            elif 800 < kind_of_message <= 1000:
                 emoji = ""
                 for i in range(random.randint(1, 5)):
                     emoji += random.choice(Lists.all_emoji)
@@ -122,7 +122,7 @@ class Listeners(commands.Cog):
             #    await message.channel.send(file=discord.File(path))
 
         #message reaction
-        if random.randint(0, 70) < 69:
+        if random.randint(10, 70) == 69:
 
             #choose emoji type
             emoji = ""
@@ -134,7 +134,7 @@ class Listeners(commands.Cog):
 
             #deciding how many emojis 
             emoji_count = 0
-            emoji_count_rng = random.randint(0, 200)
+            emoji_count_rng = random.randint(0, 250)
             if emoji_count_rng < 50 or emoji_count_rng > 100:
                 emoji_count = 1
             elif 50 < emoji_count_rng <= 70: 
