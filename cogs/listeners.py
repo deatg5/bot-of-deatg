@@ -215,7 +215,7 @@ class Listeners(commands.Cog):
             return
 
         #status change
-        if random.randint(0, 100) < 90:
+        if random.randint(0, 100) < 20:
             statusType = random.randint(2, 15)
 
             gameToSelect = random.choice([Lists.games, Lists.games, Lists.joke_games])
