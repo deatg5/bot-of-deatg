@@ -75,7 +75,7 @@ class Listeners(commands.Cog):
             message_to_send = Common.cutoff(self, message_to_send)
         if random.randint(0, 1000) < 70:
             message_to_send = await Common.fancy_letters(self, message_to_send)
-        if random.randint(0, 1000) < 150:
+        if random.randint(0, 1000) < 140:
             message_to_send = Common.random_emoji_insert(self, message_to_send)
 
 
@@ -86,12 +86,20 @@ class Listeners(commands.Cog):
 
         #author_id = str(message.author.id)
 
-        if 'sans' in message.clean_content.lower() and not message.channel.id in Common.spam_channel_ids:
+        #sans
+        if 'sans' in message.clean_content.lower():
             try:
-                await message.add_reaction('<:Sans:842198488358977566>') 
+                await message.add_reaction('<:Sans:926163252306665532>')
                 await Common.log(self, 'OMG SANMS UNDERTAL')
             except:
                 await Common.log(self, 'OMG SANMS UNDERTAL failed this is so sad')
+
+        if message.author.id == 920485628792160299:
+            try:
+                for i in range(1, 3) and random.randint(1, 100) < 95:
+                    await message.add_reaction(random.choice(["🥰", "😍", "😘", "😻", "💌", "💘", "💝", "💖", "💗", "💓", "💞", "💕", "💟", "❣️", "💔", "❤️‍🔥", "❤️‍🩹", "❤️", "🧡", "💛", "💚", "💙", "💜", "🤎", "🖤", "🤍", "🫀", "💏"])) 
+            except:
+                await Common.log(self, 'failed to react')
 
         #random msg send chance
         if random.randint(0, 1000) < 45 or self.client.user.mentioned_in(message):

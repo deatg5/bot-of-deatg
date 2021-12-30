@@ -64,7 +64,7 @@ class TextCommands(commands.Cog):
         await Common.log(self, f'sent {selected_emoji}', ctx)
 
     @commands.command(brief="sends some random regular emojis (default is 3)")
-    async def emoji(self, ctx, count = 3):
+    async def emojis(self, ctx, count = 3):
         emoji = ""
         for i in range(count):
             emoji += random.choice(Lists.all_emoji)
@@ -74,10 +74,13 @@ class TextCommands(commands.Cog):
 
     
     @commands.command(brief="adds an emoji between each of your words")
-    async def spam(self, ctx, *message):
+    async def emojipasta(self, ctx, *message):
         message = " ".join(message[:])
-        async with ctx.typing():
-            await ctx.send(Common.random_emoji_insert(self, message))
+        try:
+            async with ctx.typing():
+                await ctx.send(Common.random_emoji_insert(self, message))
+        except:
+            await ctx.send("message too long :grimacing:")
         await Common.log(self, f'sent {message}', ctx)
 
 
