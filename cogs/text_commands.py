@@ -59,12 +59,13 @@ class TextCommands(commands.Cog):
     @commands.command(aliases=['se'], brief="sends random emojis from servers the bot is in")
     async def server_emojis(self, ctx, count = 1):
         try:
-            emoji = ""
+            text = ""
             for i in range(count):
-                emoji += random.choice(self.client.emojis)
+                emoji = random.choice(self.client.emojis)
+                text += "<:" + str(emoji.name) + ":" + str(emoji.id) + ">"
             async with ctx.typing():
-                await ctx.send(emoji)
-            await Common.log(self, f'sent {emoji}', ctx)
+                await ctx.send(text)
+            await Common.log(self, f'sent {text}', ctx)
         except Exception as e:
             print(e)
             await ctx.send("too many emojis! :zany_face:")
