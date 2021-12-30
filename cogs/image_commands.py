@@ -108,34 +108,26 @@ class ImageCommands(commands.Cog):
 
 
     @commands.command(brief="inspired by Lenr")
-    async def emoji_hell(self, ctx):
-        img = Image.open("images/quote.jpg")
-        loop_times = random.randint(1, 16)
-        for i in range(loop_times):
-            members = ctx.guild.members
+    async def emoji_hell(self, ctx, image = None):
+        img = Image.open("images/empty_bg.png", r)
+        #layers
+        for i in range(2, 4):
             emojis = ctx.guild.emojis
-            user = random.choice(members)
             selected_emoji = random.choice(emojis)
             emoji = selected_emoji.url_as()
-
-            selected_font = random.choice(os.listdir("fonts/")) 
-
-
-            asset = user.avatar_url_as(size = 128)
-            data = BytesIO(await asset.read())
-            avatar = Image.open(data)
-            avatar = avatar.resize((random.randint(1, 450), random.randint(1, 450)))    
-
             emoji_data = BytesIO(await emoji.read())
             emoji = Image.open(emoji_data)
-            emoji = emoji.resize((random.randint(1, 450),random.randint(1, 450)))   
+            rotated_emoji = emoji.resize((100, 100))  
+            #rotated_emoji = emoji.rotate(angle=randint(0, 360))
 
-            try:
-                img.paste(emoji, (random.randint(0, img.width), random.randint(0, img.height)), emoji)
-            except:
-                img.paste(emoji, (random.randint(0, img.width), random.randint(0, img.height)))
 
-        img.save("emoji_hell.png")
+            for i in range(random.randint(7, 20)):
+                try:
+                    img.paste(rotated_emoji, (random.randint(0, (img.width - rotated_emoji.width)), random.randint(0, (img.height - rotated_emoji.height))), mask=rotated_emoji)
+                except:
+                    img.paste(rotated_emoji, (random.randint(0, (img.width - rotated_emoji.width)), random.randint(0, (img.height - rotated_emoji.height))))
+
+        img.save("emoji_hell.png", format="png")
 
         await ctx.send(file = discord.File("emoji_hell.png"))
     
