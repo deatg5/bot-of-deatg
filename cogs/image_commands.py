@@ -115,6 +115,8 @@ class ImageCommands(commands.Cog):
             emojis = ctx.guild.emojis
             selected_emoji = random.choice(emojis)
             emoji = selected_emoji.url_as()
+            emoji_data = BytesIO(await emoji.read())
+            emoji = Image.open(emoji_data)
             #emoji = emoji.resize((random.randint(1, 450),random.randint(1, 450)))  
             rotated_emoji = emoji.rotate(randint(0, 360))
 

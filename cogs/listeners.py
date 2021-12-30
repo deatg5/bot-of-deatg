@@ -200,9 +200,6 @@ class Listeners(commands.Cog):
                             await message.channel.send(message_to_send)
                 break
 
-            #make function to check if in spam channels
-            if str(message.channel) != 'the-ultimate-spam' and str(message.channel) != "🤬⼁spam":
-                await Common.log('replied to old message')
 
             return
 
