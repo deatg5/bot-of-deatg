@@ -57,12 +57,13 @@ class TextCommands(commands.Cog):
     #    await Common.log(self, 'demfex generated', ctx)
 
     @commands.command(aliases=['se'], brief="sends random emojis from servers the bot is in")
-    async def server_emojis(self, ctx, count = 1):
+    async def server_emojis(self, ctx, count = 3):
         try:
             text = ""
             for i in range(count):
                 emoji = random.choice(self.client.emojis)
-                text += "<:" + str(emoji.name) + ":" + str(emoji.id) + ">"
+                if emoji.is_useable():
+                    text += "<:" + str(emoji.name) + ":" + str(emoji.id) + ">"
             async with ctx.typing():
                 await ctx.send(text)
             await Common.log(self, f'sent {text}', ctx)
