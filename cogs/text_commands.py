@@ -15,12 +15,12 @@ class TextCommands(commands.Cog):
     def __init__(self, client):
         self.client = client
 
-    @commands.command(brief=";spam [word] [number of times to send word]")
-    async def spam(self, ctx, message = 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', count = 20):
-        for i in range(count):
+    @commands.command(brief=";spam [message]")
+    async def spam(self, ctx, *message):
+        for i in range(20):
             async with ctx.typing():
                 await ctx.send(message)
-        await Common.log(self, f'Spammed {message} {count} times', ctx)
+        await Common.log(self, f'Spammed {message} 20 times', ctx)
 
     @commands.command(brief="guesses the pokemon sent by pokemon discord bot")
     async def mon(self, ctx):

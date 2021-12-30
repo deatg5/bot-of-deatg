@@ -106,5 +106,14 @@ class ImageCommands(commands.Cog):
 
         await ctx.send(file = discord.File("generated_image.png"))
 
+
+    #@commands.command(brief="inspired by Lenr")
+    #async def emoji_hell(self, ctx, image = None):
+    #    for i in range(2, 4):
+    #        emojis = ctx.guild.emojis
+    #        selected_emoji = random.choice(emojis)
+    #        emoji = selected_emoji.url_as()
+    
+
 def setup(client):
     client.add_cog(ImageCommands(client))
