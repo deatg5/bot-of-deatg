@@ -54,9 +54,9 @@ class Listeners(commands.Cog):
 
         if 0 <= message_type <= 170:
             message_to_send = Common.random_message(self)
-        elif 171 < message_type <= 180:
+        elif 171 < message_type <= 184:
             message_to_send = SentenceGeneration.generate_sentence(self)
-        elif 180 < message_type <= 185:
+        elif 184 < message_type <= 185:
             message_to_send = SentenceGeneration.generate_demfex_quote(self)
         elif 185 < message_type <= 187:
             message_to_send = Common.generate_fake_japanese_sentence(self)
@@ -75,7 +75,7 @@ class Listeners(commands.Cog):
             message_to_send = Common.cutoff(self, message_to_send)
         if random.randint(0, 1000) < 70:
             message_to_send = await Common.fancy_letters(self, message_to_send)
-        if random.randint(0, 1000) < 800:
+        if random.randint(0, 1000) < 150:
             message_to_send = Common.random_emoji_insert(self, message_to_send)
 
 
