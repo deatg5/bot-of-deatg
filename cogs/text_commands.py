@@ -74,7 +74,7 @@ class TextCommands(commands.Cog):
         try:
             emoji = ""
             for i in range(count):
-                emoji += random.choice(Lists.all_emoji)
+                emoji += str(random.choice(Lists.all_emoji))
             async with ctx.typing():
                 await ctx.send(emoji)
             await Common.log(self, f'sent {emoji}', ctx)
