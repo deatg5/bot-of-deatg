@@ -56,24 +56,32 @@ class TextCommands(commands.Cog):
     #        await ctx.send(SentenceGeneration.generate_demfex_quote(self))
     #    await Common.log(self, 'demfex generated', ctx)
 
-    @commands.command(brief="sends a random emoji from a server the bot is in")
-    async def emoji(self, ctx):
-        selected_emoji = random.choice(self.client.emojis)
-        async with ctx.typing():
-            await ctx.send(selected_emoji)
-        await Common.log(self, f'sent {selected_emoji}', ctx)
+    @commands.command(aliases=['se'], brief="sends random emojis from servers the bot is in")
+    async def server_emojis(self, ctx, count = 1):
+        try:
+            emoji = ""
+            for i in range(count):
+                emoji += random.choice(self.client.emojis)
+            async with ctx.typing():
+                await ctx.send(emoji)
+            await Common.log(self, f'sent {emoji}', ctx)
+        except:
+            await ctx.send("too many emojis! :zany_face:")
 
-    @commands.command(brief="sends some random regular emojis (default is 3)")
+    @commands.command(aliases=['e'], brief="sends some random regular emojis")
     async def emojis(self, ctx, count = 3):
-        emoji = ""
-        for i in range(count):
-            emoji += random.choice(Lists.all_emoji)
-        async with ctx.typing():
-            await ctx.send(emoji)
-        await Common.log(self, f'sent {emoji}', ctx)
+        try:
+            emoji = ""
+            for i in range(count):
+                emoji += random.choice(Lists.all_emoji)
+            async with ctx.typing():
+                await ctx.send(emoji)
+            await Common.log(self, f'sent {emoji}', ctx)
+        except:
+            await ctx.send("too many emojis! :zany_face:")
 
     
-    @commands.command(brief="adds an emoji between each of your words")
+    @commands.command(aliases=['ep'], brief="adds an emoji between each of your words")
     async def emojipasta(self, ctx, *message):
         message = " ".join(message[:])
         try:
