@@ -109,7 +109,7 @@ class ImageCommands(commands.Cog):
 
     @commands.command(brief="inspired by Lenr")
     async def emoji_hell(self, ctx, image = None):
-        img = Image.open("images/empty_bg.png")
+        img = Image.new('RGBA', (600,450), (0, 0, 0, 0))
         #layers
         for i in range(2, 4):
             emojis = ctx.guild.emojis
