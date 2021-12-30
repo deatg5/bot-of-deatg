@@ -126,7 +126,7 @@ class ImageCommands(commands.Cog):
                 #emoji = emoji.resize((100, 100 * math.ceil(emoji.width / emoji.height)))  
 
                 for i in range(random.randint(7, 20)):
-                    emoji = emoji.rotate(randint(0, 360), expand=True, resample=Image.BICUBIC)
+                    #emoji = emoji.rotate(randint(0, 360), expand=True, resample=Image.BICUBIC)
                     try:
                         img.paste(emoji, (random.randint(-50, 450), random.randint(0, 300)), mask=emoji)
                     except:
