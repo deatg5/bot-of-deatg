@@ -105,7 +105,7 @@ class Listeners(commands.Cog):
         #random msg send chance
         if random.randint(0, 1000) < 40 or self.client.user.mentioned_in(message):
             #random message has been triggered
-            kind_of_message = random.randint(0, 1000)
+            kind_of_message = random.randint(0, 900)
 
             #regular message
             if kind_of_message <= 800:
