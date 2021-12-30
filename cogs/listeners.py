@@ -109,7 +109,7 @@ class Listeners(commands.Cog):
             #send emojis
             elif 800 < kind_of_message <= 1000:
                 emoji = ""
-                if random.randint(1, 100) > 95:
+                if random.randint(1, 100) > 7:
                     for i in range(random.randint(1, 5)):
                         emoji += random.choice(Lists.all_emoji)
                 else:
