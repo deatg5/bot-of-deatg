@@ -94,6 +94,15 @@ class Listeners(commands.Cog):
             except:
                 await Common.log(self, 'OMG SANMS UNDERTAL failed this is so sad')
 
+        #ratio
+        if 'ratio' in message.clean_content.lower() and random.randint(1, 2) == 1:
+            try:
+                await message.add_reaction("👍")
+                await message.add_reaction("👎")
+            except:
+                print('error reacting')
+
+        #neco arc bot
         if message.author.id == 920485628792160299:
             try:
                 for i in range(1):
@@ -138,61 +147,69 @@ class Listeners(commands.Cog):
 
         #message reaction
         if random.randint(14, 70) == 69:
+            reaction_type = random.randint(1, 10)
 
-            #choose emoji type
-            emoji = ""
-            emoji_type = random.randint(1, 3)
-            if emoji_type == 1:
-                emoji = random.choice(self.client.emojis)
-            else:
-                emoji = random.choice(Lists.all_emoji)
-
-            #deciding how many emojis 
-            emoji_count = 0
-            emoji_count_rng = random.randint(0, 250)
-            if emoji_count_rng < 50 or emoji_count_rng > 100:
-                emoji_count = 1
-            elif 50 < emoji_count_rng <= 70: 
-                emoji_count = 2
-            elif 70 < emoji_count_rng <= 80: 
-                emoji_count = 3
-            elif 80 < emoji_count_rng <= 85: 
-                emoji_count = 4
-            elif 85 < emoji_count_rng <= 88: 
-                emoji_count = 5
-            elif 88 < emoji_count_rng <= 90: 
-                emoji_count = 6
-            elif emoji_count_rng == 91: 
-                emoji_count = 7
-            elif emoji_count_rng == 92: 
-                emoji_count = 9
-            elif emoji_count_rng == 93: 
-                emoji_count = 11
-            elif emoji_count_rng == 94: 
-                emoji_count = 13
-            elif emoji_count_rng == 95: 
-                emoji_count = 14
-            elif emoji_count_rng == 96: 
-                emoji_count = 15
-            elif emoji_count_rng == 97: 
-                emoji_count = 16
-            elif emoji_count_rng == 98: 
-                emoji_count = 17
-            elif emoji_count_rng == 99: 
-                emoji_count = 18
-            elif emoji_count_rng == 100: 
-                emoji_count = 20
-
-            for i in range(emoji_count):
+            if reaction_type == 1:
                 try:
-                    await message.add_reaction(emoji)
-                    emoji_type = random.randint(1, 3)
-                    if emoji_type == 1:
-                        emoji = random.choice(self.client.emojis)
-                    else:
-                        emoji = random.choice(Lists.all_emoji)
+                    await message.add_reaction("👍")
+                    await message.add_reaction("👎")
                 except:
                     print('error reacting')
+            else:
+                #choose emoji type
+                emoji = ""
+                emoji_type = random.randint(1, 3)
+                if emoji_type == 1:
+                    emoji = random.choice(self.client.emojis)
+                else:
+                    emoji = random.choice(Lists.all_emoji)
+
+                #deciding how many emojis 
+                emoji_count = 0
+                emoji_count_rng = random.randint(0, 250)
+                if emoji_count_rng < 50 or emoji_count_rng > 100:
+                    emoji_count = 1
+                elif 50 < emoji_count_rng <= 70: 
+                    emoji_count = 2
+                elif 70 < emoji_count_rng <= 80: 
+                    emoji_count = 3
+                elif 80 < emoji_count_rng <= 85: 
+                    emoji_count = 4
+                elif 85 < emoji_count_rng <= 88: 
+                    emoji_count = 5
+                elif 88 < emoji_count_rng <= 90: 
+                    emoji_count = 6
+                elif emoji_count_rng == 91: 
+                    emoji_count = 7
+                elif emoji_count_rng == 92: 
+                    emoji_count = 9
+                elif emoji_count_rng == 93: 
+                    emoji_count = 11
+                elif emoji_count_rng == 94: 
+                    emoji_count = 13
+                elif emoji_count_rng == 95: 
+                    emoji_count = 14
+                elif emoji_count_rng == 96: 
+                    emoji_count = 15
+                elif emoji_count_rng == 97: 
+                    emoji_count = 16
+                elif emoji_count_rng == 98: 
+                    emoji_count = 17
+                elif emoji_count_rng == 99: 
+                    emoji_count = 18
+                elif emoji_count_rng == 100: 
+                    emoji_count = 20
+
+                for i in range(emoji_count):
+                    try:
+                        await message.add_reaction(emoji)
+                        emoji_type = random.randint(1, 3)
+                        if emoji_type == 1:
+                            emoji = random.choice(self.client.emojis)
+                        else:
+                            emoji = random.choice(Lists.all_emoji)
+                    except:
+                        print('error reacting')
 
         
 
