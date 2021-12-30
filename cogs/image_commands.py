@@ -122,7 +122,7 @@ class ImageCommands(commands.Cog):
                 emoji = selected_emoji.url_as()
                 emoji_data = BytesIO(await emoji.read())
                 emoji = Image.open(emoji_data)
-                emoji = emoji.rotate(angle = randint(0, 360), expand=True) #, resample=Image.BICUBIC
+                #emoji = emoji.rotate(angle = randint(0, 360), expand=True) #, resample=Image.BICUBIC
                 #emoji = emoji.resize((100, 100 * math.ceil(emoji.width / emoji.height)))  
 
                 for i in range(random.randint(7, 20)):
@@ -138,10 +138,10 @@ class ImageCommands(commands.Cog):
             xx = (W-w)/2
             yy = H-(h/2)
             o = 1
-            draw.text((xx-o, yy-o), msg, font=font, fill="black")
-            draw.text((xx+o, yy-o), msg, font=font, fill="black")
-            draw.text((xx-o, yy+o), msg, font=font, fill="black")
-            draw.text((xx+o, yy+o), msg, font=font, fill="black")
+            #draw.text((xx-o, yy-o), msg, font=font, fill="black")
+            #draw.text((xx+o, yy-o), msg, font=font, fill="black")
+            #draw.text((xx-o, yy+o), msg, font=font, fill="black")
+            #draw.text((xx+o, yy+o), msg, font=font, fill="black")
 
             draw.text((xx, yy), msg, font=font, fill="white")
 
@@ -149,7 +149,7 @@ class ImageCommands(commands.Cog):
 
             await ctx.send(file = discord.File("emoji_hell.png"))
             await ctx.send("i'll be unable to respond to new commands for another few seconds...")
-            os.execv(sys.executable, ['python'] + sys.argv)
+            #os.execv(sys.executable, ['python'] + sys.argv)
         except:
             await ctx.send("error!")
     
