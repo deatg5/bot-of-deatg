@@ -110,6 +110,7 @@ class ImageCommands(commands.Cog):
 
     @commands.command(brief="inspired by Lenr")
     async def emoji_hell(self, ctx, image = None):
+        await ctx.send("this command is resource intensive so it'll take some time...")
         try:
             W, H = (600,450)
             img = Image.new('RGBA', (W,H), (0, 0, 0, 0))
@@ -127,11 +128,11 @@ class ImageCommands(commands.Cog):
                 for i in range(random.randint(7, 20)):
                     emoji = emoji.rotate(randint(0, 360), expand=True, resample=Image.BICUBIC)
                     try:
-                        img.paste(emoji, (random.randint(0, 500), random.randint(0, 350)), mask=emoji)
+                        img.paste(emoji, (random.randint(-50, 450), random.randint(0, 300)), mask=emoji)
                     except:
-                        img.paste(emoji, (random.randint(0, 500), random.randint(0, 350)))
+                        img.paste(emoji, (random.randint(-50, 450), random.randint(0, 300)))
 
-            msg = Common.random_message(self)
+            msg = random.choice(Lists.messages)
             draw = ImageDraw.Draw(img)
             w, h = draw.textsize(msg)
             xx = (W-w)/2
@@ -147,7 +148,7 @@ class ImageCommands(commands.Cog):
             img.save("emoji_hell.png", format="png")
 
             await ctx.send(file = discord.File("emoji_hell.png"))
-            await ctx.send("(this command is resource intensive so i'll be unable to respond to new commands for a few seconds...")
+            await ctx.send("i'll be unable to respond to new commands for another few seconds...")
             os.execv(sys.executable, ['python'] + sys.argv)
         except:
             await ctx.send("error!")
