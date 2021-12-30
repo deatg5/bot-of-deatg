@@ -117,8 +117,8 @@ class ImageCommands(commands.Cog):
             emoji = selected_emoji.url_as()
             emoji_data = BytesIO(await emoji.read())
             emoji = Image.open(emoji_data)
-            #emoji = emoji.resize((random.randint(1, 450),random.randint(1, 450)))  
-            rotated_emoji = emoji.rotate(angle=randint(0, 360))
+            rotated_emoji = emoji.resize((100, 100))  
+            #rotated_emoji = emoji.rotate(angle=randint(0, 360))
 
 
             for i in range(random.randint(7, 20)):
