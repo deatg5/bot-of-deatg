@@ -125,9 +125,9 @@ class ImageCommands(commands.Cog):
             for i in range(random.randint(7, 20)):
                 emoji = emoji.rotate(randint(0, 360), expand=True, resample=Image.BICUBIC)
                 try:
-                    img.paste(emoji, (random.randint(0, W - emoji.width), random.randint(0, H - emoji.height)), mask=emoji)
+                    img.paste(emoji, (random.randint(0, 600), random.randint(0, 450)), mask=emoji)
                 except:
-                    img.paste(emoji, (random.randint(0, W - emoji.width), random.randint(0, H - emoji.height)))
+                    img.paste(emoji, (random.randint(0, 600), random.randint(0, 450)))
 
         msg = Common.random_message
         draw = ImageDraw.Draw(img)
