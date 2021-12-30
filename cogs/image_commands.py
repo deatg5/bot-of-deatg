@@ -122,9 +122,9 @@ class ImageCommands(commands.Cog):
 
             for i in range(random.randint(7, 20)):
                 try:
-                    img.paste(rotated_emoji, (random.randint(0, (img.width - rotated_emoji.width), random.randint(0, (img.height - rotated_emoji.height)), emoji)))
+                    img.paste(rotated_emoji, (random.randint(0, (img.width - rotated_emoji.width)), random.randint(0, (img.height - rotated_emoji.height)), emoji))
                 except:
-                    img.paste(rotated_emoji, (random.randint(0, (img.width - rotated_emoji.width), random.randint(0, (img.height - rotated_emoji.height)))))
+                    img.paste(rotated_emoji, (random.randint(0, (img.width - rotated_emoji.width)), random.randint(0, (img.height - rotated_emoji.height))))
 
         img.save("emoji_hell.png")
 
