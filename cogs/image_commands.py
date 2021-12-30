@@ -120,13 +120,14 @@ class ImageCommands(commands.Cog):
             emoji_data = BytesIO(await emoji.read())
             emoji = Image.open(emoji_data)
             emoji = emoji.rotate(randint(0, 360), expand=True, resample=Image.BICUBIC)
+            emoji = emoji.resize((100, 100 * (emoji.width / emoji.height)))  
 
             for i in range(random.randint(7, 20)):
                 emoji = emoji.rotate(randint(0, 360), expand=True, resample=Image.BICUBIC)
                 try:
-                    img.paste(emoji, (random.randint(0, (img.width - emoji.width)), random.randint(0, (img.height - emoji.height))), mask=emoji)
+                    img.paste(emoji, (random.randint(0, (W - emoji.width)), random.randint(0, (H - emoji.height))), mask=emoji)
                 except:
-                    img.paste(emoji, (random.randint(0, (img.width - emoji.width)), random.randint(0, (img.height - emoji.height))))
+                    img.paste(emoji, (random.randint(0, (W - emoji.width)), random.randint(0, (H - emoji.height))))
 
         msg = Common.random_message
         draw = ImageDraw.Draw(img)
