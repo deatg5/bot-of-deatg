@@ -30,7 +30,7 @@ class TextCommands(commands.Cog):
             await ctx.send(f'The Pokémon is: {mon}')
         await Common.log(self, f'mon command sent: {mon}', ctx)
 
-    @commands.command(brief="sends invite link")
+    @commands.command(aliases=['inv'], brief="sends invite link")
     async def invite(self, ctx):
         async with ctx.typing():
             await ctx.send('https://discord.com/api/oauth2/authorize?client_id=925854592154095667&permissions=137643809857&scope=bot')
@@ -65,7 +65,8 @@ class TextCommands(commands.Cog):
             async with ctx.typing():
                 await ctx.send(emoji)
             await Common.log(self, f'sent {emoji}', ctx)
-        except:
+        except Exception as e:
+            print(e)
             await ctx.send("too many emojis! :zany_face:")
 
     @commands.command(aliases=['e'], brief="sends some random regular emojis")
@@ -93,7 +94,7 @@ class TextCommands(commands.Cog):
 
 
 
-    @commands.command(brief="send info about the current server")
+    @commands.command(aliases=['si'], brief="send info about the current server")
     async def server_information(self, ctx):
         server_info = ''
         server_info += (f'afk_channel: {ctx.guild.afk_channel}, ')
@@ -145,7 +146,7 @@ class TextCommands(commands.Cog):
                 await ctx.send(line)
         await Common.log(self, 'server info sent', ctx)
 
-    @commands.command(brief="gets channels")
+    @commands.command(brief="gets channels the bot is in")
     async def getchannels(self, ctx):
         if ctx.author.id == Common.deatg_id:
             channels = ''
