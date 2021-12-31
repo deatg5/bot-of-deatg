@@ -95,12 +95,12 @@ class Listeners(commands.Cog):
                 await Common.log(self, 'OMG SANMS UNDERTAL failed this is so sad')
 
         #ratio
-        if 'ratio' in message.clean_content.lower() and random.randint(1, 2) == 1 or message.channel.id == 913202658821681192:
-            try:
-                await message.add_reaction("👍")
-                await message.add_reaction("👎")
-            except:
-                print('error reacting')
+        #if 'ratio' in message.clean_content.lower() and random.randint(1, 2) == 1 or message.channel.id == 913202658821681192:
+        #    try:
+        #        await message.add_reaction("👍")
+        #        await message.add_reaction("👎")
+        #    except:
+        #        print('error reacting')
 
         #neco arc bot
         if message.author.id == 920485628792160299:
