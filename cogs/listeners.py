@@ -112,7 +112,7 @@ class Listeners(commands.Cog):
                 await Common.log(self, 'failed to react')
 
         #random msg send chance
-        if random.randint(0, 1000) < 40 or self.client.user.mentioned_in(message):
+        if random.randint(0, 1000) < 37 or self.client.user.mentioned_in(message):
             #random message has been triggered
             kind_of_message = random.randint(0, 900)
 
@@ -146,7 +146,7 @@ class Listeners(commands.Cog):
             #    await message.channel.send(file=discord.File(path))
 
         #message reaction
-        if random.randint(24, 70) == 69:
+        if random.randint(20, 70) == 69:
             reaction_type = random.randint(1, 10)
 
             if reaction_type == 1:
@@ -166,7 +166,7 @@ class Listeners(commands.Cog):
 
                 #deciding how many emojis 
                 emoji_count = 0
-                emoji_count_rng = random.randint(0, 180)
+                emoji_count_rng = random.randint(0, 130)
                 if emoji_count_rng < 50 or emoji_count_rng > 100:
                     emoji_count = 1
                 elif 50 < emoji_count_rng <= 70: 
