@@ -66,13 +66,13 @@ class Loops(commands.Cog):
         await self.client.wait_until_ready()
 
 
-    @tasks.loop(seconds=2000)
+    @tasks.loop(seconds=20)
     async def random_typing(self):
         guild = random.choice(self.client.guilds)
         channel = random.choice(guild.text_channels)
         #change nick
         if random.randint(1, 6) == 1:
-            #await guild.get_member(self.client.user.id).edit(nick=f'{Common.random_message(self)[0:30]}')
+            await guild.get_member(self.client.user.id).edit(nick=f'{Common.random_message(self)[0:30]}')
             try:
                 await guild.get_member(573285573968527402).edit(nick=f'{Common.random_message(self)[0:30]}')
             except:
