@@ -69,9 +69,9 @@ class Listeners(commands.Cog):
             message_to_send = Common.random_style(self, message_to_send)
         if random.randint(0, 1000) < 70:
             message_to_send = await Common.random_word_edit(self, message_to_send)
-        if random.randint(0, 1000) < 20:
+        if random.randint(0, 1000) < 19:
             message_to_send = Common.random_insert(self, message_to_send)
-        if random.randint(0, 1000) < 20:
+        if random.randint(0, 1000) < 10:
             message_to_send = Common.cutoff(self, message_to_send)
         if random.randint(0, 1000) < 70:
             message_to_send = await Common.fancy_letters(self, message_to_send)
@@ -88,6 +88,14 @@ class Listeners(commands.Cog):
 
         #sans
         if 'sans' in message.clean_content.lower():
+            try:
+                await message.add_reaction('<:Sans:926163252306665532>')
+                await Common.log(self, 'OMG SANMS UNDERTAL')
+            except:
+                await Common.log(self, 'OMG SANMS UNDERTAL failed this is so sad')
+
+        #sans
+        if ';quote' in message.clean_content.lower():
             try:
                 await message.add_reaction('<:Sans:926163252306665532>')
                 await Common.log(self, 'OMG SANMS UNDERTAL')
@@ -304,7 +312,10 @@ class Listeners(commands.Cog):
             text = f"\"{the_quote}\"\n\n                          - {selected_user}"
 
             draw.text((150, 660), text, (255, 255, 255), font=font)
-            img.paste(avatar, (180, 110), avatar)
+            try:
+                img.paste(avatar, (180, 110), avatar)
+            except:
+                img.paste(avatar, (180, 110))
             img.save("quote.png")
 
             await message.reply(file = discord.File("quote.png"))

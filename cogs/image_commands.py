@@ -28,8 +28,10 @@ class ImageCommands(commands.Cog):
         data = BytesIO(await asset.read())
         avatar = Image.open(data)
         avatar = avatar.resize((168,168))
-
-        sign.paste(avatar, (301,106), avatar)
+        try:            
+            sign.paste(avatar, (301,106), avatar)
+        except:
+            sign.paste(avatar, (301,106))
         sign.save("generated_sign.png")
     
         await ctx.send(file = discord.File("generated_sign.png"))
@@ -57,7 +59,10 @@ class ImageCommands(commands.Cog):
                 input_text = input_text[:38] + "\n" + input_text[38:]
         text = f"\"{input_text}\"\n\n                        - {selected_user}"
         draw.text((150, 660), text, (255, 255, 255), font=font)
-        img.paste(avatar, (180, 110), avatar)
+        try:
+            img.paste(avatar, (180, 110), avatar)
+        except:
+            img.paste(avatar, (180, 110))
         img.save("quote.png")
         await ctx.send(file = discord.File("quote.png"))
 

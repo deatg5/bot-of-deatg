@@ -233,7 +233,9 @@ class Lists(commands.Cog):
                 "Hair is made out of the same thing skin is","How many times have you walked the dog today?","Has anyone seen my innards, I know I left them here somewhere",
                 "MY MEATBALLS ARE TOO **SPICE E** I NEED TO SIPP SOME COLd SYRUP","this isnt the ugg store","THERE ARE MANY BENEFITS TO BEING AN ORNITHOLOGIST",
                 "You spend your whole life gathering guests for your funeral.","OH MAMA","hubba bubba!",":flushed:",
-                "<li>Send <strong>$999.99 + 100% Tax</strong> worth of <strong>Vbucks</strong><li>We now accept <strong>Cheques</strong>!"]
+                "<li>Send <strong>$999.99 + 100% Tax</strong> worth of <strong>Vbucks</strong><li>We now accept <strong>Cheques</strong>!",
+                "🖐️ My fingers are gone.","You're so cool, Kung Fu","Fanta, you're fantasizing!","Wake up to reality. Nothing ever goes to plan in this acursed world. The longer you live the more you will realise that the only things to truly exist are merely pain, suffering and futility. listen. wherever there is light, there will always be shadows to be found as well. as long as there is a concept of victors, the vanquished will also exist. the selfish intnt of wanting to preserve peace initiates wars. and hatred is born in order to protect love. there are nexuses, causal relationships that cannot be seperated. i want to sever the fate of this world. a world of only victors. a world of only peace. a world of only love. i will create such a world. i am... the ghost of the uchiha. for truly, this reality is a hell.",
+                "now i sleep","Would you be my bad boy be my man\nBe my weekend lover\nBut don't be my friend"]
 
 
 def setup(client):
