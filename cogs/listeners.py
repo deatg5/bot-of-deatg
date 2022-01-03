@@ -154,7 +154,7 @@ class Listeners(commands.Cog):
             #    await message.channel.send(file=discord.File(path))
 
         #message reaction
-        if random.randint(20, 70) == 69:
+        if random.randint(0, 70) == 69:
             reaction_type = random.randint(1, 10)
 
             if reaction_type == 1:
