@@ -120,7 +120,7 @@ class Listeners(commands.Cog):
                 await Common.log(self, 'failed to react')
 
         #random msg send chance
-        if random.randint(0, 1000) < 28 or self.client.user.mentioned_in(message):
+        if random.randint(0, 1000) < 20 or self.client.user.mentioned_in(message):
             #random message has been triggered
             kind_of_message = random.randint(0, 900)
 
@@ -154,7 +154,7 @@ class Listeners(commands.Cog):
             #    await message.channel.send(file=discord.File(path))
 
         #message reaction
-        if random.randint(0, 70) == 69:
+        if random.randint(0, 80) == 69:
             reaction_type = random.randint(1, 10)
 
             if reaction_type == 1:
