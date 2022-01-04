@@ -30,11 +30,11 @@ class Common(commands.Cog):
         #        await log_channel.send(f"{str(datetime.datetime.now())} {str(message)}")
     
     def random_message(self):
-        message_type = random.choice([Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, 
-                        Lists.item, Lists.item, Lists.item, Lists.item, Lists.item, 
+        message_type = random.choice([Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, 
+                        Lists.item, Lists.item, Lists.item,
                         Lists.songs,
                         Lists.splashes, 
-                        Lists.pokemon, Lists.pokemon, 
+                        Lists.pokemon,
                         Lists.games,
                         Lists.kanji,
                         Lists.hiragana])

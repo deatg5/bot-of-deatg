@@ -120,7 +120,7 @@ class Listeners(commands.Cog):
                 await Common.log(self, 'failed to react')
 
         #random msg send chance
-        if random.randint(0, 1000) < 20 or self.client.user.mentioned_in(message):
+        if random.randint(0, 1000) < 15 or self.client.user.mentioned_in(message):
             #random message has been triggered
             kind_of_message = random.randint(0, 900)
 
