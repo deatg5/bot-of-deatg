@@ -50,11 +50,12 @@ class TextCommands(commands.Cog):
                 await ctx.send(f'{random.choice(Lists.item)}')
 
     @commands.command(brief="gets a sticker as an image")
-    async def sticker(self, ctx, stickr: discord.Sticker):
+    async def sticker(self, ctx):
         try:
-            await ctx.send(stickr.image_url)
+            await ctx.send(ctx.message.stickers[0].image_url)
         except:
-            await ctx.send("error!")
+            async for msg in ctx.channel.history(limit=200):
+                await ctx.send(msg.stickers[0].image_url)
 
 
     #@commands.command(brief="??????????")
