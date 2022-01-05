@@ -46,13 +46,13 @@ class Common(commands.Cog):
     async def dynamic_message(self, message):
         members = message.guild.members
         selected_user = random.choice(members)
-        selected_user = str(selected_user)
-        selected_user = selected_user[:-5]
+        selected_user_string = str(selected_user)
+        selected_user_string = selected_user_string[:-5]
 
         #having a list of f strings with random.choice only chooses one message per bot start, so if it's called more than once between when the bot restarts, the message will be the same, thats why i have to make this painfully long if else statement
         #i left some f strings in the messages array because they wont appear often enough for anyone to notice (hopefully)
         #wait maybe theres an even better way to do this (there is)   well i'll change it later maybe
-        message_type = random.randint(0, 12)
+        message_type = random.randint(0, 18)
         if message_type == 0:
             random_reward = random.choice(random.choice([Lists.item, Lists.item, Lists.item, Lists.messages, Lists.funny_nouns]))
             return f"I Have A Dire Need\nBring Me:\nHemoglobin\nCompressed Air\nHarpoon\nMany Many Meats (Flavorful)\nButtor\nApe\nBring Me This And You Will Be Rewarded With The {random_reward}"
@@ -82,18 +82,36 @@ class Common(commands.Cog):
             return f"Next you'll say: \"{temp_msg}\""
 
         elif message_type == 10:
-            temp_msg = random.choice(random.choice([Lists.item, Lists.funny_nouns, Lists.messages, Lists.tunesList, Lists.games, selected_user, selected_user, selected_user]))
-            temp_msg2 = random.choice(random.choice([Lists.item, Lists.funny_nouns, Lists.messages, Lists.tunesList, Lists.games, selected_user, selected_user, selected_user]))
+            temp_msg = random.choice(random.choice([Lists.item, Lists.funny_nouns, Lists.messages, Lists.tunesList, Lists.games, selected_user_string, selected_user_string, selected_user_string]))
+            temp_msg2 = random.choice(random.choice([Lists.item, Lists.funny_nouns, Lists.messages, Lists.tunesList, Lists.games, selected_user_string, selected_user_string, selected_user_string]))
             return f"Zoom in on the {temp_msg2}, and you'll see: {temp_msg}"
 
         elif message_type == 11:
-            return f"com.mojang.authlib.GameProfile@2f47cbcf[id=<null>,name={selected_user},properties=[],legacy=false] lost connection: Disconnected"
+            return f"com.mojang.authlib.GameProfile@2f47cbcf[id=<null>,name={selected_user_string},properties=[],legacy=false] lost connection: Disconnected"
 
         elif message_type == 12:
             temp_kanji = ""
             for i in range(random.randint(3, 30)):
                 temp_kanji += random.choice(Lists.kanji)
             return temp_kanji
+
+        elif message_type == 13:
+            return f"hi {selected_user_string}"
+
+        elif message_type == 14:
+            return f"hello {selected_user_string}"
+
+        elif message_type == 15:
+            return f"This bot was made by {selected_user_string}."
+
+        elif message_type == 16:
+            return f"{selected_user_string} hates me :sob:"
+
+        elif message_type == 17:
+            return f"{selected_user.mention} hi"
+
+        elif message_type == 18:
+            return f"{selected_user.mention} {random.choice(Lists.messages)}"
 
     def minecraft_message(self, message):
         members = message.guild.members
