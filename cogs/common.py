@@ -52,7 +52,7 @@ class Common(commands.Cog):
         #having a list of f strings with random.choice only chooses one message per bot start, so if it's called more than once between when the bot restarts, the message will be the same, thats why i have to make this painfully long if else statement
         #i left some f strings in the messages array because they wont appear often enough for anyone to notice (hopefully)
         #wait maybe theres an even better way to do this (there is)   well i'll change it later maybe
-        message_type = random.randint(0, 18)
+        message_type = random.randint(0, 19)
         if message_type == 0:
             random_reward = random.choice(random.choice([Lists.item, Lists.item, Lists.item, Lists.messages, Lists.funny_nouns]))
             return f"I Have A Dire Need\nBring Me:\nHemoglobin\nCompressed Air\nHarpoon\nMany Many Meats (Flavorful)\nButtor\nApe\nBring Me This And You Will Be Rewarded With The {random_reward}"
@@ -112,6 +112,12 @@ class Common(commands.Cog):
 
         elif message_type == 18:
             return f"{selected_user.mention} {random.choice(Lists.messages)}"
+
+        elif message_type == 19:
+            if selected_user.activity != None:
+                return f"{selected_user.activity}"
+            else:
+                return "!rank"
 
     def minecraft_message(self, message):
         members = message.guild.members
