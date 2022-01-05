@@ -49,6 +49,13 @@ class TextCommands(commands.Cog):
             async with ctx.typing():
                 await ctx.send(f'{random.choice(Lists.item)}')
 
+    @commands.command(brief="gets a sticker as an image")
+    async def sticker(self, ctx, stickr: discord.Sticker):
+        try:
+            await ctx.send(stickr.image_url)
+        except:
+            await ctx.send("error!")
+
 
     #@commands.command(brief="??????????")
     #async def demfex(self, ctx):
