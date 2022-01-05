@@ -49,13 +49,13 @@ class TextCommands(commands.Cog):
             async with ctx.typing():
                 await ctx.send(f'{random.choice(Lists.item)}')
 
-    @commands.command(brief="gets a sticker as an image")
-    async def sticker(self, ctx):
-        try:
-            await ctx.send(ctx.message.stickers[0].image_url)
-        except:
-            async for msg in ctx.channel.history(limit=200):
-                await ctx.send(msg.stickers[0].image_url)
+    #@commands.command(brief="gets a sticker as an image")
+    #async def sticker(self, ctx):
+    #    try:
+    #        await ctx.send(ctx.message.stickers[0].image_url)
+    #    except:
+    #        async for msg in ctx.channel.history(limit=200):
+    #            await ctx.send(msg.stickers[0].image_url)
 
 
     #@commands.command(brief="??????????")
