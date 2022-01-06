@@ -54,11 +54,11 @@ class Listeners(commands.Cog):
 
         if 0 <= message_type <= 170:
             message_to_send = Common.random_message(self)
-        elif 171 < message_type <= 184:
+        elif 171 < message_type <= 180:
             message_to_send = SentenceGeneration.generate_sentence(self)
-        elif 184 < message_type <= 185:
+        elif 180 < message_type <= 182:
             message_to_send = SentenceGeneration.generate_demfex_quote(self)
-        elif 185 < message_type <= 180:
+        elif 182 < message_type <= 184:
             message_to_send = Common.generate_fake_japanese_sentence(self)
         elif 180 < message_type <= 195:
             message_to_send = await Common.dynamic_message(self, message)
@@ -120,7 +120,7 @@ class Listeners(commands.Cog):
                 await Common.log(self, 'failed to react')
 
         #random msg send chance
-        if random.randint(0, 1000) < 15 or self.client.user.mentioned_in(message):
+        if random.randint(0, 1000) < 13 or self.client.user.mentioned_in(message):
             #random message has been triggered
             kind_of_message = random.randint(0, 900)
 

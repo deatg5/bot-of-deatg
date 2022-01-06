@@ -35,13 +35,13 @@ class Loops(commands.Cog):
     #    await self.client.wait_until_ready()
 
 
-    @tasks.loop(seconds=3200)
+    @tasks.loop(seconds=920)
     async def random_channel_send(self):
         if random.randint(1, 200) < 20:
             guild = random.choice(self.client.guilds)
             channel = random.choice(guild.text_channels)
             try:
-                if "quoting" in channel.name:
+                if "quot" in channel.name:
                     await channel.send(f'"{random.choice(Lists.messages)}"')
                 else:
                     await channel.send(random.choice(Lists.messages))
@@ -53,7 +53,7 @@ class Loops(commands.Cog):
         await self.client.wait_until_ready()
 
 
-    @tasks.loop(seconds=4592)
+    @tasks.loop(seconds=459)
     async def random_dm(self):
         if random.randint(1, 200) < 8:
             msg = random.choice(Lists.messages)
