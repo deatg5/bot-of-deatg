@@ -58,9 +58,9 @@ class Listeners(commands.Cog):
             message_to_send = SentenceGeneration.generate_sentence(self)
         elif 184 < message_type <= 185:
             message_to_send = SentenceGeneration.generate_demfex_quote(self)
-        elif 185 < message_type <= 187:
+        elif 185 < message_type <= 180:
             message_to_send = Common.generate_fake_japanese_sentence(self)
-        elif 187 < message_type <= 195:
+        elif 180 < message_type <= 195:
             message_to_send = await Common.dynamic_message(self, message)
         elif 195 < message_type <= 200:
             message_to_send = Common.minecraft_message(self, message)
