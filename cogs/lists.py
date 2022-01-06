@@ -244,7 +244,8 @@ class Lists(commands.Cog):
                 "MEEEEEEEEEEEE BABYYYYYYYYYYY!!!","The green Toad in Wario's Woods had an….. unusual voice for a Toad. But, like normal Toad, he too says “breakfast” a lot",
                 "Is BrogLE YOUR favorite vegetal too?","My name for this anime would be Sacred Geometry.","some people??? [do things]??? to cope?????","okay nvm I preferred the vore",
                 "WHY WEREN’T YOU AT ELF PRACTICE","It is 3:11am I cannot be laughing rn","And finally, dear listeners, a reminder; several concerned citizens have brought to the city’s attention an irregularity surrounding this summer’s citrus harvest. City council would like to remind all enterprising fruit pickers to exercise reasonable caution when acquiring these fruits. Grasp the fruit firmly around its circumference, pull slowly but steadily to avoid damaging the tree, and under no circumstances heed its demands of you. Do not acknowledge or obey the depraved whisperings of the demon fruit.",
-                "And now: The Weather.","How To Open Velcro Without It Making A Sound **LIFESAVING LIFEHACK***"]
+                "And now: The Weather.","How To Open Velcro Without It Making A Sound **LIFESAVING LIFEHACK**","one time i was swimming but the pool ladders disappeared so i couldn't get out of the pool and i swam for 10 hours then died",
+                "classic","REAL"]
 
 
 def setup(client):
