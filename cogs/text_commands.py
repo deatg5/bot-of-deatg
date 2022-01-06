@@ -15,10 +15,10 @@ class TextCommands(commands.Cog):
     def __init__(self, client):
         self.client = client
 
-    @commands.command(brief=";spam [message]")
+    @commands.command(brief=";spam [message] 10 times")
     async def spam(self, ctx, *message):
         message = " ".join(message[:])
-        for i in range(20):
+        for i in range(10):
             async with ctx.typing():
                 await ctx.send(message)
         await Common.log(self, f'Spammed {message} 20 times', ctx)
