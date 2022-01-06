@@ -102,6 +102,18 @@ class TextCommands(commands.Cog):
             await ctx.send("message too long :grimacing:")
         await Common.log(self, f'sent {message}', ctx)
 
+    
+    @commands.command(aliases=['el'], brief="converts message to emoji letters")
+    async def emojiletters(self, ctx, *message):
+        message = " ".join(message[:])
+
+        try:
+            async with ctx.typing():
+                await ctx.send(Common.fancy_letters(self, message, True))
+        except:
+            await ctx.send("message too long :grimacing:")
+        await Common.log(self, f'sent {message}', ctx)
+
 
 
     @commands.command(aliases=['si'], brief="send info about the current server")

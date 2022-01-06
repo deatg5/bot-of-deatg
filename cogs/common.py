@@ -177,23 +177,32 @@ class Common(commands.Cog):
                 the_sentence += random.choice(Lists.kanji)
         return the_sentence
 
-    async def fancy_letters(self, input_sentence):
+    async def fancy_letters(self, input_sentence, emojis = False):
         ret = ""
         selected_dict = None
-        dict_type = random.randint(1, 4)
-        if dict_type == 1 or dict_type == 2:
-            selected_dict = Lists.fancy_text_spaced
-        elif dict_type == 2:
-            selected_dict = Lists.fancy_text_emo
-        elif dict_type == 3:
-            selected_dict = Lists.fancy_text_cursive
+        if not emojis:
+            dict_type = random.randint(1, 4)
+            if dict_type == 1 or dict_type == 2:
+                selected_dict = Lists.fancy_text_spaced
+            elif dict_type == 2:
+                selected_dict = Lists.fancy_text_emo
+            elif dict_type == 3:
+                selected_dict = Lists.fancy_text_cursive
 
-        for letter in input_sentence:
-            try:
-                ret += selected_dict[letter]
-            except:
-                ret += letter
-        return ret
+            for letter in input_sentence:
+                try:
+                    ret += selected_dict[letter]
+                except:
+                    ret += letter
+            return ret
+        else:
+            selected_dict = Lists.fancy_text_emoji
+            for letter in input_sentence:
+                try:
+                    ret += selected_dict[letter]
+                except:
+                    ret += letter
+            return ret
 
 
 
