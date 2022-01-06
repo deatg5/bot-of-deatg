@@ -109,7 +109,7 @@ class TextCommands(commands.Cog):
 
         try:
             async with ctx.typing():
-                await ctx.send(Common.fancy_letters(self, message, True))
+                await ctx.send(await Common.fancy_letters(self, message, True))
         except:
             await ctx.send("message too long :grimacing:")
         await Common.log(self, f'sent {message}', ctx)
