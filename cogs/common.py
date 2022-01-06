@@ -196,7 +196,7 @@ class Common(commands.Cog):
                     ret += letter
             return ret
         else:
-            for letter in input_sentence.lower():
+            for letter in input_sentence.upper():
                 try:
                     ret += str(Lists.fancy_text_emoji[letter])
                 except:
