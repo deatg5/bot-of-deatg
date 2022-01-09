@@ -168,29 +168,33 @@ class TextCommands(commands.Cog):
                 await ctx.send(line)
         await Common.log(self, 'server info sent', ctx)
 
-    @commands.command(brief="gets channels the bot is in")
-    async def getchannels(self, ctx):
-        if ctx.author.id == Common.deatg_id:
-            channels = ''
-            for guild in self.client.guilds:
-                channels += f'{guild}:\n'
-                for channel in guild.channels:
-                    channels += f'{channel}, '
-            for line in textwrap.wrap(channels, 2000):
-                async with ctx.typing():
-                    await ctx.send(line)
-        else:
-            await ctx.send('you not deatg :skull:')
+
+    #@commands.command(brief="gets channels the bot is in")
+    #async def getchannels(self, ctx):
+    #    if ctx.author.id == Common.deatg_id:
+    #        channels = ''
+    #        for guild in self.client.guilds:
+    #            channels += f'{guild}:\n'
+    #            for channel in guild.channels:
+    #                channels += f'{channel}, '
+    #        for line in textwrap.wrap(channels, 2000):
+    #            async with ctx.typing():
+    #                await ctx.send(line)
+    #    else:
+    #        await ctx.send('you not deatg :skull:')
 
     @commands.command(brief="gets servers")
     async def getservers(self, ctx):
-        servers = ''
-        await ctx.send(f"If i had a dollar for every server bot of deatg is in, i'd have like, {len(self.client.guilds)} dollars.")
-        for guild in self.client.guilds:
-            servers += f'{guild}, '
-        for line in textwrap.wrap(servers, 2000):
-            async with ctx.typing():
-                await ctx.send(line)
+        if ctx.author.id == Common.deatg_id:
+            servers = ''
+            await ctx.send(f"If i had a dollar for every server bot of deatg is in, i'd have like, {len(self.client.guilds)} dollars.")
+            for guild in self.client.guilds:
+                servers += f'{guild}, '
+            for line in textwrap.wrap(servers, 2000):
+                async with ctx.typing():
+                    await ctx.send(line)
+        else:
+            await ctx.send('This command can only be used by the bot owner.')
 
     @commands.command()
     async def stats(self, ctx):
