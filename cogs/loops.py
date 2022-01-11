@@ -56,14 +56,18 @@ class Loops(commands.Cog):
         await self.client.wait_until_ready()
 
 
-    @tasks.loop(seconds=2459)
+    @tasks.loop(seconds=3459)
     async def random_dm(self):
-        if random.randint(1, 200) < 200:
-            msg = random.choice(Lists.messages)
-            guild = random.choice(self.client.guilds)
-            selected_user = random.choice(guild.members)
-            await selected_user.send(msg)
-            await Common.log(self, f'FAFIEHSFIERSEORJ sent {msg} to {str(selected_user)}')
+        try:
+            if random.randint(1, 200) < 200:
+                msg = random.choice(Lists.messages)
+                guild = random.choice(self.client.guilds)
+                selected_user = random.choice(guild.members)
+                await selected_user.send(msg)
+                await Common.log(self, f'FAFIEHSFIERSEORJ sent {msg} to {str(selected_user)}')
+        except:
+            await Common.log(self, f'failed to DM {str(selected_user)}')
+
     @random_dm.before_loop
     async def before_random_dm(self):
         await self.client.wait_until_ready()
