@@ -114,7 +114,7 @@ class Loops(commands.Cog):
         async for msg in the_channel.history(limit=100):
             if msg.author == self.client.user:
                 most_recent_word = msg.clean_content
-        await the_channel.send(words[words.index(most_recent_word) + 1])
+        await the_channel.send(words[words.index(most_recent_word) + 2])
         
     @every_word.before_loop
     async def before_every_word(self):
