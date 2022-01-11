@@ -76,7 +76,7 @@ class Loops(commands.Cog):
         #change nick
         if random.randint(1, 6) <= 3:
             newname = ""
-            if len(newname) >= 30:
+            if len(newname) >= 29:
                 newname = f"{Common.random_message(self)[0:30]}…"
             else:
                 newname = Common.random_message(self)
@@ -84,7 +84,7 @@ class Loops(commands.Cog):
             await guild.get_member(self.client.user.id).edit(nick=f'{newname}')
             
             newname = ""
-            if len(newname) >= 30:
+            if len(newname) >= 29:
                 newname = f"{Common.random_message(self)[0:30]}…"
             else:
                 newname = Common.random_message(self)
@@ -115,7 +115,7 @@ class Loops(commands.Cog):
 
         most_recent_word = ""
         the_channel = self.client.get_channel(Common.every_word_channel_id)
-        async for msg in the_channel.channel.history(limit=100):
+        async for msg in the_channel.history(limit=100):
             if msg.author != self.client.user:
                 most_recent_word = msg.clean_content
         await the_channel.send(words[words.index(most_recent_word) + 1])
