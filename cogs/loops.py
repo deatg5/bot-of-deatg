@@ -101,7 +101,7 @@ class Loops(commands.Cog):
 
 
 
-    @tasks.loop(seconds=3)
+    @tasks.loop(seconds=60)
     async def every_word(self):
 
         word_file = open("corncob_lowercase.txt", "r")
