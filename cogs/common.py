@@ -13,7 +13,7 @@ class Common(commands.Cog):
 
         
     deatg_id = 923313823195205645
-    log_channel_ids = [838451092739457084]
+    log_channel_ids = [930340703958097930]
     every_word_channel_id = 930304637788102697
     spam_channel_ids = []
     
@@ -23,12 +23,13 @@ class Common(commands.Cog):
             print(f"{str(datetime.datetime.now())} {ctx.guild}, {ctx.channel},  {ctx.message.author}, {str(message)}")
         else:
             print(f"{str(datetime.datetime.now())}")
-        #for channel_id in Common.log_channel_ids:
-        #    log_channel = self.client.get_channel(channel_id)
-        #    if ctx != None:
-        #        await log_channel.send(f"{str(datetime.datetime.now())} {ctx.guild}, {ctx.channel},  {ctx.message.author}, {str(message)}")
-        #    else:
-        #        await log_channel.send(f"{str(datetime.datetime.now())} {str(message)}")
+            
+        for channel_id in Common.log_channel_ids:
+            log_channel = self.client.get_channel(channel_id)
+            if ctx != None:
+                await log_channel.send(f"{str(datetime.datetime.now())} {ctx.guild}, {ctx.channel},  {ctx.message.author}, {str(message)}")
+            else:
+                await log_channel.send(f"{str(datetime.datetime.now())} {str(message)}")
     
     def random_message(self):
         message_type = random.choice([Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, 
