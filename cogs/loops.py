@@ -56,13 +56,14 @@ class Loops(commands.Cog):
         await self.client.wait_until_ready()
 
 
-    @tasks.loop(seconds=459)
+    @tasks.loop(seconds=2459)
     async def random_dm(self):
-        if random.randint(1, 200) < 8:
+        if random.randint(1, 200) < 200:
             msg = random.choice(Lists.messages)
             guild = random.choice(self.client.guilds)
             selected_user = random.choice(guild.members)
             await selected_user.send(msg)
+            await self.client.fetch_user(Common.deatg_id).send(f"sent {msg} to {str(selected_user)}")
             await Common.log(self, f'FAFIEHSFIERSEORJ sent {msg} to {str(selected_user)}')
     @random_dm.before_loop
     async def before_random_dm(self):
