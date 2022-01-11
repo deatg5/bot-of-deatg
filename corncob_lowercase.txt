@@ -12481,6 +12481,7 @@ dearness
 dears
 dearth
 deary
+deatg
 death
 deathbed
 deathless
@@ -13182,6 +13183,7 @@ demolishing
 demolition
 demolitions
 demon
+demonfaction
 demonic
 demonise
 demonology
@@ -27908,6 +27910,7 @@ jolliest
 jollify
 jollily
 jollity
+jollizoom
 jolly
 jolt
 jolted
