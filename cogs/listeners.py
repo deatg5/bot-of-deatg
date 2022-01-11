@@ -94,13 +94,6 @@ class Listeners(commands.Cog):
             except:
                 await Common.log(self, 'OMG SANMS UNDERTAL failed this is so sad')
 
-        #sans
-        if ';quote' in message.clean_content.lower():
-            try:
-                await message.add_reaction('<:Sans:926163252306665532>')
-                await Common.log(self, 'OMG SANMS UNDERTAL')
-            except:
-                await Common.log(self, 'OMG SANMS UNDERTAL failed this is so sad')
 
         #ratio
         if message.channel.id == 913202658821681192: #'ratio' in message.clean_content.lower() and random.randint(1, 2) == 1 or 
@@ -120,7 +113,7 @@ class Listeners(commands.Cog):
                 await Common.log(self, 'failed to react')
 
         #random msg send chance
-        if random.randint(0, 1000) < 13 or self.client.user.mentioned_in(message):
+        if random.randint(0, 1000) < 13 or self.client.user.mentioned_in(message) and message.channel.id != Common.every_word_channel_id:
             #random message has been triggered
             kind_of_message = random.randint(0, 900)
 
@@ -222,22 +215,22 @@ class Listeners(commands.Cog):
         
 
 
-        #random reply to old msg --this doesn't really work
-        if random.randint(0, 7600) < 6:
-            async for msg in message.channel.history(limit=10000):
-                if random.randint(0, 9000) < 5:
-                    if msg.channel.id != 838451092739457084 and msg.channel.id != 471178465375158273:
-                        message_to_send = await Listeners.decide_message(self, message)
-
-                        if "quoting" in message.channel.name:
-                            await message.channel.send(f'"{message_to_send}"')
-                            return
-                        else:
-                            await message.channel.send(message_to_send)
-                break
-
-
-            return
+        ##random reply to old msg --this doesn't really work
+        #if random.randint(0, 7600) < 6:
+        #    async for msg in message.channel.history(limit=10000):
+        #        if random.randint(0, 9000) < 5:
+        #            if msg.channel.id != 838451092739457084 and msg.channel.id != 471178465375158273:
+        #                message_to_send = await Listeners.decide_message(self, message)
+#
+        #                if "quoting" in message.channel.name:
+        #                    await message.channel.send(f'"{message_to_send}"')
+        #                    return
+        #                else:
+        #                    await message.channel.send(message_to_send)
+        #        break
+#
+#
+        #    return
 
         #status change
         if random.randint(0, 100) < 20:
@@ -285,7 +278,7 @@ class Listeners(commands.Cog):
             if statusType == 15:
                 await self.client.change_presence(status=discord.Status.do_not_disturb, activity=discord.Activity(type=discord.ActivityType.listening, name=songPlaying))
 
-        if random.randint(0, 39000) < 10 or "GGGGRRRROOOWWWWEABgggg" in message.clean_content.lower():
+        if random.randint(0, 39000) < 10 and message.channel.id != Common.every_word_channel_id:
             img = Image.open("images/quote.jpg")
 
 

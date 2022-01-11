@@ -15,12 +15,14 @@ class Loops(commands.Cog):
         self.random_channel_send.start()
         self.random_dm.start()
         self.random_typing.start()
+        self.every_word.start()
 
     def cog_unload(self):
         #self.theultimatespam.cancel()
         self.random_channel_send.cancel()
         self.random_dm.cancel()
         self.random_typing.cancel()
+        self.every_word.cancel()
 
     #@tasks.loop(seconds=0.1)
     #async def theultimatespam(self):
@@ -40,14 +42,15 @@ class Loops(commands.Cog):
         if random.randint(1, 200) < 20:
             guild = random.choice(self.client.guilds)
             channel = random.choice(guild.text_channels)
-            try:
-                if "quot" in channel.name:
-                    await channel.send(f'"{random.choice(Lists.messages)}"')
-                else:
-                    await channel.send(random.choice(Lists.messages))
-            except:
-                await Common.log(self, f'error sending message in {str(guild)}, {str(channel)}')
-            await Common.log(self, f'sent a message in {str(guild)}, {str(channel)}')
+            if channel.id != Common.every_word_channel_id:
+                try:
+                    if "quot" in channel.name:
+                        await channel.send(f'"{random.choice(Lists.messages)}"')
+                    else:
+                        await channel.send(random.choice(Lists.messages))
+                except:
+                    await Common.log(self, f'error sending message in {str(guild)}, {str(channel)}')
+                await Common.log(self, f'sent a message in {str(guild)}, {str(channel)}')
     @random_channel_send.before_loop
     async def before_random_channel_send(self):
         await self.client.wait_until_ready()
@@ -98,6 +101,27 @@ class Loops(commands.Cog):
             x = 1
     @random_typing.before_loop
     async def before_random_typing(self):
+        await self.client.wait_until_ready()
+
+
+
+    @tasks.loop(seconds=3)
+    async def every_word(self):
+
+        word_file = open("corncob_lowercase.txt", "r")
+        lines = word_file.read()
+        words = lines.splitlines()
+        word_file.close()
+
+        most_recent_word = ""
+        the_channel = self.client.get_channel(Common.every_word_channel_id)
+        async for msg in the_channel.channel.history(limit=100):
+            if msg.author != self.client.user:
+                most_recent_word = msg.clean_content
+        await the_channel.send(words[words.index(most_recent_word) + 1])
+        
+    @every_word.before_loop
+    async def before_every_word(self):
         await self.client.wait_until_ready()
 
 
