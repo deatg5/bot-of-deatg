@@ -247,7 +247,8 @@ class Lists(commands.Cog):
                 "And now: The Weather.","How To Open Velcro Without It Making A Sound **LIFESAVING LIFEHACK**","one time i was swimming but the pool ladders disappeared so i couldn't get out of the pool and i swam for 10 hours then died",
                 "classic","REAL","*He felt no pain… Only the strangely pleasant airiness! Now he was in star-studded blackness, alone in the immensity of space and time!*",
                 "And though he wished for death, he was unable to die. Eventually, he stopped thinking.","It’s that time of year again! ^-^","Guy Fieri Cooks The Bean",
-                "FFOF","&caption get real"]
+                "FFOF","&caption get real","ValueError: 'Source(s):\nDude 🥪 trust 🙋🏼\u200d♀️ me' is not in list","Starting process with command `python bot.py`","Stopping all processes with SIGTERM",
+                ""]
 
 
 def setup(client):
