@@ -43,6 +43,9 @@ class Common(commands.Cog):
         return random.choice(message_type)
 
     
+    def chatbot_message(self, message):
+        th = 1
+
 
 
     async def dynamic_message(self, message):

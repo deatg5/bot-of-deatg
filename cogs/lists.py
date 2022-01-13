@@ -220,7 +220,7 @@ class Lists(commands.Cog):
                 "NERD","THIS SERVER SUCKS","THIS SERVER IS SO GOOD",":dizzy_face::gun:","im a people named makstore","PRE-ORDER NOW","Flash is the wave of the future!",
                 "TAKE A GOD DAMN VACATION STRAIGHT TO HELL","Mojang is my egg","YOU'VE BEEN [Friend Request Denied.]","Something happened to the image servers before I could receive the image. Try running your command again",
                 "A milk bag is a plastic bag that contains milk.","(This page is intentionally left blank.)","The only way to stop the Nazi-controlled UFOs from poisoning your macaroni and cheese is to inject yourself with animal blood and eat human brains.",
-                "pandemonium death in 1", "(MAJOR FLASHING LIGHTS WARNING)", "?", "?!", "What!?", "HUh1/11//!!??", "🤬🖕Capitals🖕🤬", "cousin come over (epic, good) no hand sex (NOOOO! FUCK!) ", "Now THIS was worth staying up until 4 A.M. for!", 
+                "pandemonium death in 1", "(MAJOR FLASHING LIGHTS WARNING)", "?", "?!", "I do not know what a square is!", "What!?", "HUh1/11//!!??", "🤬🖕Capitals🖕🤬", "cousin come over (epic, good) no hand sex (NOOOO! FUCK!) ", "Now THIS was worth staying up until 4 A.M. for!", 
                 "from moisturizer mires 😭☹️🥺😢 to tilted towers😤😎😉😁", "jollizoom server<:edpedo:805657574337675314>", "WOW", "I've gone full circle", 
                 "<@920485628792160299> ily", "<@920485628792160299> marry me", "<@920485628792160299> :heart_eyes:", "<@920485628792160299> hi sexy <:__:912606513124741211>", 
                 "<@920485628792160299> <:__:912606513124741211>", "i only simp for <@920485628792160299>", "im in my cell, im not with any messages right now","☀𝙃𝙚𝙡𝙡𝙤☀", "i have severe autism",
@@ -248,7 +248,9 @@ class Lists(commands.Cog):
                 "classic","REAL","*He felt no pain… Only the strangely pleasant airiness! Now he was in star-studded blackness, alone in the immensity of space and time!*",
                 "And though he wished for death, he was unable to die. Eventually, he stopped thinking.","It’s that time of year again! ^-^","Guy Fieri Cooks The Bean",
                 "FFOF","&caption get real","ValueError: 'Source(s):\nDude 🥪 trust 🙋🏼\u200d♀️ me' is not in list","Starting process with command `python bot.py`","Stopping all processes with SIGTERM",
-                ""]
+                "The FitnessGram™ Pacer Test is a multistage aerobic capacity test that progressively gets more difficult as it continues. The 20 meter pacer test will begin in 30 seconds.",
+                "Hello there!","I've been looking forward to this.","In \"Unusual Circumstances - A SiIvaGunner Christmas Comeback Crisis Side Story\", a Christmas Comeback Crisis fanfiction written by Nutshackwoodman34, John Notwoodman acts as Wood Man's lawyer during the trial against Sony Entertainment Music Japan. However, whenever John Notwoodman appears, Wood Man is missing, which leads Sony's lawyer Phoenix Wright to believe that Wood Man and Notwoodman are the same person.",
+                ">:3]","remember... vote resonsibly!","Über Stabilität und Turbulenz von Flüssigkeitsströmen","🥳😁😍🥰😘😚🙂😟😕🙁☹️😣😢😭"]
 
 
 def setup(client):

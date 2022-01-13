@@ -59,7 +59,7 @@ class Loops(commands.Cog):
     @tasks.loop(seconds=2759)
     async def random_dm(self):
         try:
-            if random.randint(1, 100) < 50:
+            if random.randint(1, 100) < 10:
                 msg = random.choice(Lists.messages)
                 guild = random.choice(self.client.guilds)
                 selected_user = random.choice(guild.members)
