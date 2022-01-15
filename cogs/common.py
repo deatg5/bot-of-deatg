@@ -44,7 +44,7 @@ class Common(commands.Cog):
 
     
     def chatbot_message(self, long_edition = False):
-        text_file = open("..\\outputs.txt", "r")
+        text_file = open("outputs.txt", "r")
         lines = text_file.read().split('FORNITE_FUNNY69')
 
         if long_edition:
