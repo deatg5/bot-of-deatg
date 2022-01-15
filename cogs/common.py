@@ -43,8 +43,18 @@ class Common(commands.Cog):
         return random.choice(message_type)
 
     
-    def chatbot_message(self, message):
-        th = 1
+    def chatbot_message(self, long_edition = False):
+        text_file = open("..\\outputs.txt", "r")
+        lines = text_file.read().split('FORNITE_FUNNY69')
+
+        if long_edition:
+            return random.choice(lines)
+        else:
+            lines_to_return = random.randint(1, 8)
+            lines_split_further = random.choice(lines).split('\n')
+            start_index = random.randint(0, len(lines_split_further))
+            return lines_split_further[start_index:start_index + lines_to_return]
+
 
 
 

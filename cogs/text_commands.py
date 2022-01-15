@@ -169,6 +169,19 @@ class TextCommands(commands.Cog):
         await Common.log(self, 'server info sent', ctx)
 
 
+    @commands.command(brief="testing gpt2 sentence generation")
+    async def gpt2(self, ctx):
+        gpt2_message = ""
+        if randint(0, 1) == 1:
+            gpt2_message = Common.chatbot_message(self)
+        else:
+            gpt2_message = Common.chatbot_message(self, True)
+
+        for line in textwrap.wrap(gpt2_message, 2000):
+            async with ctx.typing():
+                await ctx.send(line)
+
+
     #@commands.command(brief="gets channels the bot is in")
     #async def getchannels(self, ctx):
     #    if ctx.author.id == Common.deatg_id:

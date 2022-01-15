@@ -250,7 +250,9 @@ class Lists(commands.Cog):
                 "FFOF","&caption get real","ValueError: 'Source(s):\nDude 🥪 trust 🙋🏼\u200d♀️ me' is not in list","Starting process with command `python bot.py`","Stopping all processes with SIGTERM",
                 "The FitnessGram™ Pacer Test is a multistage aerobic capacity test that progressively gets more difficult as it continues. The 20 meter pacer test will begin in 30 seconds.",
                 "Hello there!","I've been looking forward to this.","In \"Unusual Circumstances - A SiIvaGunner Christmas Comeback Crisis Side Story\", a Christmas Comeback Crisis fanfiction written by Nutshackwoodman34, John Notwoodman acts as Wood Man's lawyer during the trial against Sony Entertainment Music Japan. However, whenever John Notwoodman appears, Wood Man is missing, which leads Sony's lawyer Phoenix Wright to believe that Wood Man and Notwoodman are the same person.",
-                ">:3]","remember... vote resonsibly!","Über Stabilität und Turbulenz von Flüssigkeitsströmen","🥳😁😍🥰😘😚🙂😟😕🙁☹️😣😢😭"]
+                ">:3]","remember... vote resonsibly!","Über Stabilität und Turbulenz von Flüssigkeitsströmen","🥳😁😍🥰😘😚🙂😟😕🙁☹️😣😢😭","Pinned a message.","only OGs will understand thus image","if i’m ever going to block you\nit will be now\nso i will shoot my shot",
+                "The world is covered in a sheet of ice haha the backyard and everything","fun frog facts! the economy is at a standstill.","here's a list of touhou girls i want to have as a Mom someday & here is a copy of that list in case you accidentally throw it in the gabarge",
+                "Fetching model.ckpt.data-00000-of-00001:  41%|███████▋           | 203M/498M [03:42<05:29, 894kit/s]","Watch what happens when I cast a spell I don't know!","I'm never reading this goddamn channel description ever again.","And before you ask, YES! This bag of beans WILL act like a counter weight!"]
 
 
 def setup(client):
