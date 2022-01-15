@@ -176,7 +176,7 @@ class TextCommands(commands.Cog):
             gpt2_message = Common.chatbot_message(self)
         else:
             gpt2_message = Common.chatbot_message(self, True)
-
+        print(f'it is {gpt2_message}')
         for line in textwrap.wrap(gpt2_message, 2000):
             async with ctx.typing():
                 await ctx.send(line)
