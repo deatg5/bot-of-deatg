@@ -50,7 +50,7 @@ class Common(commands.Cog):
         if long_edition:
             return random.choice(lines)
         else:
-            lines_to_return = random.randint(1, 8)
+            lines_to_return = random.randint(1, 5)
             lines_split_further = random.choice(lines).split('\n')
             start_index = random.randint(0, len(lines_split_further))
             return lines_split_further[start_index:start_index + lines_to_return]
