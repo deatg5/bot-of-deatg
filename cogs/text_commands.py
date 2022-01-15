@@ -175,6 +175,7 @@ class TextCommands(commands.Cog):
         for line in textwrap.wrap(gpt2_message, 2000):
             async with ctx.typing():
                 await ctx.send(line)
+                return
 
 
     #@commands.command(brief="gets channels the bot is in")
