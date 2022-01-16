@@ -60,7 +60,7 @@ class Items(commands.Cog):
         	'friendly_name': '**The**',
             'description': '',
         	'use_messages': [''],
-        	'consume_chance': 1.0,
+        	'consume_chance': 0.0,
         	'cost': 50,
         	'sell_price': 10,
         	'rarity': 'Common',
@@ -545,9 +545,9 @@ class Items(commands.Cog):
         	'sell_price': 10,
         	'rarity': 'Common',
             'available_in_shop': True,
-            'battle_use_messages': [''],
+            'battle_use_messages': ['Empowered by the Baltic God of Milk, you feel the shredded cheese course through your veins. You grow stronger.'],
             'damage': 0,
-            'heal_amount': 0
+            'heal_amount': 150
         },
         {
         	'id': 37,
