@@ -30,7 +30,7 @@ class TextCommands(commands.Cog):
             await ctx.send(f'The Pokémon is: {mon}')
         await Common.log(self, f'mon command sent: {mon}', ctx)
 
-    @commands.command(aliases=['inv'], brief="sends invite link")
+    @commands.command(brief="sends invite link")
     async def invite(self, ctx):
         async with ctx.typing():
             await ctx.send('https://discord.com/api/oauth2/authorize?client_id=925854592154095667&permissions=137643809857&scope=bot')

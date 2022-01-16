@@ -86,6 +86,10 @@ async def inventory(ctx, member: discord.Member = None):
         if record != None:
             await ctx.send(str(record))
 
+#since i'll only be using this in code i won't take a member object, just the id
+#def receive_item(member_id, the_item):
+
+
 
 @client.event
 async def on_message(message):
