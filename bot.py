@@ -97,6 +97,7 @@ async def receive_item(member_id, the_item, amount = 1):
 
     #just to be sure
     member_id = str(member_id)
+    amount = str(amount)
 
     item_count = the_item + '_count'
 
