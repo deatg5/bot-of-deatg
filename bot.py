@@ -93,6 +93,15 @@ async def inventory(ctx, member: discord.Member = None):
             inv += f"{item['friendly_name']}: {db_user[item['name'] + '_count']}\n"
     await ctx.send(inv)
 
+@client.command( aliases=["bal"], name = "Balance", brief="check your balance")
+async def balance(ctx, member: discord.Member = None):
+    if member == None:
+        member = ctx.author
+    member_id = str(member.id)
+    db_user = await pg_con.fetchrow("SELECT * FROM users WHERE userid = $1", member_id)
+
+    await ctx.send(str(db_user['cash']))
+
 
 #since i'll only be using this in code i won't take a member object, just the id
 async def give_item(member_id, the_item, amount = 1):
@@ -113,12 +122,31 @@ async def give_item(member_id, the_item, amount = 1):
     else:
         await pg_con.execute(f"UPDATE users SET {item_count} = {db_user[item_count] + amount} WHERE userid = '{member_id}'")
 
+async def give_cash(member_id, amount):
+    db_user = await pg_con.fetchrow("SELECT * FROM users WHERE userid = $1", member_id)
+
+    #just to be sure
+    member_id = str(member_id)
+        
+    if db_user['cash'] == None:
+        await pg_con.execute(f"UPDATE users SET cash = $1 WHERE userid = $2", amount, member_id)
+    else:
+        await pg_con.execute(f"UPDATE users SET cash = $1 WHERE userid = $2", db_user['cash'] + amount, member_id)
+
 
 @client.command()
 async def grant_item(ctx, member: discord.Member, the_item, amount = 1):
     if ctx.author.id == Common.deatg_id:
         try:
             await give_item(str(member.id), the_item, amount)
+        except:
+            await ctx.send("error!!!")
+
+@client.command()
+async def grant_cash(ctx, member: discord.Member, amount = 1):
+    if ctx.author.id == Common.deatg_id:
+        try:
+            await give_cash(str(member.id), amount)
         except:
             await ctx.send("error!!!")
 
