@@ -9,7 +9,7 @@ class Items(commands.Cog):
         self.client = client
 
     egg = {
-    	'id': 0,
+    	'id': 1,
     	'friendly_name': 'Egg',
     	'use_messages': [''],
     	'consume_chance': 1.0,
@@ -18,7 +18,7 @@ class Items(commands.Cog):
     	'rarity': 'Common'
     }
     terrydrawing = {
-    	'id': 0,
+    	'id': 2,
     	'friendly_name': 'Drawing of Terry Crews',
     	'use_messages': [''],
     	'consume_chance': 1.0,
@@ -27,7 +27,7 @@ class Items(commands.Cog):
     	'rarity': 'Common'
     }
     soup = {
-    	'id': 0,
+    	'id': 3,
     	'friendly_name': 'Soup',
     	'use_messages': [''],
     	'consume_chance': 1.0,
@@ -36,7 +36,7 @@ class Items(commands.Cog):
     	'rarity': 'Common'
     }
     the = {
-    	'id': 0,
+    	'id': 4,
     	'friendly_name': '**The**',
     	'use_messages': [''],
     	'consume_chance': 1.0,
@@ -45,7 +45,7 @@ class Items(commands.Cog):
     	'rarity': 'Common'
     }
     lasaga = {
-    	'id': 0,
+    	'id': 5,
     	'friendly_name': 'Lasaga',
     	'use_messages': [''],
     	'consume_chance': 1.0,
@@ -54,7 +54,7 @@ class Items(commands.Cog):
     	'rarity': 'Common'
     }
     laptop = {
-    	'id': 0,
+    	'id': 6,
     	'friendly_name': '$15 Laptop from Wish.com',
     	'use_messages': [''],
     	'consume_chance': 1.0,
@@ -63,7 +63,7 @@ class Items(commands.Cog):
     	'rarity': 'Common'
     }
     brazil = {
-    	'id': 0,
+    	'id': 7,
     	'friendly_name': 'Brazil',
     	'use_messages': [''],
     	'consume_chance': 1.0,
@@ -72,7 +72,7 @@ class Items(commands.Cog):
     	'rarity': 'Common'
     }
     keyboardcontroller = {
-    	'id': 0,
+    	'id': 8,
     	'friendly_name': 'GameCube Keyboard Controller',
     	'use_messages': [''],
     	'consume_chance': 1.0,
@@ -81,7 +81,7 @@ class Items(commands.Cog):
     	'rarity': 'Common'
     }
     godstatue = {
-    	'id': 0,
+    	'id': 9,
     	'friendly_name': 'God Statue',
     	'use_messages': [''],
     	'consume_chance': 1.0,
@@ -90,7 +90,7 @@ class Items(commands.Cog):
     	'rarity': 'Common'
     }
     demfextablet = {
-    	'id': 0,
+    	'id': 10,
     	'friendly_name': 'Demfex Tablet',
     	'use_messages': [''],
     	'consume_chance': 1.0,
@@ -99,7 +99,7 @@ class Items(commands.Cog):
     	'rarity': 'Common'
     }
     dinnerblaster = {
-    	'id': 0,
+    	'id': 11,
     	'friendly_name': 'Dinner Blaster',
     	'use_messages': [''],
     	'consume_chance': 1.0,
@@ -108,7 +108,7 @@ class Items(commands.Cog):
     	'rarity': 'Common'
     }
     salad = {
-    	'id': 0,
+    	'id': 12,
     	'friendly_name': 'Pizza Pasta Salad With Chicken Breast Halves',
     	'use_messages': [''],
     	'consume_chance': 1.0,
@@ -117,7 +117,7 @@ class Items(commands.Cog):
     	'rarity': 'Common'
     }
     tree = {
-    	'id': 0,
+    	'id': 13,
     	'friendly_name': 'Tree',
     	'use_messages': [''],
     	'consume_chance': 1.0,
@@ -126,7 +126,7 @@ class Items(commands.Cog):
     	'rarity': 'Common'
     }
     sledgehammer = {
-    	'id': 0,
+    	'id': 14,
     	'friendly_name': 'Sledgehammer',
     	'use_messages': [''],
     	'consume_chance': 1.0,
@@ -135,7 +135,7 @@ class Items(commands.Cog):
     	'rarity': 'Common'
     }
     cableandrouter = {
-    	'id': 0,
+    	'id': 15,
     	'friendly_name': 'Network Cable and Router',
     	'use_messages': [''],
     	'consume_chance': 1.0,
@@ -144,7 +144,7 @@ class Items(commands.Cog):
     	'rarity': 'Common'
     }
     sqlsoup = {
-    	'id': 0,
+    	'id': 16,
     	'friendly_name': 'Derek\'s SQL Soup',
     	'use_messages': [''],
     	'consume_chance': 1.0,
@@ -153,7 +153,7 @@ class Items(commands.Cog):
     	'rarity': 'Common'
     }
     bup = {
-    	'id': 0,
+    	'id': 17,
     	'friendly_name': 'BUP',
     	'use_messages': [''],
     	'consume_chance': 1.0,
@@ -162,7 +162,7 @@ class Items(commands.Cog):
     	'rarity': 'Common'
     }
     hemoglobin = {
-    	'id': 0,
+    	'id': 18,
     	'friendly_name': 'Hemoglobin',
     	'use_messages': [''],
     	'consume_chance': 1.0,
@@ -171,7 +171,7 @@ class Items(commands.Cog):
     	'rarity': 'Common'
     }
     compressedair = {
-    	'id': 0,
+    	'id': 19,
     	'friendly_name': 'Compressed Air',
     	'use_messages': [''],
     	'consume_chance': 1.0,
@@ -180,7 +180,7 @@ class Items(commands.Cog):
     	'rarity': 'Common'
     }
     harpoon = {
-    	'id': 0,
+    	'id': 20,
     	'friendly_name': 'Harpoon',
     	'use_messages': [''],
     	'consume_chance': 1.0,
@@ -189,7 +189,7 @@ class Items(commands.Cog):
     	'rarity': 'Common'
     }
     manymanymeats = {
-    	'id': 0,
+    	'id': 21,
     	'friendly_name': 'Many Many Meats',
     	'use_messages': [''],
     	'consume_chance': 1.0,
@@ -198,7 +198,7 @@ class Items(commands.Cog):
     	'rarity': 'Common'
     }
     manymanymeatsflavourful = {
-    	'id': 0,
+    	'id': 22,
     	'friendly_name': 'Many Many Meats (Flavourful)',
     	'use_messages': [''],
     	'consume_chance': 1.0,
@@ -207,7 +207,7 @@ class Items(commands.Cog):
     	'rarity': 'Common'
     }
     buttor = {
-    	'id': 0,
+    	'id': 23,
     	'friendly_name': 'Buttor',
     	'use_messages': [''],
     	'consume_chance': 1.0,
@@ -216,7 +216,7 @@ class Items(commands.Cog):
     	'rarity': 'Common'
     }
     ape = {
-    	'id': 0,
+    	'id': 24,
     	'friendly_name': 'Ape',
     	'use_messages': [''],
     	'consume_chance': 1.0,
@@ -225,7 +225,7 @@ class Items(commands.Cog):
     	'rarity': 'Common'
     }
     recyclebin = {
-    	'id': 0,
+    	'id': 25,
     	'friendly_name': 'Recycle Bin',
     	'use_messages': [''],
     	'consume_chance': 1.0,
@@ -234,7 +234,7 @@ class Items(commands.Cog):
     	'rarity': 'Common'
     }
     stopsign = {
-    	'id': 0,
+    	'id': 26,
     	'friendly_name': 'Stop Sign',
     	'use_messages': [''],
     	'consume_chance': 1.0,
@@ -243,7 +243,7 @@ class Items(commands.Cog):
     	'rarity': 'Common'
     }
     spongebob = {
-    	'id': 0,
+    	'id': 27,
     	'friendly_name': 'SpongeBob SquarePants',
     	'use_messages': [''],
     	'consume_chance': 1.0,
@@ -252,7 +252,7 @@ class Items(commands.Cog):
     	'rarity': 'Common'
     }
     sign = {
-    	'id': 0,
+    	'id': 28,
     	'friendly_name': 'Sign',
     	'use_messages': [''],
     	'consume_chance': 1.0,
@@ -261,7 +261,7 @@ class Items(commands.Cog):
     	'rarity': 'Common'
     }
     donkeykongbarrelblast = {
-    	'id': 0,
+    	'id': 29,
     	'friendly_name': 'Donkey Kong Barrel Blast',
     	'use_messages': [''],
     	'consume_chance': 1.0,
@@ -270,7 +270,7 @@ class Items(commands.Cog):
     	'rarity': 'Common'
     }
     femboy = {
-    	'id': 0,
+    	'id': 30,
     	'friendly_name': 'Femboy',
     	'use_messages': [''],
     	'consume_chance': 1.0,
@@ -279,7 +279,7 @@ class Items(commands.Cog):
     	'rarity': 'Common'
     }
     spritecranberry = {
-    	'id': 0,
+    	'id': 31,
     	'friendly_name': 'Sprite® Cranberry',
     	'use_messages': [''],
     	'consume_chance': 1.0,
@@ -288,7 +288,7 @@ class Items(commands.Cog):
     	'rarity': 'Common'
     }
     fidgetspinner = {
-    	'id': 0,
+    	'id': 32,
     	'friendly_name': 'Fidget Spinner',
     	'use_messages': [''],
     	'consume_chance': 1.0,
@@ -297,7 +297,7 @@ class Items(commands.Cog):
     	'rarity': 'Common'
     }
     glassofwater = {
-    	'id': 0,
+    	'id': 33,
     	'friendly_name': 'Glass of Water',
     	'use_messages': [''],
     	'consume_chance': 1.0,
@@ -306,7 +306,7 @@ class Items(commands.Cog):
     	'rarity': 'Common'
     }
     brainage = {
-    	'id': 0,
+    	'id': 34,
     	'friendly_name': 'Brain Age',
     	'use_messages': [''],
     	'consume_chance': 1.0,
@@ -315,7 +315,7 @@ class Items(commands.Cog):
     	'rarity': 'Common'
     }
     tire = {
-    	'id': 0,
+    	'id': 35,
     	'friendly_name': 'Tire',
     	'use_messages': [''],
     	'consume_chance': 1.0,
@@ -324,7 +324,7 @@ class Items(commands.Cog):
     	'rarity': 'Common'
     }
     glassofmilk = {
-    	'id': 0,
+    	'id': 36,
     	'friendly_name': 'Glass of Milk',
     	'use_messages': [''],
     	'consume_chance': 1.0,
@@ -333,7 +333,7 @@ class Items(commands.Cog):
     	'rarity': 'Common'
     }
     jollizoom = {
-    	'id': 0,
+    	'id': 37,
     	'friendly_name': 'Jollizoom',
     	'use_messages': [''],
     	'consume_chance': 1.0,
@@ -342,7 +342,7 @@ class Items(commands.Cog):
     	'rarity': 'Common'
     }
     bingus = {
-    	'id': 0,
+    	'id': 38,
     	'friendly_name': 'Bingus',
     	'use_messages': [''],
     	'consume_chance': 1.0,
@@ -351,7 +351,7 @@ class Items(commands.Cog):
     	'rarity': 'Common'
     }
     totemofundying = {
-    	'id': 0,
+    	'id': 39,
     	'friendly_name': 'Totem of Undying',
     	'use_messages': [''],
     	'consume_chance': 1.0,
@@ -360,7 +360,7 @@ class Items(commands.Cog):
     	'rarity': 'Common'
     }
     nautilusshell = {
-    	'id': 0,
+    	'id': 40,
     	'friendly_name': 'Nautilus Shell',
     	'use_messages': [''],
     	'consume_chance': 1.0,
@@ -369,7 +369,7 @@ class Items(commands.Cog):
     	'rarity': 'Common'
     }
     warioshamburger = {
-    	'id': 0,
+    	'id': 41,
     	'friendly_name': 'Wario\'s Hamburger',
     	'use_messages': [''],
     	'consume_chance': 1.0,
@@ -378,7 +378,7 @@ class Items(commands.Cog):
     	'rarity': 'Common'
     }
     headphones = {
-    	'id': 0,
+    	'id': 42,
     	'friendly_name': 'Headphones',
     	'use_messages': [''],
     	'consume_chance': 1.0,

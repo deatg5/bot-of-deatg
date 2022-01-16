@@ -84,7 +84,7 @@ async def inventory(ctx, member: discord.Member = None):
 
     db_user = await pg_con.fetchrow("SELECT * FROM users WHERE userid = $1", member_id)
 
-    for item in [prop for prop in dir(Items) if prop.startswith('__') is False]:
+    for item in [prop for prop in dir(Items) if prop.startswith('__') is False and '_eject' not in prop]:
         if str(db_user[item + '_count']) != '0':
             await ctx.send(f"item: {db_user[item + '_count']}")
 
