@@ -86,7 +86,7 @@ async def inventory(ctx, member: discord.Member = None):
 
     for item in Items.item_list:
         if db_user[item['name'] + '_count'] != 0:
-            await ctx.send(f"item: {db_user[item + '_count']}")
+            await ctx.send(f"item: {db_user[item['name'] + '_count']}")
 
 
 
