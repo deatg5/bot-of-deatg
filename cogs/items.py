@@ -22,7 +22,7 @@ class Items(commands.Cog):
             'available_in_shop': True,
             'battle_use_messages': [],
             'damage': 0,
-            'heal_amount': 50
+            'heal_amount': 100
         },
         {
         	'id': 2,
@@ -30,20 +30,20 @@ class Items(commands.Cog):
         	'friendly_name': 'Drawing of Terry Crews',
             'description': '',
         	'use_messages': [''],
-        	'consume_chance': 1.0,
+        	'consume_chance': 0.2,
         	'cost': 50,
         	'sell_price': 10,
         	'rarity': 'Common',
             'available_in_shop': True,
             'battle_use_messages': [''],
-            'damage': 0,
+            'damage': 120,
             'heal_amount': 0
         },
         {
         	'id': 3,
             'name': 'soup',
         	'friendly_name': 'Soup',
-            'description': '',
+            'description': 'Yummy soup',
         	'use_messages': [''],
         	'consume_chance': 1.0,
         	'cost': 50,
