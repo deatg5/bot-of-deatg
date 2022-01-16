@@ -94,7 +94,7 @@ async def inventory(ctx, member: discord.Member = None):
 
 
 #since i'll only be using this in code i won't take a member object, just the id
-async def item_get(member_id, the_item, amount = 1):
+async def give_item(member_id, the_item, amount = 1):
     db_user = await pg_con.fetchrow("SELECT * FROM users WHERE userid = $1", member_id)
 
     #just to be sure
@@ -114,9 +114,12 @@ async def item_get(member_id, the_item, amount = 1):
 
 
 @client.command()
-async def give_item(ctx, member: discord.Member, the_item, amount = 1):
+async def grant_item(ctx, member: discord.Member, the_item, amount = 1):
     if ctx.author.id == Common.deatg_id:
-        await item_get(str(member.id), the_item, amount)
+        try:
+            await give_item(str(member.id), the_item, amount)
+        except:
+            await ctx.send("error!!!")
 
 
 @client.event
