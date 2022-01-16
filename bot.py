@@ -101,6 +101,8 @@ async def receive_item(member_id, the_item, amount = 1):
     item_count = the_item + '_count'
 
     if db_user[item_count] == None:
+        await pg_con.execute("UPDATE users SET $1 = $2 WHERE userid = $3", item_count, amount, member_id)
+    else:
         await pg_con.execute("UPDATE users SET $1 = $2 WHERE userid = $3", item_count, db_user[item_count] + amount, member_id)
 
 
