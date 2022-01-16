@@ -85,10 +85,12 @@ async def inventory(ctx, member: discord.Member = None):
 
     db_user = await pg_con.fetchrow("SELECT * FROM users WHERE userid = $1", member_id)
 
+    inv = ""
+
     for item in Items.item_list:
         if db_user[item['name'] + '_count'] != 0:
-            await ctx.send(f"{item['friendly_name']}: {db_user[item['name'] + '_count']}")
-
+            inv += f"{item['friendly_name']}: {db_user[item['name'] + '_count']}\n"
+    await ctx.send(inv)
 
 
 #since i'll only be using this in code i won't take a member object, just the id
@@ -108,7 +110,7 @@ async def item_get(member_id, the_item, amount = 1):
     if db_user[item_count] == None:
         await pg_con.execute(f"UPDATE users SET {item_count} = {amount} WHERE userid = '{member_id}'")
     else:
-        await pg_con.execute(f"UPDATE users SET {item_count} = {amount + 1} WHERE userid = '{member_id}'")
+        await pg_con.execute(f"UPDATE users SET {item_count} = {db_user[item_count] + amount} WHERE userid = '{member_id}'")
 
 
 @client.command()
