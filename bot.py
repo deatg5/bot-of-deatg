@@ -92,25 +92,24 @@ async def inventory(ctx, member: discord.Member = None):
 
 
 #since i'll only be using this in code i won't take a member object, just the id
-async def receive_item(member_id, the_item, amount = 1):
+async def item_get(member_id, the_item, amount = 1):
     db_user = await pg_con.fetchrow("SELECT * FROM users WHERE userid = $1", member_id)
 
     #just to be sure
     member_id = str(member_id)
-    amount = str(amount)
 
     item_count = the_item + '_count'
 
     if db_user[item_count] == None:
-        await pg_con.execute("UPDATE users SET $1 = $2 WHERE userid = $3", item_count, amount, member_id)
+        await pg_con.execute("UPDATE users SET %s = %s WHERE userid = %s", (item_count, amount, member_id))
     else:
-        await pg_con.execute("UPDATE users SET $1 = $2 WHERE userid = $3", item_count, db_user[item_count] + amount, member_id)
+        await pg_con.execute("UPDATE users SET %s = %s WHERE userid = %s", (item_count, db_user[item_count] + amount, member_id))
 
 
 @client.command()
 async def give_item(ctx, member: discord.Member, the_item, amount = 1):
     if ctx.author.id == Common.deatg_id:
-        await receive_item(str(member.id), the_item, amount)
+        await item_get(str(member.id), the_item, amount)
 
 
 @client.event
