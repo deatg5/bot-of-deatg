@@ -16,10 +16,9 @@ class Items(commands.Cog):
             'description': 'Can I offer you a nice egg in this trying time?',
         	'use_messages': ['Here are your eggs, sir!'],
         	'consume_chance': 1.0,
-        	'cost': 50,
+        	'cost': 10,
         	'sell_price': 10,
         	'rarity': 'Common',
-            'available_in_shop': True,
             'battle_use_messages': [],
             'damage': 0,
             'heal_amount': 100
@@ -31,10 +30,9 @@ class Items(commands.Cog):
             'description': '',
         	'use_messages': [''],
         	'consume_chance': 0.2,
-        	'cost': 50,
+        	'cost': 1000,
         	'sell_price': 10,
         	'rarity': 'Common',
-            'available_in_shop': True,
             'battle_use_messages': [''],
             'damage': 120,
             'heal_amount': 0
@@ -49,7 +47,6 @@ class Items(commands.Cog):
         	'cost': 50,
         	'sell_price': 10,
         	'rarity': 'Common',
-            'available_in_shop': True,
             'battle_use_messages': [''],
             'damage': 0,
             'heal_amount': 0
@@ -61,10 +58,9 @@ class Items(commands.Cog):
             'description': '',
         	'use_messages': [''],
         	'consume_chance': 0.0,
-        	'cost': 50,
+        	'cost': 0,
         	'sell_price': 10,
         	'rarity': 'Common',
-            'available_in_shop': True,
             'battle_use_messages': [''],
             'damage': 0,
             'heal_amount': 0
@@ -76,10 +72,9 @@ class Items(commands.Cog):
             'description': '',
         	'use_messages': [''],
         	'consume_chance': 1.0,
-        	'cost': 50,
+        	'cost': 100,
         	'sell_price': 10,
         	'rarity': 'Common',
-            'available_in_shop': True,
             'battle_use_messages': [''],
             'damage': 0,
             'heal_amount': 0
@@ -90,11 +85,10 @@ class Items(commands.Cog):
         	'friendly_name': '$15 Laptop from Wish.com',
             'description': '',
         	'use_messages': [''],
-        	'consume_chance': 1.0,
-        	'cost': 50,
+        	'consume_chance': 0.02,
+        	'cost': 15000,
         	'sell_price': 10,
         	'rarity': 'Common',
-            'available_in_shop': True,
             'battle_use_messages': [''],
             'damage': 0,
             'heal_amount': 0
@@ -109,7 +103,6 @@ class Items(commands.Cog):
         	'cost': 50,
         	'sell_price': 10,
         	'rarity': 'Common',
-            'available_in_shop': True,
             'battle_use_messages': [''],
             'damage': 0,
             'heal_amount': 0
@@ -124,7 +117,6 @@ class Items(commands.Cog):
         	'cost': 50,
         	'sell_price': 10,
         	'rarity': 'Common',
-            'available_in_shop': True,
             'battle_use_messages': [''],
             'damage': 0,
             'heal_amount': 0
@@ -139,7 +131,6 @@ class Items(commands.Cog):
         	'cost': 50,
         	'sell_price': 10,
         	'rarity': 'Common',
-            'available_in_shop': True,
             'battle_use_messages': [''],
             'damage': 0,
             'heal_amount': 0
@@ -154,7 +145,6 @@ class Items(commands.Cog):
         	'cost': 50,
         	'sell_price': 10,
         	'rarity': 'Common',
-            'available_in_shop': True,
             'battle_use_messages': [''],
             'damage': 0,
             'heal_amount': 0
@@ -169,7 +159,6 @@ class Items(commands.Cog):
         	'cost': 50,
         	'sell_price': 10,
         	'rarity': 'Common',
-            'available_in_shop': True,
             'battle_use_messages': [''],
             'damage': 0,
             'heal_amount': 0
@@ -184,7 +173,6 @@ class Items(commands.Cog):
         	'cost': 50,
         	'sell_price': 10,
         	'rarity': 'Common',
-            'available_in_shop': True,
             'battle_use_messages': [''],
             'damage': 0,
             'heal_amount': 0
@@ -199,7 +187,6 @@ class Items(commands.Cog):
         	'cost': 50,
         	'sell_price': 10,
         	'rarity': 'Common',
-            'available_in_shop': True,
             'battle_use_messages': [''],
             'damage': 0,
             'heal_amount': 0
@@ -214,7 +201,6 @@ class Items(commands.Cog):
         	'cost': 50,
         	'sell_price': 10,
         	'rarity': 'Common',
-            'available_in_shop': True,
             'battle_use_messages': [''],
             'damage': 0,
             'heal_amount': 0
@@ -229,7 +215,6 @@ class Items(commands.Cog):
         	'cost': 50,
         	'sell_price': 10,
         	'rarity': 'Common',
-            'available_in_shop': True,
             'battle_use_messages': [''],
             'damage': 0,
             'heal_amount': 0
@@ -244,7 +229,6 @@ class Items(commands.Cog):
         	'cost': 50,
         	'sell_price': 10,
         	'rarity': 'Common',
-            'available_in_shop': True,
             'battle_use_messages': [''],
             'damage': 0,
             'heal_amount': 0
@@ -259,7 +243,6 @@ class Items(commands.Cog):
         	'cost': 50,
         	'sell_price': 10,
         	'rarity': 'Common',
-            'available_in_shop': True,
             'battle_use_messages': [''],
             'damage': 0,
             'heal_amount': 0
@@ -274,7 +257,6 @@ class Items(commands.Cog):
         	'cost': 50,
         	'sell_price': 10,
         	'rarity': 'Common',
-            'available_in_shop': True,
             'battle_use_messages': [''],
             'damage': 0,
             'heal_amount': 0
@@ -289,7 +271,6 @@ class Items(commands.Cog):
         	'cost': 50,
         	'sell_price': 10,
         	'rarity': 'Common',
-            'available_in_shop': True,
             'battle_use_messages': [''],
             'damage': 0,
             'heal_amount': 0
@@ -304,7 +285,6 @@ class Items(commands.Cog):
         	'cost': 50,
         	'sell_price': 10,
         	'rarity': 'Common',
-            'available_in_shop': True,
             'battle_use_messages': [''],
             'damage': 0,
             'heal_amount': 0
@@ -319,7 +299,6 @@ class Items(commands.Cog):
         	'cost': 50,
         	'sell_price': 10,
         	'rarity': 'Common',
-            'available_in_shop': True,
             'battle_use_messages': [''],
             'damage': 0,
             'heal_amount': 0
@@ -334,7 +313,6 @@ class Items(commands.Cog):
         	'cost': 50,
         	'sell_price': 10,
         	'rarity': 'Common',
-            'available_in_shop': True,
             'battle_use_messages': [''],
             'damage': 0,
             'heal_amount': 0
@@ -349,7 +327,6 @@ class Items(commands.Cog):
         	'cost': 50,
         	'sell_price': 10,
         	'rarity': 'Common',
-            'available_in_shop': True,
             'battle_use_messages': [''],
             'damage': 0,
             'heal_amount': 0
@@ -364,7 +341,6 @@ class Items(commands.Cog):
         	'cost': 50,
         	'sell_price': 10,
         	'rarity': 'Common',
-            'available_in_shop': True,
             'battle_use_messages': [''],
             'damage': 0,
             'heal_amount': 0
@@ -379,7 +355,6 @@ class Items(commands.Cog):
         	'cost': 50,
         	'sell_price': 10,
         	'rarity': 'Common',
-            'available_in_shop': True,
             'battle_use_messages': [''],
             'damage': 0,
             'heal_amount': 0
@@ -394,7 +369,6 @@ class Items(commands.Cog):
         	'cost': 50,
         	'sell_price': 10,
         	'rarity': 'Common',
-            'available_in_shop': True,
             'battle_use_messages': [''],
             'damage': 0,
             'heal_amount': 0
@@ -409,7 +383,6 @@ class Items(commands.Cog):
         	'cost': 50,
         	'sell_price': 10,
         	'rarity': 'Common',
-            'available_in_shop': True,
             'battle_use_messages': [''],
             'damage': 0,
             'heal_amount': 0
@@ -424,7 +397,6 @@ class Items(commands.Cog):
         	'cost': 50,
         	'sell_price': 10,
         	'rarity': 'Common',
-            'available_in_shop': True,
             'battle_use_messages': [''],
             'damage': 0,
             'heal_amount': 0
@@ -439,7 +411,6 @@ class Items(commands.Cog):
         	'cost': 50,
         	'sell_price': 10,
         	'rarity': 'Common',
-            'available_in_shop': True,
             'battle_use_messages': [''],
             'damage': 0,
             'heal_amount': 0
@@ -454,7 +425,6 @@ class Items(commands.Cog):
         	'cost': 50,
         	'sell_price': 10,
         	'rarity': 'Common',
-            'available_in_shop': True,
             'battle_use_messages': [''],
             'damage': 0,
             'heal_amount': 0
@@ -469,7 +439,6 @@ class Items(commands.Cog):
         	'cost': 50,
         	'sell_price': 10,
         	'rarity': 'Common',
-            'available_in_shop': True,
             'battle_use_messages': [''],
             'damage': 0,
             'heal_amount': 0
@@ -484,7 +453,6 @@ class Items(commands.Cog):
         	'cost': 50,
         	'sell_price': 10,
         	'rarity': 'Common',
-            'available_in_shop': True,
             'battle_use_messages': [''],
             'damage': 0,
             'heal_amount': 0
@@ -499,7 +467,6 @@ class Items(commands.Cog):
         	'cost': 50,
         	'sell_price': 10,
         	'rarity': 'Common',
-            'available_in_shop': True,
             'battle_use_messages': [''],
             'damage': 0,
             'heal_amount': 0
@@ -514,7 +481,6 @@ class Items(commands.Cog):
         	'cost': 50,
         	'sell_price': 10,
         	'rarity': 'Common',
-            'available_in_shop': True,
             'battle_use_messages': [''],
             'damage': 0,
             'heal_amount': 0
@@ -529,7 +495,6 @@ class Items(commands.Cog):
         	'cost': 50,
         	'sell_price': 10,
         	'rarity': 'Common',
-            'available_in_shop': True,
             'battle_use_messages': [''],
             'damage': 0,
             'heal_amount': 0
@@ -544,7 +509,6 @@ class Items(commands.Cog):
         	'cost': 50,
         	'sell_price': 10,
         	'rarity': 'Common',
-            'available_in_shop': True,
             'battle_use_messages': ['Empowered by the Baltic God of Milk, you feel the shredded cheese course through your veins. You grow stronger.'],
             'damage': 0,
             'heal_amount': 150
@@ -559,7 +523,6 @@ class Items(commands.Cog):
         	'cost': 50,
         	'sell_price': 10,
         	'rarity': 'Common',
-            'available_in_shop': True,
             'battle_use_messages': [''],
             'damage': 0,
             'heal_amount': 0
@@ -574,7 +537,6 @@ class Items(commands.Cog):
         	'cost': 50,
         	'sell_price': 10,
         	'rarity': 'Common',
-            'available_in_shop': True,
             'battle_use_messages': [''],
             'damage': 0,
             'heal_amount': 0
@@ -589,7 +551,6 @@ class Items(commands.Cog):
         	'cost': 50,
         	'sell_price': 10,
         	'rarity': 'Common',
-            'available_in_shop': True,
             'battle_use_messages': [''],
             'damage': 0,
             'heal_amount': 0
@@ -604,7 +565,6 @@ class Items(commands.Cog):
         	'cost': 50,
         	'sell_price': 10,
         	'rarity': 'Common',
-            'available_in_shop': True,
             'battle_use_messages': [''],
             'damage': 0,
             'heal_amount': 0
@@ -619,7 +579,6 @@ class Items(commands.Cog):
         	'cost': 50,
         	'sell_price': 10,
         	'rarity': 'Common',
-            'available_in_shop': True,
             'battle_use_messages': [''],
             'damage': 0,
             'heal_amount': 0
@@ -634,7 +593,6 @@ class Items(commands.Cog):
         	'cost': 50,
         	'sell_price': 10,
         	'rarity': 'Common',
-            'available_in_shop': True,
             'battle_use_messages': [''],
             'damage': 0,
             'heal_amount': 0

@@ -106,9 +106,9 @@ async def item_get(member_id, the_item, amount = 1):
     #     await pg_con.execute("UPDATE users SET %s = %s WHERE userid = %s", (item_count, db_user[item_count] + amount, member_id))
         
     if db_user[item_count] == None:
-        await pg_con.execute(f"UPDATE users SET {item_count} = {amount} WHERE userid = {member_id}")
+        await pg_con.execute(f"UPDATE users SET {item_count} = {amount} WHERE userid = '{member_id}'")
     else:
-        await pg_con.execute(f"UPDATE users SET {item_count} = {amount + 1} WHERE userid = {member_id}")
+        await pg_con.execute(f"UPDATE users SET {item_count} = {amount + 1} WHERE userid = '{member_id}'")
 
 
 @client.command()
