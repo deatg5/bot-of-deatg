@@ -15,7 +15,10 @@ class Items(commands.Cog):
     	'consume_chance': 1.0,
     	'cost': 50,
     	'sell_price': 10,
-    	'rarity': 'Common'
+    	'rarity': 'Common',
+        'available_in_shop': True,
+        'battle_use_messages': [''],
+        'damage': 10
     }
     terrydrawing = {
     	'id': 2,
@@ -24,7 +27,10 @@ class Items(commands.Cog):
     	'consume_chance': 1.0,
     	'cost': 50,
     	'sell_price': 10,
-    	'rarity': 'Common'
+    	'rarity': 'Common',
+        'available_in_shop': True,
+        'battle_use_messages': [''],
+        'damage': 10
     }
     soup = {
     	'id': 3,
@@ -33,7 +39,10 @@ class Items(commands.Cog):
     	'consume_chance': 1.0,
     	'cost': 50,
     	'sell_price': 10,
-    	'rarity': 'Common'
+    	'rarity': 'Common',
+        'available_in_shop': True,
+        'battle_use_messages': [''],
+        'damage': 10
     }
     the = {
     	'id': 4,
@@ -42,7 +51,10 @@ class Items(commands.Cog):
     	'consume_chance': 1.0,
     	'cost': 50,
     	'sell_price': 10,
-    	'rarity': 'Common'
+    	'rarity': 'Common',
+        'available_in_shop': True,
+        'battle_use_messages': [''],
+        'damage': 10
     }
     lasaga = {
     	'id': 5,
@@ -51,7 +63,10 @@ class Items(commands.Cog):
     	'consume_chance': 1.0,
     	'cost': 50,
     	'sell_price': 10,
-    	'rarity': 'Common'
+    	'rarity': 'Common',
+        'available_in_shop': True,
+        'battle_use_messages': [''],
+        'damage': 10
     }
     laptop = {
     	'id': 6,
@@ -60,7 +75,10 @@ class Items(commands.Cog):
     	'consume_chance': 1.0,
     	'cost': 50,
     	'sell_price': 10,
-    	'rarity': 'Common'
+    	'rarity': 'Common',
+        'available_in_shop': True,
+        'battle_use_messages': [''],
+        'damage': 10
     }
     brazil = {
     	'id': 7,
@@ -69,7 +87,10 @@ class Items(commands.Cog):
     	'consume_chance': 1.0,
     	'cost': 50,
     	'sell_price': 10,
-    	'rarity': 'Common'
+    	'rarity': 'Common',
+        'available_in_shop': True,
+        'battle_use_messages': [''],
+        'damage': 10
     }
     keyboardcontroller = {
     	'id': 8,
@@ -78,7 +99,10 @@ class Items(commands.Cog):
     	'consume_chance': 1.0,
     	'cost': 50,
     	'sell_price': 10,
-    	'rarity': 'Common'
+    	'rarity': 'Common',
+        'available_in_shop': True,
+        'battle_use_messages': [''],
+        'damage': 10
     }
     godstatue = {
     	'id': 9,
@@ -87,7 +111,10 @@ class Items(commands.Cog):
     	'consume_chance': 1.0,
     	'cost': 50,
     	'sell_price': 10,
-    	'rarity': 'Common'
+    	'rarity': 'Common',
+        'available_in_shop': True,
+        'battle_use_messages': [''],
+        'damage': 10
     }
     demfextablet = {
     	'id': 10,
@@ -96,7 +123,10 @@ class Items(commands.Cog):
     	'consume_chance': 1.0,
     	'cost': 50,
     	'sell_price': 10,
-    	'rarity': 'Common'
+    	'rarity': 'Common',
+        'available_in_shop': True,
+        'battle_use_messages': [''],
+        'damage': 10
     }
     dinnerblaster = {
     	'id': 11,
@@ -105,7 +135,10 @@ class Items(commands.Cog):
     	'consume_chance': 1.0,
     	'cost': 50,
     	'sell_price': 10,
-    	'rarity': 'Common'
+    	'rarity': 'Common',
+        'available_in_shop': True,
+        'battle_use_messages': [''],
+        'damage': 10
     }
     salad = {
     	'id': 12,
@@ -114,7 +147,10 @@ class Items(commands.Cog):
     	'consume_chance': 1.0,
     	'cost': 50,
     	'sell_price': 10,
-    	'rarity': 'Common'
+    	'rarity': 'Common',
+        'available_in_shop': True,
+        'battle_use_messages': [''],
+        'damage': 10
     }
     tree = {
     	'id': 13,
@@ -123,7 +159,10 @@ class Items(commands.Cog):
     	'consume_chance': 1.0,
     	'cost': 50,
     	'sell_price': 10,
-    	'rarity': 'Common'
+    	'rarity': 'Common',
+        'available_in_shop': True,
+        'battle_use_messages': [''],
+        'damage': 10
     }
     sledgehammer = {
     	'id': 14,
@@ -132,7 +171,10 @@ class Items(commands.Cog):
     	'consume_chance': 1.0,
     	'cost': 50,
     	'sell_price': 10,
-    	'rarity': 'Common'
+    	'rarity': 'Common',
+        'available_in_shop': True,
+        'battle_use_messages': [''],
+        'damage': 10
     }
     cableandrouter = {
     	'id': 15,
@@ -141,7 +183,10 @@ class Items(commands.Cog):
     	'consume_chance': 1.0,
     	'cost': 50,
     	'sell_price': 10,
-    	'rarity': 'Common'
+    	'rarity': 'Common',
+        'available_in_shop': True,
+        'battle_use_messages': [''],
+        'damage': 10
     }
     sqlsoup = {
     	'id': 16,
@@ -150,7 +195,10 @@ class Items(commands.Cog):
     	'consume_chance': 1.0,
     	'cost': 50,
     	'sell_price': 10,
-    	'rarity': 'Common'
+    	'rarity': 'Common',
+        'available_in_shop': True,
+        'battle_use_messages': [''],
+        'damage': 10
     }
     bup = {
     	'id': 17,
@@ -159,7 +207,10 @@ class Items(commands.Cog):
     	'consume_chance': 1.0,
     	'cost': 50,
     	'sell_price': 10,
-    	'rarity': 'Common'
+    	'rarity': 'Common',
+        'available_in_shop': True,
+        'battle_use_messages': [''],
+        'damage': 10
     }
     hemoglobin = {
     	'id': 18,
@@ -168,7 +219,10 @@ class Items(commands.Cog):
     	'consume_chance': 1.0,
     	'cost': 50,
     	'sell_price': 10,
-    	'rarity': 'Common'
+    	'rarity': 'Common',
+        'available_in_shop': True,
+        'battle_use_messages': [''],
+        'damage': 10
     }
     compressedair = {
     	'id': 19,
@@ -177,7 +231,10 @@ class Items(commands.Cog):
     	'consume_chance': 1.0,
     	'cost': 50,
     	'sell_price': 10,
-    	'rarity': 'Common'
+    	'rarity': 'Common',
+        'available_in_shop': True,
+        'battle_use_messages': [''],
+        'damage': 10
     }
     harpoon = {
     	'id': 20,
@@ -186,7 +243,10 @@ class Items(commands.Cog):
     	'consume_chance': 1.0,
     	'cost': 50,
     	'sell_price': 10,
-    	'rarity': 'Common'
+    	'rarity': 'Common',
+        'available_in_shop': True,
+        'battle_use_messages': [''],
+        'damage': 10
     }
     manymanymeats = {
     	'id': 21,
@@ -195,7 +255,10 @@ class Items(commands.Cog):
     	'consume_chance': 1.0,
     	'cost': 50,
     	'sell_price': 10,
-    	'rarity': 'Common'
+    	'rarity': 'Common',
+        'available_in_shop': True,
+        'battle_use_messages': [''],
+        'damage': 10
     }
     manymanymeatsflavourful = {
     	'id': 22,
@@ -204,7 +267,10 @@ class Items(commands.Cog):
     	'consume_chance': 1.0,
     	'cost': 50,
     	'sell_price': 10,
-    	'rarity': 'Common'
+    	'rarity': 'Common',
+        'available_in_shop': True,
+        'battle_use_messages': [''],
+        'damage': 10
     }
     buttor = {
     	'id': 23,
@@ -213,7 +279,10 @@ class Items(commands.Cog):
     	'consume_chance': 1.0,
     	'cost': 50,
     	'sell_price': 10,
-    	'rarity': 'Common'
+    	'rarity': 'Common',
+        'available_in_shop': True,
+        'battle_use_messages': [''],
+        'damage': 10
     }
     ape = {
     	'id': 24,
@@ -222,7 +291,10 @@ class Items(commands.Cog):
     	'consume_chance': 1.0,
     	'cost': 50,
     	'sell_price': 10,
-    	'rarity': 'Common'
+    	'rarity': 'Common',
+        'available_in_shop': True,
+        'battle_use_messages': [''],
+        'damage': 10
     }
     recyclebin = {
     	'id': 25,
@@ -231,7 +303,10 @@ class Items(commands.Cog):
     	'consume_chance': 1.0,
     	'cost': 50,
     	'sell_price': 10,
-    	'rarity': 'Common'
+    	'rarity': 'Common',
+        'available_in_shop': True,
+        'battle_use_messages': [''],
+        'damage': 10
     }
     stopsign = {
     	'id': 26,
@@ -240,7 +315,10 @@ class Items(commands.Cog):
     	'consume_chance': 1.0,
     	'cost': 50,
     	'sell_price': 10,
-    	'rarity': 'Common'
+    	'rarity': 'Common',
+        'available_in_shop': True,
+        'battle_use_messages': [''],
+        'damage': 10
     }
     spongebob = {
     	'id': 27,
@@ -249,7 +327,10 @@ class Items(commands.Cog):
     	'consume_chance': 1.0,
     	'cost': 50,
     	'sell_price': 10,
-    	'rarity': 'Common'
+    	'rarity': 'Common',
+        'available_in_shop': True,
+        'battle_use_messages': [''],
+        'damage': 10
     }
     sign = {
     	'id': 28,
@@ -258,7 +339,10 @@ class Items(commands.Cog):
     	'consume_chance': 1.0,
     	'cost': 50,
     	'sell_price': 10,
-    	'rarity': 'Common'
+    	'rarity': 'Common',
+        'available_in_shop': True,
+        'battle_use_messages': [''],
+        'damage': 10
     }
     donkeykongbarrelblast = {
     	'id': 29,
@@ -267,7 +351,10 @@ class Items(commands.Cog):
     	'consume_chance': 1.0,
     	'cost': 50,
     	'sell_price': 10,
-    	'rarity': 'Common'
+    	'rarity': 'Common',
+        'available_in_shop': True,
+        'battle_use_messages': [''],
+        'damage': 10
     }
     femboy = {
     	'id': 30,
@@ -276,7 +363,10 @@ class Items(commands.Cog):
     	'consume_chance': 1.0,
     	'cost': 50,
     	'sell_price': 10,
-    	'rarity': 'Common'
+    	'rarity': 'Common',
+        'available_in_shop': True,
+        'battle_use_messages': [''],
+        'damage': 10
     }
     spritecranberry = {
     	'id': 31,
@@ -285,7 +375,10 @@ class Items(commands.Cog):
     	'consume_chance': 1.0,
     	'cost': 50,
     	'sell_price': 10,
-    	'rarity': 'Common'
+    	'rarity': 'Common',
+        'available_in_shop': True,
+        'battle_use_messages': [''],
+        'damage': 10
     }
     fidgetspinner = {
     	'id': 32,
@@ -294,7 +387,10 @@ class Items(commands.Cog):
     	'consume_chance': 1.0,
     	'cost': 50,
     	'sell_price': 10,
-    	'rarity': 'Common'
+    	'rarity': 'Common',
+        'available_in_shop': True,
+        'battle_use_messages': [''],
+        'damage': 10
     }
     glassofwater = {
     	'id': 33,
@@ -303,7 +399,10 @@ class Items(commands.Cog):
     	'consume_chance': 1.0,
     	'cost': 50,
     	'sell_price': 10,
-    	'rarity': 'Common'
+    	'rarity': 'Common',
+        'available_in_shop': True,
+        'battle_use_messages': [''],
+        'damage': 10
     }
     brainage = {
     	'id': 34,
@@ -312,7 +411,10 @@ class Items(commands.Cog):
     	'consume_chance': 1.0,
     	'cost': 50,
     	'sell_price': 10,
-    	'rarity': 'Common'
+    	'rarity': 'Common',
+        'available_in_shop': True,
+        'battle_use_messages': [''],
+        'damage': 10
     }
     tire = {
     	'id': 35,
@@ -321,7 +423,10 @@ class Items(commands.Cog):
     	'consume_chance': 1.0,
     	'cost': 50,
     	'sell_price': 10,
-    	'rarity': 'Common'
+    	'rarity': 'Common',
+        'available_in_shop': True,
+        'battle_use_messages': [''],
+        'damage': 10
     }
     glassofmilk = {
     	'id': 36,
@@ -330,7 +435,10 @@ class Items(commands.Cog):
     	'consume_chance': 1.0,
     	'cost': 50,
     	'sell_price': 10,
-    	'rarity': 'Common'
+    	'rarity': 'Common',
+        'available_in_shop': True,
+        'battle_use_messages': [''],
+        'damage': 10
     }
     jollizoom = {
     	'id': 37,
@@ -339,7 +447,10 @@ class Items(commands.Cog):
     	'consume_chance': 1.0,
     	'cost': 50,
     	'sell_price': 10,
-    	'rarity': 'Common'
+    	'rarity': 'Common',
+        'available_in_shop': True,
+        'battle_use_messages': [''],
+        'damage': 10
     }
     bingus = {
     	'id': 38,
@@ -348,7 +459,10 @@ class Items(commands.Cog):
     	'consume_chance': 1.0,
     	'cost': 50,
     	'sell_price': 10,
-    	'rarity': 'Common'
+    	'rarity': 'Common',
+        'available_in_shop': True,
+        'battle_use_messages': [''],
+        'damage': 10
     }
     totemofundying = {
     	'id': 39,
@@ -357,7 +471,10 @@ class Items(commands.Cog):
     	'consume_chance': 1.0,
     	'cost': 50,
     	'sell_price': 10,
-    	'rarity': 'Common'
+    	'rarity': 'Common',
+        'available_in_shop': True,
+        'battle_use_messages': [''],
+        'damage': 10
     }
     nautilusshell = {
     	'id': 40,
@@ -366,7 +483,10 @@ class Items(commands.Cog):
     	'consume_chance': 1.0,
     	'cost': 50,
     	'sell_price': 10,
-    	'rarity': 'Common'
+    	'rarity': 'Common',
+        'available_in_shop': True,
+        'battle_use_messages': [''],
+        'damage': 10
     }
     warioshamburger = {
     	'id': 41,
@@ -375,7 +495,10 @@ class Items(commands.Cog):
     	'consume_chance': 1.0,
     	'cost': 50,
     	'sell_price': 10,
-    	'rarity': 'Common'
+    	'rarity': 'Common',
+        'available_in_shop': True,
+        'battle_use_messages': [''],
+        'damage': 10
     }
     headphones = {
     	'id': 42,
@@ -384,7 +507,10 @@ class Items(commands.Cog):
     	'consume_chance': 1.0,
     	'cost': 50,
     	'sell_price': 10,
-    	'rarity': 'Common'
+    	'rarity': 'Common',
+        'available_in_shop': True,
+        'battle_use_messages': [''],
+        'damage': 10
     }
 
 
