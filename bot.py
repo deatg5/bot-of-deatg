@@ -85,10 +85,11 @@ async def inventory(ctx, member: discord.Member = None):
 
     db_user = await pg_con.fetchrow("SELECT * FROM users WHERE userid = $1", member_id)
 
+    
     inv = ""
 
     for item in Items.item_list:
-        if db_user[item['name'] + '_count'] != 0:
+        if db_user[item['name'] + '_count'] != 0 or db_user[item['name'] + '_count'] != None:
             inv += f"{item['friendly_name']}: {db_user[item['name'] + '_count']}\n"
     await ctx.send(inv)
 
