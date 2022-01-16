@@ -32,16 +32,17 @@ for filename in os.listdir('./cogs'):
 
         
 
+#I wish there was a bot named the tag bot, if you @ someone and say tag after it (example: @deatg tag) then they are it, then they can then @ someone else, 
+# this would repeat for awhile but after 5 minutes the person who is tagged doesn't get a point while everyone else who participated does.
+
+
+
+
 
 #database stuff handled in main bot file
 async def create_db_pool():
         global pg_con 
         pg_con = await asyncpg.create_pool(host = "ec2-52-44-31-100.compute-1.amazonaws.com", database ="d9sog7i18caten", user ="bkpsbvehfzmaip", password = DATABASE_PASSWORD)
-
-
-#I wish there was a bot named the tag bot, if you @ someone and say tag after it (example: @deatg tag) then they are it, then they can then @ someone else, 
-# this would repeat for awhile but after 5 minutes the person who is tagged doesn't get a point while everyone else who participated does.
-
 
 @client.command(brief="the global bot of deatg leaderboard (1 xp = 1 message sent)")
 async def leaderboard(ctx, amount=30):
@@ -72,6 +73,19 @@ async def level(ctx, member: discord.Member = None):
     db_user = await pg_con.fetchrow("SELECT * FROM users WHERE userid = $1", member_id)
 
     await ctx.send(f"{member.name}\nLevel: {db_user['level']}\nXP: {db_user['xp']}")
+
+
+@client.command(aliases=['inv'], brief="check your inventory")
+async def inventory(ctx, member: discord.Member = None):
+    if member == None:
+        member = ctx.author
+    member_id = str(member.id)
+
+    db_user = await pg_con.fetchrow("SELECT * FROM users WHERE userid = $1", member_id)
+    for record in db_user:
+        if record != None:
+            await ctx.send(str(record))
+
 
 @client.event
 async def on_message(message):
