@@ -84,9 +84,10 @@ async def inventory(ctx, member: discord.Member = None):
 
     db_user = await pg_con.fetchrow("SELECT * FROM users WHERE userid = $1", member_id)
 
-    for item in [prop for prop in dir(Items)]:
-        if db_user[item + '_count'] and str(db_user[item + '_count']) != '0':
+    for item in Items.item_list:
+        if db_user[item['name'] + '_count'] != 0:
             await ctx.send(f"item: {db_user[item + '_count']}")
+
 
 
 #since i'll only be using this in code i won't take a member object, just the id
