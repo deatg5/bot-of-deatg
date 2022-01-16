@@ -1,4 +1,5 @@
 from math import fabs
+import string
 import discord
 import os
 from discord.ext import commands
@@ -6,7 +7,7 @@ import asyncpg
 import textwrap
 import sys
 
-
+from cogs.items import Items
 
 DATABASE_PASSWORD = os.environ['DATABASE_PASSWORD']
 
@@ -82,13 +83,17 @@ async def inventory(ctx, member: discord.Member = None):
     member_id = str(member.id)
 
     db_user = await pg_con.fetchrow("SELECT * FROM users WHERE userid = $1", member_id)
-    for record in db_user:
-        if record != None:
-            await ctx.send(str(record))
+
+    for item in [prop for prop in dir(Items) if prop.startswith('__') is False]:
+        if str(db_user[item + '_count']) != '0':
+            await ctx.send(f"item: {db_user[item + '_count']}")
+
 
 #since i'll only be using this in code i won't take a member object, just the id
-#def receive_item(member_id, the_item):
-
+#async def receive_item(member_id, the_item):
+#    db_user = await pg_con.fetchrow("SELECT * FROM users WHERE userid = $1", member_id)
+#
+#    if db_user[the_item]
 
 
 @client.event
