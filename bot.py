@@ -144,7 +144,7 @@ async def rob(ctx, member: discord.Member = None):
     member_id = str(member.id)
     author_id = str(ctx.author.id)
 
-    #base odds to successfully rob somone: 10%
+    #base odds to successfully rob somone or lose money: 20%
     #you will steal 1 - 4% of their cash
     #cooldown to try to rob is 1 minute
     #after a user has been successfully robbed from, they won't be able to be robbed from for 1 hour
@@ -160,12 +160,14 @@ async def rob(ctx, member: discord.Member = None):
         percentage = random.randint(2, 5) * 0.01
         cash_stolen = math.floor(robbee['cash'] * percentage)
         await give_cash(ctx.author.id, cash_stolen)
+        await give_cash(member.id, -cash_stolen)
         await ctx.send(f'You stole ${cash_stolen} from {member.name}#{member.discriminator}')
     elif result >= 80:
         #failure
         percentage = random.randint(2, 5) * 0.01
         cash_to_give = math.floor(robber['cash'] * percentage)
-        await give_cash(ctx.author.id, cash_to_give)
+        await give_cash(member.id, cash_to_give)
+        await give_cash(ctx.author.id, -cash_to_give)
         await ctx.send(f'You got caught and somehow ended up giving ${cash_to_give} to {member.name}#{member.discriminator}')
     else:
         await ctx.send(random.choice(['Your rob attempt was unsuccessful.', 'Your rob failed.', 'You failed to rob. Try again next time!','yikes, you totally failed and got nothing']))
