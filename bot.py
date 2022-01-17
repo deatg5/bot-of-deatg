@@ -131,7 +131,7 @@ async def inventory(ctx, member: discord.Member = None):
 @client.command(brief="opens the shop")
 async def shop(ctx):
     
-    embed=discord.Embed(title=f"the shop", description="use ;buy (item name) to buy something" color=Common.random_color())
+    embed=discord.Embed(title=f"the shop", description="use ;buy (item name) to buy something", color=Common.random_color())
 
     for item in Items.item_list:
         if (item['cost'] != 0):
