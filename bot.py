@@ -120,12 +120,13 @@ async def inventory(ctx, member: discord.Member = None):
     db_user = await pg_con.fetchrow("SELECT * FROM users WHERE userid = $1", member_id)
 
     
-    inv = ""
+    embed=discord.Embed(title=f"{member.name}'s inventory", description="description", color=Common.random_color())
 
     for item in Items.item_list:
         if db_user[item['name'] + '_count'] != 0 and db_user[item['name'] + '_count'] != None:
-            inv += f"{item['friendly_name']}: {db_user[item['name'] + '_count']}\n"
-    await ctx.send(inv)
+            #inv += f"{item['friendly_name']}: {db_user[item['name'] + '_count']}\n"
+            embed.add_field(name=f"{item['friendly_name']}", value=f"{db_user[item['name'] + '_count']}", inline=False)
+    await ctx.send(embed=embed)
 
 @client.command(aliases=["bal"], brief="check your balance")
 async def balance(ctx, member: discord.Member = None):
@@ -134,7 +135,7 @@ async def balance(ctx, member: discord.Member = None):
     member_id = str(member.id)
     db_user = await pg_con.fetchrow("SELECT * FROM users WHERE userid = $1", member_id)
 
-    await ctx.send(embed=discord.Embed(description=str(db_user['cash']), color=Common.random_color()))
+    await ctx.send(embed=discord.Embed(title=f"{member.name}'s balance", description=str(db_user['cash']), color=Common.random_color()))
 
 
 @client.command(brief="rob someone :flushed:")
