@@ -99,10 +99,10 @@ async def give_item(member_id, the_item, amount = 1):
         await pg_con.execute(f"UPDATE users SET {item_count} = {db_user[item_count] + amount} WHERE userid = '{member_id}'")
 
 async def give_cash(member_id, amount):
-    db_user = await pg_con.fetchrow("SELECT * FROM users WHERE userid = $1", member_id)
 
-    #just to be sure
     member_id = str(member_id)
+
+    db_user = await pg_con.fetchrow("SELECT * FROM users WHERE userid = $1", member_id)
         
     if db_user['cash'] == None:
         await pg_con.execute(f"UPDATE users SET cash = $1 WHERE userid = $2", amount, member_id)
