@@ -125,8 +125,20 @@ async def inventory(ctx, member: discord.Member = None):
     for item in Items.item_list:
         if db_user[item['name'] + '_count'] != 0 and db_user[item['name'] + '_count'] != None:
             #inv += f"{item['friendly_name']}: {db_user[item['name'] + '_count']}\n"
-            embed.add_field(name=f"{item['friendly_name']}", value=f"{item['emoji']} {db_user[item['name'] + '_count']}", inline=True)
+            embed.add_field(name=item['friendly_name'], value=f"{item['emoji']} {db_user[item['name'] + '_count']}", inline=True)
     await ctx.send(embed=embed)
+
+@client.command(brief="opens the shop")
+async def shop(ctx):
+    
+    embed=discord.Embed(title=f"the shop", description="use ;buy (item name) to buy something" color=Common.random_color())
+
+    for item in Items.item_list:
+        if (item['cost'] != 0):
+            embed.add_field(name=f"{item['emoji']} {item['friendly_name']} {item['name']}", value=f"${item['cost']}")
+    await ctx.send(embed=embed)
+
+
 
 @client.command(aliases=["bal"], brief="check your balance")
 async def balance(ctx, member: discord.Member = None):

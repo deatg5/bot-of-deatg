@@ -82,7 +82,7 @@ class Items(commands.Cog):
             'battle_use_messages': [''],
             'damage': 0,
             'heal_amount': 0,
-            'emoji': ''
+            'emoji': '<:lasaga:932702958506901505>'
         },
         {
         	'id': 6,
@@ -427,7 +427,7 @@ class Items(commands.Cog):
             'battle_use_messages': [''],
             'damage': 0,
             'heal_amount': 0,
-            'emoji': ''
+            'emoji': '<:deatg:932029230471061534>'
         },
         {
         	'id': 29,
@@ -562,7 +562,7 @@ class Items(commands.Cog):
             'battle_use_messages': [''],
             'damage': 0,
             'heal_amount': 0,
-            'emoji': ''
+            'emoji': '<:jollizoom:932029205284282368>'
         },
         {
         	'id': 38,
