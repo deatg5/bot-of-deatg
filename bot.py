@@ -125,7 +125,7 @@ async def inventory(ctx, member: discord.Member = None):
     for item in Items.item_list:
         if db_user[item['name'] + '_count'] != 0 and db_user[item['name'] + '_count'] != None:
             #inv += f"{item['friendly_name']}: {db_user[item['name'] + '_count']}\n"
-            embed.add_field(name=f"{item['friendly_name']}", value=f"{db_user[item['name'] + '_count']}", inline=False)
+            embed.add_field(name=f"{item['friendly_name']}", value=f"{db_user[item['name'] + '_count']}", inline=True)
     await ctx.send(embed=embed)
 
 @client.command(aliases=["bal"], brief="check your balance")
