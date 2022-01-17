@@ -125,7 +125,7 @@ async def inventory(ctx, member: discord.Member = None):
     for item in Items.item_list:
         if db_user[item['name'] + '_count'] != 0 and db_user[item['name'] + '_count'] != None:
             #inv += f"{item['friendly_name']}: {db_user[item['name'] + '_count']}\n"
-            embed.add_field(name=f"{item['friendly_name']}", value=f"{db_user[item['name'] + '_count']}", inline=True)
+            embed.add_field(name=f"{item['friendly_name']}", value=f"{item['emoji']} {db_user[item['name'] + '_count']}", inline=True)
     await ctx.send(embed=embed)
 
 @client.command(aliases=["bal"], brief="check your balance")
@@ -135,8 +135,11 @@ async def balance(ctx, member: discord.Member = None):
     member_id = str(member.id)
     db_user = await pg_con.fetchrow("SELECT * FROM users WHERE userid = $1", member_id)
 
-    await ctx.send(embed=discord.Embed(title=f"{member.name}'s balance", description=str(db_user['cash']), color=Common.random_color()))
+    await ctx.send(embed=discord.Embed(title=f"{member.name}'s balance", description=f"${str(db_user['cash'])}", color=Common.random_color()))
 
+@client.command(brief="throw away an item")
+async def toss(ctx):
+    await ctx.send("template command")
 
 @client.command(brief="rob someone :flushed:")
 async def rob(ctx, member: discord.Member = None):
