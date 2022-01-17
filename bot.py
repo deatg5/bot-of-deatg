@@ -157,12 +157,14 @@ async def rob(ctx, member: discord.Member = None):
 
     if result <= 10:
         #success
-        cash_stolen = math.floor(robbee['cash'] * (random.randint(2, 5) * 0.01))
+        percentage = random.randint(2, 5) * 0.01
+        cash_stolen = math.floor(robbee['cash'] * percentage)
         await give_cash(ctx.author.id, cash_stolen)
         await ctx.send(f'You stole {cash_stolen} from {member.name}#{member.discriminator}')
     elif result >= 90:
         #failure
-        cash_to_give = math.floor(robber['cash'] * (random.randint(2, 5) * 0.01))
+        percentage = random.randint(2, 5) * 0.01
+        cash_to_give = math.floor(robber['cash'] * percentage)
         await give_cash(ctx.author.id, cash_to_give)
         await ctx.send(f'You got caught and somehow ended up giving {cash_to_give} to {member.name}#{member.discriminator}')
     else:
