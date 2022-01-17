@@ -137,6 +137,8 @@ async def shop(ctx):
         if (item['cost'] != 0):
             if item['heal_amount'] == 0:
                 embed.add_field(name=f"{item['emoji']} {item['friendly_name']} [{item['name']}]", value=f"${item['cost']}\n{item['description']}\ndamage: {item['damage']}")
+            elif item['heal_amount'] == 0 and item['damage'] == 0:
+                embed.add_field(name=f"{item['emoji']} {item['friendly_name']} [{item['name']}]", value=f"${item['cost']}\n{item['description']}")
             else:
                 embed.add_field(name=f"{item['emoji']} {item['friendly_name']} [{item['name']}]", value=f"${item['cost']}\n{item['description']}\nheal amount: {item['heal_amount']}")
     await ctx.send(embed=embed)

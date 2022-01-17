@@ -51,7 +51,7 @@ class Items(commands.Cog):
         	'rarity': 'Common',
             'battle_use_messages': [],
             'damage': 0,
-            'heal_amount': 0,
+            'heal_amount': 120,
             'emoji': '<:soup:932701769161641994>'
         },
         {
