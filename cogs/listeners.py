@@ -20,6 +20,7 @@ class Listeners(commands.Cog):
     async def on_ready(self):
         await Common.log(self, 'BOT ACTIVATED')
         print('BOT ACTIVATED')
+        self.client.remove_command('help')
 
     
     #@commands.Cog.listener()
