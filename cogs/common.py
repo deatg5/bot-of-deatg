@@ -157,7 +157,8 @@ class Common(commands.Cog):
         return random.choice(possible_messages)
 
     def random_color():
-        return ["#"+''.join([random.choice('ABCDEF0123456789') for i in range(6)])]
+        #return ["#"+''.join([random.choice('ABCDEF0123456789') for i in range(6)])]
+        return random.randint(0, 0xffffff)
 
     def random_style(self, message_content):
         styles = ["**", "*", "~~", "`", "||", "```"]
