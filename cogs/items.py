@@ -97,7 +97,7 @@ class Items(commands.Cog):
             'battle_use_messages': [''],
             'damage': 0,
             'heal_amount': 0,
-            'emoji': ''
+            'emoji': '<:laptop:932780633648930866>'
         },
         {
         	'id': 7,
@@ -112,7 +112,7 @@ class Items(commands.Cog):
             'battle_use_messages': [''],
             'damage': 0,
             'heal_amount': 0,
-            'emoji': ''
+            'emoji': '<:brazil:932781051602960405>'
         },
         {
         	'id': 8,
@@ -127,7 +127,7 @@ class Items(commands.Cog):
             'battle_use_messages': [''],
             'damage': 0,
             'heal_amount': 0,
-            'emoji': ''
+            'emoji': '<:keyboardcontroller:932782977044320276>'
         },
         {
         	'id': 9,
@@ -157,7 +157,7 @@ class Items(commands.Cog):
             'battle_use_messages': [''],
             'damage': 0,
             'heal_amount': 0,
-            'emoji': ''
+            'emoji': '<:demfextablet:932782978613002300>'
         },
         {
         	'id': 11,
@@ -172,7 +172,7 @@ class Items(commands.Cog):
             'battle_use_messages': [''],
             'damage': 999,
             'heal_amount': 999,
-            'emoji': ''
+            'emoji': '<:dinnerblaster:932783332008296468>'
         },
         {
         	'id': 12,
