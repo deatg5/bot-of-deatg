@@ -153,7 +153,7 @@ async def rob(ctx, member: discord.Member = None):
     robber = await pg_con.fetchrow("SELECT * FROM users WHERE userid = $1", author_id)
     robbee = await pg_con.fetchrow("SELECT * FROM users WHERE userid = $1", member_id)
 
-    result = random.randinit(0, 100)
+    result = random.randint(0, 100)
 
     if result <= 10:
         #success
