@@ -21,7 +21,8 @@ class Items(commands.Cog):
         	'rarity': 'Common',
             'battle_use_messages': [],
             'damage': 0,
-            'heal_amount': 100
+            'heal_amount': 100,
+            'emoji': ''
         },
         {
         	'id': 2,
@@ -35,7 +36,8 @@ class Items(commands.Cog):
         	'rarity': 'Common',
             'battle_use_messages': [''],
             'damage': 120,
-            'heal_amount': 0
+            'heal_amount': 0,
+            'emoji': ''
         },
         {
         	'id': 3,
@@ -49,7 +51,8 @@ class Items(commands.Cog):
         	'rarity': 'Common',
             'battle_use_messages': [],
             'damage': 0,
-            'heal_amount': 0
+            'heal_amount': 0,
+            'emoji': ''
         },
         {
         	'id': 4,
@@ -63,7 +66,8 @@ class Items(commands.Cog):
         	'rarity': 'Common',
             'battle_use_messages': [''],
             'damage': 0,
-            'heal_amount': 0
+            'heal_amount': 0,
+            'emoji': ''
         },
         {
         	'id': 5,
@@ -77,7 +81,8 @@ class Items(commands.Cog):
         	'rarity': 'Common',
             'battle_use_messages': [''],
             'damage': 0,
-            'heal_amount': 0
+            'heal_amount': 0,
+            'emoji': ''
         },
         {
         	'id': 6,
@@ -91,7 +96,8 @@ class Items(commands.Cog):
         	'rarity': 'Common',
             'battle_use_messages': [''],
             'damage': 0,
-            'heal_amount': 0
+            'heal_amount': 0,
+            'emoji': ''
         },
         {
         	'id': 7,
@@ -105,7 +111,8 @@ class Items(commands.Cog):
         	'rarity': 'Common',
             'battle_use_messages': [''],
             'damage': 0,
-            'heal_amount': 0
+            'heal_amount': 0,
+            'emoji': ''
         },
         {
         	'id': 8,
@@ -119,7 +126,8 @@ class Items(commands.Cog):
         	'rarity': 'Common',
             'battle_use_messages': [''],
             'damage': 0,
-            'heal_amount': 0
+            'heal_amount': 0,
+            'emoji': ''
         },
         {
         	'id': 9,
@@ -133,7 +141,8 @@ class Items(commands.Cog):
         	'rarity': 'Common',
             'battle_use_messages': [''],
             'damage': 0,
-            'heal_amount': 0
+            'heal_amount': 0,
+            'emoji': ''
         },
         {
         	'id': 10,
@@ -147,7 +156,8 @@ class Items(commands.Cog):
         	'rarity': 'Common',
             'battle_use_messages': [''],
             'damage': 0,
-            'heal_amount': 0
+            'heal_amount': 0,
+            'emoji': ''
         },
         {
         	'id': 11,
@@ -161,7 +171,8 @@ class Items(commands.Cog):
         	'rarity': 'Common',
             'battle_use_messages': [''],
             'damage': 0,
-            'heal_amount': 0
+            'heal_amount': 0,
+            'emoji': ''
         },
         {
         	'id': 12,
@@ -175,7 +186,8 @@ class Items(commands.Cog):
         	'rarity': 'Common',
             'battle_use_messages': [''],
             'damage': 0,
-            'heal_amount': 0
+            'heal_amount': 0,
+            'emoji': ''
         },
         {
         	'id': 13,
@@ -189,7 +201,8 @@ class Items(commands.Cog):
         	'rarity': 'Common',
             'battle_use_messages': [''],
             'damage': 0,
-            'heal_amount': 0
+            'heal_amount': 0,
+            'emoji': ''
         },
         {
         	'id': 14,
@@ -203,7 +216,8 @@ class Items(commands.Cog):
         	'rarity': 'Common',
             'battle_use_messages': [''],
             'damage': 0,
-            'heal_amount': 0
+            'heal_amount': 0,
+            'emoji': ''
         },
         {
         	'id': 15,
@@ -217,7 +231,8 @@ class Items(commands.Cog):
         	'rarity': 'Common',
             'battle_use_messages': [''],
             'damage': 0,
-            'heal_amount': 0
+            'heal_amount': 0,
+            'emoji': ''
         },
         {
         	'id': 16,
@@ -231,7 +246,8 @@ class Items(commands.Cog):
         	'rarity': 'Common',
             'battle_use_messages': [''],
             'damage': 0,
-            'heal_amount': 0
+            'heal_amount': 0,
+            'emoji': ''
         },
         {
         	'id': 17,
@@ -245,7 +261,8 @@ class Items(commands.Cog):
         	'rarity': 'Common',
             'battle_use_messages': [''],
             'damage': 0,
-            'heal_amount': 0
+            'heal_amount': 0,
+            'emoji': ''
         },
         {
         	'id': 18,
@@ -259,7 +276,8 @@ class Items(commands.Cog):
         	'rarity': 'Common',
             'battle_use_messages': [''],
             'damage': 0,
-            'heal_amount': 0
+            'heal_amount': 0,
+            'emoji': ''
         },
         {
         	'id': 19,
@@ -273,7 +291,8 @@ class Items(commands.Cog):
         	'rarity': 'Common',
             'battle_use_messages': [''],
             'damage': 0,
-            'heal_amount': 0
+            'heal_amount': 0,
+            'emoji': ''
         },
         {
         	'id': 20,
@@ -287,7 +306,8 @@ class Items(commands.Cog):
         	'rarity': 'Common',
             'battle_use_messages': [''],
             'damage': 0,
-            'heal_amount': 0
+            'heal_amount': 0,
+            'emoji': ''
         },
         {
         	'id': 21,
@@ -301,7 +321,8 @@ class Items(commands.Cog):
         	'rarity': 'Common',
             'battle_use_messages': [''],
             'damage': 0,
-            'heal_amount': 0
+            'heal_amount': 0,
+            'emoji': ''
         },
         {
         	'id': 22,
@@ -315,7 +336,8 @@ class Items(commands.Cog):
         	'rarity': 'Common',
             'battle_use_messages': [''],
             'damage': 0,
-            'heal_amount': 0
+            'heal_amount': 0,
+            'emoji': ''
         },
         {
         	'id': 23,
@@ -329,7 +351,8 @@ class Items(commands.Cog):
         	'rarity': 'Common',
             'battle_use_messages': [''],
             'damage': 0,
-            'heal_amount': 0
+            'heal_amount': 0,
+            'emoji': ''
         },
         {
         	'id': 24,
@@ -343,7 +366,8 @@ class Items(commands.Cog):
         	'rarity': 'Common',
             'battle_use_messages': [''],
             'damage': 0,
-            'heal_amount': 0
+            'heal_amount': 0,
+            'emoji': ''
         },
         {
         	'id': 25,
@@ -357,7 +381,8 @@ class Items(commands.Cog):
         	'rarity': 'Common',
             'battle_use_messages': [''],
             'damage': 0,
-            'heal_amount': 0
+            'heal_amount': 0,
+            'emoji': ''
         },
         {
         	'id': 26,
@@ -371,7 +396,8 @@ class Items(commands.Cog):
         	'rarity': 'Common',
             'battle_use_messages': [''],
             'damage': 0,
-            'heal_amount': 0
+            'heal_amount': 0,
+            'emoji': ''
         },
         {
         	'id': 27,
@@ -385,7 +411,8 @@ class Items(commands.Cog):
         	'rarity': 'Common',
             'battle_use_messages': [''],
             'damage': 0,
-            'heal_amount': 0
+            'heal_amount': 0,
+            'emoji': ''
         },
         {
         	'id': 28,
@@ -399,7 +426,8 @@ class Items(commands.Cog):
         	'rarity': 'Common',
             'battle_use_messages': [''],
             'damage': 0,
-            'heal_amount': 0
+            'heal_amount': 0,
+            'emoji': ''
         },
         {
         	'id': 29,
@@ -413,7 +441,8 @@ class Items(commands.Cog):
         	'rarity': 'Common',
             'battle_use_messages': [''],
             'damage': 0,
-            'heal_amount': 0
+            'heal_amount': 0,
+            'emoji': ''
         },
         {
         	'id': 30,
@@ -427,7 +456,8 @@ class Items(commands.Cog):
         	'rarity': 'Common',
             'battle_use_messages': [''],
             'damage': 0,
-            'heal_amount': 0
+            'heal_amount': 0,
+            'emoji': ''
         },
         {
         	'id': 31,
@@ -441,7 +471,8 @@ class Items(commands.Cog):
         	'rarity': 'Common',
             'battle_use_messages': [''],
             'damage': 0,
-            'heal_amount': 0
+            'heal_amount': 0,
+            'emoji': ''
         },
         {
         	'id': 32,
@@ -455,7 +486,8 @@ class Items(commands.Cog):
         	'rarity': 'Common',
             'battle_use_messages': [''],
             'damage': 0,
-            'heal_amount': 0
+            'heal_amount': 0,
+            'emoji': ''
         },
         {
         	'id': 33,
@@ -469,7 +501,8 @@ class Items(commands.Cog):
         	'rarity': 'Common',
             'battle_use_messages': [''],
             'damage': 0,
-            'heal_amount': 0
+            'heal_amount': 0,
+            'emoji': ''
         },
         {
         	'id': 34,
@@ -483,7 +516,8 @@ class Items(commands.Cog):
         	'rarity': 'Common',
             'battle_use_messages': [''],
             'damage': 0,
-            'heal_amount': 0
+            'heal_amount': 0,
+            'emoji': ''
         },
         {
         	'id': 35,
@@ -497,7 +531,8 @@ class Items(commands.Cog):
         	'rarity': 'Common',
             'battle_use_messages': [''],
             'damage': 0,
-            'heal_amount': 0
+            'heal_amount': 0,
+            'emoji': ''
         },
         {
         	'id': 36,
@@ -511,7 +546,8 @@ class Items(commands.Cog):
         	'rarity': 'Common',
             'battle_use_messages': ['Empowered by the Baltic God of Milk, you feel the shredded cheese course through your veins. You grow stronger.'],
             'damage': 0,
-            'heal_amount': 150
+            'heal_amount': 150,
+            'emoji': ''
         },
         {
         	'id': 37,
@@ -525,7 +561,8 @@ class Items(commands.Cog):
         	'rarity': 'Common',
             'battle_use_messages': [''],
             'damage': 0,
-            'heal_amount': 0
+            'heal_amount': 0,
+            'emoji': ''
         },
         {
         	'id': 38,
@@ -539,7 +576,8 @@ class Items(commands.Cog):
         	'rarity': 'Common',
             'battle_use_messages': [''],
             'damage': 0,
-            'heal_amount': 0
+            'heal_amount': 0,
+            'emoji': ''
         },
         {
         	'id': 39,
@@ -553,7 +591,8 @@ class Items(commands.Cog):
         	'rarity': 'Common',
             'battle_use_messages': [''],
             'damage': 0,
-            'heal_amount': 0
+            'heal_amount': 0,
+            'emoji': ''
         },
         {
         	'id': 40,
@@ -567,7 +606,8 @@ class Items(commands.Cog):
         	'rarity': 'Common',
             'battle_use_messages': [''],
             'damage': 0,
-            'heal_amount': 0
+            'heal_amount': 0,
+            'emoji': ''
         },
         {
         	'id': 41,
@@ -581,7 +621,8 @@ class Items(commands.Cog):
         	'rarity': 'Common',
             'battle_use_messages': [''],
             'damage': 0,
-            'heal_amount': 0
+            'heal_amount': 0,
+            'emoji': ''
         },
         {
         	'id': 42,
@@ -595,7 +636,38 @@ class Items(commands.Cog):
         	'rarity': 'Common',
             'battle_use_messages': [''],
             'damage': 0,
-            'heal_amount': 0
+            'heal_amount': 0,
+            'emoji': ''
+        },
+        {
+            'id': 43,
+            'name': 'cyanpurpleobject',
+            'friendly_name': 'Cyan and Purple Object',
+            'description': 'A unknown cyan and purple Object',
+            'use_messages': ['idk'],
+            'consume_chance': 1.0,
+            'cost': 1000,
+            'sell_price': 950,
+            'rarity': 'Rare',
+            'battle_use_messages': [''],
+            'damage': 50,
+            'heal_amount': 25,
+            'emoji': ''
+        },
+        {
+            'id': 44,
+            'name': 'coil',
+            'friendly_name': 'Roll of Air Conditioning Pair Coil 1/4\' x 3/8\' 410A 20m Polyethylene UV protected Insulated Copper heat resistant to 120°c',
+            'description': '',
+            'use_messages': [''],
+            'consume_chance': 1.0,
+            'cost': 1000,
+            'sell_price': 950,
+            'rarity': 'Rare',
+            'battle_use_messages': [''],
+            'damage': 50,
+            'heal_amount': 25,
+            'emoji': ''
         }
     ]
 

@@ -1,5 +1,7 @@
 from math import fabs
+import math
 import string
+import random
 import discord
 import os
 from discord.ext import commands
@@ -76,33 +78,7 @@ async def level(ctx, member: discord.Member = None):
 
     await ctx.send(f"{member.name}\nLevel: {db_user['level']}\nXP: {db_user['xp']}")
 
-
-@client.command(aliases=['inv'], brief="check your inventory")
-async def inventory(ctx, member: discord.Member = None):
-    if member == None:
-        member = ctx.author
-    member_id = str(member.id)
-
-    db_user = await pg_con.fetchrow("SELECT * FROM users WHERE userid = $1", member_id)
-
     
-    inv = ""
-
-    for item in Items.item_list:
-        if db_user[item['name'] + '_count'] != 0 and db_user[item['name'] + '_count'] != None:
-            inv += f"{item['friendly_name']}: {db_user[item['name'] + '_count']}\n"
-    await ctx.send(inv)
-
-@client.command( aliases=["bal"], name = "Balance", brief="check your balance")
-async def balance(ctx, member: discord.Member = None):
-    if member == None:
-        member = ctx.author
-    member_id = str(member.id)
-    db_user = await pg_con.fetchrow("SELECT * FROM users WHERE userid = $1", member_id)
-
-    await ctx.send(str(db_user['cash']))
-
-
 #since i'll only be using this in code i won't take a member object, just the id
 async def give_item(member_id, the_item, amount = 1):
     db_user = await pg_con.fetchrow("SELECT * FROM users WHERE userid = $1", member_id)
@@ -134,6 +110,67 @@ async def give_cash(member_id, amount):
         await pg_con.execute(f"UPDATE users SET cash = $1 WHERE userid = $2", db_user['cash'] + amount, member_id)
 
 
+
+@client.command(aliases=['inv'], brief="check your inventory")
+async def inventory(ctx, member: discord.Member = None):
+    if member == None:
+        member = ctx.author
+    member_id = str(member.id)
+
+    db_user = await pg_con.fetchrow("SELECT * FROM users WHERE userid = $1", member_id)
+
+    
+    inv = ""
+
+    for item in Items.item_list:
+        if db_user[item['name'] + '_count'] != 0 and db_user[item['name'] + '_count'] != None:
+            inv += f"{item['friendly_name']}: {db_user[item['name'] + '_count']}\n"
+    await ctx.send(inv)
+
+@client.command(aliases=["bal"], brief="check your balance")
+async def balance(ctx, member: discord.Member = None):
+    if member == None:
+        member = ctx.author
+    member_id = str(member.id)
+    db_user = await pg_con.fetchrow("SELECT * FROM users WHERE userid = $1", member_id)
+
+    await ctx.send(str(db_user['cash']))
+
+
+@client.command(brief="rob someone :flushed:")
+async def rob(ctx, member: discord.Member = None):
+    if member == None:
+        member = ctx.author
+    member_id = str(member.id)
+    author_id = str(ctx.author.id)
+
+    #base odds to successfully rob somone: 10%
+    #you will steal 1 - 4% of their cash
+    #cooldown to try to rob is 1 minute
+    #after a user has been successfully robbed from, they won't be able to be robbed from for 1 hour
+    #10% chance to give the person you're robbing 1 - 4% of your current cash
+
+    robber = await pg_con.fetchrow("SELECT * FROM users WHERE userid = $1", author_id)
+    robbee = await pg_con.fetchrow("SELECT * FROM users WHERE userid = $1", member_id)
+
+    result = random.randinit(0, 100)
+
+    if result <= 10:
+        #success
+        cash_stolen = math.floor(robbee['cash'] * (random.randint(2, 5) * 0.01))
+        await give_cash(ctx.author.id, cash_stolen)
+        await ctx.send(f'You stole {cash_stolen} from {member.name}#{member.discriminator}')
+    elif result >= 90:
+        #failure
+        cash_to_give = math.floor(robber['cash'] * (random.randint(2, 5) * 0.01))
+        await give_cash(ctx.author.id, cash_to_give)
+        await ctx.send(f'You got caught and somehow ended up giving {cash_to_give} to {member.name}#{member.discriminator}')
+    else:
+        await ctx.send(random.choice(['Your rob attempt was unsuccessful.', 'Your rob failed.', 'You failed to rob. Try again next time!','yikes, you totally failed and got nothing']))
+
+
+
+
 @client.command()
 async def grant_item(ctx, member: discord.Member, the_item, amount = 1):
     if ctx.author.id == Common.deatg_id:
@@ -141,6 +178,8 @@ async def grant_item(ctx, member: discord.Member, the_item, amount = 1):
             await give_item(str(member.id), the_item, amount)
         except:
             await ctx.send("error!!!")
+    else:
+        await ctx.send("You are not authorized to use this command!")
 
 @client.command()
 async def grant_cash(ctx, member: discord.Member, amount = 1):
@@ -149,6 +188,8 @@ async def grant_cash(ctx, member: discord.Member, amount = 1):
             await give_cash(str(member.id), amount)
         except:
             await ctx.send("error!!!")
+    else:
+        await ctx.send("You are not authorized to use this command!")
 
 
 @client.event
