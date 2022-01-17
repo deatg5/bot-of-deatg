@@ -120,7 +120,7 @@ async def inventory(ctx, member: discord.Member = None):
     db_user = await pg_con.fetchrow("SELECT * FROM users WHERE userid = $1", member_id)
 
     
-    embed=discord.Embed(title=f"{member.name}'s inventory", description="description", color=Common.random_color())
+    embed=discord.Embed(title=f"{member.name}'s inventory", color=Common.random_color())
 
     for item in Items.item_list:
         if db_user[item['name'] + '_count'] != 0 and db_user[item['name'] + '_count'] != None:
