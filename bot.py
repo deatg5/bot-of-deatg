@@ -137,10 +137,12 @@ async def shop(ctx):
         if (item['cost'] != 0):
             if item['heal_amount'] == 0:
                 embed.add_field(name=f"{item['emoji']} {item['friendly_name']} [{item['name']}]", value=f"${item['cost']}\n{item['description']}\ndamage: {item['damage']}")
+            elif item['damage'] == 0:
+                embed.add_field(name=f"{item['emoji']} {item['friendly_name']} [{item['name']}]", value=f"${item['cost']}\n{item['description']}\nheal amount: {item['heal_amount']}")
             elif item['heal_amount'] == 0 and item['damage'] == 0:
                 embed.add_field(name=f"{item['emoji']} {item['friendly_name']} [{item['name']}]", value=f"${item['cost']}\n{item['description']}")
             else:
-                embed.add_field(name=f"{item['emoji']} {item['friendly_name']} [{item['name']}]", value=f"${item['cost']}\n{item['description']}\nheal amount: {item['heal_amount']}")
+                embed.add_field(name=f"{item['emoji']} {item['friendly_name']} [{item['name']}]", value=f"${item['cost']}\n{item['description']}\nheal amount: {item['heal_amount']}\ndamage: {item['damage']}")
     await ctx.send(embed=embed)
 
 

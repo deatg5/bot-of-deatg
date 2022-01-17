@@ -170,8 +170,8 @@ class Items(commands.Cog):
         	'sell_price': 10,
         	'rarity': 'Common',
             'battle_use_messages': [''],
-            'damage': 0,
-            'heal_amount': 0,
+            'damage': 999,
+            'heal_amount': 999,
             'emoji': ''
         },
         {
