@@ -135,7 +135,7 @@ async def shop(ctx):
 
     for item in Items.item_list:
         if (item['cost'] != 0):
-            if item["heal_amount" == 0]:
+            if item['heal_amount'] == 0:
                 embed.add_field(name=f"{item['emoji']} {item['friendly_name']} [{item['name']}]", value=f"${item['cost']}\n{item['description']}\ndamage: {item['damage']}")
             else:
                 embed.add_field(name=f"{item['emoji']} {item['friendly_name']} [{item['name']}]", value=f"${item['cost']}\n{item['description']}\nheal amount: {item['heal_amount']}")
