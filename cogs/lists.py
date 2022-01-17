@@ -256,7 +256,8 @@ class Lists(commands.Cog):
                 ">:3]","remember... vote resonsibly!","Über Stabilität und Turbulenz von Flüssigkeitsströmen","🥳😁😍🥰😘😚🙂😟😕🙁☹️😣😢😭","Pinned a message.","only OGs will understand thus image","if i’m ever going to block you\nit will be now\nso i will shoot my shot",
                 "The world is covered in a sheet of ice haha the backyard and everything","fun frog facts! the economy is at a standstill.","here's a list of touhou girls i want to have as a Mom someday & here is a copy of that list in case you accidentally throw it in the gabarge",
                 "Fetching model.ckpt.data-00000-of-00001:  41%|███████▋           | 203M/498M [03:42<05:29, 894kit/s]","Watch what happens when I cast a spell I don't know!","I'm never reading this goddamn channel description ever again.","And before you ask, YES! This bag of beans WILL act like a counter weight!",
-                "discqrdapp.com is LIKELY to be a phishing website!","Several hours of consensual mating later..."]
+                "discqrdapp.com is LIKELY to be a phishing website!","Several hours of consensual mating later...","cat stepd on ke[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]7ioioioioioioioioioioioioioioioioioYBOARD",
+                "j"]
 
 
 def setup(client):

@@ -127,7 +127,10 @@ class Listeners(commands.Cog):
                     await message.channel.send(f'"{message_to_send}"')
                     return
                 else:
-                    await message.channel.send(message_to_send)
+                    if random.randint(0, 100 == 1):
+                        await message.channel.send(message_to_send, delete_after=random.randint(1, 10))
+                    else:
+                        await message.channel.send(message_to_send)
             
             #send emojis
             elif 800 < kind_of_message <= 1000:

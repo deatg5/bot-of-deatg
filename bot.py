@@ -134,7 +134,7 @@ async def balance(ctx, member: discord.Member = None):
     member_id = str(member.id)
     db_user = await pg_con.fetchrow("SELECT * FROM users WHERE userid = $1", member_id)
 
-    await ctx.send(str(db_user['cash']))
+    await ctx.send(embed=discord.Embed(description=str(db_user['cash']), color=Common.random_color))
 
 
 @client.command(brief="rob someone :flushed:")
