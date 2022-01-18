@@ -56,7 +56,6 @@ async def leaderboard(ctx, amount=30):
     board = discord.Embed(title="leaderboard", description="1 XP is equal to 1 message sent\njust an ID means the user has been deleted or is inaccessable", color=Common.random_color())
     
 
-    board = ""
     db_user = await pg_con.fetch(f"SELECT * FROM users ORDER BY xp DESC LIMIT {amount}")
     for index, user in enumerate(db_user):
         gamer = client.get_user(int(user['userid']))
