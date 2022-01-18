@@ -187,7 +187,7 @@ class Items(commands.Cog):
             'battle_use_messages': [''],
             'damage': 0,
             'heal_amount': 0,
-            'emoji': ''
+            'emoji': '<:salad:932784499991932988>'
         },
         {
         	'id': 13,
@@ -202,7 +202,7 @@ class Items(commands.Cog):
             'battle_use_messages': [''],
             'damage': 0,
             'heal_amount': 0,
-            'emoji': ''
+            'emoji': '<:tree:932784790682366002>'
         },
         {
         	'id': 14,
@@ -217,7 +217,7 @@ class Items(commands.Cog):
             'battle_use_messages': [''],
             'damage': 0,
             'heal_amount': 0,
-            'emoji': ''
+            'emoji': '<:sledgehammer:932785056781598772>'
         },
         {
         	'id': 15,
@@ -232,7 +232,7 @@ class Items(commands.Cog):
             'battle_use_messages': [''],
             'damage': 0,
             'heal_amount': 0,
-            'emoji': ''
+            'emoji': '<:cableandrouter:932785839212220477>'
         },
         {
         	'id': 16,
@@ -247,7 +247,7 @@ class Items(commands.Cog):
             'battle_use_messages': [''],
             'damage': 0,
             'heal_amount': 0,
-            'emoji': ''
+            'emoji': '<:sqlsoup:932786793131151390>'
         },
         {
         	'id': 17,
@@ -262,7 +262,7 @@ class Items(commands.Cog):
             'battle_use_messages': [''],
             'damage': 0,
             'heal_amount': 0,
-            'emoji': ''
+            'emoji': '<:bup:932786793512833084>'
         },
         {
         	'id': 18,
@@ -277,7 +277,7 @@ class Items(commands.Cog):
             'battle_use_messages': [''],
             'damage': 0,
             'heal_amount': 0,
-            'emoji': ''
+            'emoji': '<:hemoglobin:932787665064067082>'
         },
         {
         	'id': 19,
@@ -292,7 +292,7 @@ class Items(commands.Cog):
             'battle_use_messages': [''],
             'damage': 0,
             'heal_amount': 0,
-            'emoji': ''
+            'emoji': '<:compressedair:932787955158876200>'
         },
         {
         	'id': 20,
