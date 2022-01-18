@@ -160,16 +160,27 @@ async def buy(ctx, item_name, amount = 1):
 
     for item in Items.item_list:
         if item['name'] == item_name:
-            if db_user['cash'] >= item['cost']:
+            if db_user['cash'] >= (item['cost'] * amount):
                 await give_item(ctx.author.id, item_name, amount)
                 await give_cash(ctx.author.id, (-item['cost'] * amount))
-                await ctx.send(f"You bought {amount} {item['friendly_name']} for {item['cost'] * amount}")
+                await ctx.send(f"You bought {amount} {item['friendly_name']} for ${item['cost'] * amount} {random.choice(Lists.all_face_emoji)}")
                 return
             else:
                 await ctx.send(f"You don't have enough money to buy this item! {random.choice(Lists.all_face_emoji)}")
                 return
     await ctx.send(f"Item {item_name} was not found! {random.choice(Lists.all_face_emoji)} Make sure you spell it how it's displayed within the [] in the shop.")
         
+@client.command(aliases=["dc"], brief="give some money to another user")
+async def donate_cash(ctx, member: discord.Member, amount = 1):
+    await give_cash(ctx.author.id, -amount)
+    await give_cash(member.id, amount)
+    await ctx.send(f"You gave ${amount} to {member.name}. How kind!")
+
+@client.command(aliases=["di"], brief="give an item to another user")
+async def donate_item(ctx, member: discord.Member, item_name, amount = 1):
+    await give_item(ctx.author.id, item_name, -amount)
+    await give_item(member.id, item_name, amount)
+    await ctx.send(f"You gave {amount} {[sub['friendly_name'] for sub in Items.item_list if sub['name'] == item_name]} to {member.name}. How nice!")
 
 
 
