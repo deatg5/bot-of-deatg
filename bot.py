@@ -52,6 +52,10 @@ async def create_db_pool():
 
 @client.command(brief="the global bot of deatg leaderboard (1 xp = 1 message sent)")
 async def leaderboard(ctx, amount=30):
+
+    board = discord.Embed(title="leaderboard", description="1 XP is equal to 1 message sent\njust an ID means the user has been deleted or is inaccessable", color=Common.random_color())
+    embed.add_field(name="field", value="value", inline=False)
+
     board = ""
     db_user = await pg_con.fetch(f"SELECT * FROM users ORDER BY xp DESC LIMIT {amount}")
     for index, user in enumerate(db_user):
@@ -59,16 +63,20 @@ async def leaderboard(ctx, amount=30):
         gamer = str(gamer)
         gamer_notag = gamer[:-5]
         if len(gamer_notag) == 0:
-            board += f"{str(index + 1)} - {user['userid']} (username unavailable): level {str(user['level'])}, {str(user['xp'])} XP\n"
+            board.add_field(name = f"{str(index + 1)} - {user['userid']}", value=f"level {str(user['level'])}, {str(user['xp'])} XP")
+            #board += f"{str(index + 1)} - {user['userid']} (username unavailable): level {str(user['level'])}, {str(user['xp'])} XP\n"
         else:
-            board += f"{str(index + 1)} - {str(gamer)}: level {str(user['level'])}, {str(user['xp'])} XP\n"
+            board.add_field(name = f"{str(index + 1)} - {str(gamer)}", value=f"level {str(user['level'])}, {str(user['xp'])} XP")
+            #board += f"{str(index + 1)} - {str(gamer)}: level {str(user['level'])}, {str(user['xp'])} XP\n"
 
-    if len(board) > 2000:
-        for line in textwrap.wrap(board, 2000, drop_whitespace=False, replace_whitespace=False):
-            async with ctx.typing():
-                await ctx.send(f'{line}')
-    else:
-        await ctx.send(board)
+    await ctx.send(embed=board)
+
+    # if len(board) > 2000:
+    #     for line in textwrap.wrap(board, 2000, drop_whitespace=False, replace_whitespace=False):
+    #         async with ctx.typing():
+    #             await ctx.send(f'{line}')
+    # else:
+    #     await ctx.send(board)
 
 @client.command(brief="check the level of you or another user")
 async def level(ctx, member: discord.Member = None):
@@ -172,15 +180,31 @@ async def buy(ctx, item_name, amount = 1):
         
 @client.command(aliases=["dc"], brief="give some money to another user")
 async def donate_cash(ctx, member: discord.Member, amount = 1):
-    await give_cash(ctx.author.id, -amount)
-    await give_cash(member.id, amount)
-    await ctx.send(f"You gave ${amount} to {member.name}. How kind!")
+    member_id = str(ctx.author.id)
+    db_user = await pg_con.fetchrow("SELECT * FROM users WHERE userid = $1", member_id)
+
+    if db_user['cash'] >= amount: 
+        await give_cash(ctx.author.id, -amount)
+        await give_cash(member.id, amount)
+        await ctx.send(f"You gave ${amount} to {member.name}. How kind!")
+    else:
+        await ctx.send(f"You don't have that much money! {random.choice(Lists.all_face_emoji)}")
+        
 
 @client.command(aliases=["di"], brief="give an item to another user")
 async def donate_item(ctx, member: discord.Member, item_name, amount = 1):
-    await give_item(ctx.author.id, item_name, -amount)
-    await give_item(member.id, item_name, amount)
-    await ctx.send(f"You gave {amount} {[sub['friendly_name'] for sub in Items.item_list if sub['name'] == item_name]} to {member.name}. How nice!")
+    member_id = str(ctx.author.id)
+    db_user = await pg_con.fetchrow("SELECT * FROM users WHERE userid = $1", member_id)
+    item_count = item_name + '_count'
+    
+    if db_user[item_count] >= amount:
+        await give_item(ctx.author.id, item_name, -amount)
+        await give_item(member.id, item_name, amount)
+        await ctx.send(f"You gave {amount} {[sub['friendly_name'] for sub in Items.item_list if sub['name'] == item_name]} to {member.name}. How nice!")
+    elif db_user[item_count] <= 0:
+        await ctx.send(f"You don't have that item! {random.choice(Lists.all_face_emoji)}")
+    else:
+        await ctx.send(f"You don't enough of that item! {random.choice(Lists.all_face_emoji)} (You have {db_user[item_count]} and are trying to give {amount}")
 
 
 
