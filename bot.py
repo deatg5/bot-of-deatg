@@ -54,7 +54,7 @@ async def create_db_pool():
 async def leaderboard(ctx, amount=30):
 
     board = discord.Embed(title="leaderboard", description="1 XP is equal to 1 message sent\njust an ID means the user has been deleted or is inaccessable", color=Common.random_color())
-    embed.add_field(name="field", value="value", inline=False)
+    
 
     board = ""
     db_user = await pg_con.fetch(f"SELECT * FROM users ORDER BY xp DESC LIMIT {amount}")
@@ -63,10 +63,10 @@ async def leaderboard(ctx, amount=30):
         gamer = str(gamer)
         gamer_notag = gamer[:-5]
         if len(gamer_notag) == 0:
-            board.add_field(name = f"{str(index + 1)} - {user['userid']}", value=f"level {str(user['level'])}, {str(user['xp'])} XP")
+            board.add_field(name = f"{str(index + 1)} - {user['userid']}", value=f"level {str(user['level'])}, {str(user['xp'])} XP", inline = True)
             #board += f"{str(index + 1)} - {user['userid']} (username unavailable): level {str(user['level'])}, {str(user['xp'])} XP\n"
         else:
-            board.add_field(name = f"{str(index + 1)} - {str(gamer)}", value=f"level {str(user['level'])}, {str(user['xp'])} XP")
+            board.add_field(name = f"{str(index + 1)} - {str(gamer)}", value=f"level {str(user['level'])}, {str(user['xp'])} XP", inline = True)
             #board += f"{str(index + 1)} - {str(gamer)}: level {str(user['level'])}, {str(user['xp'])} XP\n"
 
     await ctx.send(embed=board)
@@ -204,7 +204,7 @@ async def donate_item(ctx, member: discord.Member, item_name, amount = 1):
     elif db_user[item_count] <= 0:
         await ctx.send(f"You don't have that item! {random.choice(Lists.all_face_emoji)}")
     else:
-        await ctx.send(f"You don't enough of that item! {random.choice(Lists.all_face_emoji)} (You have {db_user[item_count]} and are trying to give {amount}")
+        await ctx.send(f"You don't enough of that item! {random.choice(Lists.all_face_emoji)} (You have {db_user[item_count]} and are trying to give {amount})")
 
 
 
