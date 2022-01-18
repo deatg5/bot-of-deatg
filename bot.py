@@ -1,5 +1,6 @@
 from math import fabs
 import math
+import re
 import string
 import random
 import discord
@@ -11,6 +12,7 @@ import sys
 
 from cogs.items import Items
 from cogs.common import Common
+from cogs.lists import Lists
 
 DATABASE_PASSWORD = os.environ['DATABASE_PASSWORD']
 
@@ -144,6 +146,30 @@ async def shop(ctx):
             else:
                 embed.add_field(name=f"{item['emoji']} {item['friendly_name']} [{item['name']}]", value=f"${item['cost']}\n{item['description']}\nheal amount: {item['heal_amount']}\ndamage: {item['damage']}")
     await ctx.send(embed=embed)
+
+
+@client.command(brief="buy an item")
+async def buy(ctx, item_name, amount = 1):
+    if amount < 1:
+        await ctx.send(f"You cannot buy 0 or a negative number of items! {random.choice(Lists.all_face_emoji)}")
+        return
+
+    member_id = str(ctx.author.id)
+
+    db_user = await pg_con.fetchrow("SELECT * FROM users WHERE userid = $1", member_id)
+
+    for item in Items.item_list:
+        if item['name'] == item_name:
+            if db_user['cash'] >= item['cost']:
+                await give_item(ctx.member.id, item_name, amount)
+                await give_cash(ctx.member.id, (-item['cost'] * amount))
+                await ctx.send(f"You bought {amount} {item['friendly_name']} for {item['cost'] * amount}")
+                return
+            else:
+                await ctx.send(f"You don't have enough money to buy this item! {random.choice(Lists.all_face_emoji)}")
+                return
+    await ctx.send(f"Item {item_name} was not found! {random.choice(Lists.all_face_emoji)} Make sure you spell it how it's displayed within the [] in the shop.")
+        
 
 
 
