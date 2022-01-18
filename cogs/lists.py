@@ -259,7 +259,8 @@ class Lists(commands.Cog):
                 "The world is covered in a sheet of ice haha the backyard and everything","fun frog facts! the economy is at a standstill.","here's a list of touhou girls i want to have as a Mom someday & here is a copy of that list in case you accidentally throw it in the gabarge",
                 "Fetching model.ckpt.data-00000-of-00001:  41%|███████▋           | 203M/498M [03:42<05:29, 894kit/s]","Watch what happens when I cast a spell I don't know!","I'm never reading this goddamn channel description ever again.","And before you ask, YES! This bag of beans WILL act like a counter weight!",
                 "discqrdapp.com is LIKELY to be a phishing website!","Several hours of consensual mating later...","cat stepd on ke[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]7ioioioioioioioioioioioioioioioioioYBOARD",
-                "wagwan mandem :knife::punch: severs pretty banging eh peng ting :smoking::smoking::joy: bruv' i can bang you up fammmmmm come at me"]
+                "wagwan mandem :knife::punch: severs pretty banging eh peng ting :smoking::smoking::joy: bruv' i can bang you up fammmmmm come at me",
+                "Nuuuuu mt bom pq eu dá vontade de escutar isso por uma hora mesmo 🔥😍"]
 
 
 def setup(client):

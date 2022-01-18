@@ -161,8 +161,8 @@ async def buy(ctx, item_name, amount = 1):
     for item in Items.item_list:
         if item['name'] == item_name:
             if db_user['cash'] >= item['cost']:
-                await give_item(ctx.member.id, item_name, amount)
-                await give_cash(ctx.member.id, (-item['cost'] * amount))
+                await give_item(ctx.author.id, item_name, amount)
+                await give_cash(ctx.author.id, (-item['cost'] * amount))
                 await ctx.send(f"You bought {amount} {item['friendly_name']} for {item['cost'] * amount}")
                 return
             else:
