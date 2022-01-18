@@ -322,7 +322,7 @@ class Items(commands.Cog):
             'battle_use_messages': [''],
             'damage': 0,
             'heal_amount': 0,
-            'emoji': ''
+            'emoji': '<:manymanymeats:932789207313825813>'
         },
         {
         	'id': 22,
@@ -337,7 +337,7 @@ class Items(commands.Cog):
             'battle_use_messages': [''],
             'damage': 0,
             'heal_amount': 0,
-            'emoji': ''
+            'emoji': '<:manymanymeatsflavourful:932789209394208798>'
         },
         {
         	'id': 23,
@@ -352,7 +352,7 @@ class Items(commands.Cog):
             'battle_use_messages': [''],
             'damage': 0,
             'heal_amount': 0,
-            'emoji': ''
+            'emoji': '<:buttor:932789717878071357>'
         },
         {
         	'id': 24,
@@ -367,7 +367,7 @@ class Items(commands.Cog):
             'battle_use_messages': [''],
             'damage': 0,
             'heal_amount': 0,
-            'emoji': ''
+            'emoji': '<:ape:932790019612094464>'
         },
         {
         	'id': 25,
