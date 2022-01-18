@@ -83,10 +83,10 @@ async def level(ctx, member: discord.Member = None):
     
 #since i'll only be using this in code i won't take a member object, just the id
 async def give_item(member_id, the_item, amount = 1):
-    db_user = await pg_con.fetchrow("SELECT * FROM users WHERE userid = $1", member_id)
 
-    #just to be sure
     member_id = str(member_id)
+
+    db_user = await pg_con.fetchrow("SELECT * FROM users WHERE userid = $1", member_id)
 
     item_count = the_item + '_count'
 
