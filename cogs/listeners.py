@@ -115,7 +115,7 @@ class Listeners(commands.Cog):
                 await Common.log(self, 'failed to react')
 
         #random msg send chance
-        if (random.randint(0, 1000) < 13 or self.client.user.mentioned_in(message)) and (message.channel.id != Common.every_word_channel_id):
+        if (random.randint(0, 1000) < 10 or self.client.user.mentioned_in(message)) and (message.channel.id != Common.every_word_channel_id):
             #random message has been triggered
             kind_of_message = random.randint(0, 900)
 
@@ -152,7 +152,7 @@ class Listeners(commands.Cog):
             #    await message.channel.send(file=discord.File(path))
 
         #message reaction
-        if random.randint(0, 80) == 69:
+        if random.randint(0, 110) == 69:
             reaction_type = random.randint(1, 12)
 
             if reaction_type == 1:
