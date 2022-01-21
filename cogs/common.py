@@ -226,6 +226,14 @@ class Common(commands.Cog):
                     ret += letter
             return ret
 
+    async def edit_recent_message(self, ctx, new_content):
+        async for msg in ctx.history(limit = 1000):
+            if msg.author == self.client.user:
+                await msg.edit(content=str(new_content))
+                break
+        return
+        
+
 
 
 
