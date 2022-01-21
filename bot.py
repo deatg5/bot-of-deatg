@@ -177,7 +177,8 @@ async def daily(ctx):
     if randint(0, 100) >= 2:
         for i in range(randint(1, 5)):
             item_aquired = random.choice(Items.item_list)
-            amount_aquired = random.choice[1, 1, 1, 1, 1, 1, 1, 1, 2, 3, 4, 8, 16, 32]
+            #amount_aquired = random.choice[1, 1, 1, 1, 1, 1, 1, 1, 2, 3, 4, 8, 16, 32]
+            amount_aquired = randint(1, 4)
             await give_item(ctx.author.id, item_aquired['name'], amount_aquired)
             common_items_recieved += f"{item_aquired['emoji']} {item_aquired['name']}: {amount_aquired}"
 
