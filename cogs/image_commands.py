@@ -115,16 +115,16 @@ class ImageCommands(commands.Cog):
     @commands.command(brief="gif generation test")
     async def gif(self, ctx):
         emoji = random.choice(self.client.emojis)
-        await ctx.send(f"generating... <:{emoji.name}:{emoji.id}>")
+        info_msg = await ctx.send(f"generating... <:{emoji.name}:{emoji.id}>")
 
         images = []
 
-        width = 200
+        width = randint(100, 300)
         center = width // 2
-        color_1 = (0, 0, 0)
-        color_2 = (255, 255, 255)
+        color_1 = (randint(0, 255), randint(0, 255), randint(0, 255))
+        color_2 = (randint(0, 255), randint(0, 255), randint(0, 255))
         max_radius = int(center * 1.5)
-        step = 8
+        step = randint(6, 20)
 
         for i in range(0, max_radius, step):
             im = Image.new('RGB', (width, width), color_1)
@@ -132,7 +132,7 @@ class ImageCommands(commands.Cog):
             draw.ellipse((center - i, center - i, center + i, center + i), fill=color_2)
             images.append(im)
 
-        await Common.edit_recent_message(self, ctx, f"filling...")
+        await info_msg.edit(content = "filling...")
 
         for i in range(0, max_radius, step):
             im = Image.new('RGB', (width, width), color_2)
@@ -140,15 +140,15 @@ class ImageCommands(commands.Cog):
             draw.ellipse((center - i, center - i, center + i, center + i), fill=color_1)
             images.append(im)
 
-        await Common.edit_recent_message(self, ctx, f"saving...")
+        await info_msg.edit(content = "saving...")
 
         images[0].save('pillow_imagedraw.gif', save_all=True, append_images=images[1:], optimize=False, duration=40, loop=1)
 
-        await Common.edit_recent_message(self, ctx, f"uploading...")
+        await info_msg.edit(content = "uploading...")
 
         await ctx.send(file = discord.File("pillow_imagedraw.gif"))
 
-        await Common.edit_recent_message(self, ctx, f"done! {random.choice(Lists.all_face_emoji)}")
+        await info_msg.edit(content = f"done! {random.choice(Lists.all_face_emoji)}")
 
     #works but the bot just isn't powerful enough on heroku
     #@commands.command(brief="inspired by Lenr")
