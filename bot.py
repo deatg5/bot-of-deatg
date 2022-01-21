@@ -3,6 +3,7 @@ import math
 import re
 import string
 import random
+from random import randint
 import discord
 import os
 from discord.ext import commands
@@ -153,6 +154,37 @@ async def shop(ctx):
             else:
                 embed.add_field(name=f"{item['emoji']} {item['friendly_name']} [{item['name']}]", value=f"${item['cost']}\n{item['description']}\nheal amount: {item['heal_amount']}\ndamage: {item['damage']}")
     await ctx.send(embed=embed)
+
+@client.command(brief="open daily box")
+async def daily(ctx):
+
+    member_id = str(ctx.author.id)
+    db_user = await pg_con.fetchrow("SELECT * FROM users WHERE userid = $1", member_id)
+
+    streak = db_user['current_streak']
+    if db_user['current_streak'] == None:
+        streak = 0
+        
+    embed = discord.Embed(title="title", description="description", color=Common.random_color())
+
+    #cash
+    cash_aquired = randint(100, 200) * (1 + ((streak * 2) * 0.1))
+    await give_cash(ctx.author.id, cash_aquired)
+    embed.add_field(name="Cash Received", value=f"${cash_aquired}", inline=False)
+
+    #common items
+    common_items_recieved = ""
+    if randint(0, 100) >= 2:
+        for i in range(randint(1, 5)):
+            item_aquired = random.choice(Items.item_list)
+            amount_aquired = random.choice[1, 1, 1, 1, 1, 1, 1, 1, 2, 3, 4, 8, 16, 32]
+            await give_item(ctx.author.id, item_aquired['name'], amount_aquired)
+            common_items_recieved += f"{item_aquired['emoji']} {item_aquired['name']}: {amount_aquired}"
+
+    embed.add_field(name="Common Items Received", value=common_items_recieved, inline=False)
+
+    await ctx.send(embed=embed)
+
 
 
 @client.command(brief="buy an item")

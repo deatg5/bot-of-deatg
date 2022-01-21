@@ -124,7 +124,7 @@ class ImageCommands(commands.Cog):
         color_1 = (randint(0, 255), randint(0, 255), randint(0, 255))
         color_2 = (randint(0, 255), randint(0, 255), randint(0, 255))
         max_radius = int(center * 1.5)
-        step = randint(6, 20)
+        step = randint(3, 20)
 
         for i in range(0, max_radius, step):
             im = Image.new('RGB', (width, width), color_1)
