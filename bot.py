@@ -50,7 +50,7 @@ async def create_db_pool():
         global pg_con 
         pg_con = await asyncpg.create_pool(host = "ec2-52-44-31-100.compute-1.amazonaws.com", database ="d9sog7i18caten", user ="bkpsbvehfzmaip", password = DATABASE_PASSWORD)
 
-@client.command(brief="the global bot of deatg leaderboard (1 xp = 1 message sent)")
+@client.command(aliases=["lb"], brief="the global bot of deatg leaderboard (1 xp = 1 message sent)")
 async def leaderboard(ctx, amount=30):
 
     board = discord.Embed(title="leaderboard", description="1 XP is equal to 1 message sent\njust an ID means the user has been deleted or is inaccessable", color=Common.random_color())

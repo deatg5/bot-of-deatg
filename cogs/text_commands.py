@@ -21,7 +21,7 @@ class TextCommands(commands.Cog):
         for i in range(10):
             async with ctx.typing():
                 await ctx.send(message)
-        await Common.log(self, f'Spammed {message} 20 times', ctx)
+        await Common.log(self, f'Spammed {message} 10 times', ctx)
 
     @commands.command(brief="guesses the pokemon sent by pokemon discord bot")
     async def mon(self, ctx):
@@ -85,6 +85,31 @@ class TextCommands(commands.Cog):
             emoji = ""
             for i in range(count):
                 emoji += str(random.choice(Lists.all_emoji))
+            async with ctx.typing():
+                await ctx.send(emoji)
+            await Common.log(self, f'sent {emoji}', ctx)
+        except:
+            await ctx.send("too many emojis! :zany_face:")
+
+    @commands.command(aliases=['fe'], brief="sends some random face emojis")
+    async def face_emojis(self, ctx, count = 3):
+        try:
+            emoji = ""
+            for i in range(count):
+                emoji += str(random.choice(Lists.all_face_emoji))
+            async with ctx.typing():
+                await ctx.send(emoji)
+            await Common.log(self, f'sent {emoji}', ctx)
+        except:
+            await ctx.send("too many emojis! :zany_face:")
+
+
+    @commands.command(aliases=['fe'], brief="sends some random regular emojis")
+    async def face_emojis(self, ctx, count = 3):
+        try:
+            emoji = ""
+            for i in range(count):
+                emoji += str(random.choice(Lists.all_face_emoji))
             async with ctx.typing():
                 await ctx.send(emoji)
             await Common.log(self, f'sent {emoji}', ctx)
