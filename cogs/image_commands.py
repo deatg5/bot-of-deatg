@@ -142,7 +142,7 @@ class ImageCommands(commands.Cog):
 
         await info_msg.edit(content = "saving...")
 
-        images[0].save('pillow_imagedraw.gif', save_all=True, append_images=images[1:], optimize=False, duration=40, loop=1)
+        images[0].save('pillow_imagedraw.gif', save_all=True, append_images=images[1:], optimize=False, duration=40, loop=0)
 
         await info_msg.edit(content = "uploading...")
 
