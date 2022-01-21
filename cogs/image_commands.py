@@ -132,7 +132,7 @@ class ImageCommands(commands.Cog):
             draw.ellipse((center - i, center - i, center + i, center + i), fill=color_2)
             images.append(im)
 
-        Common.edit_recent_message(self, ctx, f"filling...")
+        await Common.edit_recent_message(self, ctx, f"filling...")
 
         for i in range(0, max_radius, step):
             im = Image.new('RGB', (width, width), color_2)
@@ -140,13 +140,13 @@ class ImageCommands(commands.Cog):
             draw.ellipse((center - i, center - i, center + i, center + i), fill=color_1)
             images.append(im)
 
-        Common.edit_recent_message(self, ctx, f"saving...")
+        await Common.edit_recent_message(self, ctx, f"saving...")
 
         images[0].save('pillow_imagedraw.gif', save_all=True, append_images=images[1:], optimize=False, duration=40, loop=1)
 
-        Common.edit_recent_message(self, ctx, f"uploading...")
+        await Common.edit_recent_message(self, ctx, f"uploading...")
 
-        await ctx.send(file = discord.File("generated_image.png"))
+        await ctx.send(file = discord.File("pillow_imagedraw.gif"))
 
     #works but the bot just isn't powerful enough on heroku
     #@commands.command(brief="inspired by Lenr")
