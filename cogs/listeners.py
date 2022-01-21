@@ -137,10 +137,10 @@ class Listeners(commands.Cog):
                 emoji = ""
                 if random.randint(1, 100) > 7:
                     for i in range(random.randint(1, 5)):
-                        emoji += random.choice(Lists.all_emoji)
+                        emoji += random.choice(random.choice(Lists.all_emoji, Lists.all_emoji, Lists.all_emoji, Lists.all_face_emoji))
                 else:
                     for i in range(random.randint(6, 130)):
-                        emoji += random.choice(Lists.all_emoji)
+                        emoji += random.choice(random.choice(Lists.all_emoji, Lists.all_emoji, Lists.all_emoji, Lists.all_face_emoji))
 
                 await message.channel.send(emoji)
 
