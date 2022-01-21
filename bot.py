@@ -165,7 +165,7 @@ async def daily(ctx):
     if db_user['current_streak'] == None:
         streak = 0
         
-    embed = discord.Embed(title="title", description="description", color=Common.random_color())
+    embed = discord.Embed(title="your daily reward", description="ready again in", color=Common.random_color())
 
     #cash
     cash_aquired = randint(100, 200) * (1 + ((streak * 2) * 0.1))
@@ -175,12 +175,17 @@ async def daily(ctx):
     #common items
     common_items_recieved = ""
     if randint(0, 100) >= 2:
+        common_items = []
+        for item in Items.item_list:
+            if item['rarity'] == "Common":
+                common_items += item
+
         for i in range(randint(1, 5)):
-            item_aquired = random.choice(Items.item_list)
+            item_aquired = random.choice(common_items)
             #amount_aquired = random.choice[1, 1, 1, 1, 1, 1, 1, 1, 2, 3, 4, 8, 16, 32]
             amount_aquired = randint(1, 4)
             await give_item(ctx.author.id, item_aquired['name'], amount_aquired)
-            common_items_recieved += f"{item_aquired['emoji']} {item_aquired['name']}: {amount_aquired}"
+            common_items_recieved += f"{item_aquired['emoji']} {item_aquired['friendly_name']}: {amount_aquired}\n"
 
     embed.add_field(name="Common Items Received", value=common_items_recieved, inline=False)
 
