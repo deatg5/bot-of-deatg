@@ -148,6 +148,8 @@ class ImageCommands(commands.Cog):
 
         await ctx.send(file = discord.File("pillow_imagedraw.gif"))
 
+        await Common.edit_recent_message(self, ctx, f"done! {random.choice(Lists.all_face_emoji)}")
+
     #works but the bot just isn't powerful enough on heroku
     #@commands.command(brief="inspired by Lenr")
     #async def emoji_hell(self, ctx, image = None):
