@@ -152,10 +152,10 @@ class Listeners(commands.Cog):
             #    await message.channel.send(file=discord.File(path))
 
         #message reaction
-        if random.randint(0, 110) == 69:
+        if random.randint(0, 150) == 69:
             reaction_type = random.randint(1, 12)
 
-            if reaction_type == 1:
+            if reaction_type == 15:
                 try:
                     await message.add_reaction("👍")
                     await message.add_reaction("👎")
@@ -172,7 +172,7 @@ class Listeners(commands.Cog):
 
                 #deciding how many emojis 
                 emoji_count = 0
-                emoji_count_rng = random.randint(0, 130)
+                emoji_count_rng = random.randint(0, 160)
                 if emoji_count_rng < 50 or emoji_count_rng > 100:
                     emoji_count = 1
                 elif 50 < emoji_count_rng <= 70: 
