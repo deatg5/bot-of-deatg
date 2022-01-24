@@ -50,11 +50,11 @@ class Listeners(commands.Cog):
             
         message_to_send = Common.random_message(self)
 
-        message_type = random.randint(0, 201)
+        message_type = random.randint(0, 210)
 
-        if 0 <= message_type <= 170:
+        if 0 <= message_type <= 172:
             message_to_send = Common.random_message(self)
-        elif 171 < message_type <= 180:
+        elif 172 < message_type <= 180:
             message_to_send = SentenceGeneration.generate_sentence(self)
         elif 180 < message_type <= 182:
             message_to_send = SentenceGeneration.generate_demfex_quote(self)
@@ -64,14 +64,14 @@ class Listeners(commands.Cog):
             message_to_send = await Common.dynamic_message(self, message)
         elif 195 < message_type <= 200:
             message_to_send = Common.minecraft_message(self, message)
-        elif 200 < message_type <= 201:
+        elif 200 < message_type <= 210:
             message_to_send = Common.chatbot_message(self, True)
             
-        if random.randint(0, 1000) < 70:
+        if random.randint(0, 1000) < 20:
             message_to_send = Common.random_style(self, message_to_send)
-        if random.randint(0, 1000) < 70:
+        if random.randint(0, 1000) < 20:
             message_to_send = await Common.random_word_edit(self, message_to_send)
-        if random.randint(0, 1000) < 19:
+        if random.randint(0, 1000) < 15:
             message_to_send = Common.random_insert(self, message_to_send)
         if random.randint(0, 1000) < 10:
             message_to_send = Common.cutoff(self, message_to_send)
@@ -152,7 +152,7 @@ class Listeners(commands.Cog):
             #    await message.channel.send(file=discord.File(path))
 
         #message reaction
-        if random.randint(0, 150) == 69:
+        if random.randint(0, 160) == 69:
             reaction_type = random.randint(1, 12)
 
             if reaction_type == 15:
