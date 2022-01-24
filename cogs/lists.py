@@ -260,7 +260,7 @@ class Lists(commands.Cog):
                 "Fetching model.ckpt.data-00000-of-00001:  41%|███████▋           | 203M/498M [03:42<05:29, 894kit/s]","Watch what happens when I cast a spell I don't know!","I'm never reading this goddamn channel description ever again.","And before you ask, YES! This bag of beans WILL act like a counter weight!",
                 "discqrdapp.com is LIKELY to be a phishing website!","Several hours of consensual mating later...","cat stepd on ke[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]7ioioioioioioioioioioioioioioioioioYBOARD",
                 "wagwan mandem :knife::punch: severs pretty banging eh peng ting :smoking::smoking::joy: bruv' i can bang you up fammmmmm come at me",
-                "Nuuuuu mt bom pq eu dá vontade de escutar isso por uma hora mesmo 🔥😍"]
+                "Nuuuuu mt bom pq eu dá vontade de escutar isso por uma hora mesmo 🔥😍","Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation."]
 
 
 def setup(client):
