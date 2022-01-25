@@ -48,9 +48,9 @@ class Common(commands.Cog):
         lines = text_file.read().split('FORNITE_FUNNY69')
 
         if long_edition:
-            return random.choice(lines)
+            return random.choice(lines)[:1999]
         else:
-            lines_to_return = random.randint(1, 2)
+            lines_to_return = random.randint(1, 3)
             lines_split_further = random.choice(lines).split('\n')
             start_index = random.randint(0, len(lines_split_further))
             return lines_split_further[start_index:start_index + lines_to_return]

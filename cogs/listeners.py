@@ -50,7 +50,7 @@ class Listeners(commands.Cog):
             
         message_to_send = Common.random_message(self)
 
-        message_type = random.randint(0, 210)
+        message_type = random.randint(0, 240)
 
         if 0 <= message_type <= 172:
             message_to_send = Common.random_message(self)
@@ -64,8 +64,8 @@ class Listeners(commands.Cog):
             message_to_send = await Common.dynamic_message(self, message)
         elif 195 < message_type <= 200:
             message_to_send = Common.minecraft_message(self, message)
-        elif 200 < message_type <= 210:
-            message_to_send = Common.chatbot_message(self, True)
+        elif 200 < message_type <= 240:
+            message_to_send = Common.chatbot_message(self, False)
             
         if random.randint(0, 1000) < 20:
             message_to_send = Common.random_style(self, message_to_send)
