@@ -49,7 +49,7 @@ class Common(commands.Cog):
 
         if long_edition:
             line = random.choice(lines)[:1999]
-            return " ".join(line[:])
+            return "".join(line[:])
         else:
             lines_to_return = random.randint(1, 3)
             lines_split_further = random.choice(lines).split('\n')
