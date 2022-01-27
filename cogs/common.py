@@ -54,7 +54,8 @@ class Common(commands.Cog):
             lines_to_return = random.randint(1, 3)
             lines_split_further = random.choice(lines).split('\n')
             start_index = random.randint(0, len(lines_split_further))
-            return lines_split_further[start_index:start_index + lines_to_return]
+            ret = lines_split_further[start_index:start_index + lines_to_return]
+            return "".join(ret[:])
 
 
 
