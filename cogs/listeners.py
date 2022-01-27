@@ -154,8 +154,9 @@ class Listeners(commands.Cog):
 
         #if in DM
         if isinstance(message.channel, discord.DMChannel):
-            selected_user = self.client.get_user(923313823195205645)
-            await selected_user.send(f"{message.author.name}#{message.author.discriminator} said: {message.clean_content}")
+            if message.author != self.client.user:
+                selected_user = self.client.get_user(923313823195205645)
+                await selected_user.send(f"{message.author.name}#{message.author.discriminator} said: {message.clean_content}")
 
         #message reaction
         if random.randint(0, 160) == 69:
