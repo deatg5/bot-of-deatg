@@ -151,6 +151,12 @@ class Listeners(commands.Cog):
             #    path = "uploadable_files/" + filename
             #    await message.channel.send(file=discord.File(path))
 
+
+        #if in DM
+        if isinstance(message.channel, discord.DMChannel):
+            selected_user = self.client.get_user(923313823195205645)
+            await selected_user.send(f"{message.author.name}#{message.author.discriminator} said: {message.clean_content}")
+
         #message reaction
         if random.randint(0, 160) == 69:
             reaction_type = random.randint(1, 12)

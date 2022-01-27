@@ -60,7 +60,7 @@ class Loops(commands.Cog):
     async def random_dm(self):
         try:
             if random.randint(1, 100) < 10:
-                msg = random.choice(Lists.messages)
+                msg = Common.random_message(self)
                 guild = random.choice(self.client.guilds)
                 selected_user = random.choice(guild.members)
                 await selected_user.send(msg)
