@@ -5,6 +5,7 @@ import random
 import datetime
 
 from cogs.lists import Lists
+from cogs.sentence_generation import SentenceGeneration
 
 class Common(commands.Cog):
 
@@ -27,9 +28,10 @@ class Common(commands.Cog):
         for channel_id in Common.log_channel_ids:
             log_channel = self.client.get_channel(channel_id)
             if ctx != None:
-                await log_channel.send(f"{str(datetime.datetime.now())} {ctx.guild}, {ctx.channel},  {ctx.message.author}, {str(message)}")
+                #{str(datetime.datetime.now())}
+                await log_channel.send(f"{ctx.guild}, {ctx.channel},  {ctx.message.author}, {str(message)}")
             else:
-                await log_channel.send(f"{str(datetime.datetime.now())} {str(message)}")
+                await log_channel.send(f"{str(message)}")
     
     def random_message(self):
         message_type = random.choice([Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, 
@@ -41,6 +43,43 @@ class Common(commands.Cog):
                         Lists.kanji,
                         Lists.hiragana])
         return random.choice(message_type)
+
+    async def decide_message(self, message):
+            
+        message_to_send = Common.random_message(self)
+
+        message_type = random.randint(0, 230)
+
+        if 0 <= message_type <= 172:
+            message_to_send = Common.random_message(self)
+        elif 172 < message_type <= 180:
+            message_to_send = SentenceGeneration.generate_sentence(self)
+        elif 180 < message_type <= 182:
+            message_to_send = SentenceGeneration.generate_demfex_quote(self)
+        elif 182 < message_type <= 184:
+            message_to_send = Common.generate_fake_japanese_sentence(self)
+        elif 180 < message_type <= 195:
+            message_to_send = await Common.dynamic_message(self, message)
+        elif 195 < message_type <= 200:
+            message_to_send = Common.minecraft_message(self, message)
+        elif 200 < message_type <= 230:
+            message_to_send = Common.chatbot_message(self, False)
+            
+        if random.randint(0, 1000) < 20:
+            message_to_send = Common.random_style(self, message_to_send)
+        if random.randint(0, 1000) < 20:
+            message_to_send = await Common.random_word_edit(self, message_to_send)
+        if random.randint(0, 1000) < 15:
+            message_to_send = Common.random_insert(self, message_to_send)
+        if random.randint(0, 1000) < 10:
+            message_to_send = Common.cutoff(self, message_to_send)
+        if random.randint(0, 1000) < 70:
+            message_to_send = await Common.fancy_letters(self, message_to_send)
+        if random.randint(0, 1000) < 120:
+            message_to_send = Common.random_emoji_insert(self, message_to_send)
+
+
+        return message_to_send
 
     
     def chatbot_message(self, long_edition = False):

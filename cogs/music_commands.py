@@ -73,61 +73,61 @@ class MusicCommands(commands.Cog):
 
 
 
-    #@commands.command(pass_context=True, brief=";play [YouTube url or search term]")
-    #async def play(self, ctx, *url: str):
-    #    if "index" in url:
-    #        await ctx.send("Sorry, but you can't use a playlist link.")
-    #        return
-    #    song_there = os.path.isfile("song.mp3")
-    #    try:
-    #        if song_there:
-    #            os.remove("song.mp3")
-    #    except PermissionError:
-    #        await ctx.send("Wait for the current playing music to end or use the 'leave' command")
-    #        return
-    #    await ctx.send("Getting audio from YouTube... this may take a long time (and maybe even crash the entire bot)")
-    #    await Common.log(self, f'played {str(url)}', ctx)
-    #    print("Someone wants to play music let me get that ready for them...")
-    #    voice = get(self.client.voice_clients, guild=ctx.guild)
-    #    ydl_opts = {
-    #        'format': 'bestaudio/best',
-    #        'postprocessors': [{
-    #            'key': 'FFmpegExtractAudio',
-    #            'preferredcodec': 'mp3',
-    #            'preferredquality': '192',
-    #        }],
-    #    }
-    #    with youtube_dl.YoutubeDL(ydl_opts) as ydl:
-    #        try:
-    #            ydl.download([url])
-    #        except:
-    #            search_term = " ".join(url[:])
-    #            ydl.extract_info(f"ytsearch:{search_term}", download=True)['entries'][0]
-    #    for file in os.listdir("./"):
-    #        if file.endswith(".mp3"):
-    #            os.rename(file, 'song.mp3')
-    #    try:
-    #        voice.play(discord.FFmpegPCMAudio("song.mp3"))
-    #    except:
-    #        channel = ctx.message.author.voice.channel
-    #        voice = get(self.client.voice_clients, guild=ctx.guild)
-    #        if voice and voice.is_connected():
-    #            await voice.disconnect()
-    #        channel = ctx.message.author.voice.channel
-    #        voice = get(self.client.voice_clients, guild=ctx.guild)
-    #        if voice and voice.is_connected():
-    #            await voice.move_to(channel)
-    #        else:
-    #            voice = await channel.connect()
-    #        await voice.disconnect()
-    #        if voice and voice.is_connected():
-    #            await voice.move_to(channel)
-    #        else:
-    #            voice = await channel.connect()
-    #        voice.play(discord.FFmpegPCMAudio("song.mp3"))
-    #    voice.volume = 100
-    #    voice.is_playing()
-    #
+    @commands.command(pass_context=True, brief=";play [YouTube url or search term]")
+    async def play(self, ctx, *url: str):
+        if "index" in url:
+            await ctx.send("Sorry, but you can't use a playlist link.")
+            return
+        song_there = os.path.isfile("song.mp3")
+        try:
+            if song_there:
+                os.remove("song.mp3")
+        except PermissionError:
+            await ctx.send("Wait for the current playing music to end or use the 'leave' command")
+            return
+        await ctx.send("Getting audio from YouTube... this may take a long time (and maybe even crash the entire bot)")
+        await Common.log(self, f'played {str(url)}', ctx)
+        print("Someone wants to play music let me get that ready for them...")
+        voice = get(self.client.voice_clients, guild=ctx.guild)
+        ydl_opts = {
+            'format': 'bestaudio/best',
+            'postprocessors': [{
+                'key': 'FFmpegExtractAudio',
+                'preferredcodec': 'mp3',
+                'preferredquality': '192',
+            }],
+        }
+        with youtube_dl.YoutubeDL(ydl_opts) as ydl:
+            try:
+                ydl.download([url])
+            except:
+                search_term = " ".join(url[:])
+                ydl.extract_info(f"ytsearch:{search_term}", download=True)['entries'][0]
+        for file in os.listdir("./"):
+            if file.endswith(".mp3"):
+                os.rename(file, 'song.mp3')
+        try:
+            voice.play(discord.FFmpegPCMAudio("song.mp3"))
+        except:
+            channel = ctx.message.author.voice.channel
+            voice = get(self.client.voice_clients, guild=ctx.guild)
+            if voice and voice.is_connected():
+                await voice.disconnect()
+            channel = ctx.message.author.voice.channel
+            voice = get(self.client.voice_clients, guild=ctx.guild)
+            if voice and voice.is_connected():
+                await voice.move_to(channel)
+            else:
+                voice = await channel.connect()
+            await voice.disconnect()
+            if voice and voice.is_connected():
+                await voice.move_to(channel)
+            else:
+                voice = await channel.connect()
+            voice.play(discord.FFmpegPCMAudio("song.mp3"))
+        voice.volume = 100
+        voice.is_playing()
+    
     #@commands.command(pass_context=True, brief="plays a totally random song from youtube")
     #async def playrandom(self, ctx):
     #    url = random.choice(Lists.youtube_song_list)
