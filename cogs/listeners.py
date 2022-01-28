@@ -45,7 +45,39 @@ class Listeners(commands.Cog):
     #            await channel.send(random.choice([f"{member} has joined yay", f"yay {member} joined"]))
     #            break
 
-
+    async def decide_message(self, message):
+                
+            message_to_send = Common.random_message(self)
+    
+            message_type = random.randint(0, 230)
+    
+            if 0 <= message_type <= 172:
+                message_to_send = Common.random_message(self)
+            elif 172 < message_type <= 180:
+                message_to_send = SentenceGeneration.generate_sentence(self)
+            elif 180 < message_type <= 182:
+                message_to_send = SentenceGeneration.generate_demfex_quote(self)
+            elif 182 < message_type <= 184:
+                message_to_send = Common.generate_fake_japanese_sentence(self)
+            elif 180 < message_type <= 195:
+                message_to_send = await Common.dynamic_message(self, message)
+            elif 195 < message_type <= 200:
+                message_to_send = Common.minecraft_message(self, message)
+            elif 200 < message_type <= 230:
+                message_to_send = Common.chatbot_message(self, False)
+                
+            if random.randint(0, 1000) < 20:
+                message_to_send = Common.random_style(self, message_to_send)
+            if random.randint(0, 1000) < 20:
+                message_to_send = await Common.random_word_edit(self, message_to_send)
+            if random.randint(0, 1000) < 15:
+                message_to_send = Common.random_insert(self, message_to_send)
+            if random.randint(0, 1000) < 10:
+                message_to_send = Common.cutoff(self, message_to_send)
+            if random.randint(0, 1000) < 70:
+                message_to_send = await Common.fancy_letters(self, message_to_send)
+            if random.randint(0, 1000) < 120:
+                message_to_send = Common.random_emoji_insert(self, message_to_send)
     
 
     @commands.Cog.listener()
