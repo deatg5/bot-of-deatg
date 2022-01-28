@@ -178,14 +178,14 @@ async def daily(ctx):
         common_items = []
         for item in Items.item_list:
             if item['rarity'] == "Common":
-                common_items += item
+                common_items += item['name']
 
         for i in range(randint(1, 5)):
             item_aquired = random.choice(common_items)
             #amount_aquired = random.choice[1, 1, 1, 1, 1, 1, 1, 1, 2, 3, 4, 8, 16, 32]
             amount_aquired = randint(1, 4)
-            await give_item(ctx.author.id, item_aquired['name'], amount_aquired)
-            common_items_recieved += f"{item_aquired['emoji']} {item_aquired['friendly_name']}: {amount_aquired}\n"
+            await give_item(ctx.author.id, item_aquired, amount_aquired)
+            common_items_recieved += f"{item_aquired}: {amount_aquired}\n"
 
     embed.add_field(name="Common Items Received", value=common_items_recieved, inline=False)
 
