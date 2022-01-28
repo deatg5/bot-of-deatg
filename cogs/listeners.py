@@ -118,7 +118,7 @@ class Listeners(commands.Cog):
 
             #regular message
             if kind_of_message <= 800:
-                message_to_send = await Common.decide_message(self, message)
+                message_to_send = await Listeners.decide_message(self, message)
 
                 if "quoting" in message.channel.name:
                     await message.channel.send(f'"{message_to_send}"')
