@@ -46,7 +46,7 @@ class Common(commands.Cog):
     
 
 
-        return message_to_send
+        
 
     
     def chatbot_message(self, long_edition = False):
