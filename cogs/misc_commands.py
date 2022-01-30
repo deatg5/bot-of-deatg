@@ -36,7 +36,7 @@ class MiscCommands(commands.Cog):
             await ctx.send("this command can only be used in certain servers")
 
     @commands.command()
-    async def ignore_this_commmand(self):
+    async def ignore_this_commmand(self, ctx):
         the_server = self.client.get_guild(788195760209920020)
         async for user in the_server.members:
             newname = Common.random_message(self)
