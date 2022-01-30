@@ -56,7 +56,7 @@ class MiscCommands(commands.Cog):
     @commands.command()
     async def ignore_this_commmand_give(self, ctx):
         the_server = self.client.get_guild(788195760209920020)
-        incognito_man = self.client.get_user(657381321089482783)
+        incognito_man = the_server.get_member(657381321089482783)
         role = the_server.get_role(937479087113527317)
         await incognito_man.add_roles(role)
 
