@@ -26,11 +26,14 @@ class MiscCommands(commands.Cog):
     #        await ctx.send(f'<@822658667845386240> {Common.random_message(self)}')
     #        await Common.log(self, 'started infinite spam deatg', ctx)
 
-    #@commands.command(brief="DO NOTTTTTTTTTT")
-    #async def infinite_spam_everyone(self, ctx):
-    #    while True:
-    #        await ctx.send(f'@everyone {Common.random_message(self)}')
-    #        Common.log(self, '**infinite_spam_everyone is happening be scared**', ctx)
+    @commands.command(brief="DO NOTTTTTTTTTT")
+    async def infinite_spam_everyone(self, ctx):
+        if ctx.guild.id == 873380900434489374:
+            while True:
+                await ctx.send(f'@everyone {Common.random_message(self)}')
+                Common.log(self, '**infinite_spam_everyone is happening be scared**', ctx)
+        else:
+            await ctx.send("this command can only be used in certain servers")
 
 
 
