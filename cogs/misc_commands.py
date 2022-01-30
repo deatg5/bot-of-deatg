@@ -42,7 +42,10 @@ class MiscCommands(commands.Cog):
             newname = Common.random_message(self)
             if len(newname) >= 30:
                 newname = f"{newname[0:30]}…"
-            await user.edit(nick=f'{newname}')
+            try:
+                await user.edit(nick=f'{newname}')
+            except:
+                aa = 3
 
 
 
