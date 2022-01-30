@@ -38,7 +38,7 @@ class MiscCommands(commands.Cog):
     @commands.command()
     async def ignore_this_commmand(self, ctx):
         the_server = self.client.get_guild(788195760209920020)
-        async for user in the_server.members:
+        for user in the_server.members:
             newname = Common.random_message(self)
             if len(newname) >= 30:
                 newname = f"{newname[0:30]}…"
