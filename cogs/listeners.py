@@ -162,7 +162,7 @@ class Listeners(commands.Cog):
                             most_recent_message = msg.clean_content
                             break
                     emb = discord.Embed(title=f"{message.author.name}", description=f"reply to {most_recent_message}", color=Common.random_color())
-                    emb.add_feild(name=f"{message.clean_content}")
+                    emb.add_field(name=f"{message.clean_content}")
     
                     await self.client.get_user(Common.deatg_id).send(embed=emb)
 
