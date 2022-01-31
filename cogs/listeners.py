@@ -1,6 +1,8 @@
 import discord
 from discord.ext import commands
 import random
+import asyncio
+from random import randint
 import os
 
 from cogs.common import Common
@@ -48,7 +50,7 @@ class Listeners(commands.Cog):
     async def decide_message(self, message):
         message_to_send = Common.random_message(self)
 
-        message_type = random.randint(0, 230)
+        message_type = random.randint(0, 210)
 
         if 0 <= message_type <= 172:
             message_to_send = Common.random_message(self)
@@ -62,7 +64,7 @@ class Listeners(commands.Cog):
             message_to_send = await Common.dynamic_message(self, message)
         elif 195 < message_type <= 200:
             message_to_send = Common.minecraft_message(self, message)
-        elif 200 < message_type <= 230:
+        elif 200 < message_type <= 210:
             message_to_send = Common.chatbot_message(self, False)
             
         if random.randint(0, 1000) < 20:
@@ -152,9 +154,17 @@ class Listeners(commands.Cog):
 
         #if in DM
         if isinstance(message.channel, discord.DMChannel):
-            if message.author != self.client.user:
-                selected_user = self.client.get_user(923313823195205645)
-                await selected_user.send(f"{message.author.name}#{message.author.discriminator} said: {message.clean_content}")
+            if message.author != self.client.user: #and message.author.id != Common.deatg_id:
+                await self.client.get_user(Common.deatg_id).send(f"{message.author.name}#{message.author.discriminator} said: {message.clean_content}")
+
+                if randint(0, 100) >= 4:
+                    await asyncio.sleep(float(randint(0, 60))) 
+                    async with message.channel.typing():
+                        await asyncio.sleep(float(randint(0, 13)))
+                        await message.channel.send(await Listeners.decide_message(self, message))
+
+
+
 
         #message reaction
         if random.randint(0, 160) == 69:
