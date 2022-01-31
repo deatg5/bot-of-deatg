@@ -63,8 +63,9 @@ class Loops(commands.Cog):
                 msg = Common.random_message(self)
                 guild = random.choice(self.client.guilds)
                 selected_user = random.choice(guild.members)
-                await selected_user.send(msg)
-                await Common.log(self, f'FAFIEHSFIERSEORJ sent {msg} to {str(selected_user)}')
+                if selected_user.bot != True:
+                    await selected_user.send(msg)
+                    await Common.log(self, f'FAFIEHSFIERSEORJ sent {msg} to {str(selected_user)}')
         except:
             await Common.log(self, f'failed to DM {str(selected_user)}')
 

@@ -154,14 +154,23 @@ class Listeners(commands.Cog):
 
         #if in DM
         if isinstance(message.channel, discord.DMChannel):
-            if message.author != self.client.user: #and message.author.id != Common.deatg_id:
-                await self.client.get_user(Common.deatg_id).send(f"{message.author.name}#{message.author.discriminator} said: {message.clean_content}")
+            if message.author != self.client.user: 
+                if message.author.id != Common.deatg_id:
+                    most_recent_message = ""
+                    async for msg in message.channel.history(limit = 1000):
+                        if msg.author == self.client.user:
+                            most_recent_message = msg.clean_content
+                            break
+                    emb = discord.Embed(title=f"{message.author.name}", description=f"reply to {most_recent_message}", color=Common.random_color())
+                    emb.add_feild(name=f"{message.clean_content}")
+    
+                    await self.client.get_user(Common.deatg_id).send(embed=emb)
 
                 if randint(0, 100) >= 4:
-                    await asyncio.sleep(float(randint(0, 60))) 
+                    await asyncio.sleep(float(randint(0, 40))) 
                     async with message.channel.typing():
                         await asyncio.sleep(float(randint(0, 13)))
-                        await message.channel.send(await Listeners.decide_message(self, message))
+                        await message.reply(await Listeners.decide_message(self, message))
 
 
 
