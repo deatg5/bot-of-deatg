@@ -50,7 +50,7 @@ class Listeners(commands.Cog):
     async def decide_message(self, message):
         message_to_send = Common.random_message(self)
 
-        message_type = random.randint(0, 210)
+        message_type = random.randint(0, 220)
 
         if 0 <= message_type <= 172:
             message_to_send = Common.random_message(self)
@@ -64,7 +64,7 @@ class Listeners(commands.Cog):
             message_to_send = await Common.dynamic_message(self, message)
         elif 195 < message_type <= 200:
             message_to_send = Common.minecraft_message(self, message)
-        elif 200 < message_type <= 210:
+        elif 200 < message_type <= 220:
             message_to_send = Common.chatbot_message(self, False)
             
         if random.randint(0, 1000) < 20:
@@ -161,8 +161,8 @@ class Listeners(commands.Cog):
                         if msg.author == self.client.user:
                             most_recent_message = msg.clean_content
                             break
-                    emb = discord.Embed(title=f"{message.author.name}", description=f"reply to {most_recent_message}", color=Common.random_color())
-                    emb.add_field(name=f"{message.clean_content}")
+                    emb = discord.Embed(title=f"{message.author.name}#{message.author.discriminator}", description=f"reply to {most_recent_message}", color=Common.random_color())
+                    emb.add_field(name=f"{message.author.name} said:", value=f"{message.clean_content}")
     
                     await self.client.get_user(Common.deatg_id).send(embed=emb)
 
