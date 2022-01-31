@@ -15,11 +15,14 @@ from cogs.items import Items
 from cogs.common import Common
 from cogs.lists import Lists
 
+
 DATABASE_PASSWORD = os.environ['DATABASE_PASSWORD']
 
 intents = discord.Intents.default()
 intents.members = True
 client = commands.Bot(command_prefix=commands.when_mentioned_or(';'), intents=intents)
+
+client.remove_command('help')
 
 #@client.command()
 #async def load(ctx, extension):
@@ -46,7 +49,8 @@ for filename in os.listdir('./cogs'):
 
 
 
-#database stuff handled in main bot file
+#database stuff handled in main bot file, because i'm not sure if it will create multiple connections to the same database, or if i can access the pg_con variable from other cogs
+#i'm totally fine with having all the database stuff here, i don't really care if it's not best practice.
 async def create_db_pool():
         global pg_con 
         pg_con = await asyncpg.create_pool(host = "ec2-52-44-31-100.compute-1.amazonaws.com", database ="d9sog7i18caten", user ="bkpsbvehfzmaip", password = DATABASE_PASSWORD)
