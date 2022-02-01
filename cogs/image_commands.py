@@ -9,6 +9,9 @@ import sys
 import requests
 from PIL import Image, ImageFont, ImageDraw
 from io import BytesIO
+from petpetgif import petpet as petpetgif
+from typing import Union, Optional
+
 
 from cogs.common import Common
 from cogs.lists import Lists
@@ -149,6 +152,23 @@ class ImageCommands(commands.Cog):
         await ctx.send(file = discord.File("pillow_imagedraw.gif"))
 
         await info_msg.edit(content = f"done! {random.choice(Lists.all_face_emoji)}")
+
+    #code from https://pypi.org/project/pet-pet-gif/
+    @commands.command()
+    async def petpet(self, ctx, image: Optional[Union[discord.PartialEmoji, discord.member.Member]]):
+        if type(image) == discord.PartialEmoji:
+            image = await image.url_as(format='png').read() # retrieve the image bytes
+        elif type(image) == discord.member.Member:
+            image = await image.avatar_url_as(format='png').read() # retrieve the image bytes
+        else:
+            await ctx.reply('use a custom emoji or tag a member.')
+            return
+
+        source = BytesIO(image) # file-like container to hold the emoji in memory
+        dest = BytesIO() # container to store the petpet gif in memory
+        petpetgif.make(source, dest)
+        dest.seek(0) # set the file pointer back to the beginning so it doesn't upload a blank file.
+        await ctx.send(file=discord.File(dest, filename=f"{image[0]}-petpet.gif"))
 
     #works but the bot just isn't powerful enough on heroku
     #@commands.command(brief="inspired by Lenr")
