@@ -20,7 +20,8 @@ DATABASE_PASSWORD = os.environ['DATABASE_PASSWORD']
 
 intents = discord.Intents.default()
 intents.members = True
-client = commands.Bot(command_prefix=commands.when_mentioned_or(';'), intents=intents, help_command=None)
+client = commands.Bot(command_prefix=commands.when_mentioned_or(';'), intents=intents) #, help_command=None)
+client.remove_command("help")
 
 
 #@client.command()
