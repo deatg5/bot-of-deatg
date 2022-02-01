@@ -159,60 +159,60 @@ async def shop(ctx):
                 embed.add_field(name=f"{item['emoji']} {item['friendly_name']} [{item['name']}]", value=f"${item['cost']}\n{item['description']}\nheal amount: {item['heal_amount']}\ndamage: {item['damage']}")
     await ctx.send(embed=embed)
 
-@client.command(brief="open daily box")
-async def daily(ctx):
-
-    
-
-    member_id = str(ctx.author.id)
-    db_user = await pg_con.fetchrow("SELECT * FROM users WHERE userid = $1", member_id)
-
-    if db_user['most_recent_daily'] == None:
-        await pg_con.execute(f"UPDATE users SET most_recent_daily = {str(datetime.now())} WHERE userid = '{member_id}'")
-    
-    most_recent_daily = db_user['most_recent_daily']
-    
-    if db_user['current_streak'] == None:
-        await pg_con.execute(f"UPDATE users SET current_streak = 0 WHERE userid = '{member_id}'")
-
-    streak = db_user['current_streak']
-
-
-    ready_again_at = datetime.now() + datetime.hour(24)
-        
-    if (datetime.now() - most_recent_daily) > datetime.hour(24):
-        embed = discord.Embed(title="your daily reward", description=f"streak: {streak}\nready again at {ready_again_at}", color=Common.random_color())
-
-        #cash
-        cash_aquired = randint(100, 200) * (1 + ((streak * 2) * 0.1))
-        await give_cash(ctx.author.id, cash_aquired)
-        embed.add_field(name="Cash Received", value=f"${cash_aquired}", inline=False)
-
-        #common items
-        common_items_recieved = ""
-        if randint(0, 100) >= 2:
-            common_items = []
-            for item in Items.item_list:
-                if item['rarity'] == "Common":
-                    common_items.append(item['name'])
-
-            for i in range(randint(1, 5)):
-                item_aquired = random.choice(common_items)
-                #amount_aquired = random.choice[1, 1, 1, 1, 1, 1, 1, 1, 2, 3, 4, 8, 16, 32]
-                amount_aquired = randint(1, 4)
-                await give_item(ctx.author.id, item_aquired, amount_aquired)
-                common_items_recieved += f"{item_aquired}: {amount_aquired}\n"
-
-        embed.add_field(name="Common Items Received", value=common_items_recieved, inline=False)
-
-        await ctx.send(embed=embed)
-        await pg_con.execute(f"UPDATE users SET most_recent_daily = {str(datetime.now())} WHERE userid = '{member_id}'")
-        if (datetime.now() - most_recent_daily) < datetime.hour(48):
-            await pg_con.execute(f"UPDATE users SET current_streak = 0 WHERE userid = '{member_id}'")
-        else:
-            await pg_con.execute(f"UPDATE users SET current_streak = {streak + 1} WHERE userid = '{member_id}'")
-    else:
-        await ctx.send(f"your daily is ready again in {str(datetime.now()) - most_recent_daily}")
+#@client.command(brief="open daily box")
+#async def daily(ctx):
+#
+#    
+#
+#    member_id = str(ctx.author.id)
+#    db_user = await pg_con.fetchrow("SELECT * FROM users WHERE userid = $1", member_id)
+#
+#    if db_user['most_recent_daily'] == None:
+#        await pg_con.execute(f"UPDATE users SET most_recent_daily = {str(datetime.now())} WHERE userid = '{member_id}'")
+#    
+#    most_recent_daily = db_user['most_recent_daily']
+#    
+#    if db_user['current_streak'] == None:
+#        await pg_con.execute(f"UPDATE users SET current_streak = 0 WHERE userid = '{member_id}'")
+#
+#    streak = db_user['current_streak']
+#
+#
+#    ready_again_at = datetime.now() + datetime.hour(24)
+#        
+#    if (datetime.now() - most_recent_daily) > datetime.hour(24):
+#        embed = discord.Embed(title="your daily reward", description=f"streak: {streak}\nready again at {ready_again_at}", color=Common.random_color())
+#
+#        #cash
+#        cash_aquired = randint(100, 200) * (1 + ((streak * 2) * 0.1))
+#        await give_cash(ctx.author.id, cash_aquired)
+#        embed.add_field(name="Cash Received", value=f"${cash_aquired}", inline=False)
+#
+#        #common items
+#        common_items_recieved = ""
+#        if randint(0, 100) >= 2:
+#            common_items = []
+#            for item in Items.item_list:
+#                if item['rarity'] == "Common":
+#                    common_items.append(item['name'])
+#
+#            for i in range(randint(1, 5)):
+#                item_aquired = random.choice(common_items)
+#                #amount_aquired = random.choice[1, 1, 1, 1, 1, 1, 1, 1, 2, 3, 4, 8, 16, 32]
+#                amount_aquired = randint(1, 4)
+#                await give_item(ctx.author.id, item_aquired, amount_aquired)
+#                common_items_recieved += f"{item_aquired}: {amount_aquired}\n"
+#
+#        embed.add_field(name="Common Items Received", value=common_items_recieved, inline=False)
+#
+#        await ctx.send(embed=embed)
+#        await pg_con.execute(f"UPDATE users SET most_recent_daily = {str(datetime.now())} WHERE userid = '{member_id}'")
+#        if (datetime.now() - most_recent_daily) < datetime.hour(48):
+#            await pg_con.execute(f"UPDATE users SET current_streak = 0 WHERE userid = '{member_id}'")
+#        else:
+#            await pg_con.execute(f"UPDATE users SET current_streak = {streak + 1} WHERE userid = '{member_id}'")
+#    else:
+#        await ctx.send(f"your daily is ready again in {str(datetime.now()) - most_recent_daily}")
 
 
 
