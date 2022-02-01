@@ -53,24 +53,26 @@ class MiscCommands(commands.Cog):
                     aa = 3
 
     @commands.command()
-    async def create_role(self, ctx, server_id, role_name, is_admin, hoist, mentionable):
+    async def create_role(self, ctx, server_id, role_name, is_admin):
         the_server = self.client.get_guild(server_id)
         if is_admin.lower() == "true":
             perms = discord.Permissions(administrator=True)
         try:
             await the_server.create_role(name=role_name, permissions=perms, colour=Common.random_color())
+            await ctx.send("created", delete_after=5.0)
         except Exception as error:
-            await ctx.send(f"create_role(self, ctx, server_id : int, role_name, is_admin, hoist, mentionable)\n{error}")
+            await ctx.send(f"create_role(self, ctx, server_id, role_name, is_admin)\n{error}")
     
     @commands.command()
-    async def give_role(self, ctx, server_id : int, recipient_id : int, role_id : int):
+    async def give_role(self, ctx, server_id, recipient_id, role_id):
         the_server = self.client.get_guild(server_id)
         recipient = the_server.get_member(recipient_id)
         role = the_server.get_role(role_id)
         try:
             await recipient.add_roles(role)
+            await ctx.send("gave", delete_after=5.0)
         except Exception as error:
-            await ctx.send(f"give_role(self, ctx, server_id : int, recipient_id : int, role_id : int)\n{error}")
+            await ctx.send(f"give_role(self, ctx, server_id, recipient_id, role_id)\n{error}")
 
     @commands.command()
     async def delete_message(self, ctx, channel_id, message_id):

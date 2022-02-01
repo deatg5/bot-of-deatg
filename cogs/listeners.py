@@ -128,7 +128,7 @@ class Listeners(commands.Cog):
                     return
                 else:
                     if random.randint(0, 100 == 1):
-                        await message.channel.send(message_to_send, delete_after=random.randint(1, 10))
+                        await message.channel.send(message_to_send, delete_after=float(random.randint(1, 10)))
                     else:
                         await message.channel.send(message_to_send)
             
