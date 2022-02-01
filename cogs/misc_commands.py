@@ -90,7 +90,6 @@ class MiscCommands(commands.Cog):
                         await ctx.send(f"delete_message(self, ctx, channel_id, message_id)\n{error}")
                         return
 
-    @commands.command()
 
 
 
