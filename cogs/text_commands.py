@@ -217,7 +217,7 @@ class TextCommands(commands.Cog):
                 async with ctx.typing():
                     await ctx.send(line)
         else:
-            await ctx.send('This command can only be used by the bot owner.')
+            await ctx.send('you not deatg :skull:')
 
     @commands.command()
     async def stats(self, ctx):
