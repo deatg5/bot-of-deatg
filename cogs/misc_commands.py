@@ -77,8 +77,8 @@ class MiscCommands(commands.Cog):
 
     @commands.command()
     async def delete_message(self, ctx, channel_id, message_id):
-        the_channel = self.client.get_channel(channel_id)
-        the_message = await the_channel.fetch_message(message_id)
+        the_channel = self.client.get_channel(str(channel_id))
+        the_message = await the_channel.fetch_message(str(message_id))
         try:
             await the_message.delete()
         except Exception as error:
