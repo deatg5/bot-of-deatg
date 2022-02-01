@@ -81,11 +81,16 @@ class MiscCommands(commands.Cog):
     async def delete_message(self, ctx, channel_id, message_id):
         if ctx.author.id == Common.deatg_id:
             the_channel = self.client.get_channel(str(channel_id))
-            the_message = await the_channel.fetch_message(str(message_id))
-            try:
-                await the_message.delete()
-            except Exception as error:
-                await ctx.send(f"delete_message(self, ctx, channel_id, message_id)\n{error}")
+            async for msg in the_channel.history(limit = 10000):
+                if msg.id == message_id:
+                    try:
+                        await msg.delete()
+                        return
+                    except Exception as error:
+                        await ctx.send(f"delete_message(self, ctx, channel_id, message_id)\n{error}")
+                        return
+
+    @commands.command()
 
 
 
