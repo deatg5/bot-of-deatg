@@ -15,6 +15,7 @@ class Common(commands.Cog):
     deatg_id = 923313823195205645
     log_channel_ids = [930340703958097930]
     every_word_channel_ids = [930304637788102697,937978716418637864]
+    bot_of_deatg_haters = [921621999120420864]
     spam_channel_ids = []
     
 

@@ -270,7 +270,8 @@ class Listeners(commands.Cog):
             value=  "cool_image         \nrandomly generate an image\n" +
                     "gif                \ngif generation test\n" +
                     "quote_image        \ncreate a nice image with your quote\n" +
-                    "sign               \ngenerate mario 64 sign image" 
+                    "sign               \ngenerate mario 64 sign image\n" +
+                    "petpet             \npet a user's pfp or custom emoji" 
             , inline=False)
 
             embed.add_field(name="economy commands",

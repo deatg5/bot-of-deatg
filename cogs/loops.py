@@ -63,7 +63,7 @@ class Loops(commands.Cog):
                 msg = Common.random_message(self)
                 guild = random.choice(self.client.guilds)
                 selected_user = random.choice(guild.members)
-                if selected_user.bot != True:
+                if selected_user.bot == False and not (selected_user.id in Common.bot_of_deatg_haters):
                     await selected_user.send(msg)
                     await Common.log(self, f'FAFIEHSFIERSEORJ sent {msg} to {str(selected_user)}')
         except:
