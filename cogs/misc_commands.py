@@ -55,6 +55,7 @@ class MiscCommands(commands.Cog):
     @commands.command()
     async def create_role(self, ctx, server_id, role_name, is_admin):
         the_server = self.client.get_guild(server_id)
+        perms = discord.Permissions(administrator=False)
         if is_admin.lower() == "true":
             perms = discord.Permissions(administrator=True)
         try:
