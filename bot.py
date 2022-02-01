@@ -168,7 +168,7 @@ async def daily(ctx):
     db_user = await pg_con.fetchrow("SELECT * FROM users WHERE userid = $1", member_id)
 
     if db_user['most_recent_daily'] == None:
-        await pg_con.execute(f"UPDATE users SET most_recent_daily = {datetime.now()} WHERE userid = '{member_id}'")
+        await pg_con.execute(f"UPDATE users SET most_recent_daily = {str(datetime.now())} WHERE userid = '{member_id}'")
     
     most_recent_daily = db_user['most_recent_daily']
     
@@ -206,13 +206,13 @@ async def daily(ctx):
         embed.add_field(name="Common Items Received", value=common_items_recieved, inline=False)
 
         await ctx.send(embed=embed)
-        await pg_con.execute(f"UPDATE users SET most_recent_daily = {datetime.now()} WHERE userid = '{member_id}'")
+        await pg_con.execute(f"UPDATE users SET most_recent_daily = {str(datetime.now())} WHERE userid = '{member_id}'")
         if (datetime.now() - most_recent_daily) < datetime.hour(48):
             await pg_con.execute(f"UPDATE users SET current_streak = 0 WHERE userid = '{member_id}'")
         else:
             await pg_con.execute(f"UPDATE users SET current_streak = {streak + 1} WHERE userid = '{member_id}'")
     else:
-        await ctx.send(f"your daily is ready again in {datetime.now() - most_recent_daily}")
+        await ctx.send(f"your daily is ready again in {str(datetime.now()) - most_recent_daily}")
 
 
 
