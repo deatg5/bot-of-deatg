@@ -114,13 +114,14 @@ class Loops(commands.Cog):
         words = lines.splitlines()
         word_file.close()
 
-        most_recent_word = ""
-        the_channel = self.client.get_channel(Common.every_word_channel_id)
-        async for msg in the_channel.history(limit = 1000):
-            if msg.author == self.client.user:
-                most_recent_word = msg.clean_content
-                break
-        await the_channel.send(words[words.index(most_recent_word) + 1])
+        for server_id in Common.every_word_channel_ids:
+            most_recent_word = ""
+            the_channel = self.client.get_channel(server_id)
+            async for msg in the_channel.history(limit = 1000):
+                if msg.author == self.client.user:
+                    most_recent_word = msg.clean_content
+                    break
+            await the_channel.send(words[words.index(most_recent_word) + 1])
         
     @every_word.before_loop
     async def before_every_word(self):
