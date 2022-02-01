@@ -266,14 +266,14 @@ class Listeners(commands.Cog):
                     "stats              \nthe bot's stats"
             , inline=False)
 
-            embed.add_field(name="image command\ns",
+            embed.add_field(name="image commands",
             value=  "cool_image         \nrandomly generate an image\n" +
                     "gif                \ngif generation test\n" +
                     "quote_image        \ncreate a nice image with your quote\n" +
                     "sign               \ngenerate mario 64 sign image" 
             , inline=False)
 
-            embed.add_field(name="economy command\ns",
+            embed.add_field(name="economy commands",
             value=  "balance            \ncheck your balance\n" +
                     "buy                \nbuy an item\n" +
                     "daily              \nopen daily box\n" +
