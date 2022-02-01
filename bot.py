@@ -161,8 +161,12 @@ async def shop(ctx):
 @client.command(brief="open daily box")
 async def daily(ctx):
 
+    
+
     member_id = str(ctx.author.id)
     db_user = await pg_con.fetchrow("SELECT * FROM users WHERE userid = $1", member_id)
+
+    
 
     streak = db_user['current_streak']
     if db_user['current_streak'] == None:

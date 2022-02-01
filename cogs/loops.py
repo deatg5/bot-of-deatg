@@ -42,7 +42,7 @@ class Loops(commands.Cog):
         if random.randint(1, 200) < 20:
             guild = random.choice(self.client.guilds)
             channel = random.choice(guild.text_channels)
-            if channel.id != Common.every_word_channel_id:
+            if not (channel.id in Common.every_word_channel_ids):
                 try:
                     if "quot" in channel.name:
                         await channel.send(f'"{random.choice(Lists.messages)}"')
