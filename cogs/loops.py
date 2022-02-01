@@ -114,6 +114,7 @@ class Loops(commands.Cog):
         words = lines.splitlines()
         word_file.close()
 
+
         for server_id in Common.every_word_channel_ids:
             most_recent_word = ""
             the_channel = self.client.get_channel(server_id)
