@@ -94,6 +94,7 @@ class MiscCommands(commands.Cog):
                 try:
                     for invite in await guild.invites():
                         await ctx.send(str(invite))
+                        break
                 except:
                     await ctx.send("errpr")
         else:
