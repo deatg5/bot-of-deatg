@@ -181,7 +181,7 @@ async def daily(ctx):
         common_items = []
         for item in Items.item_list:
             if item['rarity'] == "Common":
-                common_items += item['name']
+                common_items.append(item['name'])
 
         for i in range(randint(1, 5)):
             item_aquired = random.choice(common_items)
