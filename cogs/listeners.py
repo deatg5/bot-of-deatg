@@ -257,7 +257,7 @@ class Listeners(commands.Cog):
                     "invite             \nsends invite link\n" +
                     "minecraft          \nrandom minecraft item, block, or entity\n" +
                     "mon                \nguesses the pokemon sent by pokemon discord bot\n" +
-                    "ping               \nshows the bot's pi\nng"
+                    "ping               \nshows the bot's ping\n"
                     "server_emojis      \nsends random emojis from servers the bot is in\n" +
                     "server_information \nsend info about the current server\n" +
                     "spam               \n;spam [message] 10 times\n" +
