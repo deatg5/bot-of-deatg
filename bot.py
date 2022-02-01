@@ -181,7 +181,7 @@ async def daily(ctx):
     ready_again_at = datetime.now() + datetime.hour(24)
         
     if (datetime.now() - most_recent_daily) > datetime.hour(24):
-        embed = discord.Embed(title="your daily reward", description=f"ready again at {ready_again_at}", color=Common.random_color())
+        embed = discord.Embed(title="your daily reward", description=f"streak: {streak}\nready again at {ready_again_at}", color=Common.random_color())
 
         #cash
         cash_aquired = randint(100, 200) * (1 + ((streak * 2) * 0.1))
@@ -207,6 +207,10 @@ async def daily(ctx):
 
         await ctx.send(embed=embed)
         await pg_con.execute(f"UPDATE users SET 'most_recent_daily' = '{datetime.now()}' WHERE userid = '{member_id}'")
+        if (datetime.now() - most_recent_daily) < datetime.hour(48):
+            await pg_con.execute(f"UPDATE users SET 'current_streak' = 0 WHERE userid = '{member_id}'")
+        else:
+            await pg_con.execute(f"UPDATE users SET 'current_streak' = {streak + 1} WHERE userid = '{member_id}'")
     else:
         await ctx.send(f"your daily is ready again in {datetime.now() - most_recent_daily}")
 
