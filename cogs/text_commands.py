@@ -104,17 +104,6 @@ class TextCommands(commands.Cog):
             await ctx.send("too many emojis! :zany_face:")
 
 
-    @commands.command(aliases=['fe'], brief="sends some random regular emojis")
-    async def face_emojis(self, ctx, count = 3):
-        try:
-            emoji = ""
-            for i in range(count):
-                emoji += str(random.choice(Lists.all_face_emoji))
-            async with ctx.typing():
-                await ctx.send(emoji)
-            await Common.log(self, f'sent {emoji}', ctx)
-        except:
-            await ctx.send("too many emojis! :zany_face:")
 
     
     @commands.command(aliases=['ep'], brief="adds an emoji between each of your words")

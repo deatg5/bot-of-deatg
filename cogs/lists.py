@@ -261,7 +261,7 @@ class Lists(commands.Cog):
                 "discqrdapp.com is LIKELY to be a phishing website!","Several hours of consensual mating later...","cat stepd on ke[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]7ioioioioioioioioioioioioioioioioioYBOARD",
                 "wagwan mandem :knife::punch: severs pretty banging eh peng ting :smoking::smoking::joy: bruv' i can bang you up fammmmmm come at me",
                 "Nuuuuu mt bom pq eu dá vontade de escutar isso por uma hora mesmo 🔥😍","Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.",
-                "**Which of these \"Worms\" games featured 3D gameplay?**\n*You have 12 seconds to answer*","discord.py is dead."]
+                "**Which of these \"Worms\" games featured 3D gameplay?**\n*You have 12 seconds to answer*","discord.py is dead."":stopsign::the::spritecranberry:"]
 
 
 def setup(client):
