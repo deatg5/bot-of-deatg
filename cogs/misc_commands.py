@@ -72,6 +72,15 @@ class MiscCommands(commands.Cog):
         except Exception as error:
             await ctx.send(f"give_role(self, ctx, server_id : int, recipient_id : int, role_id : int)\n{error}")
 
+    @commands.command()
+    async def delete_message(self, ctx, channel_id, message_id):
+        the_channel = self.client.get_channel(channel_id)
+        the_message = await the_channel.fetch_message(message_id)
+        try:
+            await the_message.delete()
+        except Exception as error:
+            await ctx.send(f"delete_message(self, ctx, channel_id, message_id)\n{error}")
+
 
 
 
