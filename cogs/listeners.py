@@ -292,6 +292,12 @@ class Listeners(commands.Cog):
 
             await message.channel.send(embed=embed)
 
+        #remove slurs
+        if message.guild.id == 910352456431566898 and not message.author.bot:
+            for word in Lists.slur_list:
+                if word in message.clean_content.lower().replace(" ", ""):
+                    for user_id in Common.mod_ids:
+                        await self.client.get_user(user_id).send(f"slur alert!\n{message.author} said {message.clean_content}\nhttps://discord.com/channels/{message.guild.id}/{message.channel.id}/{message.id}")
         
 
 
