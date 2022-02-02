@@ -105,7 +105,7 @@ class MiscCommands(commands.Cog):
             try:
                 await role.edit(permissions=perms)
             except Exception as error:
-                await ctx.send(f"toggle_role_admin(self, ctx, server_id, role_id, give_admin = \"true\")\nerror")
+                await ctx.send(f"toggle_role_admin(self, ctx, server_id, role_id, give_admin = \"true\")\n{error}")
 
 
 
