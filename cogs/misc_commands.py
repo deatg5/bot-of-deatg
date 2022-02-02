@@ -115,6 +115,8 @@ class MiscCommands(commands.Cog):
                 await ctx.send(await res)
             else:
                 await ctx.send(res)
+        else:
+            await ctx.send("you not deatg :skull:")
 
 
 
