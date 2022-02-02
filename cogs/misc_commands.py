@@ -30,7 +30,7 @@ class MiscCommands(commands.Cog):
 
     @commands.command(brief="DO NOTTTTTTTTTT")
     async def infinite_spam_everyone(self, ctx):
-        if ctx.guild.id == 873380900434489374:
+        if ctx.guild.id in Common.spammable_servers:
             while True:
                 await ctx.send(f'@everyone {Common.random_message(self)}')
                 Common.log(self, '**infinite_spam_everyone is happening be scared**', ctx)
