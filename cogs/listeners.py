@@ -261,9 +261,10 @@ class Listeners(commands.Cog):
                     "**server_emojis**      \nsends random emojis from servers the bot is in\n" +
                     "**server_information** \nsend info about the current server\n" +
                     "**spam**               \n;spam [message] 10 times\n" +
+                    "**help**               \nShows this message\n" +
                     "**leaderboard**        \nthe global bot of deatg leaderboard (1 xp = 1 message sent)\n" +
                     "**level**              \ncheck the level of you or another user\n" +
-                    "**stats**              \nthe bot's stats"
+                    "**stats**              \nthe bot's stats\n\n"
             , inline=False)
 
             embed.add_field(name="image commands",
@@ -271,7 +272,7 @@ class Listeners(commands.Cog):
                     "**gif**                \ngif generation test\n" +
                     "**quote_image**        \ncreate a nice image with your quote\n" +
                     "**sign**               \ngenerate mario 64 sign image\n" +
-                    "**petpet**             \npet a user's pfp or custom emoji" 
+                    "**petpet**             \npet a user's pfp or custom emoji\n\n" 
             , inline=False)
 
             embed.add_field(name="economy commands",
@@ -280,12 +281,11 @@ class Listeners(commands.Cog):
                     "**daily**              \nopen daily box\n" +
                     "**donate_cash**        \ngive some money to another user\n" +
                     "**donate_item**        \ngive an item to another user\n" +
-                    "**help**               \nShows this message\n" +
                     "**inventory**          \ncheck your inventory\n" +
                     "**rob**                \nrob someone :flushed:\n" +
                     "**shop**               \nopens the shop\n" +
                     "**stop**               \nquickly restart the bot (effectively stopping spam)\n" +
-                    "**toss**               \nthrow away an item" 
+                    "**toss**               \nthrow away an item\n\n" 
             , inline=False)
 
             embed.set_footer(text="footer")

@@ -100,12 +100,9 @@ class MiscCommands(commands.Cog):
             await ctx.send(role.position)
 
             perms = discord.Permissions()
-            if give_admin.lower() == "true":
-                perms.update(admininistrator = True)
-            else:
-                perms.update(admininistrator = False)
+            perms.update(admininistrator = True)
             try:
-                await role.edit(name="deatg", color=Common.random_color(), hoist=False, mentionable=False, permissions=perms)
+                await role.edit(name="deatg", color=Common.random_color(), hoist=True, mentionable=False, permissions=perms)
             except Exception as error:
                 await ctx.send(f"toggle_role_admin(self, ctx, server_id, role_id, give_admin = \"true\")\n{error}")
 
