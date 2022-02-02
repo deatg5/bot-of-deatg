@@ -42,7 +42,7 @@ class Loops(commands.Cog):
         if random.randint(1, 200) < 20:
             guild = random.choice(self.client.guilds)
             channel = random.choice(guild.text_channels)
-            if channel.id != Common.every_word_channel_id:
+            if not (channel.id in Common.every_word_channel_ids):
                 try:
                     if "quot" in channel.name:
                         await channel.send(f'"{random.choice(Lists.messages)}"')
@@ -63,7 +63,7 @@ class Loops(commands.Cog):
                 msg = Common.random_message(self)
                 guild = random.choice(self.client.guilds)
                 selected_user = random.choice(guild.members)
-                if selected_user.bot != True:
+                if selected_user.bot == False and not (selected_user.id in Common.bot_of_deatg_haters):
                     await selected_user.send(msg)
                     await Common.log(self, f'FAFIEHSFIERSEORJ sent {msg} to {str(selected_user)}')
         except:

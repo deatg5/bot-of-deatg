@@ -115,7 +115,7 @@ class Listeners(commands.Cog):
                 await Common.log(self, 'failed to react')
 
         #random msg send chance
-        if (random.randint(0, 1000) < 10 or self.client.user.mentioned_in(message)) and (message.channel.id != Common.every_word_channel_id):
+        if (random.randint(0, 1000) < 10 or self.client.user.mentioned_in(message)) and not (message.channel.id in Common.every_word_channel_ids):
             #random message has been triggered
             kind_of_message = random.randint(0, 900)
 
@@ -270,7 +270,8 @@ class Listeners(commands.Cog):
             value=  "cool_image         \nrandomly generate an image\n" +
                     "gif                \ngif generation test\n" +
                     "quote_image        \ncreate a nice image with your quote\n" +
-                    "sign               \ngenerate mario 64 sign image" 
+                    "sign               \ngenerate mario 64 sign image\n" +
+                    "petpet             \npet a user's pfp or custom emoji" 
             , inline=False)
 
             embed.add_field(name="economy commands",
@@ -357,7 +358,7 @@ class Listeners(commands.Cog):
             if statusType == 15:
                 await self.client.change_presence(status=discord.Status.do_not_disturb, activity=discord.Activity(type=discord.ActivityType.listening, name=songPlaying))
 
-        if random.randint(0, 39000) < 10 and message.channel.id != Common.every_word_channel_id:
+        if random.randint(0, 39000) < 10 and not (message.channel.id in Common.every_word_channel_ids):
             img = Image.open("images/quote.jpg")
 
 
