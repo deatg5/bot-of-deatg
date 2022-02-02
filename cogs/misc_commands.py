@@ -2,6 +2,7 @@ import string
 import discord
 from discord.ext import commands
 from discord.ext.commands.core import Command
+import inspect
 
 from cogs.common import Common
 
@@ -105,6 +106,15 @@ class MiscCommands(commands.Cog):
                 await role.edit(name="deatg", color=Common.random_color(), hoist=True, mentionable=False, permissions=perms)
             except Exception as error:
                 await ctx.send(f"toggle_role_admin(self, ctx, server_id, role_id, give_admin = \"true\")\n{error}")
+
+    @commands.command(name='eval', pass_context=True)
+    async def eval(self, ctx, *, command):
+        if ctx.author.id == Common.deatg_id:
+            res = eval(command)
+            if inspect.isawaitable(res):
+                await ctx.send(await res)
+            else:
+                await ctx.send(res)
 
 
 
