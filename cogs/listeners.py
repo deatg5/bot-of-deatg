@@ -50,7 +50,7 @@ class Listeners(commands.Cog):
     async def decide_message(self, message):
         message_to_send = Common.random_message(self)
 
-        message_type = random.randint(0, 340)
+        message_type = random.randint(0, 400)
 
         if 0 <= message_type <= 172:
             message_to_send = Common.random_message(self)
@@ -64,7 +64,7 @@ class Listeners(commands.Cog):
             message_to_send = await Common.dynamic_message(self, message)
         elif 195 < message_type <= 200:
             message_to_send = Common.minecraft_message(self, message)
-        elif 200 < message_type <= 340:
+        elif 200 < message_type <= 400:
             message_to_send = Common.chatbot_message(self)
             
         if random.randint(0, 1000) < 20:
