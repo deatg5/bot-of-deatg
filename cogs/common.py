@@ -52,7 +52,7 @@ class Common(commands.Cog):
         
 
     
-    def chatbot_message(self, long_edition = False):
+    def old_chatbot_message(self, long_edition = False):
         text_file = open("outputs.txt", "r")
         lines = text_file.read().split('FORNITE_FUNNY69')
 
@@ -65,6 +65,14 @@ class Common(commands.Cog):
             start_index = random.randint(0, len(lines_split_further))
             ret = lines_split_further[start_index:start_index + lines_to_return]
             return "".join(ret[:])
+
+    def chatbot_message(self):
+        with open("outputs.txt", "r") as funny:
+            selected = random.choice(funny.readlines())
+            if selected != "FORNITE_FUNNY69":
+                return selected
+            else:
+                Common.chatbot_message(self)
 
 
 
