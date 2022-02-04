@@ -42,8 +42,7 @@ class Common(commands.Cog):
                         Lists.splashes, 
                         Lists.pokemon,
                         Lists.games,
-                        Lists.kanji,
-                        Lists.hiragana])
+                        Lists.kanji])
         return random.choice(message_type)
 
     
@@ -69,10 +68,7 @@ class Common(commands.Cog):
     def chatbot_message(self):
         with open("outputs.txt", "r") as funny:
             selected = random.choice(funny.readlines())
-            if selected != "FORNITE_FUNNY69":
-                return selected
-            else:
-                Common.chatbot_message(self)
+            return selected
 
 
 
