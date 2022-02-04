@@ -168,9 +168,17 @@ class Listeners(commands.Cog):
 
                 if randint(0, 100) >= 4:
                     await asyncio.sleep(float(randint(0, 40))) 
+                    #check number of msgs
+                    count = 0
+                    async for msg in message.channel.history(limit = 2):
+                        if msg.author != self.client.user:
+                            count += 1
                     async with message.channel.typing():
                         await asyncio.sleep(float(randint(0, 13)))
-                        await message.reply(await Listeners.decide_message(self, message))
+                        if count >= 2:
+                            await message.reply(await Listeners.decide_message(self, message))
+                        else:
+                            await message.channel.send(await Listeners.decide_message(self, message))
 
 
 
