@@ -66,7 +66,7 @@ class Common(commands.Cog):
             return "".join(ret[:])
 
     def chatbot_message(self):
-        with open("outputs.txt", "r") as funny:
+        with open("outputs2.txt", "r") as funny:
             selected = random.choice(funny.readlines())
             return selected
 
