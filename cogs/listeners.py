@@ -170,7 +170,7 @@ class Listeners(commands.Cog):
                     await asyncio.sleep(float(randint(0, 40))) 
                     #check number of msgs
                     count = 0
-                    async for msg in message.channel.history(limit = 2):
+                    async for msg in message.channel.history(limit = 6):
                         if msg.author != self.client.user:
                             count += 1
                     async with message.channel.typing():
@@ -300,12 +300,15 @@ class Listeners(commands.Cog):
 
             await message.channel.send(embed=embed)
 
-        #remove slurs
-        if message.guild.id == 910352456431566898 and not message.author.bot:
-            for word in Lists.slur_list:
-                if word in message.clean_content.lower().replace(" ", ""):
-                    for user_id in Common.mod_ids:
-                        await self.client.get_user(user_id).send(f"slur alert!\n{message.author} said {message.clean_content}\nhttps://discord.com/channels/{message.guild.id}/{message.channel.id}/{message.id}")
+        #slur moment
+        try:
+            if message.guild.id == 910352456431566898 and not message.author.bot:
+                for word in Lists.slur_list:
+                    if word in message.clean_content.lower().replace(" ", ""):
+                        for user_id in Common.mod_ids:
+                            await self.client.get_user(user_id).send(f"slur alert!\n{message.author} said {message.clean_content}\nhttps://discord.com/channels/{message.guild.id}/{message.channel.id}/{message.id}")
+        except:
+            pass
         
 
 
