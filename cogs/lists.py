@@ -262,7 +262,8 @@ class Lists(commands.Cog):
                 "wagwan mandem :knife::punch: severs pretty banging eh peng ting :smoking::smoking::joy: bruv' i can bang you up fammmmmm come at me",
                 "Nuuuuu mt bom pq eu dá vontade de escutar isso por uma hora mesmo 🔥😍","Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.",
                 "**Which of these \"Worms\" games featured 3D gameplay?**\n*You have 12 seconds to answer*","discord.py is dead."":stopsign::the::spritecranberry:",
-                "I need to take my meds. You are not real. I am merely hallucinating. This conversation isn't really happening. This is my call for help. I suffer from schizophrenia."]
+                "I need to take my meds. You are not real. I am merely hallucinating. This conversation isn't really happening. This is my call for help. I suffer from schizophrenia.",
+                "Where are you in the pegging heirarchy?"]
 
 
 def setup(client):
