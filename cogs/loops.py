@@ -56,7 +56,7 @@ class Loops(commands.Cog):
         await self.client.wait_until_ready()
 
 
-    @tasks.loop(seconds=275)
+    @tasks.loop(seconds=2175)
     async def random_dm(self):
         try:
             if random.randint(1, 100) < 30:
