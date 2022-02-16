@@ -29,10 +29,10 @@ class Common(commands.Cog):
             if randint(0, 1000) <= 50:
                 await ctx.send(embed=emb, tts=True)
                 return
-            elif randint(0, 1000) <= 50:
+            elif randint(0, 1000) <= 10:
                 await ctx.send(embed=emb, delete_after = float(randint(2, 10)))
                 return
-            elif randint(0, 1000) <= 50:
+            elif randint(0, 1000) <= 10:
                 await ctx.send(embed=emb, tts=True, delete_after = float(randint(2, 10)))
                 return
             else:
@@ -41,11 +41,11 @@ class Common(commands.Cog):
         elif randint(0, 1000) <= 50:
             await ctx.send(message, tts=True)
             return
-        elif randint(0, 1000) <= 50:
-            await ctx.send(message, delete_after = float(randint(2, 10)))
+        elif randint(0, 1000) <= 10:
+            await ctx.send(message, delete_after = float(randint(2, 30)))
             return
-        elif randint(0, 1000) <= 50:
-            await ctx.send(message, tts=True, delete_after = float(randint(2, 10)))
+        elif randint(0, 1000) <= 10:
+            await ctx.send(message, tts=True, delete_after = float(randint(2, 30)))
             return
         else:
             await ctx.send(message)
