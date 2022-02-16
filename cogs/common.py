@@ -23,7 +23,7 @@ class Common(commands.Cog):
     spam_channel_ids = []
     
     async def send(self, ctx, message):
-        if randint(0, 1000) <= 10:
+        if randint(0, 1000) <= 20:
             emb=discord.Embed(title=f"{random.choice(Lists.messages)}", color=Common.random_color())
             emb.add_field(name=f"{random.choice(Lists.messages)}", value=f"{message}")
             if randint(0, 1000) <= 50:
