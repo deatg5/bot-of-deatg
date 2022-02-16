@@ -127,7 +127,7 @@ class Listeners(commands.Cog):
                     await message.channel.send(f'"{message_to_send}"')
                     return
                 else:
-                    await Common.send(message.channel, message_to_send)
+                    await Common.send(self, message.channel, message_to_send)
                     #await message.channel.send(message_to_send)
             
             #send emojis
@@ -140,7 +140,7 @@ class Listeners(commands.Cog):
                     for i in range(random.randint(6, 130)):
                         emoji += random.choice(random.choice([Lists.all_emoji, Lists.all_emoji, Lists.all_emoji, Lists.all_face_emoji]))
 
-                await Common.send(message.channel, emoji)
+                await Common.send(self, message.channel, emoji)
                 #await message.channel.send(emoji)
 
             #file upload - DISCONTINUED
@@ -177,7 +177,7 @@ class Listeners(commands.Cog):
                         if count >= 2:
                             await message.reply(await Listeners.decide_message(self, message))
                         else:
-                            await Common.send(message.channel, await Listeners.decide_message(self, message))
+                            await Common.send(self, message.channel, await Listeners.decide_message(self, message))
                             #await message.channel.send(await Listeners.decide_message(self, message))
 
 
