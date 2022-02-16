@@ -20,7 +20,8 @@ class TextCommands(commands.Cog):
         message = " ".join(message[:])
         for i in range(10):
             async with ctx.typing():
-                await ctx.send(message)
+                if "<@900139807181770772>" not in message:
+                    await ctx.send(message)
         await Common.log(self, f'Spammed {message} 10 times', ctx)
 
     @commands.command(brief="guesses the pokemon sent by pokemon discord bot")
