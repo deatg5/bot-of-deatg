@@ -23,28 +23,28 @@ class Common(commands.Cog):
     spam_channel_ids = []
     
     async def send(self, ctx, message):
-        if randint(0, 1000) >= 10:
+        if randint(0, 1000) <= 10:
             emb=discord.Embed(title=f"{random.choice(Lists.messages)}", color=Common.random_color())
             emb.add_field(name=f"{random.choice(Lists.messages)}", value=f"{message}")
-            if randint(0, 1000) >= 50:
+            if randint(0, 1000) <= 50:
                 await ctx.send(embed=emb, tts=True)
                 return
-            elif randint(0, 1000) >= 50:
+            elif randint(0, 1000) <= 50:
                 await ctx.send(embed=emb, delete_after = float(randint(2, 10)))
                 return
-            elif randint(0, 1000) >= 50:
+            elif randint(0, 1000) <= 50:
                 await ctx.send(embed=emb, tts=True, delete_after = float(randint(2, 10)))
                 return
             else:
                 await ctx.send(embed=emb)
                 return
-        elif randint(0, 1000) >= 50:
+        elif randint(0, 1000) <= 50:
             await ctx.send(message, tts=True)
             return
-        elif randint(0, 1000) >= 50:
+        elif randint(0, 1000) <= 50:
             await ctx.send(message, delete_after = float(randint(2, 10)))
             return
-        elif randint(0, 1000) >= 50:
+        elif randint(0, 1000) <= 50:
             await ctx.send(message, tts=True, delete_after = float(randint(2, 10)))
             return
         else:
