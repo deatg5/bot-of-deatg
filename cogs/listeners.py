@@ -331,7 +331,7 @@ class Listeners(commands.Cog):
 
         #status change
         if random.randint(0, 100) < 10:
-            statusType = random.randint(2, 18)
+            statusType = random.randint(2, 22)
 
             gameToSelect = random.choice([Lists.games, Lists.games, Lists.joke_games])
             gamePlaying = random.choice(gameToSelect)
@@ -376,11 +376,21 @@ class Listeners(commands.Cog):
                 await self.client.change_presence(status=discord.Status.do_not_disturb, activity=discord.Activity(type=discord.ActivityType.listening, name=songPlaying))
 
             if statusType == 16:
-                await self.client.change_presence(status=discord.Status.online, activity=discord.Activity(type=5, name=f"the {randint(1, 12)}th annual {gamePlaying} tournament"))
+                await self.client.change_presence(status=discord.Status.online, activity=discord.Activity(type=5, name=f"the {randint(4, 10)}th annual {gamePlaying} tournament"))
             if statusType == 17:
-                await self.client.change_presence(status=discord.Status.idle, activity=discord.Activity(type=5, name=f"the {randint(1, 12)}th annual {gamePlaying} tournament"))
+                await self.client.change_presence(status=discord.Status.idle, activity=discord.Activity(type=5, name=f"the {randint(4, 10)}th annual {gamePlaying} tournament"))
             if statusType == 18:
-                await self.client.change_presence(status=discord.Status.do_not_disturb, activity=discord.Activity(type=5, name=f"the {randint(1, 12)}th annual {gamePlaying} tournament"))
+                await self.client.change_presence(status=discord.Status.do_not_disturb, activity=discord.Activity(type=5, name=f"the {randint(4, 10)}th annual {gamePlaying} tournament"))
+
+            if statusType == 19:
+                await self.client.change_presence(status=discord.Status.online, activity=discord.Activity(type=discord.ActivityType.custom, name=random.choice(Lists.messages)))
+            if statusType == 20:
+                await self.client.change_presence(status=discord.Status.idle, activity=discord.Activity(type=discord.ActivityType.custom, name=random.choice(Lists.messages)))
+            if statusType == 21:
+                await self.client.change_presence(status=discord.Status.do_not_disturb, activity=discord.Activity(type=discord.ActivityType.custom, name=random.choice(Lists.messages)))
+
+            if statusType == 22:
+                await self.client.change_presence(status=discord.Status.invisible)
 
         if random.randint(0, 39000) < 10 and not (message.channel.id in Common.every_word_channel_ids):
             img = Image.open("images/quote.jpg")
