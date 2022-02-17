@@ -75,9 +75,9 @@ class Listeners(commands.Cog):
             message_to_send = Common.random_insert(self, message_to_send)
         if random.randint(0, 1000) < 10:
             message_to_send = Common.cutoff(self, message_to_send)
-        if random.randint(0, 1000) < 70:
+        if random.randint(0, 1000) < 40:
             message_to_send = await Common.fancy_letters(self, message_to_send)
-        if random.randint(0, 1000) < 85:
+        if random.randint(0, 1000) < 50:
             message_to_send = Common.random_emoji_insert(self, message_to_send)
 
         return message_to_send
@@ -127,10 +127,8 @@ class Listeners(commands.Cog):
                     await message.channel.send(f'"{message_to_send}"')
                     return
                 else:
-                    if random.randint(0, 100 == 1):
-                        await message.channel.send(message_to_send, delete_after=float(random.randint(1, 10)))
-                    else:
-                        await message.channel.send(message_to_send)
+                    await Common.send(self, message.channel, message_to_send)
+                    #await message.channel.send(message_to_send)
             
             #send emojis
             elif 800 < kind_of_message <= 1000:
@@ -142,7 +140,8 @@ class Listeners(commands.Cog):
                     for i in range(random.randint(6, 130)):
                         emoji += random.choice(random.choice([Lists.all_emoji, Lists.all_emoji, Lists.all_emoji, Lists.all_face_emoji]))
 
-                await message.channel.send(emoji)
+                await Common.send(self, message.channel, emoji)
+                #await message.channel.send(emoji)
 
             #file upload - DISCONTINUED
             #elif 960 < kind_of_message <= 1000:
@@ -178,7 +177,8 @@ class Listeners(commands.Cog):
                         if count >= 2:
                             await message.reply(await Listeners.decide_message(self, message))
                         else:
-                            await message.channel.send(await Listeners.decide_message(self, message))
+                            await Common.send(self, message.channel, await Listeners.decide_message(self, message))
+                            #await message.channel.send(await Listeners.decide_message(self, message))
 
 
 
@@ -331,7 +331,7 @@ class Listeners(commands.Cog):
 
         #status change
         if random.randint(0, 100) < 10:
-            statusType = random.randint(2, 15)
+            statusType = random.randint(2, 18)
 
             gameToSelect = random.choice([Lists.games, Lists.games, Lists.joke_games])
             gamePlaying = random.choice(gameToSelect)
@@ -374,6 +374,13 @@ class Listeners(commands.Cog):
                 await self.client.change_presence(status=discord.Status.idle, activity=discord.Activity(type=discord.ActivityType.listening, name=songPlaying))
             if statusType == 15:
                 await self.client.change_presence(status=discord.Status.do_not_disturb, activity=discord.Activity(type=discord.ActivityType.listening, name=songPlaying))
+
+            if statusType == 16:
+                await self.client.change_presence(status=discord.Status.online, activity=discord.Activity(type=5, name=f"the {randint(1, 12)}th annual {gamePlaying} tournament"))
+            if statusType == 17:
+                await self.client.change_presence(status=discord.Status.idle, activity=discord.Activity(type=5, name=f"the {randint(1, 12)}th annual {gamePlaying} tournament"))
+            if statusType == 18:
+                await self.client.change_presence(status=discord.Status.do_not_disturb, activity=discord.Activity(type=5, name=f"the {randint(1, 12)}th annual {gamePlaying} tournament"))
 
         if random.randint(0, 39000) < 10 and not (message.channel.id in Common.every_word_channel_ids):
             img = Image.open("images/quote.jpg")
