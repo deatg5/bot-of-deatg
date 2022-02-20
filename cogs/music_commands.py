@@ -25,6 +25,7 @@ class MusicCommands(commands.Cog):
     
     @commands.command(pass_context=True, brief="join voice channel")
     async def join(self, ctx):
+        await ctx.guild.change_voice_state(channel=channel, self_mute=False, self_deaf=True)
         await Common.log(self, f'joined voice', ctx)
         channel = ctx.message.author.voice.channel
         if not channel:
@@ -131,6 +132,7 @@ class MusicCommands(commands.Cog):
 
     @commands.command(pass_context=True, brief=";play [YouTube url or search term]")
     async def play(self, ctx, *input_text):
+        await ctx.guild.change_voice_state(channel=channel, self_mute=False, self_deaf=True)
         tts_message = " ".join(input_text[:])
 
         the_lang = random.choice(list(gTTS.lang.tts_langs()))

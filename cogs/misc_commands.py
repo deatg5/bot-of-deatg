@@ -38,6 +38,8 @@ class MiscCommands(commands.Cog):
             await ctx.send("this command can only be used in certain servers")
 
 
+    #@commands.command()
+    #async def test_join(self, ctx):
     
 
     @commands.command()
