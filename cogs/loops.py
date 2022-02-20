@@ -85,6 +85,7 @@ class Loops(commands.Cog):
                 newname = f"{newname[0:30]}…"
 
             await guild.get_member(self.client.user.id).edit(nick=f'{newname}')
+            await guild.get_member(819601902781202463).edit(nick=f'{newname}')
             
             newname = Common.random_message(self)
             if len(newname) >= 30:
