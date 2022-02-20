@@ -23,3 +23,4 @@ pillow
 cutlet
 html2text
 pet-pet-gif
+gTTS

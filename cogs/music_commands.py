@@ -4,6 +4,7 @@ import random
 from discord.utils import get
 import youtube_dl
 import os
+from gtts import gTTS
 
 from cogs.common import Common
 from cogs.lists import Lists
@@ -129,10 +130,15 @@ class MusicCommands(commands.Cog):
     #    voice.is_playing()
 
     @commands.command(pass_context=True, brief=";play [YouTube url or search term]")
-    async def play(self, ctx):
+    async def play(self, ctx, *input_text):
+        tts_message = " ".join(input_text[:])
+
+        tts_obj = gTTS(text=tts_message, lang="en", slow=False)
+        tts_obj.save("tts.mp3")
+
         voice = get(self.client.voice_clients, guild=ctx.guild)
         try:
-            voice.play(discord.FFmpegPCMAudio("song.mp3"))
+            voice.play(discord.FFmpegPCMAudio("tts.mp3"))
         except:
             channel = ctx.message.author.voice.channel
             voice = get(self.client.voice_clients, guild=ctx.guild)
@@ -149,7 +155,7 @@ class MusicCommands(commands.Cog):
                 await voice.move_to(channel)
             else:
                 voice = await channel.connect()
-            voice.play(discord.FFmpegPCMAudio("song.mp3"))
+            voice.play(discord.FFmpegPCMAudio("tts.mp3"))
         voice.volume = 100
         voice.is_playing()
     
