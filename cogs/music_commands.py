@@ -50,7 +50,7 @@ class MusicCommands(commands.Cog):
         if voice and voice.is_connected():
             await voice.disconnect()
             await ctx.send(f"oof i'm goned from {channel}")
-            Common.log(self, f'left {channel}', ctx)
+            await Common.log(self, f'left {channel}', ctx)
         else:
             await ctx.send("already left lmao")
 
@@ -133,7 +133,9 @@ class MusicCommands(commands.Cog):
     async def play(self, ctx, *input_text):
         tts_message = " ".join(input_text[:])
 
-        tts_obj = gTTS(text=tts_message, lang="en", slow=False)
+        the_lang = random.choice(list(gTTS.lang.tts_langs()))
+
+        tts_obj = gTTS(text=tts_message, lang=the_lang, slow=False)
         tts_obj.save("tts.mp3")
 
         voice = get(self.client.voice_clients, guild=ctx.guild)
