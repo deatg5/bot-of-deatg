@@ -168,8 +168,8 @@ async def daily(ctx):
     db_user = await pg_con.fetchrow("SELECT * FROM users WHERE userid = $1", member_id)
 
     if db_user['most_recent_daily'] == None:
-        the_date = datetime.now()
-        await pg_con.execute(f"UPDATE users SET most_recent_daily = (%s) WHERE userid = '{member_id}'", (the_date,))
+        the_date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        await pg_con.execute(f"UPDATE users SET most_recent_daily = {the_date} WHERE userid = '{member_id}'")
     
     most_recent_daily = db_user['most_recent_daily']
     
@@ -179,9 +179,9 @@ async def daily(ctx):
     streak = db_user['current_streak']
 
 
-    ready_again_at = datetime.now() + datetime.hour(24)
+    ready_again_at = datetime.now().strftime("%Y-%m-%d %H:%M:%S") + datetime.hour(24)
         
-    if (datetime.now() - most_recent_daily) > datetime.hour(24):
+    if (datetime.now().strftime("%Y-%m-%d %H:%M:%S") - most_recent_daily) > datetime.hour(24):
         embed = discord.Embed(title="your daily reward", description=f"streak: {streak}\nready again at {ready_again_at}", color=Common.random_color())
 
         #cash
