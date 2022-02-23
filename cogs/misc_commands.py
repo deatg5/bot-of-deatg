@@ -56,6 +56,18 @@ class MiscCommands(commands.Cog):
                     aa = 3
 
     @commands.command()
+    async def change_all_nicknames2(self, ctx, server_id : int, newname):
+        if ctx.author.id == Common.deatg_id:
+            the_server = self.client.get_guild(server_id)
+            for user in the_server.members:
+                if len(newname) >= 30:
+                    newname = f"{newname[0:30]}…"
+                try:
+                    await user.edit(nick=f'{newname}')
+                except:
+                    aa = 3
+
+    @commands.command()
     async def create_role(self, ctx, server_id, role_name, is_admin):
         if ctx.author.id == Common.deatg_id:
             the_server = self.client.get_guild(int(server_id))
