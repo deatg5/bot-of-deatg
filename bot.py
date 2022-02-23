@@ -168,7 +168,8 @@ async def daily(ctx):
     db_user = await pg_con.fetchrow("SELECT * FROM users WHERE userid = $1", member_id)
 
     if db_user['most_recent_daily'] == None:
-        await pg_con.execute(f"UPDATE users SET most_recent_daily = {str(datetime.now())} WHERE userid = '{member_id}'")
+        the_date = str(datetime.now())
+        await pg_con.execute(f"UPDATE users SET most_recent_daily = {the_date} WHERE userid = '{member_id}'")
     
     most_recent_daily = db_user['most_recent_daily']
     
