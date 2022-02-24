@@ -23,7 +23,7 @@ class Listeners(commands.Cog):
         await Common.log(self, 'BOT ACTIVATED')
         print('BOT ACTIVATED')
 
-    @commands.Cog.listener
+    @commands.Cog.listener()
     async def on_command_error(ctx, error):
     	if isinstance(error, commands.CommandOnCooldown):
             await ctx.send(f"yeah, please wait another {round(error.retry_after, 2)} seconds before starting spam again.")
