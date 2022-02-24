@@ -351,7 +351,7 @@ async def drop_item(ctx, drop_money = False):
         the_emoji = random.choice(Lists.all_emoji)
         drop_message = await ctx.send(f"first person to react to this message with {the_emoji} gets ${money_to_drop}!")
 
-        def check(reaction):
+        def check(reaction, user):
             return str(reaction.emoji) == the_emoji and user != client.user
 
 
