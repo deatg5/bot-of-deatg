@@ -356,7 +356,7 @@ async def drop_item(ctx, drop_money = False):
 
 
         try:
-            reaction, user = await client.wait_for("reaction_add", check=check, timeout=15)
+            reaction, user = await client.wait_for("reaction_add", check=check, timeout=30)
 
             await drop_message.edit(content=f"{drop_message.clean_content}\n{user.name} got the ${money_to_drop}!")
             await give_cash(str(user.id), money_to_drop)
@@ -377,7 +377,7 @@ async def drop_item(ctx, drop_money = False):
             return str(reaction.emoji) == the_emoji and user != client.user
 
         try:
-            reaction, user = await client.wait_for("reaction_add", check=check, timeout=15)
+            reaction, user = await client.wait_for("reaction_add", check=check, timeout=30)
 
             await drop_message.edit(content=f"{drop_message.clean_content}\n{user.name} got the {amount_aquired} {item_aquired['friendly_name']}(s)!")
             await give_item(str(user.id), item_aquired['name'], amount_aquired)
