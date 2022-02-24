@@ -351,7 +351,7 @@ async def drop_item(ctx, drop_money = False):
         the_emoji = random.choice(Lists.all_emoji)
         drop_message = await ctx.send(f"first person to react to this message with {the_emoji} gets ${money_to_drop}!")
 
-        check = lambda r, u: u == ctx.author and str(r.emoji) in Lists.all_emoji
+        check = lambda r, u: u == any and str(r.emoji) in Lists.all_emoji
 
         try:
             reaction, user = await client.wait_for("reaction_add", check=check, timeout=15)
@@ -372,7 +372,7 @@ async def drop_item(ctx, drop_money = False):
         the_emoji = random.choice(Lists.all_emoji)
         drop_message = await ctx.send(f"first person to react to this message with {the_emoji} gets {amount_aquired} {item_aquired['friendly_name']}!")
 
-        check = lambda r, u: u == ctx.author and str(r.emoji) in Lists.all_emoji
+        check = lambda r, u: u == any and str(r.emoji) in Lists.all_emoji
 
         try:
             reaction, user = await client.wait_for("reaction_add", check=check, timeout=15)
@@ -401,7 +401,10 @@ async def eval(ctx, *, command):
 
 @client.command()
 async def AITEM(ctx):
-    await drop_item(ctx, True)
+    if randint(1, 2) == 1:
+        await drop_item(ctx, True)
+    else:
+        await drop_item(ctx, False)
     
 
 
