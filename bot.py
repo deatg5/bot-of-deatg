@@ -352,7 +352,7 @@ async def drop_item(ctx, drop_money = False):
         drop_message = await ctx.send(f"first person to react to this message with {the_emoji} gets ${money_to_drop}!")
 
         def check(reaction):
-            return str(reaction.emoji) == the_emoji
+            return str(reaction.emoji) == the_emoji and user != client.user
 
 
         try:
@@ -374,7 +374,7 @@ async def drop_item(ctx, drop_money = False):
         drop_message = await ctx.send(f"first person to react to this message with {the_emoji} gets {amount_aquired} {item_aquired['friendly_name']}!")
 
         def check(reaction, user):
-            return str(reaction.emoji) == the_emoji
+            return str(reaction.emoji) == the_emoji and user != client.user
 
         try:
             reaction, user = await client.wait_for("reaction_add", check=check, timeout=15)
