@@ -420,7 +420,7 @@ async def on_message(message):
         if db_user['level'] % 5 == 0:
             await message.channel.send(f"{message.author.name} is now level {db_user['level']} congrats")
 
-    if randint(0, 100) == 1:
+    if randint(0, 200) == 1:
         if randint(1, 2) == 1:
             await drop_item(message.channel, True)
         else:
