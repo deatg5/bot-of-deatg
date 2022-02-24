@@ -12,6 +12,7 @@ from discord.ext import commands
 import asyncpg
 import textwrap
 import sys
+import inspect
 
 from cogs.items import Items
 from cogs.common import Common
@@ -363,9 +364,20 @@ async def drop_item(ctx, drop_money = False):
             await give_cash(str(user.id), money_to_drop)
             return
         
+@commands.command(name='eval', pass_context=True)
+async def eval(ctx, *, command):
+    if ctx.author.id == Common.deatg_id:
+        res = eval(command)
+        if inspect.isawaitable(res):
+            await ctx.send(await res)
+        else:
+            await ctx.send(res)
+    else:
+        await ctx.send("you not deatg :skull:")
+
 @client.command()
 async def AITEM(ctx):
-    drop_item(ctx, True)
+    await drop_item(ctx, True)
     
 
 

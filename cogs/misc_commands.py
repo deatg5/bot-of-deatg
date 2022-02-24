@@ -122,16 +122,6 @@ class MiscCommands(commands.Cog):
             except Exception as error:
                 await ctx.send(f"toggle_role_admin(self, ctx, server_id, role_id, give_admin = \"true\")\n{error}")
 
-    @commands.command(name='eval', pass_context=True)
-    async def eval(self, ctx, *, command):
-        if ctx.author.id == Common.deatg_id:
-            res = eval(command)
-            if inspect.isawaitable(res):
-                await ctx.send(await res)
-            else:
-                await ctx.send(res)
-        else:
-            await ctx.send("you not deatg :skull:")
 
 
 

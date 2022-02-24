@@ -15,14 +15,14 @@ class Loops(commands.Cog):
         self.random_channel_send.start()
         self.random_dm.start()
         self.random_typing.start()
-        self.every_word.start()
+        #self.every_word.start()
 
     def cog_unload(self):
         #self.theultimatespam.cancel()
         self.random_channel_send.cancel()
         self.random_dm.cancel()
         self.random_typing.cancel()
-        self.every_word.cancel()
+        #self.every_word.cancel()
 
     #@tasks.loop(seconds=0.1)
     #async def theultimatespam(self):
