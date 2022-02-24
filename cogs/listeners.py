@@ -23,6 +23,11 @@ class Listeners(commands.Cog):
         await Common.log(self, 'BOT ACTIVATED')
         print('BOT ACTIVATED')
 
+    @commands.Cog.listener
+    async def on_command_error(ctx, error):
+    	if isinstance(error, commands.CommandOnCooldown):
+            await ctx.send(f"yeah, please wait another {round(error.retry_after, 2)} seconds before starting spam again.")
+
     
     #@commands.Cog.listener()
     #async def on_command_error(self, ctx, error):
@@ -254,7 +259,7 @@ class Listeners(commands.Cog):
                     "**ping**               \nshows the bot's ping\n"
                     "**server_emojis**      \nsends random emojis from servers the bot's in\n" +
                     "**server_information (si)** \nsend info about the current server\n" +
-                    "**spam**               \nwill re-send your message 10 times\n" +
+                    "**spam**               \nwill re-send your message 10 times (has a cooldown)\n" +
                     "**help**               \nShows this message\n" +
                     "**leaderboard**        \nthe global leaderboard (1 xp = 1 message sent)\n" +
                     "**level**              \ncheck the level of you or another user\n" +

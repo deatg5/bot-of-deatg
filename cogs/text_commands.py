@@ -16,6 +16,7 @@ class TextCommands(commands.Cog):
         self.client = client
 
     @commands.command(brief=";spam [message] 10 times")
+    @commands.cooldown(1, 7, commands.BucketType.user)
     async def spam(self, ctx, *message):
         message = " ".join(message[:])
         for i in range(10):
