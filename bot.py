@@ -1,3 +1,4 @@
+import asyncio
 from datetime import date, datetime
 from math import fabs
 import math
@@ -159,61 +160,63 @@ async def shop(ctx):
                 embed.add_field(name=f"{item['emoji']} {item['friendly_name']} [{item['name']}]", value=f"${item['cost']}\n{item['description']}\nheal amount: {item['heal_amount']}\ndamage: {item['damage']}")
     await ctx.send(embed=embed)
 
-@client.command(brief="open daily box")
-async def daily(ctx):
 
-    
-
-    member_id = str(ctx.author.id)
-    db_user = await pg_con.fetchrow("SELECT * FROM users WHERE userid = $1", member_id)
-
-    if db_user['most_recent_daily'] == None:
-        the_date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        await pg_con.execute(f"UPDATE users SET most_recent_daily = {the_date} WHERE userid = '{member_id}'")
-    
-    most_recent_daily = db_user['most_recent_daily']
-    
-    if db_user['current_streak'] == None:
-        await pg_con.execute(f"UPDATE users SET current_streak = 0 WHERE userid = '{member_id}'")
-
-    streak = db_user['current_streak']
-
-
-    ready_again_at = datetime.now().strftime("%Y-%m-%d %H:%M:%S") + datetime.hour(24)
-        
-    if (datetime.now().strftime("%Y-%m-%d %H:%M:%S") - most_recent_daily) > datetime.hour(24):
-        embed = discord.Embed(title="your daily reward", description=f"streak: {streak}\nready again at {ready_again_at}", color=Common.random_color())
-
-        #cash
-        cash_aquired = randint(100, 200) * (1 + ((streak * 2) * 0.1))
-        await give_cash(ctx.author.id, cash_aquired)
-        embed.add_field(name="Cash Received", value=f"${cash_aquired}", inline=False)
-
-        #common items
-        common_items_recieved = ""
-        if randint(0, 100) >= 2:
-            common_items = []
-            for item in Items.item_list:
-                if item['rarity'] == "Common":
-                    common_items.append(item['name'])
-
-            for i in range(randint(1, 5)):
-                item_aquired = random.choice(common_items)
-                #amount_aquired = random.choice[1, 1, 1, 1, 1, 1, 1, 1, 2, 3, 4, 8, 16, 32]
-                amount_aquired = randint(1, 4)
-                await give_item(ctx.author.id, item_aquired, amount_aquired)
-                common_items_recieved += f"{item_aquired}: {amount_aquired}\n"
-
-        embed.add_field(name="Common Items Received", value=common_items_recieved, inline=False)
-
-        await ctx.send(embed=embed)
-        await pg_con.execute(f"UPDATE users SET most_recent_daily = {str(datetime.now())} WHERE userid = '{member_id}'")
-        if (datetime.now() - most_recent_daily) < datetime.hour(48):
-            await pg_con.execute(f"UPDATE users SET current_streak = 0 WHERE userid = '{member_id}'")
-        else:
-            await pg_con.execute(f"UPDATE users SET current_streak = {streak + 1} WHERE userid = '{member_id}'")
-    else:
-        await ctx.send(f"your daily is ready again in {str(datetime.now()) - most_recent_daily}")
+#failed the daily
+#@client.command(brief="open daily box")
+#async def daily(ctx):
+#
+#    
+#
+#    member_id = str(ctx.author.id)
+#    db_user = await pg_con.fetchrow("SELECT * FROM users WHERE userid = $1", member_id)
+#
+#    if db_user['most_recent_daily'] == None:
+#        the_date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+#        await pg_con.execute(f"UPDATE users SET most_recent_daily = {the_date} WHERE userid = '{member_id}'")
+#    
+#    most_recent_daily = db_user['most_recent_daily']
+#    
+#    if db_user['current_streak'] == None:
+#        await pg_con.execute(f"UPDATE users SET current_streak = 0 WHERE userid = '{member_id}'")
+#
+#    streak = db_user['current_streak']
+#
+#
+#    ready_again_at = datetime.now().strftime("%Y-%m-%d %H:%M:%S") + datetime.hour(24)
+#        
+#    if (datetime.now().strftime("%Y-%m-%d %H:%M:%S") - most_recent_daily) > datetime.hour(24):
+#        embed = discord.Embed(title="your daily reward", description=f"streak: {streak}\nready again at {ready_again_at}", color=Common.random_color())
+#
+#        #cash
+#        cash_aquired = randint(100, 200) * (1 + ((streak * 2) * 0.1))
+#        await give_cash(ctx.author.id, cash_aquired)
+#        embed.add_field(name="Cash Received", value=f"${cash_aquired}", inline=False)
+#
+#        #common items
+#        common_items_recieved = ""
+#        if randint(0, 100) >= 2:
+#            common_items = []
+#            for item in Items.item_list:
+#                if item['rarity'] == "Common":
+#                    common_items.append(item['name'])
+#
+#            for i in range(randint(1, 5)):
+#                item_aquired = random.choice(common_items)
+#                #amount_aquired = random.choice[1, 1, 1, 1, 1, 1, 1, 1, 2, 3, 4, 8, 16, 32]
+#                amount_aquired = randint(1, 4)
+#                await give_item(ctx.author.id, item_aquired, amount_aquired)
+#                common_items_recieved += f"{item_aquired}: {amount_aquired}\n"
+#
+#        embed.add_field(name="Common Items Received", value=common_items_recieved, inline=False)
+#
+#        await ctx.send(embed=embed)
+#        await pg_con.execute(f"UPDATE users SET most_recent_daily = {str(datetime.now())} WHERE userid = '{member_id}'")
+#        if (datetime.now() - most_recent_daily) < datetime.hour(48):
+#            await pg_con.execute(f"UPDATE users SET current_streak = 0 WHERE userid = '{member_id}'")
+#        else:
+#            await pg_con.execute(f"UPDATE users SET current_streak = {streak + 1} WHERE userid = '{member_id}'")
+#    else:
+#        await ctx.send(f"your daily is ready again in {str(datetime.now()) - most_recent_daily}")
 
 
 
@@ -341,6 +344,27 @@ async def grant_cash(ctx, member: discord.Member, amount = 1):
         await ctx.send("You are not authorized to use this command!")
 
 
+async def drop_item(ctx, drop_money = False):
+    if drop_money:
+        money_to_drop = randint(100, 300)
+        the_emoji = random.choice(Lists.all_emoji)
+        drop_message = await ctx.send(f"first person to react to this message with {the_emoji} gets ${money_to_drop}!")
+
+        check = lambda r, u: u == ctx.author and str(r.emoji) == the_emoji  # r=reaction, u=user
+
+        try:
+            reaction, user = await client.wait_for("reaction_add", check=check, timeout=10)
+        except asyncio.TimeoutError:
+            await drop_message.edit(content=f"time's up! nobody got the ${money_to_drop}. <:epic_fail:925849582506741770>")
+            return
+
+        if str(reaction.emoji) == the_emoji:
+            await drop_message.edit(content=f"{user.name} got the ${money_to_drop}!")
+            await give_cash(str(user.id), money_to_drop)
+            return
+        
+
+
 @client.event
 async def on_message(message):
     author_id = str(message.author.id)
@@ -358,6 +382,9 @@ async def on_message(message):
 
         if db_user['level'] % 5 == 0:
             await message.channel.send(f"{message.author.name} is now level {db_user['level']} congrats")
+
+    if "oo7457" in message.clean_content.lower():
+        drop_item(message, True)
 
     
 

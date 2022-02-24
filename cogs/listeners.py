@@ -286,7 +286,6 @@ class Listeners(commands.Cog):
             embed.add_field(name="economy commands",
             value=  "**balance**            \ncheck your balance\n" +
                     "**buy**                \nbuy an item\n" +
-                    "**daily**              \nopen daily box (wip)\n" +
                     "**donate_cash**        \ngive some money to another user\n" +
                     "**donate_item**        \ngive an item to another user\n" +
                     "**inventory**          \ncheck your inventory\n" +
