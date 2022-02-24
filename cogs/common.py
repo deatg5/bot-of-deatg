@@ -252,9 +252,9 @@ class Common(commands.Cog):
             dict_type = random.randint(1, 4)
             if dict_type == 1 or dict_type == 2:
                 selected_dict = Lists.fancy_text_spaced
-            elif dict_type == 2:
-                selected_dict = Lists.fancy_text_emo
             elif dict_type == 3:
+                selected_dict = Lists.fancy_text_emo
+            elif dict_type == 4:
                 selected_dict = Lists.fancy_text_cursive
 
             for letter in input_sentence:

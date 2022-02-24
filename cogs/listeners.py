@@ -50,7 +50,7 @@ class Listeners(commands.Cog):
     async def decide_message(self, message):
         message_to_send = Common.random_message(self)
 
-        message_type = random.randint(0, 300)
+        message_type = random.randint(0, 280)
 
         if 0 <= message_type <= 172:
             message_to_send = Common.random_message(self)
@@ -77,7 +77,7 @@ class Listeners(commands.Cog):
             message_to_send = Common.cutoff(self, message_to_send)
         if random.randint(0, 1000) < 40:
             message_to_send = await Common.fancy_letters(self, message_to_send)
-        if random.randint(0, 1000) < 50:
+        if random.randint(0, 1000) < 35:
             message_to_send = Common.random_emoji_insert(self, message_to_send)
 
         return message_to_send
