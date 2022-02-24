@@ -108,27 +108,27 @@ class Loops(commands.Cog):
 
 
 
-    @tasks.loop(seconds=60)
-    async def every_word(self):
-
-        word_file = open("corncob_lowercase.txt", "r")
-        lines = word_file.read()
-        words = lines.splitlines()
-        word_file.close()
-
-
-        for server_id in Common.every_word_channel_ids:
-            most_recent_word = ""
-            the_channel = self.client.get_channel(server_id)
-            async for msg in the_channel.history(limit = 1000):
-                if msg.author == self.client.user:
-                    most_recent_word = msg.clean_content
-                    break
-            await the_channel.send(words[words.index(most_recent_word) + 1])
-        
-    @every_word.before_loop
-    async def before_every_word(self):
-        await self.client.wait_until_ready()
+    #@tasks.loop(seconds=60)
+    #async def every_word(self):
+    #
+    #    word_file = open("corncob_lowercase.txt", "r")
+    #    lines = word_file.read()
+    #    words = lines.splitlines()
+    #    word_file.close()
+    #
+    #
+    #    for server_id in Common.every_word_channel_ids:
+    #        most_recent_word = ""
+    #        the_channel = self.client.get_channel(server_id)
+    #        async for msg in the_channel.history(limit = 1000):
+    #            if msg.author == self.client.user:
+    #                most_recent_word = msg.clean_content
+    #                break
+    #        await the_channel.send(words[words.index(most_recent_word) + 1])
+    #    
+    #@every_word.before_loop
+    #async def before_every_word(self):
+    #    await self.client.wait_until_ready()
 
 
 

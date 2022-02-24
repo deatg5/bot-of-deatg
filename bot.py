@@ -363,6 +363,10 @@ async def drop_item(ctx, drop_money = False):
             await give_cash(str(user.id), money_to_drop)
             return
         
+@client.command()
+async def AITEM(ctx):
+    drop_item(ctx, True)
+    
 
 
 @client.event
@@ -383,8 +387,6 @@ async def on_message(message):
         if db_user['level'] % 5 == 0:
             await message.channel.send(f"{message.author.name} is now level {db_user['level']} congrats")
 
-    if "oo7457" in message.clean_content.lower():
-        drop_item(message, True)
 
     
 
