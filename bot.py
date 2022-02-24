@@ -422,9 +422,9 @@ async def on_message(message):
 
     if randint(0, 100) == 1:
         if randint(1, 2) == 1:
-            await drop_item(message, True)
+            await drop_item(message.channel, True)
         else:
-            await drop_item(message, False)
+            await drop_item(message.channel, False)
 
     
 
