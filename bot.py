@@ -351,41 +351,42 @@ async def drop_item(ctx, drop_money = False):
         the_emoji = random.choice(Lists.all_emoji)
         drop_message = await ctx.send(f"first person to react to this message with {the_emoji} gets ${money_to_drop}!")
 
-        check = lambda r, u: u == any and str(r.emoji) in Lists.all_emoji
+        def check(reaction):
+            return str(reaction.emoji) == the_emoji
+
 
         try:
             reaction, user = await client.wait_for("reaction_add", check=check, timeout=15)
-        except asyncio.TimeoutError:
-            await drop_message.edit(content=f"{drop_message.clean_content}\ntime's up! nobody got the ${money_to_drop}. <:epic_fail:925849582506741770>")
-            return
 
-        if str(reaction.emoji) == the_emoji:
             await drop_message.edit(content=f"{drop_message.clean_content}\n{user.name} got the ${money_to_drop}!")
             await give_cash(str(user.id), money_to_drop)
-            return
-        else:
-            drop_message.edit(content=f"{drop_message.clean_content}\nthat's the wrong emoji! <:epic_fail:925849582506741770>")
+
+        except asyncio.TimeoutError:
+            await drop_message.edit(content=f"{drop_message.clean_content}\ntime's up! nobody got the ${money_to_drop}. <:epic_fail:925849582506741770>")
+
+        #else:
+        #    drop_message.edit(content=f"{drop_message.clean_content}\nthat's the wrong emoji! <:epic_fail:925849582506741770>")
 
     else:
         item_aquired = random.choice(Items.item_list)
-        amount_aquired = random.choice[1, 1, 1, 1, 1, 1, 1, 1, 2, 3, 4, 8, 16, 32]
+        amount_aquired = random.choice([1, 1, 1, 1, 1, 1, 1, 1, 2, 3, 4, 8, 16, 32])
         the_emoji = random.choice(Lists.all_emoji)
         drop_message = await ctx.send(f"first person to react to this message with {the_emoji} gets {amount_aquired} {item_aquired['friendly_name']}!")
 
-        check = lambda r, u: u == any and str(r.emoji) in Lists.all_emoji
+        def check(reaction, user):
+            return str(reaction.emoji) == the_emoji
 
         try:
             reaction, user = await client.wait_for("reaction_add", check=check, timeout=15)
-        except asyncio.TimeoutError:
-            await drop_message.edit(content=f"{drop_message.clean_content}\ntime's up! nobody got the {item_aquired['friendly_name']}. <:epic_fail:925849582506741770>")
-            return
 
-        if str(reaction.emoji) == the_emoji:
             await drop_message.edit(content=f"{drop_message.clean_content}\n{user.name} got the {amount_aquired} {item_aquired['friendly_name']}!")
             await give_item(str(user.id), item_aquired['name'], amount_aquired)
-            return
-        else:
-            drop_message.edit(content=f"{drop_message.clean_content}\nthat's the wrong emoji! <:epic_fail:925849582506741770>")
+
+        except asyncio.TimeoutError:
+            await drop_message.edit(content=f"{drop_message.clean_content}\ntime's up! nobody got the {item_aquired['friendly_name']}. <:epic_fail:925849582506741770>")
+
+        #else:
+        #    drop_message.edit(content=f"{drop_message.clean_content}\nthat's the wrong emoji! <:epic_fail:925849582506741770>")
     
         
 @commands.command(name='eval', pass_context=True)

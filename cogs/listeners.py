@@ -92,9 +92,9 @@ class Listeners(commands.Cog):
         if 'sans' in message.clean_content.lower():
             try:
                 await message.add_reaction('<:Sans:926163252306665532>')
-                await Common.log(self, 'OMG SANMS UNDERTAL')
+                await Common.log(self, 'OMG SANMS UNDERTAL', message)
             except:
-                await Common.log(self, 'OMG SANMS UNDERTAL failed this is so sad')
+                await Common.log(self, 'OMG SANMS UNDERTAL failed this is so sad', message)
 
 
         #ratio
