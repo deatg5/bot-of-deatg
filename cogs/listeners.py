@@ -422,7 +422,7 @@ class Listeners(commands.Cog):
                 img.paste(avatar, (180, 110), avatar)
             except:
                 img.paste(avatar, (180, 110))
-            img.save("quote.png level1 ") 
+            img.save("quote.png") 
 
             await message.reply(file = discord.File("quote.png"))
 
