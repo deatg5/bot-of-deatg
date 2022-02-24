@@ -369,9 +369,9 @@ async def drop_item(ctx, drop_money = False):
 
     else:
         item_aquired = random.choice(Items.item_list)
-        amount_aquired = random.choice([1, 1, 1, 1, 1, 1, 1, 1, 2, 3, 4, 8, 16, 32])
+        amount_aquired = random.choice([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 3, 4, 8, 16, 32])
         the_emoji = random.choice(Lists.all_emoji)
-        drop_message = await ctx.send(f"first person to react to this message with {the_emoji} gets {amount_aquired} {item_aquired['friendly_name']}!")
+        drop_message = await ctx.send(f"first person to react to this message with {the_emoji} gets {amount_aquired} {item_aquired['friendly_name']}(s)!")
 
         def check(reaction, user):
             return str(reaction.emoji) == the_emoji and user != client.user
@@ -379,11 +379,11 @@ async def drop_item(ctx, drop_money = False):
         try:
             reaction, user = await client.wait_for("reaction_add", check=check, timeout=15)
 
-            await drop_message.edit(content=f"{drop_message.clean_content}\n{user.name} got the {amount_aquired} {item_aquired['friendly_name']}!")
+            await drop_message.edit(content=f"{drop_message.clean_content}\n{user.name} got the {amount_aquired} {item_aquired['friendly_name']}(s)!")
             await give_item(str(user.id), item_aquired['name'], amount_aquired)
 
         except asyncio.TimeoutError:
-            await drop_message.edit(content=f"{drop_message.clean_content}\ntime's up! nobody got the {item_aquired['friendly_name']}. <:epic_fail:925849582506741770>")
+            await drop_message.edit(content=f"{drop_message.clean_content}\ntime's up! nobody got the {item_aquired['friendly_name']}(s). <:epic_fail:925849582506741770>")
 
         #else:
         #    drop_message.edit(content=f"{drop_message.clean_content}\nthat's the wrong emoji! <:epic_fail:925849582506741770>")
@@ -400,13 +400,6 @@ async def eval(ctx, *, command):
     else:
         await ctx.send("you not deatg :skull:")
 
-@client.command()
-async def AITEM(ctx):
-    if randint(1, 2) == 1:
-        await drop_item(ctx, True)
-    else:
-        await drop_item(ctx, False)
-    
 
 
 @client.event
@@ -427,6 +420,11 @@ async def on_message(message):
         if db_user['level'] % 5 == 0:
             await message.channel.send(f"{message.author.name} is now level {db_user['level']} congrats")
 
+    if randint(0, 100) == 1:
+        if randint(1, 2) == 1:
+            await drop_item(message, True)
+        else:
+            await drop_item(message, False)
 
     
 

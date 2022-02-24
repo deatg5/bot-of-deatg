@@ -445,21 +445,6 @@ class Items(commands.Cog):
             'emoji': ''
         },
         {
-        	'id': 30,
-            'name': 'femboy',
-        	'friendly_name': 'Femboy',
-            'description': '',
-        	'use_messages': [''],
-        	'consume_chance': 1.0,
-        	'cost': 0,
-        	'sell_price': 10,
-        	'rarity': 'Common',
-            'battle_use_messages': [''],
-            'damage': 0,
-            'heal_amount': 0,
-            'emoji': ''
-        },
-        {
         	'id': 31,
             'name': 'spritecranberry',
         	'friendly_name': 'Sprite® Cranberry',
