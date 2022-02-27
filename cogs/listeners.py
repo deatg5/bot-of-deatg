@@ -259,7 +259,6 @@ class Listeners(commands.Cog):
                     "**ping**               \nshows the bot's ping\n"
                     "**server_emojis**      \nsends random emojis from servers the bot's in\n" +
                     "**server_information (si)** \nsend info about the current server\n" +
-                    "**spam**               \nwill re-send your message 10 times (has a cooldown)\n" +
                     "**help**               \nShows this message\n" +
                     "**leaderboard**        \nthe global leaderboard (1 xp = 1 message sent)\n" +
                     "**level**              \ncheck the level of you or another user\n" +

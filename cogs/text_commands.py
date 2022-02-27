@@ -15,15 +15,6 @@ class TextCommands(commands.Cog):
     def __init__(self, client):
         self.client = client
 
-    @commands.command(brief=";spam [message] 10 times")
-    @commands.cooldown(1, 7, commands.BucketType.user)
-    async def spam(self, ctx, *message):
-        message = " ".join(message[:])
-        for i in range(10):
-            async with ctx.typing():
-                if "<@900139807181770772>" not in message:
-                    await ctx.send(message)
-        await Common.log(self, f'Spammed {message} 10 times', ctx)
 
     @commands.command(brief="guesses the pokemon sent by pokemon discord bot")
     async def mon(self, ctx):
