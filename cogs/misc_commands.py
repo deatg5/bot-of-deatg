@@ -29,6 +29,16 @@ class MiscCommands(commands.Cog):
     #        await ctx.send(f'<@822658667845386240> {Common.random_message(self)}')
     #        await Common.log(self, 'started infinite spam deatg', ctx)
 
+    @commands.command(brief=";spam [message] 10 times")
+    @commands.cooldown(1, 3, commands.BucketType.user)
+    async def spam(self, ctx, *message):
+        message = " ".join(message[:])
+        for i in range(10):
+            async with ctx.typing():
+                if "<@900139807181770772>" not in message:
+                    await ctx.send(message)
+        await Common.log(self, f'Spammed {message} 10 times', ctx)
+
     @commands.command(brief="DO NOTTTTTTTTTT")
     async def infinite_spam_everyone(self, ctx):
         if ctx.guild.id in Common.spammable_servers:
