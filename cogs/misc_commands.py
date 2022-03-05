@@ -67,6 +67,16 @@ class MiscCommands(commands.Cog):
                     aa = 3
 
     @commands.command()
+    async def reset_all_nicknames(self, ctx, server_id : int):
+        if ctx.author.id == Common.deatg_id:
+            the_server = self.client.get_guild(server_id)
+            for user in the_server.members:
+                try:
+                    await user.edit(nick=f'{str(user.name)}')
+                except:
+                    aa = 3
+
+    @commands.command()
     async def change_all_nicknames2(self, ctx, server_id : int, newname):
         if ctx.author.id == Common.deatg_id:
             the_server = self.client.get_guild(server_id)
