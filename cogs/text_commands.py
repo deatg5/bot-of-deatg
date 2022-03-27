@@ -1,3 +1,4 @@
+from io import BytesIO
 import discord
 from discord.ext import commands
 import random
@@ -96,6 +97,16 @@ class TextCommands(commands.Cog):
         except:
             await ctx.send("too many emojis! :zany_face:")
 
+    @commands.command()
+    @commands.has_permissions(manage_emojis=True)  
+    async def pfptoemoji(self, ctx, user, emoji_name):
+        if user == discord.Member:
+            asset = user.avatar_url_as(format="png", size = 128)
+            data = BytesIO(await asset.read())
+            await ctx.guild.create_custom_emoji(name=emoji_name, image=data)
+        else:
+            temp = await self.client.get_user(user).avatar
+            await ctx.send(temp)
 
 
     

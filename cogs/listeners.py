@@ -246,7 +246,7 @@ class Listeners(commands.Cog):
         if ';help' in message.clean_content.lower():
             embed=discord.Embed(title="bot of deatg", description="commands", color=Common.random_color())
 
-            embed.add_field(name="text commands", 
+            embed.add_field(name="misc commands", 
             value=  "**ai**                 \nsends a pre-generated message by the GPT2 AI engine\n" +
                     "**8ball**              \nask the bot a question\n" + 
                     "**emojiletters (el)**       \nconverts message to emoji letters\n" +
