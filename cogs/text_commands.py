@@ -107,7 +107,7 @@ class TextCommands(commands.Cog):
     async def uploademoji(self, ctx, image_url, emoji_name):
         try:
             asset = Image.open(requests.get(image_url, stream=True).raw)
-            asset = asset.resize(256, 256) 
+            asset = asset.resize((256, 256)) 
             await ctx.guild.create_custom_emoji(name=emoji_name, image=asset)
             await ctx.send("emoji created <:__:912606513124741211>")
         except Exception as ex:
