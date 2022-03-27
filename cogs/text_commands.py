@@ -106,17 +106,18 @@ class TextCommands(commands.Cog):
         try:
             asset = await user.avatar_url_as(format='png', size = 128).read()
             await ctx.guild.create_custom_emoji(name=emoji_name, image=asset)
+            await ctx.send("emoji created <:__:912606513124741211>")
         except Exception as ex:
             await ctx.send(ex)
 
-    @commands.command()
-    @commands.has_permissions(manage_emojis=True)  
-    async def pfptoemojifromid(self, ctx, user, emoji_name = None):
-        try:
-            temp = await self.client.get_user(user).avatar
-            await ctx.send(temp)
-        except Exception as ex:
-            await ctx.send(ex)
+    #@commands.command()
+    #@commands.has_permissions(manage_emojis=True)  
+    #async def pfptoemojifromid(self, ctx, user, emoji_name = None):
+    #    try:
+    #        temp = await self.client.get_user(user).avatar
+    #        await ctx.send(temp)
+    #    except Exception as ex:
+    #        await ctx.send(ex)
 
 
     
