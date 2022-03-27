@@ -100,14 +100,21 @@ class TextCommands(commands.Cog):
 
     @commands.command()
     @commands.has_permissions(manage_emojis=True)  
-    async def pfptoemoji(self, ctx, user, emoji_name = None):
+    async def pfptoemoji(self, ctx, user : discord.Member, emoji_name = None):
+        if emoji_name == None:
+            emoji_name = user.display_name
         try:
-            if user == discord.Member:
-                asset = await user.avatar_url_as(format='png', size = 128).read()
-                await ctx.guild.create_custom_emoji(name=emoji_name, image=asset)
-            else:
-                temp = await self.client.get_user(user).avatar
-                await ctx.send(temp)
+            asset = await user.avatar_url_as(format='png', size = 128).read()
+            await ctx.guild.create_custom_emoji(name=emoji_name, image=asset)
+        except Exception as ex:
+            await ctx.send(ex)
+
+    @commands.command()
+    @commands.has_permissions(manage_emojis=True)  
+    async def pfptoemojifromid(self, ctx, user, emoji_name = None):
+        try:
+            temp = await self.client.get_user(user).avatar
+            await ctx.send(temp)
         except Exception as ex:
             await ctx.send(ex)
 
