@@ -101,13 +101,13 @@ class TextCommands(commands.Cog):
     @commands.has_permissions(manage_emojis=True)  
     async def pfptoemoji(self, ctx, user: discord.Member, emoji_name):
         await ctx.send("aaeawe")
-        if user == discord.Member:
-            asset = await user.avatar_url_as(format='png', size = 128).read()
-            await ctx.guild.create_custom_emoji(name=emoji_name, image=asset)
-            await ctx.send("mmm?")
-        else:
-            temp = await self.client.get_user(user).avatar
-            await ctx.send(temp)
+        #if user == discord.Member:
+        asset = await user.avatar_url_as(format='png', size = 128).read()
+        await ctx.guild.create_custom_emoji(name=emoji_name, image=asset)
+        await ctx.send("mmm?")
+        #else:
+        #    temp = await self.client.get_user(user).avatar
+        #    await ctx.send(temp)
 
 
     
