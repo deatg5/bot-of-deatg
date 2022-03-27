@@ -100,6 +100,7 @@ class TextCommands(commands.Cog):
     @commands.command()
     @commands.has_permissions(manage_emojis=True)  
     async def pfptoemoji(self, ctx, user, emoji_name):
+        await ctx.send("aaeawe")
         if user == discord.Member:
             asset = user.avatar_url_as(format="png", size = 128)
             data = BytesIO(await asset.read())
