@@ -5,6 +5,9 @@ from discord.ext import commands
 import random
 from random import randint
 import textwrap
+import requests
+from PIL import Image, ImageFont, ImageDraw
+from io import BytesIO
 
 from discord.ext.commands.core import Command
 from discord.ext.commands import has_permissions, MissingPermissions
@@ -98,6 +101,17 @@ class TextCommands(commands.Cog):
             await Common.log(self, f'sent {emoji}', ctx)
         except:
             await ctx.send("too many emojis! :zany_face:")
+
+    @commands.command(aliases=['ue'])
+    @commands.has_permissions(manage_emojis=True)  
+    async def uploademoji(self, ctx, image_url, emoji_name):
+        try:
+            asset = Image.open(requests.get(image_url, stream=True).raw)
+            asset = asset.resize(256, 256) 
+            await ctx.guild.create_custom_emoji(name=emoji_name, image=asset)
+            await ctx.send("emoji created <:__:912606513124741211>")
+        except Exception as ex:
+            await ctx.send(ex)
 
     @commands.command()
     @commands.has_permissions(manage_emojis=True)  
