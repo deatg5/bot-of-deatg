@@ -7,6 +7,7 @@ from random import randint
 import textwrap
 
 from discord.ext.commands.core import Command
+from discord.ext.commands import has_permissions, MissingPermissions
 
 from cogs.common import Common
 from cogs.lists import Lists
@@ -101,6 +102,7 @@ class TextCommands(commands.Cog):
     @commands.command()
     @commands.has_permissions(manage_emojis=True)  
     async def pfptoemoji(self, ctx, user : discord.Member, emoji_name = None):
+        
         if emoji_name == None:
             emoji_name = user.display_name
         try:
@@ -109,6 +111,11 @@ class TextCommands(commands.Cog):
             await ctx.send("emoji created <:__:912606513124741211>")
         except Exception as ex:
             await ctx.send(ex)
+
+    @pfptoemoji.error
+    async def pfptoemoji_error(error, ctx):
+       if isinstance(error, MissingPermissions):
+           await ctx.send("you don't have permission to upload emojis!")
 
     #@commands.command()
     #@commands.has_permissions(manage_emojis=True)  
