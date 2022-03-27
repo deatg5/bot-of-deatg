@@ -100,7 +100,7 @@ class TextCommands(commands.Cog):
 
     @commands.command()
     @commands.has_permissions(manage_emojis=True)  
-    async def pfptoemoji(self, ctx, user: discord.Member, emoji_name = None):
+    async def pfptoemoji(self, ctx, user, emoji_name = None):
         try:
             if user == discord.Member:
                 asset = await user.avatar_url_as(format='png', size = 128).read()
