@@ -161,7 +161,10 @@ class ImageCommands(commands.Cog):
         elif type(image) == discord.User:
             image = await image.avatar_url_as(format='png').read() # retrieve the image bytes
         else:
-            await ctx.reply('use a custom emoji or tag a member.')
+            try:
+                image = await image.avatar_url_as(format='png').read()
+            except Exception as ex:
+                await ctx.send(ex)
             return
 
         source = BytesIO(image) # file-like container to hold the emoji in memory
