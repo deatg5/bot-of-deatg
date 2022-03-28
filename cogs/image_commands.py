@@ -155,10 +155,10 @@ class ImageCommands(commands.Cog):
 
     #code from https://pypi.org/project/pet-pet-gif/
     @commands.command()
-    async def petpet(self, ctx, image: Optional[Union[discord.PartialEmoji, discord.member.Member]]):
+    async def petpet(self, ctx, image: Optional[Union[discord.PartialEmoji, discord.User]]):
         if type(image) == discord.PartialEmoji:
             image = await image.url_as(format='png').read() # retrieve the image bytes
-        elif type(image) == discord.member.Member:
+        elif type(image) == discord.User:
             image = await image.avatar_url_as(format='png').read() # retrieve the image bytes
         else:
             await ctx.reply('use a custom emoji or tag a member.')
