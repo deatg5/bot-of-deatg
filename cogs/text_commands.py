@@ -115,7 +115,7 @@ class TextCommands(commands.Cog):
 
     @commands.command()
     @commands.has_permissions(manage_emojis=True)  
-    async def pfptoemoji(self, ctx, user : discord.Member, emoji_name = None):
+    async def pfptoemoji(self, ctx, user : discord.User, emoji_name = None):
         
         if emoji_name == None:
             emoji_name = user.display_name
