@@ -176,8 +176,8 @@ class ImageCommands(commands.Cog):
 
     @petpet.error
     async def petpet_error(self, ctx, error):
-        await ctx.send(str(error))
-        
+        await ctx.send(f"{str(error)}. perhaps that user is unable to be accessed.")
+
     #works but the bot just isn't powerful enough on heroku
     #@commands.command(brief="inspired by Lenr")
     #async def emoji_hell(self, ctx, image = None):
