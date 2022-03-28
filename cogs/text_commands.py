@@ -127,9 +127,12 @@ class TextCommands(commands.Cog):
             await ctx.send(ex)
 
     @pfptoemoji.error
-    async def pfptoemoji_error(error, ctx):
-       if isinstance(error, MissingPermissions):
+    async def pfptoemoji_error(self, ctx, error):
+        if isinstance(error, MissingPermissions):
            await ctx.send("you don't have permission to upload emojis!")
+        else:
+            await ctx.send(str(error))
+        
 
     #@commands.command()
     #@commands.has_permissions(manage_emojis=True)  
