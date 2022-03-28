@@ -162,6 +162,7 @@ class ImageCommands(commands.Cog):
             image = await image.avatar_url_as(format='png').read() # retrieve the image bytes
         else:
             try:
+                await ctx.send("aeaeae")
                 image = await image.avatar_url_as(format='png').read()
             except Exception as ex:
                 await ctx.send(ex)
