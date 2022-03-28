@@ -173,6 +173,11 @@ class ImageCommands(commands.Cog):
         dest.seek(0) # set the file pointer back to the beginning so it doesn't upload a blank file.
         await ctx.send(file=discord.File(dest, filename=f"{image[0]}-petpet.gif"))
 
+
+    @petpet.error
+    async def petpet_error(self, ctx, error):
+        await ctx.send(str(error))
+        
     #works but the bot just isn't powerful enough on heroku
     #@commands.command(brief="inspired by Lenr")
     #async def emoji_hell(self, ctx, image = None):
