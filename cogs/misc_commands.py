@@ -37,7 +37,7 @@ class MiscCommands(commands.Cog):
             async with ctx.typing():
                 if "<@900139807181770772>" not in message:
                     await ctx.send(message)
-        await Common.log(self, f'Spammed {message} 10 times', ctx)
+        #await Common.log(self, f'Spammed {message} 10 times', ctx)
 
     @commands.command(brief="DO NOTTTTTTTTTT")
     async def infinite_spam_everyone(self, ctx):
