@@ -90,6 +90,10 @@ class MiscCommands(commands.Cog):
 
 
     @commands.command()
+    async def matt(self, ctx):
+        await ctx.send("oh god why am i in that server")
+
+    @commands.command()
     async def getinvites(self, ctx):
         if ctx.author.id == Common.deatg_id or ctx.author.id == 573285573968527402:
             for guild in self.client.guilds:
