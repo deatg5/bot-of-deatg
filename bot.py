@@ -19,6 +19,7 @@ from cogs.common import Common
 from cogs.lists import Lists
 
 
+
 DATABASE_PASSWORD = os.environ['DATABASE_PASSWORD']
 
 intents = discord.Intents.default()
