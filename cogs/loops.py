@@ -81,14 +81,14 @@ class Loops(commands.Cog):
         #change nick
         if random.randint(1, 4) <= 3:
             newname = Common.random_message(self)
-            if len(newname) > 32:
-                newname = f"{newname[0:32]}…"
+            if len(newname) > 31:
+                newname = f"{newname[0:31]}…"
 
             await guild.get_member(self.client.user.id).edit(nick=f'{newname}')
             
             newname = Common.random_message(self)
-            if len(newname) > 32:
-                newname = f"{newname[0:32]}…"
+            if len(newname) > 31:
+                newname = f"{newname[0:31]}…"
                 
             try:
                 await guild.get_member(573285573968527402).edit(nick=f'{newname}')
