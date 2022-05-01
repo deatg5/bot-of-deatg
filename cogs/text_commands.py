@@ -2,6 +2,7 @@ from io import BytesIO
 from logging import exception
 import discord
 from discord.ext import commands
+from discord.commands import slash_command
 import random
 from random import randint
 import textwrap
