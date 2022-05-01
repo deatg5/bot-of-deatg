@@ -2,7 +2,6 @@ from io import BytesIO
 from logging import exception
 import discord
 from discord.ext import commands
-from discord.commands import slash_command
 import random
 from random import randint
 import textwrap
@@ -49,9 +48,9 @@ class TextCommands(commands.Cog):
             async with ctx.typing():
                 await ctx.send(f'{random.choice(Lists.item)}')
 
-    @commands.slash_command()
-    async def hello(self, ctx):
-        await ctx.respond("Hello!")
+    #@commands.cog_slash()
+    #async def hello(self, ctx):
+    #    await ctx.respond("Hello!")
 
     #@commands.command(brief="gets a sticker as an image")
     #async def sticker(self, ctx):
