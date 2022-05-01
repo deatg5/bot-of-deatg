@@ -48,6 +48,10 @@ class TextCommands(commands.Cog):
             async with ctx.typing():
                 await ctx.send(f'{random.choice(Lists.item)}')
 
+    @commands.slash_command()
+    async def hello(self, ctx):
+        await ctx.respond("Hello!")
+
     #@commands.command(brief="gets a sticker as an image")
     #async def sticker(self, ctx):
     #    try:
