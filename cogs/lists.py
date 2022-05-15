@@ -215,7 +215,7 @@ class Lists(commands.Cog):
                 "Look at my Twitch at awesomeqwerty123456","hey i know how to watch u tube","hi my name is oboma","I win you lose haha","I WILL KMS THANKS","Get the BTS meal before it's gone!",
                 "copen master", f"ccatch {random.choice(pokemon)}","my mind: 🤯🤯🤯🤯","ok making","✓",f"cbuy rare candy {randint(1, 15)}","+attack","了解しました","i just like to paste random things from my clipboard",
                 "Powder snow now fills cauldrons 2 times faster than before (still pretty slowly, though!)","omg in 5 minutes i can buy badges again",
-                "i am straving and have half a heart and have 32 levels and am far from home","OMG I CAN MAKE THE FOOD ICE BALLS","worst thing i've said all day", f"?afk {random.choice(messages_temp)}",
+                "i am straving and have half a heart and have 32 levels and am far from home","OMG I CAN MAKE THE FOOD ICE BALLS","worst thing i've said all day", f"?afk",
                 "you fake pc?",":sob:haha"," The once peaceful snow cone shop is now a hectic mess with people yelling at each other all day.","イエス！アイ・アム！","Accepted your friend request.", "Sent a friend request.",
                 "jolizoom server<:edpedo:805657574337675314>","You are unbanned from free ham sandwich day.","One common screwdriver please","lidl\nLIDL\nLIDL\nLIDL LOCATED","SOUP MACHINE","SOUP IN A CAN",
                 "soup dispensers stolen","wow Great.", "BAN <@573285573968527402>","<@573285573968527402> LOCATED","<@573285573968527402> noob","<@573285573968527402> thoughts?","Congratulations <@573285573968527402> ! You caught a level 14 Cinccino! Added to Pokédex. You received 35 Pokécoins!",
