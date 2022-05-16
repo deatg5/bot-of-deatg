@@ -84,6 +84,8 @@ class Listeners(commands.Cog):
             message_to_send = await Common.fancy_letters(self, message_to_send)
         if random.randint(0, 1000) < 35:
             message_to_send = Common.random_emoji_insert(self, message_to_send)
+        if random.randint(0, 1000) < 80:
+            message_to_send = Common.sentence_ender(self, message_to_send)
 
         return message_to_send
     
@@ -118,6 +120,11 @@ class Listeners(commands.Cog):
                         await message.add_reaction(random.choice(["🥰", "😍", "😘", "😻", "💌", "💘", "💝", "💖", "💗", "💓", "💞", "💕", "💟", "❣️", "💔", "❤️‍🔥", "❤️‍🩹", "❤️", "🧡", "💛", "💚", "💙", "💜", "🤎", "🖤", "🤍", "🫀", "💏"])) 
             except:
                 await Common.log(self, 'failed to react')
+
+        #if mentioned
+        if (self.client.user.mentioned_in(message)) and not (message.channel.id in Common.every_word_channel_ids) and 'milk' in message.clean_content.lower():
+            await message.channel.send(random.choice(["dont forget to check out GangoZango on YouTube","i really think you should check out GangoZango on YouTube", "We interrupt your regularly scheduled bot of deatg message to bring you a word from our sponsor, GangoZango on YouTube: dont forget to check out GangoZango on YouTube"]))
+            
 
         #random msg send chance
         if (random.randint(0, 1000) < 10 or self.client.user.mentioned_in(message)) and not (message.channel.id in Common.every_word_channel_ids):

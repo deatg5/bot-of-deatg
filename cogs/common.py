@@ -101,8 +101,6 @@ class Common(commands.Cog):
             return selected
 
 
-
-
     async def dynamic_message(self, message):
         members = message.guild.members
         selected_user = random.choice(members)
@@ -234,6 +232,9 @@ class Common(commands.Cog):
     def cutoff(self, message_content):
         index = random.randint(5, len(message_content))
         return f'{message_content[0:index]}-'
+
+    def sentence_ender(self, message_content):
+        return f"{message_content} {random.choice(Lists.sentence_enders)}"
     
     def generate_fake_japanese_sentence(self):
         the_sentence = ""
