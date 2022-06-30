@@ -123,7 +123,7 @@ class MiscCommands(commands.Cog):
                 )
                 try:
                     await member.send(
-                        f"you were kicked by **{context.author}** in {context.guild}!!\nreason: {reason}"
+                        f"you were kicked from  {context.guild} by **{context.author}** !!\nreason: {reason}"
                     )
                 except discord.Forbidden:
                     # Couldn't send a message in the private messages of the user
@@ -173,7 +173,7 @@ class MiscCommands(commands.Cog):
             else:
                 embed = discord.Embed(
                     title="user beaned!",
-                    description=f"**{member}** was beaned by **{context.author}** in {context.guild}! {random.choice(Lists.all_face_emoji)} {random.choice(Lists.sentence_enders)}",
+                    description=f"**{member}** was beaned by **{context.author}**! {random.choice(Lists.all_face_emoji)} {random.choice(Lists.sentence_enders)}",
                     color=Common.random_color()
                 )
                 embed.add_field(
@@ -181,7 +181,7 @@ class MiscCommands(commands.Cog):
                     value=reason
                 )
                 try:
-                    await member.send(f"you were beaned by **{context.author}**! {random.choice(Lists.all_face_emoji)}\nreason: {reason}")
+                    await member.send(f"you were beaned from {context.guild} by **{context.author}**! {random.choice(Lists.all_face_emoji)}\nreason: {reason}")
                 except discord.Forbidden:
                     # Couldn't send a message in the private messages of the user
                     pass
