@@ -97,8 +97,8 @@ class MiscCommands(commands.Cog):
     async def matt(self, ctx):
         await ctx.send("oh god why am i in that server")
 
-    @commands.command(brief='ping an ip or website', pass_context=True)
-    async def ping(self, ctx, arg1):
+    @commands.command(brief='ping an ip or website', pass_context=True, aliases=["pi"])
+    async def ping_ip(self, ctx, arg1):
         r = os.system("ping -c 1 {0}".format(arg1))
         if r == 0:
             await ctx.channel.send(":green_circle: The service {0} is running".format(arg1))
