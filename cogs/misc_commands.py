@@ -129,7 +129,6 @@ class MiscCommands(commands.Cog):
                     name="reason:",
                     value=reason
                 )
-                await context.send(embed=embed)
                 try:
                     await member.send(
                         f"you were kicked by **{context.author}**!\nreason: {reason}"
@@ -138,6 +137,7 @@ class MiscCommands(commands.Cog):
                     # Couldn't send a message in the private messages of the user
                     pass
                 await member.kick(reason=reason)
+                await context.send(embed=embed)
             except:
                 embed = discord.Embed(
                     title="AAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH",
@@ -186,13 +186,13 @@ class MiscCommands(commands.Cog):
                     name="reason:",
                     value=reason
                 )
-                await context.send(embed=embed)
                 try:
                     await member.send(f"you were beaned by **{context.author}**! {random.choice(Lists.all_face_emoji)}\nreason: {reason}")
                 except discord.Forbidden:
                     # Couldn't send a message in the private messages of the user
                     pass
                 await member.ban(reason=reason)
+                await context.send(embed=embed)
         except:
             embed = discord.Embed(
                 title="AAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHH",
