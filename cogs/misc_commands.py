@@ -110,7 +110,9 @@ class MiscCommands(commands.Cog):
     @commands.command(breif="kick a user from the server!!! rah!!!!!!!!")
 
     @commands.has_permissions(kick_members=True)
-    async def kick(self, context, member: discord.Member, *, reason: str = f"{random.choice(Lists.messages)}") -> None:
+    async def kick(self, context, member: discord.Member, *, reason: str = None) -> None:
+        if reason == None:
+            reason = f"{random.choice(Lists.messages)}"
         if member.guild_permissions.administrator:
             embed = discord.Embed(
                 title="Error!",
@@ -167,7 +169,9 @@ class MiscCommands(commands.Cog):
 
     @commands.command(brief="bans a user from the server!!!!")
     @commands.has_permissions(ban_members=True)
-    async def ban(self, context, member: discord.Member, *, reason: str = f"{random.choice(Lists.messages)}") -> None:
+    async def ban(self, context, member: discord.Member, *, reason: str = None) -> None:
+        if reason == None:
+            reason = f"{random.choice(Lists.messages)}"
         try:
             if member.guild_permissions.administrator:
                 embed = discord.Embed(
@@ -203,7 +207,9 @@ class MiscCommands(commands.Cog):
 
     @commands.command(brief="warns a user in the server :scream:")
     @commands.has_permissions(kick_members=True)
-    async def warn(self, context, member: discord.Member, *, reason: str = "not specified"):
+    async def warn(self, context, member: discord.Member, *, reason: str = None):
+        if reason == None:
+            reason = f"{random.choice(Lists.messages)}"
         embed = discord.Embed(
             title="user warned!!!1!!! :scream:",
             description=f"**{member}** was warned by **{context.author}**!",
