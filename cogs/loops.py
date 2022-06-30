@@ -56,11 +56,11 @@ class Loops(commands.Cog):
         await self.client.wait_until_ready()
 
 
-    @tasks.loop(seconds=2175)
+    @tasks.loop(seconds=1215)
     async def random_dm(self):
         try:
             if random.randint(1, 100) < 30:
-                msg = Common.random_message(self)
+                msg = random.choice(Lists.messages)
                 guild = random.choice(self.client.guilds)
                 selected_user = random.choice(guild.members)
                 if selected_user.bot == False and not (selected_user.id in Common.bot_of_deatg_haters):
@@ -74,7 +74,7 @@ class Loops(commands.Cog):
         await self.client.wait_until_ready()
 
 
-    @tasks.loop(seconds=2)
+    @tasks.loop(seconds=1)
     async def random_typing(self):
         guild = random.choice(self.client.guilds)
         channel = random.choice(guild.text_channels)
