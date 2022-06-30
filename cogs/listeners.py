@@ -169,7 +169,7 @@ class Listeners(commands.Cog):
             if message.author.id != Common.deatg_id:
                 most_recent_message = ""
                 async for msg in message.channel.history(limit = 1000):
-                    if msg.author == self.client.user:
+                    if msg.author != self.client.user:
                         most_recent_message = msg.clean_content
                         break
                 emb = discord.Embed(title=f"{message.author.name}#{message.author.discriminator}", description=f"reply to {most_recent_message}", color=Common.random_color())
