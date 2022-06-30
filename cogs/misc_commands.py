@@ -97,16 +97,6 @@ class MiscCommands(commands.Cog):
     async def matt(self, ctx):
         await ctx.send("oh god why am i in that server")
 
-    @commands.command(brief='ping an ip or website', pass_context=True, aliases=["pi"])
-    async def ping_ip(self, ctx, arg1):
-        r = os.system("ping -c 1 {0}".format(arg1))
-        if r == 0:
-            await ctx.channel.send(":green_circle: The service {0} is running".format(arg1))
-        else:
-            await ctx.channel.send(":red_circle: The service {0} doesn't seem to be working at the moment".format(arg1))
-
-             
-             
     @commands.command(breif="kick a user from the server!!! rah!!!!!!!!")
 
     @commands.has_permissions(kick_members=True)
@@ -115,9 +105,9 @@ class MiscCommands(commands.Cog):
             reason = f"{random.choice(Lists.messages)}"
         if member.guild_permissions.administrator:
             embed = discord.Embed(
-                title="Error!",
-                description="User has Admin permissions.",
-                color=0xE02B2B
+                title="AAAAAAAHHHHHHHHHHHHHHHHHH",
+                description="user has admin permissions.",
+                color=Common.random_color()
             )
             await context.send(embed=embed)
         else:
