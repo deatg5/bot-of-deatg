@@ -92,7 +92,7 @@ class Lists(commands.Cog):
                 ]
 
     sentence_enders = [ ":3", ":3" ":)", f"{random.choice(all_emoji)}", f"{random.choice(all_face_emoji)}", f"{random.choice(all_face_emoji)}", f"{random.choice(all_face_emoji)}", ":D", ":(", "w", "lol","LOL","hehe", "nya~","UwU","OwO","uwu",
-                        "right", ":/", ":)", "x3", "xD", "LMAO","maybe", "i think", ">w<","^w^"]
+                        "right", ":/", ":)", "x3", "xD", "LMAO","maybe", "i think", ">w<","^w^", "≧◡≦"]
 
     messages_temp = ["a", "<@573285573968527402> is responsible for this mess", "???", "deatg5", "test", "haha", "www", "question mark", "unfriending", 
                 "why rAndom people sign ined \naaaaaaaaaaaaaaaaaaaaaa", "Yay your ip hacking", "Why Apple Store7542 password hackinged", "cool and good", "everyone", 
@@ -267,7 +267,8 @@ class Lists(commands.Cog):
                 "I need to take my meds. You are not real. I am merely hallucinating. This conversation isn't really happening. This is my call for help. I suffer from schizophrenia.",
                 "Where are you in the pegging heirarchy?","The Pepsi Ratio is aesthetic geometry.", "you know how it is with spaghetti","DON'T MAKE ME GO INSANE MODE",
                 "There's so many things wrong with this picture.","oh em gee","I AM GONNA DO THIS TO YOU","super mario ds 2","dont forget to check out GangoZango on YouTube",
-                "i really think you should check out GangoZango on YouTube", "We interrupt your regularly scheduled bot of deatg message to bring you a word from our sponsor, GangoZango on YouTube: dont forget to check out GangoZango on YouTube"]
+                "i really think you should check out GangoZango on YouTube", "We interrupt your regularly scheduled bot of deatg message to bring you a word from our sponsor, GangoZango on YouTube: dont forget to check out GangoZango on YouTube",
+                "doki doki waku waku","死にたいの？"," 生きたいの？"]
 
     
 
@@ -450,7 +451,8 @@ class Lists(commands.Cog):
                 "I am currently in possession of fruiting berries of the deciduous woody vines of the botanical genus Vitis that can be eaten fresh as table grapes or they can be used for making wine, jam, juice, jelly, grape seed extract, raisins, vinegar, and grape seed oil. What are you witnessing and comprehending with your eyeballs, my male child?",
                 "It is in fact the place in which homo sapiens inhabit based around fruits consisting of a hard or tough shell around an edible kernel",
                 "It is in fact the peanut house.","Expression of excitement.","What did this man speak of?","Oh, I understand. Yes.","Do not lose memory of this, male child",
-                "Finally, someone let me out of my cage","36 names for balls\n nuts\n orbs\n testes\n globes\n pommels\n pellets\n conglomerations\n eggs\n shots\n jacks-in-the-box\n spheres\n pills\n masses\n crowfeet\n promenades\n leads\n shells\n catches\n knots\n drops\n balloons\n hops\n dances\n clods\n projectiles\n missiles\n footballs\n bullets\n receptions\n baseballs\n parties\n sports\n works\n chunks\n clumps\n lumps\n balls balls balls"]
+                "Finally, someone let me out of my cage","36 names for balls\n nuts\n orbs\n testes\n globes\n pommels\n pellets\n conglomerations\n eggs\n shots\n jacks-in-the-box\n spheres\n pills\n masses\n crowfeet\n promenades\n leads\n shells\n catches\n knots\n drops\n balloons\n hops\n dances\n clods\n projectiles\n missiles\n footballs\n bullets\n receptions\n baseballs\n parties\n sports\n works\n chunks\n clumps\n lumps\n balls balls balls",
+                "The Lord laughs at the wicked, for he knows their day is coming"]
 
 
 def setup(client):

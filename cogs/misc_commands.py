@@ -1,11 +1,15 @@
+from random import random
+from secrets import choice
 import string
 import discord
 from discord.ext import commands
 from discord.ext.commands.core import Command
 import inspect
 from datetime import date, datetime
+import os
 
 from cogs.common import Common
+from cogs.lists import Lists
 
 class MiscCommands(commands.Cog):
 
@@ -92,6 +96,130 @@ class MiscCommands(commands.Cog):
     @commands.command()
     async def matt(self, ctx):
         await ctx.send("oh god why am i in that server")
+
+    @commands.command(brief='ping an ip or website', pass_context=True)
+    async def ping(self, ctx, arg1):
+        r = os.system("ping -c 1 {0}".format(arg1))
+        if r == 0:
+            await ctx.channel.send(":green_circle: The service {0} is running".format(arg1))
+        else:
+            await ctx.channel.send(":red_circle: The service {0} doesn't seem to be working at the moment".format(arg1))
+
+             
+             
+    @commands.command(breif="kick a user from the server!!! rah!!!!!!!!")
+
+    @commands.has_permissions(kick_members=True)
+    async def kick(self, context, member: discord.Member, *, reason: str = f"{random.choice(Lists.messages)}") -> None:
+        if member.guild_permissions.administrator:
+            embed = discord.Embed(
+                title="Error!",
+                description="User has Admin permissions.",
+                color=0xE02B2B
+            )
+            await context.send(embed=embed)
+        else:
+            try:
+                embed = discord.Embed(
+                    title="user KICKED!!!!!!!!!",
+                    description=f"**{member}** was kicked by **{context.author}**!",
+                    color=Common.random_color()
+                )
+                embed.add_field(
+                    name="reason:",
+                    value=reason
+                )
+                await context.send(embed=embed)
+                try:
+                    await member.send(
+                        f"you were kicked by **{context.author}**!\nreason: {reason}"
+                    )
+                except discord.Forbidden:
+                    # Couldn't send a message in the private messages of the user
+                    pass
+                await member.kick(reason=reason)
+            except:
+                embed = discord.Embed(
+                    title="AAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH",
+                    description="an error occurred while trying to kick the user. make sure my role is above the role of the user you want to kick!! {random.choice(Lists.all_face_emoji)}",
+                    color=Common.random_color()
+                )
+                await context.send(embed=embed)
+
+    @commands.command(brief="change the nickname of a user in da server")
+    @commands.has_permissions(manage_nicknames=True)
+    async def nick(self, context, member: discord.Member, *, nickname: str = f"{random.choice(Lists.messages)}") -> None:
+        try:
+            await member.edit(nick=nickname)
+            embed = discord.Embed(
+                title="changed nickname!",
+                description=f"**{member}'s** new nickname is **{nickname}**!!! {random.choice(Lists.all_emoji)}",
+                color=Common.random_color()
+            )
+            await context.send(embed=embed)
+        except:
+            embed = discord.Embed(
+                title="AHHHHHHHHHHHHHHHHHHHHH",
+                description="an error occurred while trying to change the nickname of the user. Make sure my role is above the role of the user you want to change the nickname.",
+                color=Common.random_color()
+            )
+            await context.send(embed=embed)
+
+    @commands.command(brief="bans a user from the server!!!!")
+    @commands.has_permissions(ban_members=True)
+    async def ban(self, context, member: discord.Member, *, reason: str = f"{random.choice(Lists.messages)}") -> None:
+        try:
+            if member.guild_permissions.administrator:
+                embed = discord.Embed(
+                    title="AAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHH",
+                    description="user has admin permissions..",
+                    color=Common.random_color()
+                )
+                await context.send(embed=embed)
+            else:
+                embed = discord.Embed(
+                    title="user beaned!",
+                    description=f"**{member}** was beaned by **{context.author}**! {random.choice(Lists.all_face_emoji)} {random.choice(Lists.sentence_enders)}",
+                    color=Common.random_color()
+                )
+                embed.add_field(
+                    name="reason:",
+                    value=reason
+                )
+                await context.send(embed=embed)
+                try:
+                    await member.send(f"you were beaned by **{context.author}**! {random.choice(Lists.all_face_emoji)}\nreason: {reason}")
+                except discord.Forbidden:
+                    # Couldn't send a message in the private messages of the user
+                    pass
+                await member.ban(reason=reason)
+        except:
+            embed = discord.Embed(
+                title="AAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHH",
+                description=f"an error occurred while trying to ban the user!!!!!!!!!!! make sure my role is above the role of the user you want to ban ok? {random.choice(Lists.sentence_enders)}",
+                color=Common.random_color()
+            )
+            await context.send(embed=embed)
+
+    @commands.command(brief="warns a user in the server :scream:")
+    @commands.has_permissions(kick_members=True)
+    async def warn(self, context, member: discord.Member, *, reason: str = "not specified"):
+        embed = discord.Embed(
+            title="user warned!!!1!!! :scream:",
+            description=f"**{member}** was warned by **{context.author}**!",
+            color=Common.random_color()
+        )
+        embed.add_field(
+            name="Reason:",
+            value=reason
+        )
+        await context.send(embed=embed)
+        try:
+            await member.send(f"you were warned by **{context.author}**!\nreason: {reason}")
+        except discord.Forbidden:
+            # Couldn't send a message in the private messages of the user
+            await context.send(f"{member.mention}, you were warned by **{context.author}**!\nReason: {reason}")
+
 
     @commands.command()
     async def getinvites(self, ctx):
