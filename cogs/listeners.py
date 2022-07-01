@@ -166,18 +166,19 @@ class Listeners(commands.Cog):
         #if in DM
         if isinstance(message.channel, discord.DMChannel):
             
-            if message.author.id != Common.deatg_id:
-                most_recent_message = ""
-                async for msg in message.channel.history(limit = 1000):
-                    if msg.author != self.client.user:
-                        most_recent_message = msg.clean_content
-                        break
-                emb = discord.Embed(title=f"{message.author.name}#{message.author.discriminator}", description=f"reply to {most_recent_message}", color=Common.random_color())
-                emb.add_field(name=f"{message.author.name} said:", value=f"{message.clean_content}")
-
-                await self.client.get_user(Common.deatg_id).send(embed=emb)
                 
             if message.author != self.client.user: 
+                if message.author.id != Common.deatg_id:
+                    most_recent_message = ""
+                    async for msg in message.channel.history(limit = 1000):
+                        if msg.author != self.client.user:
+                            most_recent_message = msg.clean_content
+                            break
+                    emb = discord.Embed(title=f"{message.author.name}#{message.author.discriminator}", description=f"reply to {most_recent_message}", color=Common.random_color())
+                    emb.add_field(name=f"{message.author.name} said:", value=f"{message.clean_content}")
+
+                    await self.client.get_user(Common.deatg_id).send(embed=emb)
+                    
                 if randint(0, 100) >= 4:
                     await asyncio.sleep(float(randint(0, 40))) 
                     #check number of msgs
