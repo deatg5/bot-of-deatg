@@ -7,6 +7,7 @@ from discord.ext.commands.core import Command
 import inspect
 from datetime import date, datetime
 import os
+import json
 
 from cogs.common import Common
 from cogs.lists import Lists
@@ -55,18 +56,38 @@ class MiscCommands(commands.Cog):
 
     #@commands.command()
     #async def test_join(self, ctx):
+
+
+    '''
+    @commands.command()
+    async def server_to_json(self, ctx, server_id = None):
+        if ctx.author.id != Common.deatg_id:
+            await ctx.send("you not deatg :skul;:")
+            return
+        else:
+            if server_id == None:
+                server_id = ctx.guild.id
+            the_server = self.client.get_guild(server_id)
+            for channel in the_server.channels:
+                #add
+            for member in the_server.members:
+                #add
+            for role in the_server.roles:
+                #add
+    '''     
+
     
 
     @commands.command()
     async def change_all_nicknames(self, ctx, server_id : int):
         if ctx.author.id == Common.deatg_id:
             the_server = self.client.get_guild(server_id)
-            for user in the_server.members:
+            for member in the_server.members:
                 newname = Common.random_message(self)
                 if len(newname) >= 30:
                     newname = f"{newname[0:30]}…"
                 try:
-                    await user.edit(nick=f'{newname}')
+                    await member.edit(nick=f'{newname}')
                 except:
                     aa = 3
 
@@ -140,7 +161,9 @@ class MiscCommands(commands.Cog):
 
     @commands.command(brief="change the nickname of a user in da server")
     @commands.has_permissions(manage_nicknames=True)
-    async def nick(self, context, member: discord.Member, *, nickname: str = f"{random.choice(Lists.messages)}") -> None:
+    async def nick(self, context, member: discord.Member, *, nickname: str = None) -> None:
+        if nickname == None:
+            nickname = f"{random.choice(Lists.messages)}"
         try:
             await member.edit(nick=nickname)
             embed = discord.Embed(
