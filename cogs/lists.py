@@ -268,7 +268,11 @@ class Lists(commands.Cog):
                 "Where are you in the pegging heirarchy?","The Pepsi Ratio is aesthetic geometry.", "you know how it is with spaghetti","DON'T MAKE ME GO INSANE MODE",
                 "There's so many things wrong with this picture.","oh em gee","I AM GONNA DO THIS TO YOU","super mario ds 2","dont forget to check out GangoZango on YouTube",
                 "i really think you should check out GangoZango on YouTube", "We interrupt your regularly scheduled bot of deatg message to bring you a word from our sponsor, GangoZango on YouTube: dont forget to check out GangoZango on YouTube",
-                "doki doki waku waku","死にたいの？"," 生きたいの？"]
+                "死にたいの？"," 生きたいの？", "I want to get off Mr. Bones' Wild Ride","He will soon break free. Fortunately, we can fix this", "I LOVE YOU",
+                "why the hell did i think that would work now i have grilled corn all over'","he alive and angry and running","I HEAR THHE NOISE OF THOSE THOUSAND PEGGETS RUBBING",
+                "MAC AND. HEESE MADE FIRST TIME OMG","i cant find out how to have sex with my sister so im annoyed","i’m locked out of my grandmas house with apple juice",
+                "i would floor masturbate to her","SHUT UP!!!!!! noob, not-good-player and BAD PLAYER!!!!!!!!!!","in the last 2-3 minutes i’ve smashed my head as my pillow screamed, threw pillows, laughed to self, insult the voices in my head praising my godlike power and enhancing the power of a fucking god anddddd going into the fetal position for long periods of time because i am a off hinge and a fucking god right now",
+                "WHY MAKE PASTA INSTEAD GETTING CAT","remind me to never lick headache medicine when you're bored without a headache and throw it in the toilet again", "France to plain? Get a new campaign.\nRotisserie chicken..."]
 
     
 
