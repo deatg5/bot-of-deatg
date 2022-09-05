@@ -272,7 +272,9 @@ class Lists(commands.Cog):
                 "why the hell did i think that would work now i have grilled corn all over'","he alive and angry and running","I HEAR THHE NOISE OF THOSE THOUSAND PEGGETS RUBBING",
                 "MAC AND. HEESE MADE FIRST TIME OMG","i cant find out how to have sex with my sister so im annoyed","i’m locked out of my grandmas house with apple juice",
                 "i would floor masturbate to her","SHUT UP!!!!!! noob, not-good-player and BAD PLAYER!!!!!!!!!!","in the last 2-3 minutes i’ve smashed my head as my pillow screamed, threw pillows, laughed to self, insult the voices in my head praising my godlike power and enhancing the power of a fucking god anddddd going into the fetal position for long periods of time because i am a off hinge and a fucking god right now",
-                "WHY MAKE PASTA INSTEAD GETTING CAT","remind me to never lick headache medicine when you're bored without a headache and throw it in the toilet again", "France to plain? Get a new campaign.\nRotisserie chicken..."]
+                "WHY MAKE PASTA INSTEAD OF GETTING CAT","remind me to never lick headache medicine when you're bored without a headache and throw it in the toilet again", "France to plain? Get a new campaign.\nRotisserie chicken...",
+                "the CANCEL CULTURE MOB got to Scotty, this is awful I am disgusted. Of all the people who deserve to be ♥♥♥♥ on, Scotty is the last person on that list. He ended his last stream abruptly in tears, he didn't even raid. I wasn't even looking at chat at that moment, so I was confused. I go on Twitter and I see a trending hashtag #ScottyDXIsOverParty, people generally being very mean to him, and why? Because apparently he's a gaslighter.",
+                "AMAZON WEB SERVICE"]
 
     
 
