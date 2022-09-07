@@ -178,6 +178,8 @@ class Listeners(commands.Cog):
                     async for msg in message.channel.history(limit = 6):
                         if msg.author != self.client.user:
                             count += 1
+                        if msg.author == self.client.user:
+                            break
                     async with message.channel.typing():
                         await asyncio.sleep(float(randint(0, 13)))
                         if count >= 3:
