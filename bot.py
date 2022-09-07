@@ -21,6 +21,7 @@ from cogs.lists import Lists
 
 
 DATABASE_PASSWORD = os.environ['DATABASE_PASSWORD']
+DATABASE_ADDRESS = os.environ['DATABASE_ADDRESS']
 
 intents = discord.Intents.default()
 intents.members = True
@@ -56,7 +57,7 @@ for filename in os.listdir('./cogs'):
 #i'm totally fine with having all the database stuff here, i don't really care if it's not best practice.
 async def create_db_pool():
         global pg_con 
-        pg_con = await asyncpg.create_pool(host = "ec2-52-44-31-100.compute-1.amazonaws.com", database ="d9sog7i18caten", user ="bkpsbvehfzmaip", password = DATABASE_PASSWORD)
+        pg_con = await asyncpg.create_pool(host = DATABASE_ADDRESS, database ="egypt", user ="cleopatra", password = DATABASE_PASSWORD)
 
 @client.command(aliases=["lb"], brief="the global bot of deatg leaderboard (1 xp = 1 message sent)")
 async def leaderboard(ctx, amount=30):
