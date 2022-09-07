@@ -180,7 +180,7 @@ class Listeners(commands.Cog):
                             count += 1
                     async with message.channel.typing():
                         await asyncio.sleep(float(randint(0, 13)))
-                        if count >= 2:
+                        if count >= 3:
                             await message.reply(await Listeners.decide_message(self, message))
                         else:
                             await Common.send(self, message.channel, await Listeners.decide_message(self, message))
