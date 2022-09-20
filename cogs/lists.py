@@ -458,7 +458,7 @@ class Lists(commands.Cog):
                 "It is in fact the place in which homo sapiens inhabit based around fruits consisting of a hard or tough shell around an edible kernel",
                 "It is in fact the peanut house.","Expression of excitement.","What did this man speak of?","Oh, I understand. Yes.","Do not lose memory of this, male child",
                 "Finally, someone let me out of my cage","36 names for balls\n nuts\n orbs\n testes\n globes\n pommels\n pellets\n conglomerations\n eggs\n shots\n jacks-in-the-box\n spheres\n pills\n masses\n crowfeet\n promenades\n leads\n shells\n catches\n knots\n drops\n balloons\n hops\n dances\n clods\n projectiles\n missiles\n footballs\n bullets\n receptions\n baseballs\n parties\n sports\n works\n chunks\n clumps\n lumps\n balls balls balls",
-                "The Lord laughs at the wicked, for he knows their day is coming"]
+                "The Lord laughs at the wicked, for he knows their day is coming","can you hold this for me? *hands you an onions*"]
 
 
 def setup(client):
