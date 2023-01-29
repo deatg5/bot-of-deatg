@@ -11,6 +11,8 @@ from PIL import Image, ImageFont, ImageDraw
 from io import BytesIO
 from petpetgif import petpet as petpetgif
 from typing import Union, Optional
+import asyncio
+import re
 
 
 from cogs.common import Common
@@ -27,7 +29,8 @@ class ImageCommands(commands.Cog):
         if user == None:
             user = ctx.author
         sign = Image.open("images/1707.png")
-        asset = user.avatar_url_as(format="png", size = 128)
+        #asset = user.avatar_url_as(format="png", size = 128)
+        asset = user.avatar.with_format("png")
         data = BytesIO(await asset.read())
         avatar = Image.open(data)
         avatar = avatar.resize((168,168))
@@ -38,36 +41,54 @@ class ImageCommands(commands.Cog):
         sign.save("generated_sign.png")
     
         await ctx.send(file = discord.File("generated_sign.png"))
-
-    @commands.command(brief="create a nice image with your quote")
-    async def quote_image(self, ctx, *input_text):
-        img = Image.open("images/quote.jpg")
-
-        draw = ImageDraw.Draw(img)
-        #selected_font = random.choice(os.listdir("fonts/"))
-        font = ImageFont.truetype("fonts/Honoka-Shin-Antique-Kaku_M.otf", 80)
-
-        selected_user = str(ctx.author)
-        selected_user = selected_user[:-5]
-        asset = ctx.author.avatar_url_as(format="png", size = 256)
-        data = BytesIO(await asset.read())
+    
+    @commands.slash_command(name="sign", description="generate mario 64 sign image")
+    async def sign(self, ctx, user: discord.Member = None):
+        if user == None:
+            user = ctx.author
+        sign = Image.open("images/1707.png")
+        #asset = user.avatar_url_as(format="png", size = 128)
+        data = BytesIO(await user.avatar.read())
         avatar = Image.open(data)
-        avatar = avatar.resize((390, 390))
-        input_text = " ".join(input_text[:])
-        if any(ext in input_text for ext in Lists.hiragana):
-            if len(input_text) > 24:
-                input_text = input_text[:24] + "\n" + input_text[24:]
-        else:
-            if len(input_text) > 38:
-                input_text = input_text[:38] + "\n" + input_text[38:]
-        text = f"\"{input_text}\"\n\n                        - {selected_user}"
-        draw.text((150, 660), text, (255, 255, 255), font=font)
-        try:
-            img.paste(avatar, (180, 110), avatar)
+        avatar = avatar.resize((168,168))
+        try:            
+            sign.paste(avatar, (301,106), avatar)
         except:
-            img.paste(avatar, (180, 110))
-        img.save("quote.png")
-        await ctx.send(file = discord.File("quote.png"))
+            sign.paste(avatar, (301,106))
+        sign.save("generated_sign.png")
+    
+        await ctx.respond(file = discord.File("generated_sign.png"))
+
+    #@commands.command(brief="create a nice image with your quote")
+    #async def quote_image(self, ctx, *input_text):
+    #    img = Image.open("images/quote.jpg")
+#
+    #    draw = ImageDraw.Draw(img)
+    #    #selected_font = random.choice(os.listdir("fonts/"))
+    #    font = ImageFont.truetype("fonts/Honoka-Shin-Antique-Kaku_M.otf", 80)
+#
+    #    selected_user = str(ctx.author)
+    #    selected_user = selected_user[:-5]
+    #    #asset = ctx.author.avatar_url_as(format="png", size = 256)
+    #    asset = ctx.author.avatar.with_format("png")
+    #    data = BytesIO(await asset.read())
+    #    avatar = Image.open(data)
+    #    avatar = avatar.resize((390, 390))
+    #    input_text = " ".join(input_text[:])
+    #    if any(ext in input_text for ext in Lists.hiragana):
+    #        if len(input_text) > 24:
+    #            input_text = input_text[:24] + "\n" + input_text[24:]
+    #    else:
+    #        if len(input_text) > 38:
+    #            input_text = input_text[:38] + "\n" + input_text[38:]
+    #    text = f"\"{input_text}\"\n\n                        - {selected_user}"
+    #    draw.text((150, 660), text, (255, 255, 255), font=font)
+    #    try:
+    #        img.paste(avatar, (180, 110), avatar)
+    #    except:
+    #        img.paste(avatar, (180, 110))
+    #    img.save("quote.png")
+    #    await ctx.send(file = discord.File("quote.png"))
 
 
     @commands.command(aliases=["ci"],brief="randomly generate an image")
@@ -82,8 +103,8 @@ class ImageCommands(commands.Cog):
             members = ctx.guild.members
             emojis = ctx.guild.emojis
             user = random.choice(members)
-            selected_emoji = random.choice(emojis)
-            emoji = selected_emoji.url_as()
+            emoji = random.choice(emojis)
+            #emoji = selected_emoji.with_size(128)
 
             selected_font = random.choice(os.listdir("fonts/")) 
 
@@ -91,8 +112,12 @@ class ImageCommands(commands.Cog):
             font = ImageFont.truetype("fonts/" + selected_font, random.randint(10, 200))
             text = Common.random_message(self)    
 
-            asset = user.avatar_url_as(size = 128)
-            data = BytesIO(await asset.read())
+            #asset = user.avatar_url_as(size = 128)
+            #asset = user.avatar.with_format("png")
+            if user.avatar == None:
+                data = BytesIO(await self.client.user.avatar.read())
+            else:
+                data = BytesIO(await user.avatar.read())
             avatar = Image.open(data)
             avatar = avatar.resize((random.randint(1, 450), random.randint(1, 450)))    
 
@@ -111,9 +136,61 @@ class ImageCommands(commands.Cog):
             except:
                 img.paste(emoji, (random.randint(0, img.width), random.randint(0, img.height)))
         
-        img.save("generated_image.png")
+        imgname = "".join([c for c in (Common.random_message(self)[0:100]) if c.isalpha() or c.isdigit() or c==' ']).rstrip()
+        img.save("cool_images/" + imgname + ".png")
+        await ctx.defer()
+        await ctx.send(file = discord.File("cool_images/" + imgname + ".png"))
 
-        await ctx.send(file = discord.File("generated_image.png"))
+    @commands.slash_command(name="cool_image",description="randomly generate an image")
+    async def cool_image(self, ctx, image = None):
+        if image == None:
+            selected_file = random.choice(os.listdir("images/"))
+            img = Image.open("images/" + selected_file)
+        else:
+            img = Image.open(requests.get(image, stream=True).raw)
+        loop_times = random.randint(1, 16)
+        for i in range(loop_times):
+            members = ctx.guild.members
+            emojis = ctx.guild.emojis
+            user = random.choice(members)
+            emoji = random.choice(emojis)
+            #emoji = selected_emoji.with_size(128)
+
+            selected_font = random.choice(os.listdir("fonts/")) 
+
+            draw = ImageDraw.Draw(img)
+            font = ImageFont.truetype("fonts/" + selected_font, random.randint(10, 200))
+            text = Common.random_message(self)    
+
+            #asset = user.avatar_url_as(size = 128)
+            #asset = user.avatar.with_format("png")
+            if user.avatar == None:
+                data = BytesIO(await self.client.user.avatar.read())
+            else:
+                data = BytesIO(await user.avatar.read())
+            avatar = Image.open(data)
+            avatar = avatar.resize((random.randint(1, 450), random.randint(1, 450)))    
+
+            emoji_data = BytesIO(await emoji.read())
+            emoji = Image.open(emoji_data)
+            emoji = emoji.resize((random.randint(1, 450),random.randint(1, 450)))   
+
+            draw.text((random.randint(0, math.floor(img.width / 20)), random.randint(0, img.height)), text, (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)), font=font)
+            try:
+                img.paste(avatar, (random.randint(0, img.width), random.randint(0, img.height)), avatar)
+            except:
+                img.paste(avatar, (random.randint(0, img.width), random.randint(0, img.height)))
+            
+            try:
+                img.paste(emoji, (random.randint(0, img.width), random.randint(0, img.height)), emoji)
+            except:
+                img.paste(emoji, (random.randint(0, img.width), random.randint(0, img.height)))
+        
+        imgname = "".join([c for c in (Common.random_message(self)[0:100]) if c.isalpha() or c.isdigit() or c==' ']).rstrip()
+        img.save("cool_images/" + imgname + ".png")
+        await ctx.defer()
+        await ctx.respond(file = discord.File("cool_images/" + imgname + ".png"))
+
 
     @commands.command(brief="gif generation test")
     async def gif(self, ctx):
@@ -157,12 +234,13 @@ class ImageCommands(commands.Cog):
     @commands.command()
     async def petpet(self, ctx, image: Optional[Union[discord.PartialEmoji, discord.User]]):
         if type(image) == discord.PartialEmoji:
-            image = await image.url_as(format='png').read() # retrieve the image bytes
+            image = await image.read() # retrieve the image bytes
         elif type(image) == discord.User:
-            image = await image.avatar_url_as(format='png').read() # retrieve the image bytes
+            image = await image.avatar.read() # retrieve the image bytes
         else:
             try:
-                image = await image.avatar_url_as(format='png').read()
+                #image = await image.avatar.with_format('png').read()
+                image = await image.avatar.read()
             except Exception as ex:
                 await ctx.send(ex)
             return
@@ -172,6 +250,27 @@ class ImageCommands(commands.Cog):
         petpetgif.make(source, dest)
         dest.seek(0) # set the file pointer back to the beginning so it doesn't upload a blank file.
         await ctx.send(file=discord.File(dest, filename=f"{image[0]}-petpet.gif"))
+
+    @commands.slash_command(name="petpet", description="pet a user's avatar or an emoji")
+    async def petpet(self, ctx, image: Optional[Union[discord.PartialEmoji, discord.User]]):
+        if type(image) == discord.PartialEmoji:
+            image = await image.read() # retrieve the image bytes
+        elif type(image) == discord.User:
+            image = await image.avatar.read() # retrieve the image bytes
+        else:
+            try:
+                #image = await image.avatar.with_format('png').read()
+                image = await image.avatar.read()
+            except Exception as ex:
+                await ctx.send(ex)
+            return
+
+        source = BytesIO(image) # file-like container to hold the emoji in memory
+        dest = BytesIO() # container to store the petpet gif in memory
+        petpetgif.make(source, dest)
+        dest.seek(0) # set the file pointer back to the beginning so it doesn't upload a blank file.
+        await ctx.defer()
+        await ctx.respond(file=discord.File(dest, filename=f"{image[0]}-petpet.gif"))
 
 
     @petpet.error

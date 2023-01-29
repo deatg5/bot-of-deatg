@@ -68,10 +68,10 @@ class TextCommands(commands.Cog):
     #    await Common.log(self, 'demfex generated', ctx)
 
     @commands.command(aliases=['se'], brief="sends random emojis from servers the bot is in")
-    async def server_emojis(self, ctx, count = 3):
+    async def server_emojis(self, ctx, count:int = 3):
         try:
             text = ""
-            for i in range(count):
+            for i in range(int(count)):
                 emoji = random.choice(self.client.emojis)
                 if emoji.is_usable() and emoji.available:
                     text += "<:" + str(emoji.name) + ":" + str(emoji.id) + ">"
@@ -81,6 +81,21 @@ class TextCommands(commands.Cog):
         except Exception as e:
             print(e)
             await ctx.send("too many emojis! :zany_face:")
+
+    @commands.slash_command(name="server_emojis", description="sends random emojis from servers the bot is in")
+    async def server_emojis(self, ctx, count: discord.Option(discord.SlashCommandOptionType.integer) = 3):
+        try:
+            text = ""
+            for i in range(count):
+                emoji = random.choice(self.client.emojis)
+                if emoji.is_usable() and emoji.available:
+                    text += "<:" + str(emoji.name) + ":" + str(emoji.id) + ">"
+            async with ctx.typing():
+                await ctx.respond(text)
+            await Common.log(self, f'sent {text}', ctx)
+        except Exception as e:
+            print(e)
+            await ctx.respond("too many emojis! :zany_face:")
 
     @commands.command(aliases=['e'], brief="sends some random regular emojis")
     async def emojis(self, ctx, count = 3):
@@ -94,6 +109,18 @@ class TextCommands(commands.Cog):
         except:
             await ctx.send("too many emojis! :zany_face:")
 
+    @commands.slash_command(name="emojis", description="sends some random regular emojis")
+    async def emojis(self, ctx, count: discord.Option(discord.SlashCommandOptionType.integer) = 3):
+        try:
+            emoji = ""
+            for i in range(count):
+                emoji += str(random.choice(Lists.all_emoji))
+            async with ctx.typing():
+                await ctx.respond(emoji)
+            await Common.log(self, f'sent {emoji}', ctx)
+        except:
+            await ctx.respond("too many emojis! :zany_face:")
+
     @commands.command(aliases=['fe'], brief="sends some random face emojis")
     async def face_emojis(self, ctx, count = 3):
         try:
@@ -105,6 +132,18 @@ class TextCommands(commands.Cog):
             await Common.log(self, f'sent {emoji}', ctx)
         except:
             await ctx.send("too many emojis! :zany_face:")
+
+    @commands.slash_command(name="face_emojis", description="sends some random face emojis")
+    async def face_emojis(self, ctx, count: discord.Option(discord.SlashCommandOptionType.integer) = 3):
+        try:
+            emoji = ""
+            for i in range(count):
+                emoji += str(random.choice(Lists.all_face_emoji))
+            async with ctx.typing():
+                await ctx.respond(emoji)
+            await Common.log(self, f'sent {emoji}', ctx)
+        except:
+            await ctx.respond("too many emojis! :zany_face:")
 
     @commands.command(aliases=['ue'])
     @commands.has_permissions(manage_emojis=True)  
@@ -157,6 +196,16 @@ class TextCommands(commands.Cog):
                 await ctx.send(Common.random_emoji_insert(self, message))
         except:
             await ctx.send("message too long :grimacing:")
+        await Common.log(self, f'sent {message}', ctx)
+
+    @commands.slash_command(name="emojipasta", description="adds an emoji between each of your words")
+    async def emojipasta(self, ctx, message:str):
+        #message = " ".join(message[:])
+        try:
+            async with ctx.typing():
+                await ctx.respond(Common.random_emoji_insert(self, message))
+        except:
+            await ctx.respond("message too long :grimacing:")
         await Common.log(self, f'sent {message}', ctx)
 
     
@@ -287,11 +336,35 @@ class TextCommands(commands.Cog):
         await ctx.send(f'possible messages: {len(Lists.messages)}')
         #await ctx.send(f'this channel\'s message count: {len(m_list)}')
 
+    @commands.slash_command(name="stats",description="some stats about the bot")
+    async def stats(self, ctx):
+        await ctx.respond(f'server count: {len(self.client.guilds)}')
+        ch_list = []
+        u_list = []
+        for guild in self.client.guilds:
+            for channel in guild.channels:
+                ch_list.append(channel)
+            for user in guild.members:
+                u_list.append(user)
+
+        await ctx.send(f'channel count: {len(ch_list)}')
+        await ctx.send(f'user count: {len(u_list)}')
+        await ctx.send(f'emoji count: {len(self.client.emojis)}')
+        await ctx.send(f'possible messages: {len(Lists.messages)}')
+        #await ctx.send(f'this channel\'s message count: {len(m_list)}')
+
     @commands.command(aliases=['8ball'], brief="ask a question")
     async def eightball(self, ctx):
         answers = ["Yes","No","Maybe","Probably","Not","Absolutely","Definitely","Definitely not","50% chance","Very likely","Perhaps","はい","Never","Tomorrow","DO NOT","DO","No way",
         "ye","yes","no","yeah lol","Ask again","NO","YES","Try it","yep","false","true", "I'm sorry, but it's not gonna happen"]
         await ctx.send(random.choice(answers))
+        await Common.log(self, '8ball command sent', ctx)
+
+    @commands.slash_command(name='eightball', description="ask a question")
+    async def eightball(self, ctx):
+        answers = ["Yes","No","Maybe","Probably","Not","Absolutely","Definitely","Definitely not","50% chance","Very likely","Perhaps","はい","Never","Tomorrow","DO NOT","DO","No way",
+        "ye","yes","no","yeah lol","Ask again","NO","YES","Try it","yep","false","true", "I'm sorry, but it's not gonna happen"]
+        await ctx.respond(random.choice(answers))
         await Common.log(self, '8ball command sent', ctx)
 
     @commands.command()
@@ -300,6 +373,13 @@ class TextCommands(commands.Cog):
             await ctx.send(f"{round(self.client.latency * 1000)}ms. ")
         else:
             await ctx.send(f"{round(self.client.latency * 5963)} SCPM (snow cones per minute)")
+
+    @commands.slash_command(name="ping",description="the bot's ping")
+    async def ping(self, ctx):
+        if randint(0, 200) < 190:
+            await ctx.respond(f"{round(self.client.latency * 1000)}ms. ")
+        else:
+            await ctx.respond(f"{round(self.client.latency * 5963)} SCPM (snow cones per minute)")
 
 
     

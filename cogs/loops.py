@@ -74,7 +74,7 @@ class Loops(commands.Cog):
         await self.client.wait_until_ready()
 
 
-    @tasks.loop(seconds=1)
+    @tasks.loop(seconds=100)
     async def random_typing(self):
         guild = random.choice(self.client.guilds)
         channel = random.choice(guild.text_channels)

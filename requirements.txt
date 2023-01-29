@@ -1,5 +1,4 @@
 py-cord
-discord
 PyNaCl==1.3.0
 pandas
 dnspython==1.16.0

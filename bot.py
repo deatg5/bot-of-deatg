@@ -1,5 +1,6 @@
 import asyncio
 from datetime import date, datetime
+from lib2to3.pgen2 import token
 from math import fabs
 import math
 import re
@@ -18,13 +19,23 @@ from cogs.items import Items
 from cogs.common import Common
 from cogs.lists import Lists
 
+token_lol = ""
+database_address_lol = ""
+database_password_lol = ""
 
+#bye heroku
+#DATABASE_PASSWORD = os.environ['DATABASE_PASSWORD']
+#DATABASE_ADDRESS = os.environ['DATABASE_ADDRESS']
 
-DATABASE_PASSWORD = os.environ['DATABASE_PASSWORD']
-DATABASE_ADDRESS = os.environ['DATABASE_ADDRESS']
+#windows
+if os.name == "nt":
+    token_lol = open("D:\\the\\token.txt").readline()
+    database_address_lol = open("D:\\the\\database_address.txt").readline()
+    database_password_lol = open("D:\\the\\database_password.txt").readline()
 
 intents = discord.Intents.default()
 intents.members = True
+intents.message_content = True
 client = commands.Bot(command_prefix=commands.when_mentioned_or(';'), intents=intents, help_command=None)
 
 
@@ -51,20 +62,23 @@ for filename in os.listdir('./cogs'):
 
 
 
+@client.slash_command(name="mint", description="teest")
+async def mint(ctx):
+    await ctx.respond("HOLY SHIT!!!")
 
+@client.command()
+async def mint(ctx):
+    await mint
 
 #database stuff handled in main bot file, because i'm not sure if it will create multiple connections to the same database, or if i can access the pg_con variable from other cogs
 #i'm totally fine with having all the database stuff here, i don't really care if it's not best practice.
 async def create_db_pool():
         global pg_con 
-        pg_con = await asyncpg.create_pool(host = DATABASE_ADDRESS, database ="egypt", user ="cleopatra", password = DATABASE_PASSWORD)
+        pg_con = await asyncpg.create_pool(host = database_address_lol, database ="egypt", user ="cleopatra", password = database_password_lol)
 
 @client.command(aliases=["lb"], brief="the global bot of deatg leaderboard (1 xp = 1 message sent)")
 async def leaderboard(ctx, amount=30):
-
     board = discord.Embed(title="leaderboard", description="1 XP is equal to 1 message sent\njust an ID means the user has been deleted or is inaccessable", color=Common.random_color())
-    
-
     db_user = await pg_con.fetch(f"SELECT * FROM users ORDER BY xp DESC LIMIT {amount}")
     for index, user in enumerate(db_user):
         gamer = client.get_user(int(user['userid']))
@@ -85,6 +99,20 @@ async def leaderboard(ctx, amount=30):
     #             await ctx.send(f'{line}')
     # else:
     #     await ctx.send(board)
+@client.slash_command(name="leaderboard", description="the global bot of deatg leaderboard (1 xp = 1 message sent)")
+async def leaderboard(ctx, amount=30):
+    board = discord.Embed(title="leaderboard", description="1 XP is equal to 1 message sent\njust an ID means the user has been deleted or is inaccessable", color=Common.random_color())
+    db_user = await pg_con.fetch(f"SELECT * FROM users ORDER BY xp DESC LIMIT {amount}")
+    for index, user in enumerate(db_user):
+        gamer = client.get_user(int(user['userid']))
+        gamer = str(gamer)
+        gamer_notag = gamer[:-5]
+        if len(gamer_notag) == 0:
+            board.add_field(name = f"{str(index + 1)} - {user['userid']}", value=f"level {str(user['level'])}, {str(user['xp'])} XP", inline = True)
+        else:
+            board.add_field(name = f"{str(index + 1)} - {str(gamer)}", value=f"level {str(user['level'])}, {str(user['xp'])} XP", inline = True)
+    await ctx.respond(embed=board)
+
 
 @client.command(brief="check the level of you or another user")
 async def level(ctx, member: discord.Member = None):
@@ -95,6 +123,16 @@ async def level(ctx, member: discord.Member = None):
     db_user = await pg_con.fetchrow("SELECT * FROM users WHERE userid = $1", member_id)
 
     await ctx.send(f"{member.name}\nLevel: {db_user['level']}\nXP: {db_user['xp']}")
+
+@client.slash_command(name="level", description="check the level of you or another user")
+async def level(ctx, member: discord.Member = None):
+    if member == None:
+        member = ctx.author
+    member_id = str(member.id)
+
+    db_user = await pg_con.fetchrow("SELECT * FROM users WHERE userid = $1", member_id)
+
+    await ctx.respond(f"{member.name}\nLevel: {db_user['level']}\nXP: {db_user['xp']}")
 
     
 #since i'll only be using this in code i won't take a member object, just the id
@@ -146,6 +184,19 @@ async def inventory(ctx, member: discord.Member = None):
             embed.add_field(name=item['friendly_name'], value=f"{item['emoji']} {db_user[item['name'] + '_count']}", inline=True)
     await ctx.send(embed=embed)
 
+@client.slash_command(name="inventory", description="check your inventory")
+async def inventory(ctx, member: discord.Member = None):
+    if member == None:
+        member = ctx.author
+    member_id = str(member.id)
+    db_user = await pg_con.fetchrow("SELECT * FROM users WHERE userid = $1", member_id)
+    embed=discord.Embed(title=f"{member.name}'s inventory", color=Common.random_color())
+    for item in Items.item_list:
+        if db_user[item['name'] + '_count'] != 0 and db_user[item['name'] + '_count'] != None:
+            #inv += f"{item['friendly_name']}: {db_user[item['name'] + '_count']}\n"
+            embed.add_field(name=item['friendly_name'], value=f"{item['emoji']} {db_user[item['name'] + '_count']}", inline=True)
+    await ctx.respond(embed=embed)
+
 @client.command(brief="opens the shop")
 async def shop(ctx):
     
@@ -162,6 +213,23 @@ async def shop(ctx):
             else:
                 embed.add_field(name=f"{item['emoji']} {item['friendly_name']} [{item['name']}]", value=f"${item['cost']}\n{item['description']}\nheal amount: {item['heal_amount']}\ndamage: {item['damage']}")
     await ctx.send(embed=embed)
+
+@client.slash_command(name="shop", description="opens the shop")
+async def shop(ctx):
+    
+    embed=discord.Embed(title=f"the shop", description="use ;buy [item name] to buy something", color=Common.random_color())
+
+    for item in Items.item_list:
+        if (item['cost'] != 0):
+            if item['heal_amount'] == 0 and item['damage'] == 0:
+                embed.add_field(name=f"{item['emoji']} {item['friendly_name']} [{item['name']}]", value=f"${item['cost']}\n{item['description']}")
+            elif item['heal_amount'] == 0:
+                embed.add_field(name=f"{item['emoji']} {item['friendly_name']} [{item['name']}]", value=f"${item['cost']}\n{item['description']}\ndamage: {item['damage']}")
+            elif item['damage'] == 0:
+                embed.add_field(name=f"{item['emoji']} {item['friendly_name']} [{item['name']}]", value=f"${item['cost']}\n{item['description']}\nheal amount: {item['heal_amount']}")
+            else:
+                embed.add_field(name=f"{item['emoji']} {item['friendly_name']} [{item['name']}]", value=f"${item['cost']}\n{item['description']}\nheal amount: {item['heal_amount']}\ndamage: {item['damage']}")
+    await ctx.respond(embed=embed)
 
 
 #failed the daily
@@ -244,6 +312,28 @@ async def buy(ctx, item_name, amount = 1):
                 await ctx.send(f"You don't have enough money to buy this item! {random.choice(Lists.all_face_emoji)}")
                 return
     await ctx.send(f"Item {item_name} was not found! {random.choice(Lists.all_face_emoji)} Make sure you spell it how it's displayed within the [] in the shop.")
+
+@client.slash_command(name="buy", description="buy an item")
+async def buy(ctx, item_name, amount = 1):
+    if amount < 1:
+        await ctx.send(f"You cannot buy 0 or a negative number of items! {random.choice(Lists.all_face_emoji)}")
+        return
+
+    member_id = str(ctx.author.id)
+
+    db_user = await pg_con.fetchrow("SELECT * FROM users WHERE userid = $1", member_id)
+
+    for item in Items.item_list:
+        if item['name'] == item_name:
+            if db_user['cash'] >= (item['cost'] * amount):
+                await give_item(ctx.author.id, item_name, amount)
+                await give_cash(ctx.author.id, (-item['cost'] * amount))
+                await ctx.send(f"You bought {amount} {item['friendly_name']} for ${item['cost'] * amount} {random.choice(Lists.all_face_emoji)}")
+                return
+            else:
+                await ctx.send(f"You don't have enough money to buy this item! {random.choice(Lists.all_face_emoji)}")
+                return
+    await ctx.respond(f"Item {item_name} was not found! {random.choice(Lists.all_face_emoji)} Make sure you spell it how it's displayed within the [] in the shop.")
         
 @client.command(aliases=["dc"], brief="give some money to another user")
 async def donate_cash(ctx, member: discord.Member, amount = 1):
@@ -256,6 +346,18 @@ async def donate_cash(ctx, member: discord.Member, amount = 1):
         await ctx.send(f"You gave ${amount} to {member.name}. How kind!")
     else:
         await ctx.send(f"You don't have that much money! {random.choice(Lists.all_face_emoji)}")
+
+@client.slash_command(name="donate_cash", description="give some money to another user")
+async def donate_cash(ctx, member: discord.Member, amount = 1):
+    member_id = str(ctx.author.id)
+    db_user = await pg_con.fetchrow("SELECT * FROM users WHERE userid = $1", member_id)
+
+    if db_user['cash'] >= amount: 
+        await give_cash(ctx.author.id, -amount)
+        await give_cash(member.id, amount)
+        await ctx.respond(f"You gave ${amount} to {member.name}. How kind!")
+    else:
+        await ctx.respond(f"You don't have that much money! {random.choice(Lists.all_face_emoji)}")
         
 
 @client.command(aliases=["di"], brief="give an item to another user")
@@ -273,6 +375,21 @@ async def donate_item(ctx, member: discord.Member, item_name, amount = 1):
     else:
         await ctx.send(f"You don't enough of that item! {random.choice(Lists.all_face_emoji)} (You have {db_user[item_count]} and are trying to give {amount})")
 
+@client.slash_command(name="donate_item", description="give an item to another user")
+async def donate_item(ctx, member: discord.Member, item_name, amount = 1):
+    member_id = str(ctx.author.id)
+    db_user = await pg_con.fetchrow("SELECT * FROM users WHERE userid = $1", member_id)
+    item_count = item_name + '_count'
+    
+    if db_user[item_count] >= amount:
+        await give_item(ctx.author.id, item_name, -amount)
+        await give_item(member.id, item_name, amount)
+        await ctx.send(f"You gave {amount} {[sub['friendly_name'] for sub in Items.item_list if sub['name'] == item_name]} to {member.name}. How nice!")
+    elif db_user[item_count] <= 0:
+        await ctx.respond(f"You don't have that item! {random.choice(Lists.all_face_emoji)}")
+    else:
+        await ctx.respond(f"You don't enough of that item! {random.choice(Lists.all_face_emoji)} (You have {db_user[item_count]} and are trying to give {amount})")
+
 
 
 @client.command(aliases=["bal"], brief="check your balance")
@@ -284,10 +401,19 @@ async def balance(ctx, member: discord.Member = None):
 
     await ctx.send(embed=discord.Embed(title=f"{member.name}'s balance", description=f"${str(db_user['cash'])}", color=Common.random_color()))
 
+@client.slash_command(name="balance", description="check your balance")
+async def balance(ctx, member: discord.Member = None):
+    if member == None:
+        member = ctx.author
+    member_id = str(member.id)
+    db_user = await pg_con.fetchrow("SELECT * FROM users WHERE userid = $1", member_id)
+
+    await ctx.respond(embed=discord.Embed(title=f"{member.name}'s balance", description=f"${str(db_user['cash'])}", color=Common.random_color()))
+
 @client.command(brief="throw away an item")
 async def toss(ctx):
     await ctx.send("template command")
-
+    
 @client.command(brief="rob someone :flushed:")
 async def rob(ctx, member: discord.Member = None):
     if member == None:
@@ -434,4 +560,4 @@ async def on_message(message):
 
 client.loop.run_until_complete(create_db_pool())
 
-client.run(os.environ['TOKEN'])
+client.run(token_lol)

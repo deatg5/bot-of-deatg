@@ -53,17 +53,23 @@ class Common(commands.Cog):
 
     async def log(self, message, ctx = None):
         if ctx != None:
-            print(f"{str(datetime.datetime.now())} {ctx.guild}, {ctx.channel},  {ctx.message.author}, {str(message)}")
+            try:
+                print(f"{str(datetime.datetime.now())} {ctx.guild}, {ctx.channel},  {ctx.message.author}, {str(message)}")
+            except:
+                print(f"{str(datetime.datetime.now())} {str(message)}")
         else:
             print(f"{str(datetime.datetime.now())}")
             
-        for channel_id in Common.log_channel_ids:
-            log_channel = self.client.get_channel(channel_id)
-            if ctx != None:
-                #{str(datetime.datetime.now())}
-                await log_channel.send(f"{ctx.guild}, {ctx.channel},  {ctx.message.author}, {str(message)}")
-            else:
-                await log_channel.send(f"{str(message)}")
+        try: 
+            for channel_id in Common.log_channel_ids:
+                log_channel = self.client.get_channel(channel_id)
+                if ctx != None:
+                    #{str(datetime.datetime.now())}
+                    await log_channel.send(f"{ctx.guild}, {ctx.channel},  {ctx.message.author}, {str(message)}")
+                else:
+                    await log_channel.send(f"{str(message)}")
+        except:
+            x = "4????????"
     
     def random_message(self):
         message_type = random.choice([Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, Lists.messages, 
@@ -96,7 +102,7 @@ class Common(commands.Cog):
             return "".join(ret[:])
 
     def chatbot_message(self):
-        with open("outputs2.txt", "r") as funny:
+        with open("outputs2.txt", "r", encoding='utf-8') as funny:
             selected = random.choice(funny.readlines())
             return selected
 
