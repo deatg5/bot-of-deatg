@@ -91,10 +91,12 @@ class TextCommands(commands.Cog):
                 if emoji.is_usable() and emoji.available:
                     text += "<:" + str(emoji.name) + ":" + str(emoji.id) + ">"
             async with ctx.typing():
+                await ctx.defer()
                 await ctx.respond(text)
             await Common.log(self, f'sent {text}', ctx)
         except Exception as e:
             print(e)
+            await ctx.defer()
             await ctx.respond("too many emojis! :zany_face:")
 
     @commands.command(aliases=['e'], brief="sends some random regular emojis")
@@ -140,9 +142,11 @@ class TextCommands(commands.Cog):
             for i in range(count):
                 emoji += str(random.choice(Lists.all_face_emoji))
             async with ctx.typing():
+                await ctx.defer()
                 await ctx.respond(emoji)
             await Common.log(self, f'sent {emoji}', ctx)
         except:
+            await ctx.defer()
             await ctx.respond("too many emojis! :zany_face:")
 
     @commands.command(aliases=['ue'])
@@ -203,8 +207,10 @@ class TextCommands(commands.Cog):
         #message = " ".join(message[:])
         try:
             async with ctx.typing():
+                await ctx.defer()
                 await ctx.respond(Common.random_emoji_insert(self, message))
         except:
+            await ctx.defer()
             await ctx.respond("message too long :grimacing:")
         await Common.log(self, f'sent {message}', ctx)
 

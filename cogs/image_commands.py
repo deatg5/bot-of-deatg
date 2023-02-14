@@ -57,6 +57,7 @@ class ImageCommands(commands.Cog):
             sign.paste(avatar, (301,106))
         sign.save("generated_sign.png")
     
+        await ctx.defer()
         await ctx.respond(file = discord.File("generated_sign.png"))
 
     #@commands.command(brief="create a nice image with your quote")
@@ -149,6 +150,7 @@ class ImageCommands(commands.Cog):
         else:
             img = Image.open(requests.get(image, stream=True).raw)
         loop_times = random.randint(1, 16)
+        await ctx.defer()
         for i in range(loop_times):
             members = ctx.guild.members
             emojis = ctx.guild.emojis
@@ -188,7 +190,7 @@ class ImageCommands(commands.Cog):
         
         imgname = "".join([c for c in (Common.random_message(self)[0:100]) if c.isalpha() or c.isdigit() or c==' ']).rstrip()
         img.save("cool_images/" + imgname + ".png")
-        await ctx.defer()
+        #await ctx.defer()
         await ctx.respond(file = discord.File("cool_images/" + imgname + ".png"))
 
 
