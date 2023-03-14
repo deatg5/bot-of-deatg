@@ -114,17 +114,17 @@ class Common(commands.Cog):
         selected_user_string = selected_user_string[:-5]
 
         selected_user2 = random.choice(members)
-        selected_user2_string = str(selected_user)
-        selected_user2_string = selected_user_string[:-5]
+        selected_user2_string = str(selected_user2)
+        selected_user2_string = selected_user2_string[:-5]
 
         selected_user3 = random.choice(members)
-        selected_user3_string = str(selected_user)
-        selected_user3_string = selected_user_string[:-5]
+        selected_user3_string = str(selected_user3)
+        selected_user3_string = selected_user3_string[:-5]
 
         #having a list of f strings with random.choice only chooses one message per bot start, so if it's called more than once between when the bot restarts, the message will be the same, thats why i have to make this painfully long if else statement
         #i left some f strings in the messages array because they wont appear often enough for anyone to notice (hopefully)
         #wait maybe theres an even better way to do this (there is)   well i'll change it later maybe
-        message_type = random.randint(0, 20)
+        message_type = random.randint(0, 25)
         if message_type == 0:
             random_reward = random.choice(random.choice([Lists.item, Lists.item, Lists.item, Lists.messages, Lists.funny_nouns]))
             return f"I Have A Dire Need\nBring Me:\nHemoglobin\nCompressed Air\nHarpoon\nMany Many Meats (Flavorful)\nButtor\nApe\nBring Me This And You Will Be Rewarded With The {random_reward}"
@@ -192,10 +192,19 @@ class Common(commands.Cog):
                 return "!rank"
         elif message_type == 20 or message_type == 21:
             return f"{message.author.name} my friend! I believe in your surgical tech skill on {random.choice(Lists.joke_games)}! You can even best the likes of {selected_user_string} and {selected_user2_string}! But be careful.. because {selected_user3_string} is right around the corner.."
-            
-
-        elif message_type == 20:
+        
+        elif message_type == 22:
             return f"dear {selected_user_string}: {random.choice(Lists.messages)}"
+        
+        elif message_type == 23:
+            return f"**It's {selected_user}'s birthday today!** 🎉🎂\nLet them know you are thinking of them."
+        
+        elif message_type == 24:
+            return f"Hooray, {selected_user}'s shared games are now available for you to play..."
+        
+        elif message_type == 25:
+            return f"Your compatibility with {selected_user} is **{random.choice(['High', 'Very High', 'Super'])}**.\nYou both listen to {random.choice(Lists.artists)}, {random.choice(Lists.artists)}, and {random.choice(Lists.artists)}."
+        
 
     def minecraft_message(self, message):
         members = message.guild.members
