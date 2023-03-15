@@ -19,19 +19,20 @@ from cogs.items import Items
 from cogs.common import Common
 from cogs.lists import Lists
 
-token_lol = ""
-database_address_lol = ""
-database_password_lol = ""
+#token_lol = ""
+#database_address_lol = ""
+#database_password_lol = ""
 
 #bye heroku
-#DATABASE_PASSWORD = os.environ['DATABASE_PASSWORD']
-#DATABASE_ADDRESS = os.environ['DATABASE_ADDRESS']
+token_lol = os.environ['TOKEN']
+database_password_lol = os.environ['DATABASE_PASSWORD']
+database_address_lol = os.environ['DATABASE_ADDRESS']
 
 #windows
-if os.name == "nt":
-    token_lol = open("M:\\the\\token.txt").readline()
-    database_address_lol = open("M:\\the\\database_address.txt").readline()
-    database_password_lol = open("M:\\the\\database_password.txt").readline()
+#if os.name == "nt":
+#    token_lol = open("M:\\the\\token.txt").readline()
+#    database_address_lol = open("M:\\the\\database_address.txt").readline()
+#    database_password_lol = open("M:\\the\\database_password.txt").readline()
 
 intents = discord.Intents.default()
 intents.members = True
