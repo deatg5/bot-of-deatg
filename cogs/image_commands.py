@@ -98,7 +98,7 @@ class ImageCommands(commands.Cog):
             selected_file = random.choice(os.listdir("images/"))
             img = Image.open("images/" + selected_file)
         else:
-            img = ""
+            img = Image.open(requests.get(image, stream=True).raw)
         loop_times = random.randint(1, 16)
         for i in range(loop_times):
             members = ctx.guild.members
@@ -148,7 +148,7 @@ class ImageCommands(commands.Cog):
             selected_file = random.choice(os.listdir("images/"))
             img = Image.open("images/" + selected_file)
         else:
-            img = ""
+            img = Image.open(requests.get(image, stream=True).raw)
         loop_times = random.randint(1, 16)
         await ctx.defer()
         for i in range(loop_times):

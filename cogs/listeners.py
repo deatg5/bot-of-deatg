@@ -172,7 +172,7 @@ class Listeners(commands.Cog):
                     await self.client.get_user(Common.deatg_id).send(message.clean_content)
                     
                 if randint(0, 100) >= 4:
-                    #await asyncio.sleep(float(randint(0, 40))) 
+                    await asyncio.sleep(float(randint(0, 40))) 
                     #check number of msgs
                     count = 0
                     async for msg in message.channel.history(limit = 6):
@@ -181,7 +181,7 @@ class Listeners(commands.Cog):
                         if msg.author == self.client.user:
                             break
                     async with message.channel.typing():
-                        #await asyncio.sleep(float(randint(0, 13)))
+                        await asyncio.sleep(float(randint(0, 13)))
                         if count >= 3:
                             await message.reply(await Listeners.decide_message(self, message))
                         else:
