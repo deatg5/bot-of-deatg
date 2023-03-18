@@ -54,6 +54,17 @@ class MiscCommands(commands.Cog):
             await ctx.send("this command can only be used in certain servers")
 
 
+    @commands.slash_command(name="cool1_bot_number_1_opp",description="deletes cool1 mentions")
+    async def cool1_bot_number_1_opp(self, ctx):
+        async for msg in ctx.channel.history(limit = 1000):
+            if ctx.guild.get_member(1086136940006486058).mention in ctx.mentions:
+                await ctx.delete()
+
+
+
+    
+
+
     #@commands.command()
     #async def test_join(self, ctx):
 
