@@ -57,7 +57,7 @@ class MiscCommands(commands.Cog):
     @commands.slash_command(name="cool1_bot_number_1_opp",description="deletes cool1 mentions")
     async def cool1_bot_number_1_opp(self, ctx):
         async for msg in ctx.channel.history(limit = 1000):
-            if ctx.guild.get_member(1086136940006486058).mention in ctx.mentions:
+            if ctx.guild.get_member(1086136940006486058).mention in ctx.message.mentions:
                 await ctx.delete()
 
 
