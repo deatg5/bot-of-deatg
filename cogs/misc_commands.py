@@ -57,8 +57,8 @@ class MiscCommands(commands.Cog):
     @commands.command(brief="cool1_bot_number_1_opp")
     async def cool1_bot_number_1_opp(self, ctx):
         async for msg in ctx.channel.history(limit = 1000):
-            if "@cool1 bot" in ctx.message.clean_content:
-                await ctx.delete()
+            if "@cool1 bot" in msg.clean_content:
+                await msg.delete()
 
 
 
