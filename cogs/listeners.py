@@ -204,7 +204,7 @@ class Listeners(commands.Cog):
                 emoji = ""
                 emoji_type = random.randint(1, 3)
                 if emoji_type == 1:
-                    emoji = random.choice(self.client.emojis)
+                    emoji = random.choice(message.guild.emojis)
                 else:
                     emoji = random.choice(Lists.all_emoji)
 
@@ -251,7 +251,7 @@ class Listeners(commands.Cog):
                         if emoji_type == 1:
                             emoji = random.choice(message.guild.emojis)
                         else:
-                            emoji = random.choice(Lists.all_emoji)
+                            emoji = random.choice(message.guild.emojis)
                     except:
                         print('error reacting')
 

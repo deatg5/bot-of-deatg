@@ -465,7 +465,8 @@ class Lists(commands.Cog):
                 "This compound, BOB, is the most potent of the BOX series.","You ruined everything","https://open.spotify.com/playlist/1YaD97SB27uFlyqFvfmEWR?si=bcbd7bcc882c4e92",
                 "Best Watermelon Vines Compilation", "ITS A ME WARI...", "I miss Scotty","Got a question for ya. Are you enjoying TSGC? (ThatSonicGamer Challenge)", "The ThatSonicGamer Challenge is a unique Challenge Run made by me, ThatSonicGamer. I really want this Challenge Run to be well-known amongst Sonic Fans and everyone else. I encourage others to try this as well! Just please please please don't forget to call it the ThatSonicGamer Challenge",
                 "Haha wtf","😂😂😂😂😂😂😂😂😂😂","How fast can you run?","i didnt get reaver gun skin","i got reaver gun skin","been plotting against john storms demise",
-                "Just wait until you see lady gaga Pepsi","SUPERRRR", "are you aware of...\nCASIOPEA VS THE SQUARE 2003"]
+                "Just wait until you see lady gaga Pepsi","SUPERRRR", "are you aware of...\nCASIOPEA VS THE SQUARE 2003", "Caramel & Chocolate Ice Creams with Chocolate Cookie Swirls & Gobs of Chocolate Chip Cookie Dough & Peanut Butter Cookie Dough",
+                "Is anybody here Don Bongo?", "Please do NOT do that", "WANT SOME TAFFY COME ON DOWN", "What happebd jshgavshsvs76eygavzugs73hdvdyddhdhdhdue8eibdhdfijdyfhfhhsbdhdbdbbdjdbdjcjdhdjrjhdhdjdokehdhfhdjiw7w636y3egdu7cuxhd99edjfuh fjf8r88euehdhidydh😈😒😉😉😕😁😀😀😠😠😕🥹😕😀😉👙👔👙👔👙👙👗👗👙👙👠💰💰🐑🐤🐥"]
 
 
     nicknames = ["molluskmuncher27", "Deleted User"]
