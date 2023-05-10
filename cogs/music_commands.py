@@ -106,27 +106,16 @@ class MusicCommands(commands.Cog):
 
     @commands.slash_command(name="play", description="play tts")
     async def play(self, ctx):
-        # Get the voice channel of the user who typed the command
-        voice_channel = ctx.author.voice.channel
-
-        # Join the voice channel
-        voice_client = await voice_channel.connect()
-
-        # Generate text-to-speech audio
-        tts = gTTS(text=(random.choice(Lists.messages)))
-        tts.save('tts.mp3')
-
-        # Play the generated audio in the voice channel
-        audio_source = discord.FFmpegPCMAudio('tts.mp3')
-        voice_client.play(audio_source)
-
-        # Wait until the audio is finished playing
+        if ctx.author.voice is None:
+            await ctx.send("You must be in a voice channel to use this command.")
+            return
+        voice_client = await ctx.author.voice.channel.connect()
+        tts = gTTS(text=(random.choice(Lists.messagese)), lang='en')
+        tts.save("tts.mp3")
+        voice_client.play(discord.FFmpegPCMAudio("tts.mp3"))
         while voice_client.is_playing():
             await asyncio.sleep(1)
-
-
-        # Delete the generated audio file
-        os.remove('tts.mp3')
+        await voice_client.disconnect()
     
     #@commands.command(pass_context=True, brief="plays a totally random song from youtube")
     #async def playrandom(self, ctx):
