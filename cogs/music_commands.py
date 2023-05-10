@@ -25,35 +25,8 @@ class MusicCommands(commands.Cog):
     
     @commands.command(pass_context=True, brief="join voice channel")
     async def join(self, ctx):
-        await ctx.guild.change_voice_state(channel=channel, self_mute=False, self_deaf=True)
-        await Common.log(self, f'joined voice', ctx)
-        channel = ctx.message.author.voice.channel
-        if not channel:
-            await ctx.send("NOT IN CHANNE;L")
-            return
-        voice = get(self.client.voice_clients, guild=ctx.guild)
-        if voice and voice.is_connected():
-            await voice.move_to(channel)
-        else:
-            voice = await channel.connect()
-        await voice.disconnect()
-        if voice and voice.is_connected():
-            await voice.move_to(channel)
-        else:
-            voice = await channel.connect()
-        await ctx.send(f"time to play some epic tunes in {channel}")
-        Common.log(self, f'joined {channel}', ctx)
-
-    @commands.command(pass_context=True, brief="bot leave voice")
-    async def leave(self, ctx):
-        channel = ctx.message.author.voice.channel
-        voice = get(self.client.voice_clients, guild=ctx.guild)
-        if voice and voice.is_connected():
-            await voice.disconnect()
-            await ctx.send(f"oof i'm goned from {channel}")
-            await Common.log(self, f'left {channel}', ctx)
-        else:
-            await ctx.send("already left lmao")
+        channel = ctx.author.voice.channel
+        await channel.connect()
 
     #@commands.command(pass_context=True, brief="stop the currently playing music")
     #async def rejoin(self, ctx):
