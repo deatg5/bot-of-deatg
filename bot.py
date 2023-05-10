@@ -67,9 +67,6 @@ for filename in os.listdir('./cogs'):
 async def mint(ctx):
     await ctx.respond("HOLY SHIT!!!")
 
-@client.command()
-async def mint(ctx):
-    await mint
 
 #database stuff handled in main bot file, because i'm not sure if it will create multiple connections to the same database, or if i can access the pg_con variable from other cogs
 #i'm totally fine with having all the database stuff here, i don't really care if it's not best practice.

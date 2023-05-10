@@ -23,7 +23,7 @@ class MusicCommands(commands.Cog):
         }],
     }   
     
-    @commands.command(pass_context=True, brief="join voice channel")
+    @commands.slash_command(name="join", description="join voice channel")
     async def join(self, ctx):
         channel = ctx.author.voice.channel
         await channel.connect()
