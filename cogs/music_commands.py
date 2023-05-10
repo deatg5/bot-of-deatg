@@ -5,6 +5,7 @@ from discord.utils import get
 import youtube_dl
 import os
 from gtts import gTTS
+import asyncio
 
 from cogs.common import Common
 from cogs.lists import Lists
@@ -105,36 +106,27 @@ class MusicCommands(commands.Cog):
 
     @commands.slash_command(name="play", description="play tts")
     async def play(self, ctx):
-        
-        tts_message = random.choice(Lists.messages)
+        # Get the voice channel of the user who typed the command
+        voice_channel = ctx.author.voice.channel
 
-        the_lang = random.choice(list(gTTS.lang.tts_langs()))
+        # Join the voice channel
+        voice_client = await voice_channel.connect()
 
-        tts_obj = gTTS(text=tts_message, lang=the_lang, slow=False)
-        tts_obj.save("tts.mp3")
+        # Generate text-to-speech audio
+        tts = gTTS(text=(random.choice(Lists.messages)))
+        tts.save('tts.mp3')
 
-        voice = get(self.client.voice_clients, guild=ctx.guild)
-        try:
-            voice.play(discord.FFmpegPCMAudio("tts.mp3"))
-        except:
-            channel = ctx.message.author.voice.channel
-            voice = get(self.client.voice_clients, guild=ctx.guild)
-            if voice and voice.is_connected():
-                await voice.disconnect()
-            channel = ctx.message.author.voice.channel
-            voice = get(self.client.voice_clients, guild=ctx.guild)
-            if voice and voice.is_connected():
-                await voice.move_to(channel)
-            else:
-                voice = await channel.connect()
-            await voice.disconnect()
-            if voice and voice.is_connected():
-                await voice.move_to(channel)
-            else:
-                voice = await channel.connect()
-            voice.play(discord.FFmpegPCMAudio("tts.mp3"))
-        voice.volume = 100
-        voice.is_playing()
+        # Play the generated audio in the voice channel
+        audio_source = discord.FFmpegPCMAudio('tts.mp3')
+        voice_client.play(audio_source)
+
+        # Wait until the audio is finished playing
+        while voice_client.is_playing():
+            await asyncio.sleep(1)
+
+
+        # Delete the generated audio file
+        os.remove('tts.mp3')
     
     #@commands.command(pass_context=True, brief="plays a totally random song from youtube")
     #async def playrandom(self, ctx):
