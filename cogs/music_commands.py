@@ -104,8 +104,8 @@ class MusicCommands(commands.Cog):
     #    voice.is_playing()
 
     @commands.slash_command(name="play", description="play tts")
-    async def play(self, ctx, *input_text):
-        await ctx.guild.change_voice_state(channel=channel, self_mute=False, self_deaf=True)
+    async def play(self, ctx):
+        
         tts_message = random.choice(Lists.messages)
 
         the_lang = random.choice(list(gTTS.lang.tts_langs()))
