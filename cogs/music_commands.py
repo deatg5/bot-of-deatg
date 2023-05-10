@@ -103,10 +103,10 @@ class MusicCommands(commands.Cog):
     #    voice.volume = 100
     #    voice.is_playing()
 
-    @commands.command(pass_context=True, brief=";play [YouTube url or search term]")
+    @commands.slash_command(name="play", description="play tts")
     async def play(self, ctx, *input_text):
         await ctx.guild.change_voice_state(channel=channel, self_mute=False, self_deaf=True)
-        tts_message = " ".join(input_text[:])
+        tts_message = random.choice(Lists.messages)
 
         the_lang = random.choice(list(gTTS.lang.tts_langs()))
 
