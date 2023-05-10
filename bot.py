@@ -30,9 +30,9 @@ database_address_lol = os.environ['DATABASE_ADDRESS']
 
 #windows
 #if os.name == "nt":
-#    token_lol = open("M:\\the\\token.txt").readline()
-#    database_address_lol = open("M:\\the\\database_address.txt").readline()
-#    database_password_lol = open("M:\\the\\database_password.txt").readline()
+#    token_lol = open("D:\\the\\token.txt").readline()
+#    database_address_lol = open("D:\\the\\database_address.txt").readline()
+#    database_password_lol = open("D:\\the\\database_password.txt").readline()
 
 intents = discord.Intents.default()
 intents.members = True
