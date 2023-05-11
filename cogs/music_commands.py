@@ -23,11 +23,43 @@ class MusicCommands(commands.Cog):
             'preferredquality': '96',
         }],
     }   
+
+    voice_clients = {}
     
     @commands.slash_command(name="join", description="join voice channel")
     async def join(self, ctx):
-        channel = ctx.author.voice.channel
-        await channel.connect()
+        voice_client = await ctx.author.voice.channel.connect()
+        self.voice_clients[voice_client.guild.id] = voice_client
+
+
+    @commands.slash_command(name="tts", description="Generate TTS audio from text and play it in a voice channel.")
+    async def tts(self, ctx, text: str):
+        if ctx.author.voice is None:
+            await ctx.send("You must be in a voice channel to use this command.")
+            return
+        
+        voice_client = None
+
+        if not self.voice_clients[ctx.guild.id]:
+            voice_client = await ctx.author.voice.channel.connect()
+            self.voice_clients[voice_client.guild.id] = voice_client
+        else:
+            voice_client = self.voice_clients[ctx.guild.id]
+
+        tts = gTTS(text=text, lang='en')
+        tts.save("tts.mp3")
+
+        voice_client.play(discord.FFmpegPCMAudio("tts.mp3"))
+
+        while voice_client.is_playing():
+            await asyncio.sleep(1)
+
+            
+    @commands.slash_command(name="leave", description="bot leave voice channel")
+    async def leave(self, ctx):
+        await ctx.author.voice.channel.disconnect()
+        self.voice_clients[ctx.guild.id] = None
+        
 
     #@commands.command(pass_context=True, brief="stop the currently playing music")
     #async def rejoin(self, ctx):

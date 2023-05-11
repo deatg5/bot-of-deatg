@@ -33,7 +33,7 @@ database_address_lol = os.environ['DATABASE_ADDRESS']
 #    token_lol = open("D:\\the\\token.txt").readline()
 #    database_address_lol = open("D:\\the\\database_address.txt").readline()
 #    database_password_lol = open("D:\\the\\database_password.txt").readline()
-
+#
 intents = discord.Intents.default()
 intents.members = True
 intents.message_content = True
