@@ -28,6 +28,7 @@ token_lol = os.environ['TOKEN']
 database_password_lol = os.environ['DATABASE_PASSWORD']
 database_address_lol = os.environ['DATABASE_ADDRESS']
 
+
 #windows
 #if os.name == "nt":
 #    token_lol = open("D:\\the\\token.txt").readline()
