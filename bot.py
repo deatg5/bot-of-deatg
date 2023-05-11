@@ -23,11 +23,11 @@ from cogs.lists import Lists
 #database_address_lol = ""
 #database_password_lol = ""
 
+
 #bye heroku
 token_lol = os.environ['TOKEN']
 database_password_lol = os.environ['DATABASE_PASSWORD']
 database_address_lol = os.environ['DATABASE_ADDRESS']
-
 
 #windows
 #if os.name == "nt":
