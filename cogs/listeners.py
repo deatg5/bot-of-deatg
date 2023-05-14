@@ -35,6 +35,13 @@ class Listeners(commands.Cog):
     #    await Common.log(self, f'Oops, my system crashed. I lost my data! And I have an antivirus!\nError: {error}', ctx)
 
     @commands.Cog.listener()
+    async def on_voice_state_update(self, member, before, after):
+        if member.id == self.client.user.id:  # check if it's the bot that joined/left
+                if before.self_mute != after.self_mute:  # check if the bot's mute status changed
+                    await member.edit(mute=True)  # mute the bot
+                elif before.self_deaf != after.self_deaf:  # check if the bot's deafen status changed
+                    await member.edit(deafen=True)  # deafen the bot
+    @commands.Cog.listener()
     async def on_guild_join(self, guild):
         await Common.log(self, f'bot of deatg joined {guild}')
         for channel in guild.text_channels:

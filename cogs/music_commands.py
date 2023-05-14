@@ -31,6 +31,13 @@ class MusicCommands(commands.Cog):
         voice_client = await ctx.author.voice.channel.connect()
         self.voice_clients[voice_client.guild.id] = voice_client
 
+    @commands.slash_command(name="deafen", description="deafen the bot in a voice channel")
+    async def deafen(self, ctx):
+        if self.client.self_deaf:
+            await self.client.edit(deafen=True)
+        else:
+            await self.client.edit(deafen=False)
+        
 
     @commands.slash_command(name="tts", description="Generate TTS audio from text and play it in a voice channel.")
     async def tts(self, ctx, text: str):
