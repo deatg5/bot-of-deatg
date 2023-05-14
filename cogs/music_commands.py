@@ -30,14 +30,32 @@ class MusicCommands(commands.Cog):
     async def join(self, ctx):
         voice_client = await ctx.author.voice.channel.connect()
         self.voice_clients[voice_client.guild.id] = voice_client
+        await ctx.send(f"joined {ctx.author.voice.channel.name}!!")
 
     @commands.slash_command(name="deafen", description="deafen the bot in a voice channel")
     async def deafen(self, ctx):
-        if self.client.self_deaf:
-            await self.client.edit(deafen=True)
+
+        if not ctx.author.voice:
+            await ctx.send("You are not connected to a voice channel.")
+            return
+
+        # Toggle deafen status
+        voice = ctx.guild.voice_client
+        if not voice:
+            await ctx.send("I am not currently connected to a voice channel.")
+            return
+
+        if voice.is_playing() or voice.is_paused():
+            await ctx.send("I cannot deafen myself while playing or paused.")
+            return
+
+        if voice.is_deaf():
+            await voice.set_deaf(False)
+            await ctx.send("I have undeafened myself.")
         else:
-            await self.client.edit(deafen=False)
-        
+            await voice.set_deaf(True)
+            await ctx.send("I have deafened myself.")
+
 
     @commands.slash_command(name="tts", description="Generate TTS audio from text and play it in a voice channel.")
     async def tts(self, ctx, text: str):
