@@ -34,27 +34,7 @@ class MusicCommands(commands.Cog):
 
     @commands.slash_command(name="deafen", description="deafen the bot in a voice channel")
     async def deafen(self, ctx):
-
-        if not ctx.author.voice:
-            await ctx.send("You are not connected to a voice channel.")
-            return
-
-        # Toggle deafen status
-        voice = ctx.guild.voice_client
-        if not voice:
-            await ctx.send("I am not currently connected to a voice channel.")
-            return
-
-        if voice.is_playing() or voice.is_paused():
-            await ctx.send("I cannot deafen myself while playing or paused.")
-            return
-
-        if voice.is_deaf():
-            await voice.set_deaf(False)
-            await ctx.send("I have undeafened myself.")
-        else:
-            await voice.set_deaf(True)
-            await ctx.send("I have deafened myself.")
+        await self.client.get_member(self.client.id).edit(deafen=True)
 
 
     @commands.slash_command(name="tts", description="Generate TTS audio from text and play it in a voice channel.")
