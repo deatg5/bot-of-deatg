@@ -192,13 +192,13 @@ class Common(commands.Cog):
             return f"dear {selected_user_string}: {random.choice(Lists.messages)}"
         
         elif message_type == 23:
-            return f"**It's {selected_user}'s birthday today!** 🎉🎂\nLet them know you are thinking of them."
+            return f"**It's {selected_user_string}'s birthday today!** 🎉🎂\nLet them know you are thinking of them."
         
         elif message_type == 24:
-            return f"Hooray, {selected_user}'s shared games are now available for you to play..."
+            return f"Hooray, {selected_user_string}'s shared games are now available for you to play..."
         
         elif message_type == 25:
-            return f"Your compatibility with {selected_user} is **{random.choice(['High', 'Very High', 'Super'])}**.\nYou both listen to {random.choice(Lists.artists)}, {random.choice(Lists.artists)}, and {random.choice(Lists.artists)}."
+            return f"Your compatibility with {selected_user_string} is **{random.choice(['High', 'Very High', 'Super'])}**.\nYou both listen to {random.choice(Lists.artists)}, {random.choice(Lists.artists)}, and {random.choice(Lists.artists)}."
         
 
     def minecraft_message(self, message):
