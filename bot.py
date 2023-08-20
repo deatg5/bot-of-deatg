@@ -36,9 +36,10 @@ database_address_lol = os.environ['DATABASE_ADDRESS']
 #    database_password_lol = open("D:\\the\\database_password.txt").readline()
 #
 intents = discord.Intents.default()
-intents.members = True
-intents.message_content = True
-client = commands.Bot(command_prefix=commands.when_mentioned_or(';'), intents=intents, help_command=None)
+#intents.members = True
+#intents.message_content = True
+#intents=intents, 
+client = commands.Bot(command_prefix=commands.when_mentioned_or(';'), help_command=None)
 
 
 #@client.command()
