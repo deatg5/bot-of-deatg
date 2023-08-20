@@ -302,7 +302,7 @@ class Listeners(commands.Cog):
                     "**toss**               \nthrow away an item\n\n" 
             , inline=False)
 
-            embed.set_footer(text="footer")
+            embed.set_footer(text="Please read http://deatg.com/bot_terms before using this bot.")
 
             await message.channel.send(embed=embed)
 
