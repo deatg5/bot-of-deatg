@@ -172,11 +172,7 @@ class Listeners(commands.Cog):
 
         #if in DM
         if isinstance(message.channel, discord.DMChannel):
-            
-                
             if message.author != self.client.user: 
-                if message.author.id != Common.deatg_id:
-                    await self.client.get_user(Common.deatg_id).send(message.clean_content)
                     
                 if randint(0, 100) >= 4:
                     await asyncio.sleep(float(randint(0, 40))) 

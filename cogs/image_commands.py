@@ -156,7 +156,6 @@ class ImageCommands(commands.Cog):
             emojis = ctx.guild.emojis
             user = random.choice(members)
             emoji = random.choice(emojis)
-            #emoji = selected_emoji.with_size(128)
 
             selected_font = random.choice(os.listdir("fonts/")) 
 
@@ -164,8 +163,6 @@ class ImageCommands(commands.Cog):
             font = ImageFont.truetype("fonts/" + selected_font, random.randint(10, 200))
             text = Common.random_message(self)    
 
-            #asset = user.avatar_url_as(size = 128)
-            #asset = user.avatar.with_format("png")
             if user.avatar == None:
                 data = BytesIO(await self.client.user.avatar.read())
             else:
@@ -190,7 +187,6 @@ class ImageCommands(commands.Cog):
         
         imgname = "".join([c for c in (Common.random_message(self)[0:100]) if c.isalpha() or c.isdigit() or c==' ']).rstrip()
         img.save("cool_images/" + imgname + ".png")
-        #await ctx.defer()
         await ctx.respond(file = discord.File("cool_images/" + imgname + ".png"))
 
 
