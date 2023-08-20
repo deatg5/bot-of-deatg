@@ -184,12 +184,7 @@ class Common(commands.Cog):
 
         elif message_type == 18:
             return f"{selected_user.mention} {random.choice(Lists.messages)}"
-
-        elif message_type == 19:
-            if selected_user.activity != None:
-                return f"{selected_user.activity}"
-            else:
-                return "!rank"
+        
         elif message_type == 20 or message_type == 21:
             return f"{message.author.name} my friend! I believe in your surgical tech skill on {random.choice(Lists.joke_games)}! You can even best the likes of {selected_user_string} and {selected_user2_string}! But be careful.. because {selected_user3_string} is right around the corner.."
         
