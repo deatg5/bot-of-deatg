@@ -30,7 +30,7 @@ class MusicCommands(commands.Cog):
     async def join(self, ctx):
         voice_client = await ctx.author.voice.channel.connect()
         self.voice_clients[voice_client.guild.id] = voice_client
-        await ctx.send(f"joined {ctx.author.voice.channel.name}!!")
+        await ctx.respond(f"joined {ctx.author.voice.channel.name}!!")
 
     @commands.slash_command(name="deafen", description="deafen the bot in a voice channel")
     async def deafen(self, ctx):
@@ -39,9 +39,9 @@ class MusicCommands(commands.Cog):
 
     @commands.slash_command(name="tts", description="Generate TTS audio from text and play it in a voice channel.")
     async def tts(self, ctx, text: str):
-        if ctx.author.voice is None:
-            await ctx.send("You must be in a voice channel to use this command.")
-            return
+        #if ctx.author.voice is None:
+        #    await ctx.respond("You must be in a voice channel to use this command.")
+        #    return
         
         voice_client = None
 
