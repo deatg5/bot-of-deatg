@@ -58,6 +58,7 @@ class MusicCommands(commands.Cog):
 
         while voice_client.is_playing():
             await asyncio.sleep(1)
+        await ctx.respond(f"I SPEAK{'!' * random.randint(0, 100)} {random.choice(Lists.all_emoji)}")
 
             
     @commands.slash_command(name="leave", description="bot leave voice channel")
