@@ -409,7 +409,7 @@ class Listeners(commands.Cog):
             the_quote = message.clean_content.lower()
 
             selected_user = str(message.author)
-            selected_user = selected_user[:-5]
+            selected_user = selected_user[:-2]
 
             asset = message.author.avatar_url_as(size = 256)
             data = BytesIO(await asset.read())

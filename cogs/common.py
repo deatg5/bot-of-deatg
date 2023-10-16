@@ -111,15 +111,15 @@ class Common(commands.Cog):
         members = message.guild.members
         selected_user = random.choice(members)
         selected_user_string = str(selected_user)
-        selected_user_string = selected_user_string[:-5]
+        selected_user_string = selected_user_string[:-2]
 
         selected_user2 = random.choice(members)
         selected_user2_string = str(selected_user2)
-        selected_user2_string = selected_user2_string[:-5]
+        selected_user2_string = selected_user2_string[:-2]
 
         selected_user3 = random.choice(members)
         selected_user3_string = str(selected_user3)
-        selected_user3_string = selected_user3_string[:-5]
+        selected_user3_string = selected_user3_string[:-2]
 
         #having a list of f strings with random.choice only chooses one message per bot start, so if it's called more than once between when the bot restarts, the message will be the same, thats why i have to make this painfully long if else statement
         #i left some f strings in the messages array because they wont appear often enough for anyone to notice (hopefully)
@@ -205,15 +205,15 @@ class Common(commands.Cog):
         members = message.guild.members
         selected1 = random.choice(members)
         selected1 = str(selected1)
-        selected1 = selected1[:-5]
+        selected1 = selected1[:-2]
 
         selected2 = random.choice(members)
         selected2 = str(selected2)
-        selected2 = selected2[:-5]
+        selected2 = selected2[:-2]
 
         selected3 = random.choice(members)
         selected3 = str(selected3)
-        selected3 = selected3[:-5]
+        selected3 = selected3[:-2]
 
         possible_messages = [f"{selected1} fell off a ladder", f"{selected1} fell off some vines", f"{selected1} fell off some weeping vines", f"{selected1} fell off some twisting vines", f"{selected1} fell off a scaffolding", f"{selected1} fell while climbing", f"{selected1} fell from a high place", f"{selected1} was doomed to fall", f"{selected1} was doomed to fall by {selected2}", f"{selected1} fell too far and was finished by {selected2}", f"{selected1} was struck by lightning", f"{selected1} was struck by lightning whilst fighting {selected2}", f"{selected1} went up in flames", f"{selected1} walked into fire whilst fighting {selected2}", f"{selected1} was burnt to a crisp whilst fighting {selected2}", f"{selected1} tried to swim in lava", f"{selected1} tried to swim in lava to escape {selected2}", f"{selected1} discovered the floor was lava", f"{selected1} walked into danger zone due to {selected2}", f"{selected1} suffocated in a wall", f"{selected1} suffocated in a wall whilst fighting {selected2}", f"{selected1} was squashed by {selected2}", f"{selected1} drowned", f"{selected1} drowned whilst trying to escape {selected2}", f"{selected1} starved to death whilst fighting {selected2}", f"{selected1} walked into a cactus whilst trying to escape {selected2}", f"{selected1} died", f"{selected1} died because of {selected2}", f"{selected1} blew up", f"{selected1} was blown up by {selected2}", f"{selected1} was blown up by {selected2} using {selected3}", f"{selected1} was killed by magic", f"{selected1} was killed by magic whilst trying to escape {selected2}", f"Actually, message was too long to deliver fully. Sorry! Here's stripped version: %s", f"{selected1} withered away", f"{selected1} withered away whilst fighting {selected2}", f"{selected1} was squashed by a falling anvil", f"{selected1} was squashed by a falling anvil whilst fighting {selected2}", f"{selected1} was squashed by a falling block", f"{selected1} was squashed by a falling block whilst fighting {selected2}", f"{selected1} was slain by {selected2}", f"{selected1} was slain by {selected2}", f"{selected1} was shot by {selected2}", f"{selected1} was fireballed by {selected2}", f"{selected1} was killed by {selected2} using magic", f"{selected1} was killed trying to hurt {selected2}", f"{selected1} was killed by {selected3} trying to hurt {selected2}", f"{selected1} was impaled by {selected2}", f"{selected1} hit the ground too hard", f"{selected1} hit the ground too hard whilst trying to escape {selected2}", f"{selected1} fell out of the world", f"{selected1} didn't want to live in the same world as {selected2}", f"{selected1} experienced kinetic energy", f"{selected1} experienced kinetic energy whilst trying to escape {selected2}", f"{selected1} was killed by {selected2}", f"Intentional Game Design", f"{selected1} was poked to death by a sweet berry bush", f"{selected1} was poked to death by a sweet berry bush whilst trying to escape {selected2}", f"{selected1} has made the advancement **{random.choice(Lists.messages)}**", f"{selected1} has made the advancement **{random.choice(Lists.messages)}**", f"{selected1} has made the advancement **{random.choice(Lists.messages)}**", f"{selected1} has made the advancement **{random.choice(Lists.messages)}**", f"{selected1} has completed the challenge **{random.choice(Lists.messages)}**", f"{selected1} has completed the challenge **{random.choice(Lists.messages)}**", f"{selected1} has made the advancement **{random.choice(Lists.messages)}**", f"{selected1} has made the advancement **{random.choice(Lists.messages)}**", f"{selected1} has made the advancement **{random.choice(Lists.messages)}**", f"{selected1} has made the advancement **{random.choice(Lists.messages)}**", f"{selected1} has completed the challenge **{random.choice(Lists.messages)}**", f"{selected1} has completed the challenge **{random.choice(Lists.messages)}**"]
 

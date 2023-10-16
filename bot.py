@@ -83,7 +83,7 @@ async def leaderboard(ctx, amount=30):
     for index, user in enumerate(db_user):
         gamer = client.get_user(int(user['userid']))
         gamer = str(gamer)
-        gamer_notag = gamer[:-5]
+        gamer_notag = gamer[:-2]
         if len(gamer_notag) == 0:
             board.add_field(name = f"{str(index + 1)} - {user['userid']}", value=f"level {str(user['level'])}, {str(user['xp'])} XP", inline = True)
             #board += f"{str(index + 1)} - {user['userid']} (username unavailable): level {str(user['level'])}, {str(user['xp'])} XP\n"
@@ -106,7 +106,7 @@ async def leaderboard(ctx, amount=30):
     for index, user in enumerate(db_user):
         gamer = client.get_user(int(user['userid']))
         gamer = str(gamer)
-        gamer_notag = gamer[:-5]
+        gamer_notag = gamer[:-2]
         if len(gamer_notag) == 0:
             board.add_field(name = f"{str(index + 1)} - {user['userid']}", value=f"level {str(user['level'])}, {str(user['xp'])} XP", inline = True)
         else:
@@ -328,10 +328,10 @@ async def buy(ctx, item_name, amount = 1):
             if db_user['cash'] >= (item['cost'] * amount):
                 await give_item(ctx.author.id, item_name, amount)
                 await give_cash(ctx.author.id, (-item['cost'] * amount))
-                await ctx.send(f"You bought {amount} {item['friendly_name']} for ${item['cost'] * amount} {random.choice(Lists.all_face_emoji)}")
+                await ctx.respond(f"You bought {amount} {item['friendly_name']} for ${item['cost'] * amount} {random.choice(Lists.all_face_emoji)}")
                 return
             else:
-                await ctx.send(f"You don't have enough money to buy this item! {random.choice(Lists.all_face_emoji)}")
+                await ctx.respond(f"You don't have enough money to buy this item! {random.choice(Lists.all_face_emoji)}")
                 return
     await ctx.respond(f"Item {item_name} was not found! {random.choice(Lists.all_face_emoji)} Make sure you spell it how it's displayed within the [] in the shop.")
         
@@ -448,6 +448,43 @@ async def rob(ctx, member: discord.Member = None):
         await ctx.send(f'You got caught and somehow ended up giving ${cash_to_give} to {member.name}#{member.discriminator}')
     else:
         await ctx.send(random.choice(['Your rob attempt was unsuccessful.', 'Your rob failed.', 'You failed to rob. Try again next time!','yikes, you totally failed and got nothing']))
+
+    
+@client.slash_command(name="rob", description="rob someone :flushed:")
+async def rob(ctx, member: discord.Member = None):
+    if member == None:
+        member = ctx.author
+    member_id = str(member.id)
+    author_id = str(ctx.author.id)
+
+    #base odds to successfully rob somone or lose money: 20%
+    #you will steal 1 - 4% of their cash
+    #cooldown to try to rob is 1 minute
+    #after a user has been successfully robbed from, they won't be able to be robbed from for 1 hour
+    #10% chance to give the person you're robbing 1 - 4% of your current cash
+
+    robber = await pg_con.fetchrow("SELECT * FROM users WHERE userid = $1", author_id)
+    robbee = await pg_con.fetchrow("SELECT * FROM users WHERE userid = $1", member_id)
+
+    result = random.randint(0, 100)
+
+    if result <= 20:
+        #success
+        percentage = random.randint(2, 5) * 0.01
+        cash_stolen = math.floor(robbee['cash'] * percentage)
+        await give_cash(ctx.author.id, cash_stolen)
+        await give_cash(member.id, -cash_stolen)
+        await ctx.respond(f'You stole ${cash_stolen} from {member.name}#{member.discriminator}')
+    elif result >= 80:
+        #failure
+        percentage = random.randint(2, 5) * 0.01
+        cash_to_give = math.floor(robber['cash'] * percentage)
+        await give_cash(member.id, cash_to_give)
+        await give_cash(ctx.author.id, -cash_to_give)
+        await ctx.respond(f'You got caught and somehow ended up giving ${cash_to_give} to {member.name}#{member.discriminator}')
+    else:
+        await ctx.respond(random.choice(['Your rob attempt was unsuccessful.', 'Your rob failed.', 'You failed to rob. Try again next time!','yikes, you totally failed and got nothing']))
+
 
 
 
