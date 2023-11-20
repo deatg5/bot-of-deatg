@@ -467,7 +467,8 @@ class Lists(commands.Cog):
                 "Haha wtf","😂😂😂😂😂😂😂😂😂😂","How fast can you run?","i didnt get reaver gun skin","i got reaver gun skin","been plotting against john storms demise",
                 "Just wait until you see lady gaga Pepsi","SUPERRRR", "are you aware of...\nCASIOPEA VS THE SQUARE 2003", "Caramel & Chocolate Ice Creams with Chocolate Cookie Swirls & Gobs of Chocolate Chip Cookie Dough & Peanut Butter Cookie Dough",
                 "Is anybody here Don Bongo?", "Please do NOT do that", "WANT SOME TAFFY COME ON DOWN", "What happebd jshgavshsvs76eygavzugs73hdvdyddhdhdhdue8eibdhdfijdyfhfhhsbdhdbdbbdjdbdjcjdhdjrjhdhdjdokehdhfhdjiw7w636y3egdu7cuxhd99edjfuh fjf8r88euehdhidydh😈😒😉😉😕😁😀😀😠😠😕🥹😕😀😉👙👔👙👔👙👙👗👗👙👙👠💰💰🐑🐤🐥",
-                "im off 12 vicodin smokin that amnesia pack", "Hi Fischer"]
+                "im off 12 vicodin smokin that amnesia pack", "Hi Fischer","DOUGLAS", "YOU WOULDN'T DOWNLOAD A BOT OF DEATG...", "Looks like we're gonna have to jump!", "FLAGRANT SYSTEM ERROR\nBot of deatg over.\nVirus = Very Yes.",
+                "EVIL BOT OF DEATG BE LIKE: {random.choice(messages_temp)}", "IT'S OVER!", "I DON'T WANT TO EAT A GUITAR!!", "i am -29e4 years old!"]
 
 
     nicknames = ["molluskmuncher27", "Deleted User"]
