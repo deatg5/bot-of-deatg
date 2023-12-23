@@ -62,7 +62,7 @@ class Listeners(commands.Cog):
     async def decide_message(self, message):
         message_to_send = Common.random_message(self)
 
-        message_type = random.randint(0, 250)
+        message_type = random.randint(0, 172)
 
         if 0 <= message_type <= 172:
             message_to_send = Common.random_message(self)
@@ -136,7 +136,7 @@ class Listeners(commands.Cog):
         #random msg send chance
         if (random.randint(0, 1000) < 10 or self.client.user.mentioned_in(message)) and not (message.channel.id in Common.every_word_channel_ids):
             #random message has been triggered
-            kind_of_message = random.randint(0, 900)
+            kind_of_message = random.randint(0, 10)
 
             #regular message
             if kind_of_message <= 800:

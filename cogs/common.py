@@ -79,7 +79,7 @@ class Common(commands.Cog):
                         Lists.pokemon,
                         Lists.games,
                         Lists.kanji])
-        return random.choice(message_type)
+        return random.choice(Lists.messages)
 
     
 
