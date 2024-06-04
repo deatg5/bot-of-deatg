@@ -63,7 +63,7 @@ class MiscCommands(commands.Cog):
 
     @commands.slash_command(name="time", description="the current time according to bot of deatg")
     async def time(self, ctx):
-        await ctx.respond(datetime.datetime.now())
+        await ctx.respond(str(datetime.datetime.now()))
 
 
 
