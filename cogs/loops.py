@@ -104,6 +104,23 @@ class Loops(commands.Cog):
     async def before_random_typing(self):
         await self.client.wait_until_ready()
 
+    #@tasks.loop(hours=24)  # Run the loop every 24 hours
+    #async def ummnothing():
+    #    now = datetime.datetime.now()
+    #    target_time = now.replace(hour=21, minute=27, second=0, microsecond=0)
+#
+    #    if now > target_time:
+    #        target_time += datetime.timedelta(days=1)  # Schedule for the next day
+#
+    #    # Calculate seconds until the target time
+    #    time_to_wait = (target_time - now).total_seconds()
+#
+    #    # This part makes sure the task waits until 9:27PM
+    #    await asyncio.sleep(time_to_wait) 
+#
+    #    user = await bot.fetch_user(target_user_id)  # Fetch the user object
+    #    await user.send("This is your daily reminder at 9:27 PM!")
+
 
 
     #@tasks.loop(seconds=60)

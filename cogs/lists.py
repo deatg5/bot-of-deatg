@@ -520,7 +520,7 @@ class Lists(commands.Cog):
                 "Just wait until you see lady gaga Pepsi","SUPERRRR", "are you aware of...\nCASIOPEA VS THE SQUARE 2003", "Caramel & Chocolate Ice Creams with Chocolate Cookie Swirls & Gobs of Chocolate Chip Cookie Dough & Peanut Butter Cookie Dough",
                 "Is anybody here Don Bongo?", "Please do NOT do that", "WANT SOME TAFFY COME ON DOWN", "What happebd jshgavshsvs76eygavzugs73hdvdyddhdhdhdue8eibdhdfijdyfhfhhsbdhdbdbbdjdbdjcjdhdjrjhdhdjdokehdhfhdjiw7w636y3egdu7cuxhd99edjfuh fjf8r88euehdhidydh😈😒😉😉😕😁😀😀😠😠😕🥹😕😀😉👙👔👙👔👙👙👗👗👙👙👠💰💰🐑🐤🐥",
                 "im off 12 vicodin smokin that amnesia pack", "Hi Fischer","DOUGLAS", "YOU WOULDN'T DOWNLOAD A BOT OF DEATG...", "Looks like we're gonna have to jump!", "FLAGRANT SYSTEM ERROR\nBot of deatg over.\nVirus = Very Yes.",
-                "EVIL BOT OF DEATG BE LIKE: {random.choice(messages_temp)}", "IT'S OVER!", "I DON'T WANT TO EAT A GUITAR!!", "i am -29e4 years old!"]
+                "EVIL BOT OF DEATG BE LIKE: {random.choice(messages_temp)}", "IT'S OVER!", "I DON'T WANT TO EAT A GUITAR!!", "i am -29e4 years old!", "https://cdn.discordapp.com/attachments/864646810211450910/1244203021668319304/hank.png?ex=665441dc&is=6652f05c&hm=e912d9d6e7b402dc9fc66236462e7b9cc07721be57ee45dfe368955a233aab7b&"]
     
 
     messages_chrstimas = [
