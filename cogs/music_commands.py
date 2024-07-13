@@ -69,7 +69,7 @@ class MusicCommands(commands.Cog):
             tts.save(output_file)
 
         # Run the CPU-bound task in a thread pool
-        await self.bot.loop.run_in_executor(None, _generate)
+        await self.client.loop.run_in_executor(None, _generate)
 
     @commands.slash_command(name="leave", description="bot leave voice channel")
     async def leave(self, ctx):
