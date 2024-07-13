@@ -23,4 +23,3 @@ cutlet
 html2text
 pet-pet-gif
 gTTS
-edge_tts

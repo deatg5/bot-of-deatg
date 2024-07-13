@@ -5,7 +5,6 @@ from discord.utils import get
 import youtube_dl
 import os
 from gtts import gTTS
-from edge_tts import Communicate
 import asyncio
 
 from cogs.common import Common
@@ -26,6 +25,7 @@ class MusicCommands(commands.Cog):
     }   
 
     voice_clients = {}
+
     
     async def try_join(self, ctx):
         if ctx.guild.id in self.voice_clients:
@@ -53,8 +53,11 @@ class MusicCommands(commands.Cog):
         voice_client = self.voice_clients[ctx.guild.id]
 
         # Generate audio from text
-        communicate = Communicate()
-        await communicate.save_audio("tts.mp3", input_text, "en-IE-EmilyNeural")
+        def generate_speech(text, output_file, language='en'):
+            tts = gTTS(text=text, lang=language)
+            tts.save(output_file)
+            
+        generate_speech(input_text, 'tts.mp3', 'en')
 
         # Stop playback if already playing
         if voice_client.is_playing():
