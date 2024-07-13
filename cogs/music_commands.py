@@ -53,7 +53,8 @@ class MusicCommands(commands.Cog):
         voice_client = self.voice_clients[ctx.guild.id]
 
         # Generate audio from text
-        await Communicate(text=input_text, voice='en-IE-EmilyNeural').save('tts.mp3')
+        communicate = Communicate()
+        await communicate.save_audio("tts.mp3", input_text, "en-IE-EmilyNeural")
 
         # Stop playback if already playing
         if voice_client.is_playing():
