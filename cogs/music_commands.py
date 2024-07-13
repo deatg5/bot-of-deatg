@@ -52,12 +52,9 @@ class MusicCommands(commands.Cog):
             return
         voice_client = self.voice_clients[ctx.guild.id]
 
-        # Generate audio from text
-        def generate_speech(text, output_file, language='en'):
-            tts = gTTS(text=text, lang=language)
-            tts.save(output_file)
-            
-        generate_speech(input_text, 'tts.mp3', 'en')
+        await ctx.defer()
+
+        await self.generate_speech(input_text, 'tts.mp3', 'en')
 
         # Stop playback if already playing
         if voice_client.is_playing():
@@ -66,6 +63,13 @@ class MusicCommands(commands.Cog):
         # Start speaking the TRUTH
         voice_client.play(discord.FFmpegPCMAudio("tts.mp3"))
 
+    async def generate_speech(self, text, output_file, language='en'):
+        def _generate():
+            tts = gTTS(text=text, lang=language)
+            tts.save(output_file)
+
+        # Run the CPU-bound task in a thread pool
+        await self.bot.loop.run_in_executor(None, _generate)
 
     @commands.slash_command(name="leave", description="bot leave voice channel")
     async def leave(self, ctx):

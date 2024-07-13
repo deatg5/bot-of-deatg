@@ -110,16 +110,11 @@ class Common(commands.Cog):
     async def dynamic_message(self, message):
         members = message.guild.members
         selected_user = random.choice(members)
-        selected_user_string = str(selected_user)
-        selected_user_string = selected_user_string[:-2]
-
-        selected_user2 = random.choice(members)
-        selected_user2_string = str(selected_user2)
-        selected_user2_string = selected_user2_string[:-2]
-
-        selected_user3 = random.choice(members)
-        selected_user3_string = str(selected_user3)
-        selected_user3_string = selected_user3_string[:-2]
+        selected2_user = random.choice(members)
+        selected3_user = random.choice(members)
+        selected_user_string = str(selected_user.display_name)
+        selected_user2_string = str(selected2_user.display_name)
+        selected_user3_string = str(selected3_user.display_name)
 
         #having a list of f strings with random.choice only chooses one message per bot start, so if it's called more than once between when the bot restarts, the message will be the same, thats why i have to make this painfully long if else statement
         #i left some f strings in the messages array because they wont appear often enough for anyone to notice (hopefully)
@@ -155,7 +150,7 @@ class Common(commands.Cog):
 
         elif message_type == 10:
             temp_msg = random.choice(random.choice([Lists.item, Lists.funny_nouns, Lists.messages, Lists.tunesList, Lists.games, selected_user_string, selected_user_string, selected_user_string]))
-            temp_msg2 = random.choice(random.choice([Lists.item, Lists.funny_nouns, Lists.messages, Lists.tunesList, Lists.games, selected_user_string, selected_user_string, selected_user_string]))
+            temp_msg2 = random.choice(random.choice([Lists.item, Lists.funny_nouns, Lists.messages, Lists.tunesList, Lists.games, selected_user2_string, selected_user2_string, selected_user2_string]))
             return f"Zoom in on the {temp_msg2}, and you'll see: {temp_msg}"
 
         elif message_type == 11:
@@ -186,7 +181,7 @@ class Common(commands.Cog):
             return f"{selected_user.mention} {random.choice(Lists.messages)}"
         
         elif message_type == 20 or message_type == 21:
-            return f"{message.author.name} my friend! I believe in your surgical tech skill on {random.choice(Lists.joke_games)}! You can even best the likes of {selected_user_string} and {selected_user2_string}! But be careful.. because {selected_user3_string} is right around the corner.."
+            return f"{message.author.display_name} my friend! I believe in your surgical tech skill on {random.choice(Lists.joke_games)}! You can even best the likes of {selected_user_string} and {selected_user2_string}! But be careful.. because {selected_user3_string} is right around the corner.."
         
         elif message_type == 22:
             return f"dear {selected_user_string}: {random.choice(Lists.messages)}"
