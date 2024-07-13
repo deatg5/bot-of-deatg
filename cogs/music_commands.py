@@ -46,14 +46,14 @@ class MusicCommands(commands.Cog):
             await ctx.respond(f"joined {ctx.author.voice.channel.name}")
 
     @commands.slash_command(name="tts", description="Generate TTS audio from text and play it in a voice channel.")
-    async def tts(self, ctx, text: str):
+    async def tts(self, ctx, input_text: str):
         # get current voice channel / join one that the user is in
         if ctx.guild.id not in self.voice_clients and not await self.try_join(ctx):
             return
         voice_client = self.voice_clients[ctx.guild.id]
 
         # Generate audio from text
-        await Communicate(text, 'en-IE-EmilyNeural').save('tts.mp3')
+        await Communicate(text=input_text, voice='en-IE-EmilyNeural').save('tts.mp3')
 
         # Stop playback if already playing
         if voice_client.is_playing():
@@ -62,8 +62,6 @@ class MusicCommands(commands.Cog):
         # Start speaking the TRUTH
         voice_client.play(discord.FFmpegPCMAudio("tts.mp3"))
 
-        # respond to command
-        await ctx.respond(f"I say: \"{text}\"")
 
     @commands.slash_command(name="leave", description="bot leave voice channel")
     async def leave(self, ctx):
