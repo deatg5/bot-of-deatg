@@ -63,6 +63,9 @@ class MusicCommands(commands.Cog):
         # Start speaking the TRUTH
         voice_client.play(discord.FFmpegPCMAudio("tts.mp3"))
 
+        await ctx.followup.send("he speaks..")
+
+
     async def generate_speech(self, text, output_file, language='en'):
         def _generate():
             tts = gTTS(text=text, lang=language)
