@@ -13,7 +13,7 @@ class MusicCommands(commands.Cog):
         self.client = client
         self.voice_clients = {}
 
-    @commands.command()
+    @commands.slash_command()
     async def join(self, ctx):
         if ctx.author.voice is None:
             await ctx.send("You is not in a voice channel!!!")
@@ -23,21 +23,21 @@ class MusicCommands(commands.Cog):
             await self.voice_clients[ctx.guild.id].move_to(voice_channel)
         else:
             self.voice_clients[ctx.guild.id] = await voice_channel.connect()
-        await ctx.send(f"joined {voice_channel.name} :3")
+        await ctx.reply(f"joined {voice_channel.name} :3")
 
-    @commands.command()
+    @commands.slash_command()
     async def leave(self, ctx):
         if ctx.guild.id in self.voice_clients:
             await self.voice_clients[ctx.guild.id].disconnect()
             del self.voice_clients[ctx.guild.id]
-            await ctx.send("bye bye..")
+            await ctx.reply("bye bye..")
         else:
-            await ctx.send("ERROUR: i can't leave something i'm not in !!!!")
+            await ctx.reply("ERROUR: i can't leave something i'm not in !!!!")
 
-    @commands.command()
+    @commands.slash_command()
     async def tts(self, ctx, *, text):
         if ctx.guild.id not in self.voice_clients:
-            await ctx.send("this command is for playing tts audio in voice channels :3")
+            await ctx.reply("this command is for playing tts audio in voice channels :3")
             return
         tts = gtts.gTTS(text)
         fp = io.BytesIO()
