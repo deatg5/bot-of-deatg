@@ -52,7 +52,7 @@ class MusicCommands(commands.Cog):
         if ctx.guild.id not in self.voice_clients:
             await ctx.respond("this command is for playing tts audio in voice channels :3")
             return
-        tts = gtts.gTTS(text)
+        tts = gtts.gTTS(text, slow=True, lang="es")
         fp = io.BytesIO()
         tts.write_to_fp(fp)
         fp.seek(0)
