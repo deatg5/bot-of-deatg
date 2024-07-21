@@ -21,6 +21,7 @@ class Listeners(commands.Cog):
     @commands.Cog.listener()
     async def on_ready(self):
         await Common.log(self, 'BOT ACTIVATED')
+        await self.client.tree.sync() 
         print('BOT ACTIVATED')
 
     @commands.Cog.listener()
