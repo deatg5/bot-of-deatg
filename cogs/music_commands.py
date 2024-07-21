@@ -47,7 +47,7 @@ class MusicCommands(commands.Cog):
 
     @commands.Cog.listener()
     async def on_voice_state_update(self, member, before, after):
-        if member == self.bot.user and after.channel is None:
+        if member == self.client.user and after.channel is None:
             guild_id = before.channel.guild.id
             if guild_id in self.voice_clients:
                 del self.voice_clients[guild_id]
