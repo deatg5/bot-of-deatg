@@ -32,7 +32,7 @@ class VoiceCog(commands.Cog):
             elif voice_client.channel != ctx.author.voice.channel:
                 await voice_client.move_to(ctx.author.voice.channel)
 
-    @commands.command()
+    @commands.slash_command()
     async def join(self, ctx):
         if ctx.author.voice is None:
             await ctx.send("You need to be in a voice channel to use this command.")
@@ -43,31 +43,31 @@ class VoiceCog(commands.Cog):
         voice_channel = ctx.author.voice.channel
         if ctx.guild.id not in self.voice_clients:
             self.voice_clients[ctx.guild.id] = await voice_channel.connect()
-            await ctx.send(f"Joined {voice_channel.name}")
+            await ctx.respond(f"Joined {voice_channel.name}")
         else:
-            await ctx.send(f"Already in {self.voice_clients[ctx.guild.id].channel.name}")
+            await ctx.respond(f"Already in {self.voice_clients[ctx.guild.id].channel.name}")
 
-    @commands.command()
+    @commands.slash_command()
     async def leave(self, ctx):
         await self.ensure_voice_state(ctx)
 
         if ctx.guild.id in self.voice_clients:
             await self.voice_clients[ctx.guild.id].disconnect()
             del self.voice_clients[ctx.guild.id]
-            await ctx.send("Left the voice channel.")
+            await ctx.respond("Left the voice channel.")
         else:
-            await ctx.send("I'm not in a voice channel.")
+            await ctx.respond("I'm not in a voice channel.")
 
-    @commands.command()
+    @commands.slash_command()
     async def tts(self, ctx, *, text):
         await self.ensure_voice_state(ctx)
 
         if ctx.guild.id not in self.voice_clients:
-            await ctx.send("I'm not in a voice channel. Use the join command first.")
+            await ctx.respond("I'm not in a voice channel. Use the join command first.")
             return
 
         # Generate speech
-        output_file = f"tts_{ctx.guild.id}.mp3"
+        output_file = "tts.mp3"
         await asyncio.to_thread(self.generate_speech, text, output_file)
 
         # Play the generated speech
