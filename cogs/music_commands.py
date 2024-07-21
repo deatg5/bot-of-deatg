@@ -1,30 +1,20 @@
 import discord
 from discord.ext import commands
+from discord.utils import get
+import gtts
 import io
-import pyttsx3
-import asyncio
-import os
 
-class VoiceCog(commands.Cog):
+from cogs.common import Common
+from cogs.lists import Lists
+
+class MusicCommands(commands.Cog):
 
     def __init__(self, client):
         self.client = client
         self.voice_clients = {}
-        self.tts_engine = pyttsx3.init()
-        self.setup_voice()
-
-    def setup_voice(self):
-        voices = self.tts_engine.getProperty('voices')
-        sam_voice = next((voice for voice in voices if "sam" in voice.name.lower()), None)
-        if sam_voice:
-            self.tts_engine.setProperty('voice', sam_voice.id)
-            print(f"Using voice: {sam_voice.name}")
-        else:
-            print("Microsoft Sam-like voice not found. Using default voice.")
-        self.tts_engine.setProperty('rate', 150)
-        self.tts_engine.setProperty('volume', 0.9)
 
     async def ensure_voice_state(self, ctx):
+        """Ensure the bot's voice state is consistent with reality."""
         if ctx.guild.id in self.voice_clients:
             voice_client = self.voice_clients[ctx.guild.id]
             if not voice_client.is_connected():
@@ -32,55 +22,45 @@ class VoiceCog(commands.Cog):
             elif voice_client.channel != ctx.author.voice.channel:
                 await voice_client.move_to(ctx.author.voice.channel)
 
-    @commands.slash_command()
+    @commands.slash_command(name="join", description="join voice chanel :dove:")
     async def join(self, ctx):
         if ctx.author.voice is None:
-            await ctx.send("You need to be in a voice channel to use this command.")
+            await ctx.respond("you is not in a voice channel!!!")
             return
-
         await self.ensure_voice_state(ctx)
 
         voice_channel = ctx.author.voice.channel
-        if ctx.guild.id not in self.voice_clients:
-            self.voice_clients[ctx.guild.id] = await voice_channel.connect()
-            await ctx.respond(f"Joined {voice_channel.name}")
+        if ctx.guild.id in self.voice_clients:
+            await self.voice_clients[ctx.guild.id].move_to(voice_channel)
         else:
-            await ctx.respond(f"Already in {self.voice_clients[ctx.guild.id].channel.name}")
+            self.voice_clients[ctx.guild.id] = await voice_channel.connect()
+        await ctx.respond(f"joined {voice_channel.name} :3")
 
-    @commands.slash_command()
+    @commands.slash_command(name="leave", description="get OUT of the voice channel")
     async def leave(self, ctx):
         await self.ensure_voice_state(ctx)
-
         if ctx.guild.id in self.voice_clients:
             await self.voice_clients[ctx.guild.id].disconnect()
             del self.voice_clients[ctx.guild.id]
-            await ctx.respond("Left the voice channel.")
+            await ctx.respond("bye bye..")
         else:
-            await ctx.respond("I'm not in a voice channel.")
+            await ctx.respond("ERROUR: i can't leave something i'm not in !!!!")
 
-    @commands.slash_command()
+    @commands.slash_command(name="tts", description="make bot of deatg speak!")
     async def tts(self, ctx, *, text):
         await self.ensure_voice_state(ctx)
-
         if ctx.guild.id not in self.voice_clients:
-            await ctx.respond("I'm not in a voice channel. Use the join command first.")
+            await ctx.respond("this command is for playing tts audio in voice channels :3")
             return
-
-        # Generate speech
-        output_file = "tts.mp3"
-        await asyncio.to_thread(self.generate_speech, text, output_file)
-
-        # Play the generated speech
-        audio_source = discord.FFmpegPCMAudio(output_file)
-        self.voice_clients[ctx.guild.id].play(audio_source, after=lambda e: os.remove(output_file))
-
-    def generate_speech(self, text, output_file):
-        self.tts_engine.save_to_file(text, output_file)
-        self.tts_engine.runAndWait()
+        tts = gtts.gTTS(text)
+        fp = io.BytesIO()
+        tts.write_to_fp(fp)
+        fp.seek(0)
+        self.voice_clients[ctx.guild.id].play(discord.FFmpegPCMAudio(fp, pipe=True))
 
     @commands.Cog.listener()
     async def on_voice_state_update(self, member, before, after):
-        if member == self.bot.user:
+        if member == self.client.user:
             if after.channel is None:
                 guild_id = before.channel.guild.id
                 if guild_id in self.voice_clients:
@@ -89,5 +69,7 @@ class VoiceCog(commands.Cog):
                 guild_id = after.channel.guild.id
                 self.voice_clients[guild_id] = member.guild.voice_client
 
+
+
 def setup(client):
-    client.add_cog(VoiceCog(client))
+    client.add_cog(MusicCommands(client))
