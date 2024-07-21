@@ -47,12 +47,12 @@ class MusicCommands(commands.Cog):
             await ctx.respond("ERROUR: i can't leave something i'm not in !!!!")
 
     @commands.slash_command(name="tts", description="make bot of deatg speak!")
-    async def tts(self, ctx, *, text):
+    async def tts(self, ctx, *, text, language="en", is_slow=False):
         await self.ensure_voice_state(ctx)
         if ctx.guild.id not in self.voice_clients:
             await ctx.respond("this command is for playing tts audio in voice channels :3")
             return
-        tts = gtts.gTTS(text, slow=True, lang="es")
+        tts = gtts.gTTS(text, slow=is_slow, lang=language)
         fp = io.BytesIO()
         tts.write_to_fp(fp)
         fp.seek(0)
