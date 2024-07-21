@@ -57,8 +57,8 @@ class MusicCommands(commands.Cog):
         tts.write_to_fp(fp)
         fp.seek(0)
         self.voice_clients[ctx.guild.id].play(discord.FFmpegPCMAudio(fp, pipe=True))
-        await ctx.interaction.response.defer(ephemeral=True)
-
+        await ctx.respond("i speak!!", ephemeral=True)
+        
     @commands.Cog.listener()
     async def on_voice_state_update(self, member, before, after):
         if member == self.client.user:
