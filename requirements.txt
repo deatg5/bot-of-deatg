@@ -23,3 +23,5 @@ cutlet
 html2text
 pet-pet-gif
 gTTS
+pypiwin32 
+pyttsx3
