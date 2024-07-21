@@ -24,4 +24,3 @@ html2text
 pet-pet-gif
 gTTS
 pyttsx3
-libespeak1
