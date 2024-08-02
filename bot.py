@@ -66,7 +66,6 @@ for filename in os.listdir('./cogs'):
 
 
 @client.slash_command(name="mint", description="teest", dm_permission=True)
-@app_commands.allowed_installs(guilds=True, users=True)
 async def mint(ctx):
     await ctx.respond("HOLY SHIT!!!")
 
