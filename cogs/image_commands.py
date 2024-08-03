@@ -42,7 +42,7 @@ class ImageCommands(commands.Cog):
     
         await ctx.send(file = discord.File("generated_sign.png"))
     
-    @commands.slash_command(name="sign", description="generate mario 64 sign image")
+    @commands.slash_command(contexts={discord.InteractionContextType.private_channel}, integration_types={discord.IntegrationType.user_install}, name="sign", description="generate mario 64 sign image")
     async def sign(self, ctx, user: discord.Member = None):
         if user == None:
             user = ctx.author
@@ -142,7 +142,7 @@ class ImageCommands(commands.Cog):
         await ctx.defer()
         await ctx.send(file = discord.File("cool_images/" + imgname + ".png"))
 
-    @commands.slash_command(name="cool_image",description="randomly generate an image")
+    @commands.slash_command(contexts={discord.InteractionContextType.private_channel}, integration_types={discord.IntegrationType.user_install}, name="cool_image",description="randomly generate an image")
     async def cool_image(self, ctx, image = None):
         if image == None:
             selected_file = random.choice(os.listdir("images/"))
@@ -249,7 +249,7 @@ class ImageCommands(commands.Cog):
         dest.seek(0) # set the file pointer back to the beginning so it doesn't upload a blank file.
         await ctx.send(file=discord.File(dest, filename=f"{image[0]}-petpet.gif"))
 
-    @commands.slash_command(name="petpet", description="pet a user's avatar or an emoji")
+    @commands.slash_command(contexts={discord.InteractionContextType.private_channel}, integration_types={discord.IntegrationType.user_install}, name="petpet", description="pet a user's avatar or an emoji")
     async def petpet(self, ctx, image: Optional[Union[discord.PartialEmoji, discord.User]]):
         if type(image) == discord.PartialEmoji:
             image = await image.read() # retrieve the image bytes

@@ -22,7 +22,7 @@ class MusicCommands(commands.Cog):
             elif voice_client.channel != ctx.author.voice.channel:
                 await voice_client.move_to(ctx.author.voice.channel)
 
-    @commands.slash_command(name="join", description="join voice chanel :dove:")
+    @commands.slash_command(contexts={discord.InteractionContextType.private_channel}, integration_types={discord.IntegrationType.user_install}, name="join", description="join voice chanel :dove:")
     async def join(self, ctx):
         if ctx.author.voice is None:
             await ctx.respond("you is not in a voice channel!!!")
@@ -36,7 +36,7 @@ class MusicCommands(commands.Cog):
             self.voice_clients[ctx.guild.id] = await voice_channel.connect()
         await ctx.respond(f"joined {voice_channel.name} :3")
 
-    @commands.slash_command(name="leave", description="get OUT of the voice channel")
+    @commands.slash_command(contexts={discord.InteractionContextType.private_channel}, integration_types={discord.IntegrationType.user_install}, name="leave", description="get OUT of the voice channel")
     async def leave(self, ctx):
         await self.ensure_voice_state(ctx)
         if ctx.guild.id in self.voice_clients:
@@ -46,7 +46,7 @@ class MusicCommands(commands.Cog):
         else:
             await ctx.respond("ERROUR: i can't leave something i'm not in !!!!")
 
-    @commands.slash_command(name="tts", description="make bot of deatg speak!")
+    @commands.slash_command(contexts={discord.InteractionContextType.private_channel}, integration_types={discord.IntegrationType.user_install}, name="tts", description="make bot of deatg speak!")
     async def tts(self, ctx, *, text, language="en", is_slow=False):
         await self.ensure_voice_state(ctx)
         if ctx.guild.id not in self.voice_clients:

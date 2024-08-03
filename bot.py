@@ -65,7 +65,7 @@ for filename in os.listdir('./cogs'):
 
 
 
-@client.slash_command(contexts={discord.InteractionContextType.private_channel}, integration_types={discord.IntegrationType.user_install}, name="mint", description="teest", dm_permission=True)
+@client.slash_command(contexts={discord.InteractionContextType.private_channel}, integration_types={discord.IntegrationType.user_install}, name="mint", description="teest")
 async def mint(ctx):
     await ctx.respond("HOLY SHIT!!!")
 
@@ -99,7 +99,7 @@ async def leaderboard(ctx, amount=30):
     #             await ctx.send(f'{line}')
     # else:
     #     await ctx.send(board)
-@client.slash_command(name="leaderboard", description="the global bot of deatg leaderboard (1 xp = 1 message sent)")
+@client.slash_command(contexts={discord.InteractionContextType.private_channel}, integration_types={discord.IntegrationType.user_install}, name="leaderboard", description="the global bot of deatg leaderboard (1 xp = 1 message sent)")
 async def leaderboard(ctx, amount=30):
     board = discord.Embed(title="leaderboard", description="1 XP is equal to 1 message sent\njust an ID means the user has been deleted or is inaccessable", color=Common.random_color())
     db_user = await pg_con.fetch(f"SELECT * FROM users ORDER BY xp DESC LIMIT {amount}")
@@ -124,7 +124,7 @@ async def level(ctx, member: discord.Member = None):
 
     await ctx.send(f"{member.name}\nLevel: {db_user['level']}\nXP: {db_user['xp']}")
 
-@client.slash_command(name="level", description="check the level of you or another user")
+@client.slash_command(contexts={discord.InteractionContextType.private_channel}, integration_types={discord.IntegrationType.user_install}, name="level", description="check the level of you or another user")
 async def level(ctx, member: discord.Member = None):
     if member == None:
         member = ctx.author
@@ -184,7 +184,7 @@ async def inventory(ctx, member: discord.Member = None):
             embed.add_field(name=item['friendly_name'], value=f"{item['emoji']} {db_user[item['name'] + '_count']}", inline=True)
     await ctx.send(embed=embed)
 
-@client.slash_command(name="inventory", description="check your inventory")
+@client.slash_command(contexts={discord.InteractionContextType.private_channel}, integration_types={discord.IntegrationType.user_install}, name="inventory", description="check your inventory")
 async def inventory(ctx, member: discord.Member = None):
     if member == None:
         member = ctx.author
@@ -214,7 +214,7 @@ async def shop(ctx):
                 embed.add_field(name=f"{item['emoji']} {item['friendly_name']} [{item['name']}]", value=f"${item['cost']}\n{item['description']}\nheal amount: {item['heal_amount']}\ndamage: {item['damage']}")
     await ctx.send(embed=embed)
 
-@client.slash_command(name="shop", description="opens the shop")
+@client.slash_command(contexts={discord.InteractionContextType.private_channel}, integration_types={discord.IntegrationType.user_install}, name="shop", description="opens the shop")
 async def shop(ctx):
     
     embed=discord.Embed(title=f"the shop", description="use ;buy [item name] to buy something", color=Common.random_color())
@@ -313,7 +313,7 @@ async def buy(ctx, item_name, amount = 1):
                 return
     await ctx.send(f"Item {item_name} was not found! {random.choice(Lists.all_face_emoji)} Make sure you spell it how it's displayed within the [] in the shop.")
 
-@client.slash_command(name="buy", description="buy an item")
+@client.slash_command(contexts={discord.InteractionContextType.private_channel}, integration_types={discord.IntegrationType.user_install}, name="buy", description="buy an item")
 async def buy(ctx, item_name, amount = 1):
     if amount < 1:
         await ctx.send(f"You cannot buy 0 or a negative number of items! {random.choice(Lists.all_face_emoji)}")
@@ -347,7 +347,7 @@ async def donate_cash(ctx, member: discord.Member, amount = 1):
     else:
         await ctx.send(f"You don't have that much money! {random.choice(Lists.all_face_emoji)}")
 
-@client.slash_command(name="donate_cash", description="give some money to another user")
+@client.slash_command(contexts={discord.InteractionContextType.private_channel}, integration_types={discord.IntegrationType.user_install}, name="donate_cash", description="give some money to another user")
 async def donate_cash(ctx, member: discord.Member, amount = 1):
     member_id = str(ctx.author.id)
     db_user = await pg_con.fetchrow("SELECT * FROM users WHERE userid = $1", member_id)
@@ -375,7 +375,7 @@ async def donate_item(ctx, member: discord.Member, item_name, amount = 1):
     else:
         await ctx.send(f"You don't enough of that item! {random.choice(Lists.all_face_emoji)} (You have {db_user[item_count]} and are trying to give {amount})")
 
-@client.slash_command(name="donate_item", description="give an item to another user")
+@client.slash_command(contexts={discord.InteractionContextType.private_channel}, integration_types={discord.IntegrationType.user_install}, name="donate_item", description="give an item to another user")
 async def donate_item(ctx, member: discord.Member, item_name, amount = 1):
     member_id = str(ctx.author.id)
     db_user = await pg_con.fetchrow("SELECT * FROM users WHERE userid = $1", member_id)
@@ -401,7 +401,7 @@ async def balance(ctx, member: discord.Member = None):
 
     await ctx.send(embed=discord.Embed(title=f"{member.name}'s balance", description=f"${str(db_user['cash'])}", color=Common.random_color()))
 
-@client.slash_command(name="balance", description="check your balance")
+@client.slash_command(contexts={discord.InteractionContextType.private_channel}, integration_types={discord.IntegrationType.user_install}, name="balance", description="check your balance")
 async def balance(ctx, member: discord.Member = None):
     if member == None:
         member = ctx.author
@@ -450,7 +450,7 @@ async def rob(ctx, member: discord.Member = None):
         await ctx.send(random.choice(['Your rob attempt was unsuccessful.', 'Your rob failed.', 'You failed to rob. Try again next time!','yikes, you totally failed and got nothing']))
 
     
-@client.slash_command(name="rob", description="rob someone :flushed:")
+@client.slash_command(contexts={discord.InteractionContextType.private_channel}, integration_types={discord.IntegrationType.user_install}, name="rob", description="rob someone :flushed:")
 async def rob(ctx, member: discord.Member = None):
     if member == None:
         member = ctx.author
