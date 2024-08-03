@@ -65,7 +65,7 @@ for filename in os.listdir('./cogs'):
 
 
 
-@client.slash_command(name="mint", description="teest", dm_permission=True)
+@client.slash_command(contexts={discord.InteractionContextType.private_channel}, integration_types={discord.IntegrationType.user_install}, name="mint", description="teest", dm_permission=True)
 async def mint(ctx):
     await ctx.respond("HOLY SHIT!!!")
 
