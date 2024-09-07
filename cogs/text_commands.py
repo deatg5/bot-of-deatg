@@ -43,10 +43,8 @@ class TextCommands(commands.Cog):
     #            await ctx.send(f'{Common.random_message(self)}')
 
     @commands.slash_command(contexts={discord.InteractionContextType.private_channel}, integration_types={discord.IntegrationType.user_install}, name="minecraft", description="generate random minecraft mob, block, or item")
-    async def minecraft(self, ctx, amount=1):
-        for i in range(amount):
-            async with ctx.typing():
-                await ctx.respond(f'{random.choice(Lists.item)}')
+    async def minecraft(self, ctx):
+        await ctx.respond(f'{random.choice(Lists.item)}')
 
     #@commands.cog_slash()
     #async def hello(self, ctx):
