@@ -80,7 +80,7 @@ class TextCommands(commands.Cog):
             print(e)
             await ctx.send("too many emojis! :zany_face:")
 
-    @commands.slash_command(contexts={discord.InteractionContextType.private_channel}, integration_types={discord.IntegrationType.user_install}, name="server_emojis", description="sends random emojis from servers the bot is in")
+    @commands.slash_command(contexts={discord.InteractionContextType.private_channel, discord.InteractionContextType.guild}, integration_types={discord.IntegrationType.user_install, discord.IntegrationType.guild_install}, name="server_emojis", description="sends random emojis from servers the bot is in")
     async def server_emojis(self, ctx, count: discord.Option(discord.SlashCommandOptionType.integer) = 3):
         try:
             text = ""
@@ -109,7 +109,7 @@ class TextCommands(commands.Cog):
         except:
             await ctx.send("too many emojis! :zany_face:")
 
-    @commands.slash_command(contexts={discord.InteractionContextType.private_channel}, integration_types={discord.IntegrationType.user_install}, name="emojis", description="sends some random regular emojis")
+    @commands.slash_command(contexts={discord.InteractionContextType.private_channel, discord.InteractionContextType.guild}, integration_types={discord.IntegrationType.user_install, discord.IntegrationType.guild_install}, name="emojis", description="sends some random regular emojis")
     async def emojis(self, ctx, count: discord.Option(discord.SlashCommandOptionType.integer) = 3):
         try:
             emoji = ""
@@ -133,7 +133,7 @@ class TextCommands(commands.Cog):
         except:
             await ctx.send("too many emojis! :zany_face:")
 
-    @commands.slash_command(contexts={discord.InteractionContextType.private_channel}, integration_types={discord.IntegrationType.user_install}, name="face_emojis", description="sends some random face emojis")
+    @commands.slash_command(contexts={discord.InteractionContextType.private_channel, discord.InteractionContextType.guild}, integration_types={discord.IntegrationType.user_install, discord.IntegrationType.guild_install}, name="face_emojis", description="sends some random face emojis")
     async def face_emojis(self, ctx, count: discord.Option(discord.SlashCommandOptionType.integer) = 3):
         try:
             emoji = ""
@@ -200,7 +200,7 @@ class TextCommands(commands.Cog):
             await ctx.send("message too long :grimacing:")
         await Common.log(self, f'sent {message}', ctx)
 
-    @commands.slash_command(contexts={discord.InteractionContextType.private_channel}, integration_types={discord.IntegrationType.user_install}, name="emojipasta", description="adds an emoji between each of your words")
+    @commands.slash_command(contexts={discord.InteractionContextType.private_channel, discord.InteractionContextType.guild}, integration_types={discord.IntegrationType.user_install, discord.IntegrationType.guild_install}, name="emojipasta", description="adds an emoji between each of your words")
     async def emojipasta(self, ctx, message:str):
         #message = " ".join(message[:])
         try:
@@ -340,7 +340,7 @@ class TextCommands(commands.Cog):
         await ctx.send(f'possible messages: {len(Lists.messages)}')
         #await ctx.send(f'this channel\'s message count: {len(m_list)}')
 
-    @commands.slash_command(contexts={discord.InteractionContextType.private_channel}, integration_types={discord.IntegrationType.user_install}, name="stats",description="some stats about the bot")
+    @commands.slash_command(contexts={discord.InteractionContextType.private_channel, discord.InteractionContextType.guild}, integration_types={discord.IntegrationType.user_install, discord.IntegrationType.guild_install}, name="stats",description="some stats about the bot")
     async def stats(self, ctx):
         await ctx.respond(f'server count: {len(self.client.guilds)}')
         ch_list = []
@@ -364,7 +364,7 @@ class TextCommands(commands.Cog):
         await ctx.send(random.choice(answers))
         await Common.log(self, '8ball command sent', ctx)
 
-    @commands.slash_command(contexts={discord.InteractionContextType.private_channel}, integration_types={discord.IntegrationType.user_install}, name='eightball', description="ask a question")
+    @commands.slash_command(contexts={discord.InteractionContextType.private_channel, discord.InteractionContextType.guild}, integration_types={discord.IntegrationType.user_install, discord.IntegrationType.guild_install}, name='eightball', description="ask a question")
     async def eightball(self, ctx):
         answers = ["Yes","No","Maybe","Probably","Not","Absolutely","Definitely","Definitely not","50% chance","Very likely","Perhaps","はい","Never","Tomorrow","DO NOT","DO","No way",
         "ye","yes","no","yeah lol","Ask again","NO","YES","Try it","yep","false","true", "I'm sorry, but it's not gonna happen"]
@@ -378,7 +378,7 @@ class TextCommands(commands.Cog):
         else:
             await ctx.send(f"{round(self.client.latency * 5963)} SCPM (snow cones per minute)")
 
-    @commands.slash_command(contexts={discord.InteractionContextType.private_channel}, integration_types={discord.IntegrationType.user_install}, name="ping",description="the bot's ping")
+    @commands.slash_command(contexts={discord.InteractionContextType.private_channel, discord.InteractionContextType.guild}, integration_types={discord.IntegrationType.user_install, discord.IntegrationType.guild_install}, name="ping",description="the bot's ping")
     async def ping(self, ctx):
         if randint(0, 200) < 190:
             await ctx.respond(f"{round(self.client.latency * 1000)}ms. ")
