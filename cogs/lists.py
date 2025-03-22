@@ -351,8 +351,10 @@ class Lists(commands.Cog):
                 "i would floor masturbate to her","SHUT UP!!!!!! noob, not-good-player and BAD PLAYER!!!!!!!!!!","in the last 2-3 minutes i’ve smashed my head as my pillow screamed, threw pillows, laughed to self, insult the voices in my head praising my godlike power and enhancing the power of a fucking god anddddd going into the fetal position for long periods of time because i am a off hinge and a fucking god right now",
                 "WHY MAKE PASTA INSTEAD OF GETTING CAT","remind me to never lick headache medicine when you're bored without a headache and throw it in the toilet again", "France to plain? Get a new campaign.\nRotisserie chicken...",
                 "the CANCEL CULTURE MOB got to Scotty, this is awful I am disgusted. Of all the people who deserve to be shit on, Scotty is the last person on that list. He ended his last stream abruptly in tears, he didn't even raid. I wasn't even looking at chat at that moment, so I was confused. I go on Twitter and I see a trending hashtag #ScottyDXIsOverParty, people generally being very mean to him, and why? Because apparently he's a gaslighter.",
-                "AMAZON WEB SERVICE", "loll.... item showcase sandwich... with finger bread! :steamhappy:",
-                "yo will they call me big dolla money money money money money money money money money money. you know that?"]
+                "AMAZON WEB SERVICE", "loll.... item showcase sandwich... with finger bread! :steamhappy:","Hah! You may believe that there's no funny colors in the area but look a this take a look...",
+                "yo will they call me big dolla money money money money money money money money money money. you know that?",
+                "I AM NOW THE PRESIDENT OF THE WORLD GOLF ASSOCIATION", "Don't be sorry just Ben over", "the cat is smoking zaza","Add features to Windows 10\nSetting: Prevent the wizard from running.","my sister is such a jollizoom\nsometime",
+                "JOLLIZOOM PRAYERS\nMicrosoft Teams Meeting\nTomorrow all day","people getting mad at me for hating gnomes? open a terminal and /usr/sbin/remove-gnome come on  now bruh"]
 
     
 
@@ -560,8 +562,10 @@ class Lists(commands.Cog):
                 "i would floor masturbate to her","SHUT UP!!!!!! noob, not-good-player and BAD PLAYER!!!!!!!!!!","in the last 2-3 minutes i've smashed my head as my pillow screamed, threw pillows, laughed to self, insult the voices in my head praising my godlike power and enhancing the power of a fucking god anddddd going into the fetal position for long periods of time because i am a off hinge and a fucking god right now",
                 "WHY MAKE PASTA INSTEAD OF GETTING CAT","remind me to never lick headache medicine when you're bored without a headache and throw it in the toilet again", "France to plain? Get a new campaign.\nRotisserie chicken...",
                 "the CANCEL CULTURE MOB got to Scotty, this is awful I am disgusted. Of all the people who deserve to be shit on, Scotty is the last person on that list. He ended his last stream abruptly in tears, he didn't even raid. I wasn't even looking at chat at that moment, so I was confused. I go on Twitter and I see a trending hashtag #ScottyDXIsOverParty, people generally being very mean to him, and why? Because apparently he's a gaslighter.",
-                "AMAZON WEB SERVICE", "loll.... item showcase sandwich... with finger bread! :steamhappy:","Hah! You may believe that there's not funny colors in the area but look a this take a look...",
-                "yo will they call me big dolla money money money money money money money money money money. you know that?"]
+                "AMAZON WEB SERVICE", "loll.... item showcase sandwich... with finger bread! :steamhappy:","Hah! You may believe that there's no funny colors in the area but look a this take a look...",
+                "yo will they call me big dolla money money money money money money money money money money. you know that?",
+                "I AM NOW THE PRESIDENT OF THE WORLD GOLF ASSOCIATION", "Don't be sorry just Ben over", "the cat is smoking zaza","Add features to Windows 10\nSetting: Prevent the wizard from running.","my sister is such a jollizoom\nsometime",
+                "JOLLIZOOM PRAYERS\nMicrosoft Teams Meeting\nTomorrow all day","people getting mad at me for hating gnomes? open a terminal and /usr/sbin/remove-gnome come on  now bruh"]
     
 
     messages_chrstimas = [
