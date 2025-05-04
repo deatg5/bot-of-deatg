@@ -85,11 +85,11 @@ class TextCommands(commands.Cog):
         try:
             text = ""
             for i in range(count):
-                emoji = random.choice(ctx.guild.emojis)
+                text += str(random.choice(ctx.guild.emojis))
             async with ctx.typing():
                 await ctx.defer()
-                await ctx.respond(emoji)
-            await Common.log(self, f'sent {emoji}', ctx)
+                await ctx.respond(text)
+            await Common.log(self, f'sent {text}', ctx)
         except Exception as e:
             print(e)
             await ctx.defer()
