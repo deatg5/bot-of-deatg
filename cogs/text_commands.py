@@ -65,7 +65,7 @@ class TextCommands(commands.Cog):
     #        await ctx.send(SentenceGeneration.generate_demfex_quote(self))
     #    await Common.log(self, 'demfex generated', ctx)
 
-    @commands.command(aliases=['se'], brief="sends random emojis from servers the bot is in")
+    @commands.command(aliases=['se'], brief="sends random emojis from the current server")
     async def server_emojis(self, ctx, count:int = 3):
         try:
             text = ""
@@ -85,13 +85,11 @@ class TextCommands(commands.Cog):
         try:
             text = ""
             for i in range(count):
-                emoji = random.choice(self.client.emojis)
-                if emoji.is_usable() and emoji.available:
-                    text += "<:" + str(emoji.name) + ":" + str(emoji.id) + ">"
+                emoji = random.choice(ctx.guild.emojis)
             async with ctx.typing():
                 await ctx.defer()
-                await ctx.respond(text)
-            await Common.log(self, f'sent {text}', ctx)
+                await ctx.respond(emoji)
+            await Common.log(self, f'sent {emoji}', ctx)
         except Exception as e:
             print(e)
             await ctx.defer()
