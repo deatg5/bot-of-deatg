@@ -564,8 +564,10 @@ class Lists(commands.Cog):
                 "the CANCEL CULTURE MOB got to Scotty, this is awful I am disgusted. Of all the people who deserve to be shit on, Scotty is the last person on that list. He ended his last stream abruptly in tears, he didn't even raid. I wasn't even looking at chat at that moment, so I was confused. I go on Twitter and I see a trending hashtag #ScottyDXIsOverParty, people generally being very mean to him, and why? Because apparently he's a gaslighter.",
                 "AMAZON WEB SERVICE", "loll.... item showcase sandwich... with finger bread! :steamhappy:","Hah! You may believe that there's no funny colors in the area but look a this take a look...",
                 "yo will they call me big dolla money money money money money money money money money money. you know that?",
-                "I AM NOW THE PRESIDENT OF THE WORLD GOLF ASSOCIATION", "Don't be sorry just Ben over", "the cat is smoking zaza","Add features to Windows 10\nSetting: Prevent the wizard from running.","my sister is such a jollizoom\nsometime",
-                "JOLLIZOOM PRAYERS\nMicrosoft Teams Meeting\nTomorrow all day","people getting mad at me for hating gnomes? open a terminal and /usr/sbin/remove-gnome come on  now bruh"]
+                "I AM NOW THE PRESIDENT OF THE WORLD GOLF ASSOCIATION", "Don't be sorry just Ben over", "the cat is smoking zaza","Add features to Windows 10\nSetting: Prevent the wizard from running.","my sister is such a jollizoom sometime",
+                "JOLLIZOOM PRAYERS\nMicrosoft Teams Meeting\nTomorrow all day","people getting mad at me for hating gnomes? open a terminal and /usr/sbin/remove-gnome come on  now bruh","让我们成为朋友 (´• ω •`)","I am a bot of deatg, I am not a bot of deatg, I am a bot of deatg, I am not a bot of deatg, I am a bot of deatg, I am not a bot of deatg, I am a bot of deatg, I am not a bot of deatg, I am a bot of deatg, I am not a bot of deatg, I am a bot of deatg, I am not a bot of deatg, I am a bot of deatg, I am not a bot of deatg, I am a bot of deatg, I am not a bot of deatg",
+                "+rep good places for plant","+rep AWP boss","hi bro! add me please :)","add me for future games!","nah u good beautiful powerful woman","i didn't even know his name until he signed into my chromebook",
+                "9055508581","fuck offffffff.... btfo.... hoe","\*grumbe\*(The goo","CUTIE ALERT! CUTIE ALERT!"]
     
 
     messages_chrstimas = [
