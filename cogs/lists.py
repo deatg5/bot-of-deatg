@@ -573,7 +573,7 @@ class Lists(commands.Cog):
                 "+rep good places for plant","+rep AWP boss","hi bro! add me please :)","add me for future games!","nah u good beautiful powerful woman","i didn't even know his name until he signed into my chromebook",
                 "9055508581","fuck offffffff.... btfo.... hoe","\*grumbe\*(The goo","CUTIE ALERT! CUTIE ALERT!","飲むと頭がｂｏｔ ｏｆ ｄｅａｔｇ","You Will Be Receiving Exciting Special And Seasonal Promations! Thanks!","i am kind of surfing inside",
                 "what happened to your account?","🦌 dogos dinted","おいでよ！柴又","from left to right it’s big justice, lil cumtism, and the rizzler","Let's play game I got 3 energy drink and my inhaler and gum I'm ready to seduce middle aged women and shoot British people",
-                "Life so private no one knows I caught a hat besides me and buddha🪖"]
+                "Life so private no one knows I caught a hat besides me and buddha🪖","THAT'S A LOTTA NUTS!","THAT'LL BE FOUR BUCKS BABY! YOU WANT FRIES WITH THAT?"]
     
 
     messages_chrstimas = [
