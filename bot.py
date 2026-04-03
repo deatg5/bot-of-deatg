@@ -28,6 +28,7 @@ from cogs.lists import Lists
 token_lol = os.environ['TOKEN']
 database_password_lol = os.environ['DATABASE_PASSWORD']
 database_address_lol = os.environ['DATABASE_ADDRESS']
+special_one = os.environ['SPECIAL_ONE']
 
 #windows
 #if os.name == "nt":
@@ -40,6 +41,7 @@ intents = discord.Intents.default()
 #intents.message_content = True
 #intents=intents, 
 client = commands.Bot(command_prefix=commands.when_mentioned_or(';'), help_command=None)
+client.special_one = int(special_one)
 
 
 #@client.command()
