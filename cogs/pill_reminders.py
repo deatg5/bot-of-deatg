@@ -70,6 +70,7 @@ class PillReminders(commands.Cog):
         # worst case is one extra reminder after a restart
         self.done = set()          # set of "pill:date" keys
         self.last_remind = {}      # pill_name -> datetime of last reminder
+        self._user = None          # cached user object
         self.pill_check.start()
 
     def cog_unload(self):
@@ -83,7 +84,8 @@ class PillReminders(commands.Cog):
     @tasks.loop(minutes=1)
     async def pill_check(self):
         now = _now()
-        user = await self.client.fetch_user(self.client.special_one)
+        if self._user is None:
+            self._user = await self.client.fetch_user(self.client.special_one)
 
         for pill_name, cfg in PILL_SCHEDULE.items():
             if not _in_window(now, cfg["start_hour"], cfg["end_hour"]):
@@ -104,7 +106,7 @@ class PillReminders(commands.Cog):
 
             # send reminder
             try:
-                await user.send(f'remember to take {pill_name}! you will be reminded every hour until you message back saying "done"!')
+                await self._user.send(f'remember to take {pill_name}! you will be reminded every hour until you message back saying "done"!')
                 self.last_remind[pill_name] = now
             except Exception:
                 pass
