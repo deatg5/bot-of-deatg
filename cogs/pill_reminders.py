@@ -80,7 +80,7 @@ class PillReminders(commands.Cog):
         date_key = _window_date_key(now, cfg["start_hour"], cfg["end_hour"])
         return f"{pill_name}:{date_key}"
 
-    @tasks.loop(minutes=5)
+    @tasks.loop(minutes=1)
     async def pill_check(self):
         now = _now()
         user = await self.client.fetch_user(self.client.special_one)
@@ -104,7 +104,7 @@ class PillReminders(commands.Cog):
 
             # send reminder
             try:
-                await user.send(f"you need to take {pill_name}")
+                await user.send(f'remember to take {pill_name}! you will be reminded every hour until you message back saying "done"!')
                 self.last_remind[pill_name] = now
             except Exception:
                 pass
@@ -138,8 +138,8 @@ class PillReminders(commands.Cog):
                 acknowledged.append(pill_name)
 
         if acknowledged:
+            await message.add_reaction("\U0001f44d")
             pill_list = ", ".join(acknowledged)
-            await message.channel.send(f"marked as done: {pill_list}")
 
 
 def setup(client):
