@@ -121,7 +121,7 @@ class PillReminders(commands.Cog):
             return
         if not isinstance(message.channel, discord.DMChannel):
             return
-        if message.content.strip().lower() != "done":
+        if "done" not in message.content.strip().lower():
             return
 
         now = _now()
