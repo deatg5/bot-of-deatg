@@ -101,7 +101,7 @@ class PillReminders(commands.Cog):
 
             # throttle: at most one DM per hour per pill
             last = self.last_remind.get(pill_name)
-            if last and (now - last).total_seconds() < 60:
+            if last and (now - last).total_seconds() < 3600:
                 continue
 
             # send reminder
