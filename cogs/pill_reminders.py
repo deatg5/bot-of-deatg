@@ -14,7 +14,7 @@ PILL_SCHEDULE = {
     "vyvanse": {
         "type": "daily",
         "start_hour": 8,
-        "end_hour": 13,
+        "end_hour": 22,
     },
     "prog": {
         "type": "daily",
