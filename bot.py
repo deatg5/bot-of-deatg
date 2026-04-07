@@ -28,7 +28,8 @@ from cogs.lists import Lists
 token_lol = os.environ['TOKEN']
 database_password_lol = os.environ['DATABASE_PASSWORD']
 database_address_lol = os.environ['DATABASE_ADDRESS']
-special_one = os.environ['SPECIAL_ONE']
+#special_one = os.environ['SPECIAL_ONE']
+special_one = 923313823195205645
 
 #windows
 #if os.name == "nt":

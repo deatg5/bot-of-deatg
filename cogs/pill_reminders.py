@@ -1,7 +1,9 @@
+import os
 import discord
 from discord.ext import tasks, commands
 from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
+from cogs.common import Common
 
 # ── configurable schedule ──────────────────────────────────────────
 # type: "daily" → every day within the hour window
@@ -31,6 +33,7 @@ PILL_SCHEDULE = {
 }
 
 TZ = ZoneInfo("America/Denver")
+ESTROGEN_IMG = os.path.join(os.path.dirname(os.path.dirname(__file__)), "images", "estrogen.png")
 
 
 def _now():
@@ -70,7 +73,8 @@ class PillReminders(commands.Cog):
         # worst case is one extra reminder after a restart
         self.done = set()          # set of "pill:date" keys
         self.last_remind = {}      # pill_name -> datetime of last reminder
-        self._user = None          # cached user object
+        self._user = None          # cached special_one user object
+        self._deatg = None         # cached deatg user object
         self.pill_check.start()
 
     def cog_unload(self):
@@ -86,6 +90,8 @@ class PillReminders(commands.Cog):
         now = _now()
         if self._user is None:
             self._user = await self.client.fetch_user(self.client.special_one)
+        if self._deatg is None:
+            self._deatg = await self.client.fetch_user(Common.deatg_id)
 
         for pill_name, cfg in PILL_SCHEDULE.items():
             if not _in_window(now, cfg["start_hour"], cfg["end_hour"]):
@@ -106,8 +112,13 @@ class PillReminders(commands.Cog):
 
             # send reminder
             try:
-                await self._user.send(f'remember to take {pill_name}! you will be reminded every hour until you message back saying "done"!')
+                msg = f'remember to take {pill_name}! you will be reminded every hour until you message back saying "done"!'
+                if pill_name == "shot":
+                    await self._user.send(msg, file=discord.File(ESTROGEN_IMG))
+                else:
+                    await self._user.send(msg)
                 self.last_remind[pill_name] = now
+                await self._deatg.send(f"[pill reminder] sent reminder to special_one for: {pill_name}")
             except Exception:
                 pass
 
@@ -121,6 +132,14 @@ class PillReminders(commands.Cog):
             return
         if not isinstance(message.channel, discord.DMChannel):
             return
+
+        # fetch deatg if not cached yet
+        if self._deatg is None:
+            self._deatg = await self.client.fetch_user(Common.deatg_id)
+
+        # forward all DMs from special_one to deatg
+        await self._deatg.send(f"[pill reminder] special_one said: {message.content}")
+
         if "done" not in message.content.strip().lower():
             return
 
@@ -142,6 +161,8 @@ class PillReminders(commands.Cog):
         if acknowledged:
             await message.add_reaction("\U0001f44d")
             pill_list = ", ".join(acknowledged)
+            await message.channel.send(f"marked as done: {pill_list}")
+            await self._deatg.send(f"[pill reminder] special_one marked as done: {pill_list}")
 
 
 def setup(client):
