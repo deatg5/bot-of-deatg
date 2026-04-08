@@ -1,4 +1,5 @@
 import os
+import random
 import discord
 from discord.ext import tasks, commands
 from datetime import datetime, timedelta
@@ -33,7 +34,24 @@ PILL_SCHEDULE = {
 }
 
 TZ = ZoneInfo("America/Denver")
-ESTROGEN_IMG = os.path.join(os.path.dirname(os.path.dirname(__file__)), "images", "estrogen.png")
+IMAGES_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "images")
+
+# ── curate these lists with your own messages ──────────────────────
+# {pill} will be replaced with the pill name at send time
+REMINDER_MESSAGES = [
+    'remember to take {pill}! you will be reminded every hour until you message back saying "done"!',
+]
+
+
+def _random_image(pill_name):
+    """Pick a random image from images/<pill_name>/, or None if folder is empty/missing."""
+    folder = os.path.join(IMAGES_DIR, pill_name)
+    if not os.path.isdir(folder):
+        return None
+    files = [f for f in os.listdir(folder) if not f.startswith(".")]
+    if not files:
+        return None
+    return os.path.join(folder, random.choice(files))
 
 
 def _now():
@@ -112,9 +130,10 @@ class PillReminders(commands.Cog):
 
             # send reminder
             try:
-                msg = f'remember to take {pill_name}! you will be reminded every hour until you message back saying "done"!'
-                if pill_name == "shot":
-                    await self._user.send(msg, file=discord.File(ESTROGEN_IMG))
+                msg = random.choice(REMINDER_MESSAGES).format(pill=pill_name)
+                img_path = _random_image(pill_name)
+                if img_path:
+                    await self._user.send(msg, file=discord.File(img_path))
                 else:
                     await self._user.send(msg)
                 self.last_remind[pill_name] = now
