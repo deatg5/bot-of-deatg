@@ -358,7 +358,8 @@ class Lists(commands.Cog):
                 "+rep good places for plant","+rep AWP boss","hi bro! add me please :)","add me for future games!","nah u good beautiful powerful woman","i didn't even know his name until he signed into my chromebook",
                 "9055508581","fuck offffffff.... btfo.... hoe","\*grumbe\*(The goo","CUTIE ALERT! CUTIE ALERT!","飲むと頭がｂｏｔ ｏｆ ｄｅａｔｇ","Video taken from J Version (sm682897)","I THINK I'LL PUT THAT DOG'S LIGHTS OUT.",
                 "君がくれた勇気はSNOW HALATION! SNOW HALATION!", "bro FUCK circle K. only place to ever bitch about fillin my polar plop with nacho cheese bro it holds way more I got chips at home too I dont need to spend the money I work hard for on circle k who probably make like 1 million dollars a day bro its nacho cheese u can spare it I wasnt takin the chili which is probably a lot more expensive bc u have to chop up the steak and mix in the brown into it all nacho cheese is is milk and water and maybe yellow seasoning it cant be that expeniseve. Last time I go to that circle k yall can hop off my JOCK I about threw the cheese onto there faced an kicked there asshole bro I'm fuckin PISSED man",
-                "tomoko kuroki serial experiments lain greasy sewerslvt tall but short energy gaming eyebags obscure vocoloids mismatched socks faded hair dye nosebleeds evangellion hikikomori anime figures strawberry flavored candy lace pajamas"]
+                "tomoko kuroki serial experiments lain greasy sewerslvt tall but short energy gaming eyebags obscure vocoloids mismatched socks faded hair dye nosebleeds evangellion hikikomori anime figures strawberry flavored candy lace pajamas",
+                "As you can see deatg, he doesn't believe it's me, which is very understandable.","Dude, on a scale from 1 to 10, 1 being not so extreme and 10 being extremely extreme, I give this a 9.5!"]
 
     
 
