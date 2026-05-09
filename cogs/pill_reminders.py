@@ -93,7 +93,7 @@ class PillReminders(commands.Cog):
         self.last_remind = {}      # pill_name -> datetime of last reminder
         self._user = None          # cached special_one user object
         self._deatg = None         # cached deatg user object
-        self.pill_check.start()
+        #self.pill_check.start()
 
     def cog_unload(self):
         self.pill_check.cancel()
